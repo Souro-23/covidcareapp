@@ -53,6 +53,48 @@ export default function Home() {
 
                 </Col>
             </Row>
+            <br/>
+            <Row justify="center" >
+                <Col sm={16} xs={20}>
+                    <h2><b>What all you can do at home to fight this pandemic?</b></h2>
+                </Col>
+            </Row>
+            <br/>
+            <br/>
+            <Row justify="center" gutter={[32, 32]} >
+                <Col lg={8} md={11} sm={11} xs={20}>
+                    <div className={classes.actionCard1}>
+                        <p> Learn Powerful Breathing Techniques like to help your <br/>
+                        lungs fight the deadly disease and boost your immunity <br/>
+                        and fight stress/anxiety</p>
+                        <Button block className={classes.actionButton3}>
+                            Want To Know More
+                        </Button>
+                    </div>
+                </Col>
+                <Col lg={8} md={11} sm={11} xs={20}>
+                    <div className={classes.actionCard}>
+                        <p>Based on German Research, taking Kabasur, <br/>
+                        along with amruth and tulsi which has <br/>
+                        efficiency of 85% to fight COVID</p>
+                        <Button block className={classes.actionButton2}>
+                            Want To Know More
+                        </Button>
+                    </div>
+                </Col>
+                <Col lg={8} md={11} sm={11} xs={20}>
+                    <div className={classes.actionCard}>
+                        <p>Call on <b>080-676-12338</b> where teachers <br/>
+                        counsellors people undergoing stress and <br/>
+                        anxiety during the lockdown</p>
+                        <Button block className={classes.actionButton2}>
+                            Call Now
+                        </Button>
+                    </div>
+                </Col>
+            </Row>
+
+            
         </>
     )
 }
