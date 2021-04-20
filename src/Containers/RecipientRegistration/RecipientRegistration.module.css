@@ -1,0 +1,61 @@
+.body{
+  background-color: #F7F9FF;
+}
+.formTitle{
+  padding: 1.5rem 0 0.7rem 0;
+}
+.formTitle h1{
+  font-size: 18px;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+}
+
+
+
+
+
+
+
+
+.after{
+  background-color: white;
+  padding-top:2rem;
+}
+.bloodGroupContainer p{
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+}
+.bloodGroups {
+  display: flex;
+}
+.bloodGroup {
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+.bloodGroup p {
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.selected {
+  background: #2F61F5;
+  color: white;
+}
+
+.covidPositive{
+  margin-right: 1rem;
+  border-radius: 3px!important;
+}
+.checkbox{
+  margin-top: 1.5rem;
+}

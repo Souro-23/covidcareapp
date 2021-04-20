@@ -43,7 +43,7 @@ export default function Home(props) {
                     <div className={classes.actionCard}>
                         <h1>Relax!</h1>
                         <p > Let us know what you’re looking for?</p>
-                        <Button block className={classes.actionButton}>
+                        <Button onClick={()=>changeRoute("register/recipient")} block className={classes.actionButton}>
                             I am looking for Plasma Donors
                         </Button>
                         <Button block className={classes.actionButton2}>
@@ -120,7 +120,6 @@ export default function Home(props) {
                         
                         {/* Code of eligibility conformation */}
 
-                        
                         <br/><br/><br/><br/>
                         <Button onClick={()=>changeRoute("register/donor")} block className={classes.actionButton}>
                            Yes, I am eligible
