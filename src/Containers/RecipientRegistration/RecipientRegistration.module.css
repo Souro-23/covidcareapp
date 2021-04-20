@@ -1,3 +1,22 @@
+.body {
+  background-color: #f7f9ff;
+}
+.formTitle {
+  padding: 1.5rem 0 0.7rem 0;
+}
+.formTitle h1 {
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  text-align: center;
+}
+.after {
+  background-color: white;
+  padding-top: 2rem;
+}
+.bloodGroupContainer p {
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+}
 .bloodGroups {
   display: flex;
 }
@@ -22,4 +41,14 @@
 
 .selected {
   background: blue;
+  background: #2f61f5;
+  color: white;
+}
+
+.covidPositive {
+  margin-right: 1rem;
+  border-radius: 3px !important;
+}
+.checkbox {
+  margin-top: 1.5rem;
 }

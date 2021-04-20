@@ -15,5 +15,14 @@ export default function PlasmaRecipientForm() {
 
   const [step, setStep] = useState(1);
 
-  return <>{step === 0 ? <BeforeForm /> : <AfterForm />}</>;
+  return (
+    <>
+      <div className={classes.body}>
+        <div className={classes.formTitle}>
+          <h1>Register As A Recipient</h1>
+        </div>
+        {step === 0 ? <BeforeForm /> : <AfterForm />}
+      </div>
+    </>
+  );
 }
