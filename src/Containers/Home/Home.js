@@ -1,7 +1,24 @@
-import { Button, Col, Row } from 'antd'
-import React from 'react'
+import { Button, Col, Row , Modal  } from 'antd'
+import React , {useState} from 'react'
 import classes from './Home.module.css'
-export default function Home() {
+export default function Home(props) {
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const showModal = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleOk = () => {
+        setIsModalVisible(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalVisible(false);
+    };
+    const changeRoute=(route)=>{
+        console.log(route)
+        props.history.push(route)
+    }
     return (
         <>
             <Row >
@@ -38,7 +55,7 @@ export default function Home() {
                     <div className={classes.actionCard}>
                         <h1>People Need Your Help, Urgently!</h1>
                         <p style={{textAlign:"left"}}> How can you help?</p>
-                        <Button block className={classes.actionButton}>
+                        <Button block className={classes.actionButton} onClick={showModal}>
                             I want to donate Plasma
                         </Button>
                         <Button block className={classes.actionButton2}>
@@ -92,6 +109,26 @@ export default function Home() {
                 </Col>
             </Row>
             <br/>
+            <Modal
+                title={null}
+                className={classes.modal}
+                visible={isModalVisible}
+                onOk={handleOk}
+                onCancel={handleCancel}
+                footer={null}
+                closeIcon={<ion-icon name="close-outline"></ion-icon>}>
+                        
+                        {/* Code of eligibility conformation */}
+
+                        
+                        <br/><br/><br/><br/>
+                        <Button onClick={()=>changeRoute("register/donor")} block className={classes.actionButton}>
+                           Yes, I am eligible
+                        </Button>
+                        <Button block className={classes.actionButton2}>
+                            I am not eligible
+                        </Button>
+            </Modal>
         </>
     )
 }
