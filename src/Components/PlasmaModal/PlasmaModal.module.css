@@ -1,0 +1,56 @@
+/* Modal Designing */
+
+.modal{
+    border-radius: 5px!important;
+    overflow: hidden;
+}
+.modal  ion-icon{
+    font-size:1.5rem;
+    color:black;
+}
+.modalContent h1{
+    font-size: 20px ;
+    font-family: 'Lato', sans-serif;
+    color:rgb(87, 85, 85)
+
+}
+.modalContent p{
+    font-size: 16px;
+    color: black;
+    font-weight: 600;
+}
+
+.boodGroups{
+    display: flex;
+}
+.bloodGroup{
+    height: 3rem;
+    width:3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAFAFA;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border:1px solid grey;
+    cursor: pointer;
+}
+.bloodGroup p{
+    margin-bottom: 0;
+    font-size: 16px;
+    font-weight:500;
+
+
+}
+
+.actionButton{
+    background-color: #2F61F5!important;
+    color: white!important;
+    height: 50px!important;
+    border-radius: 4px!important;
+    border: none!important;
+    font-size: 15px;
+    margin-bottom: 10px;
+
+}

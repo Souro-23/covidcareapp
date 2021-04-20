@@ -3,3 +3,9 @@
 body{
   background-color: #FAFAFA!important;
 }
+
+/* ant select input */
+.ant-select-selector{
+  height: 40px!important;
+  background-color: #FAFAFA!important;
+}
