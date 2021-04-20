@@ -1,0 +1,25 @@
+.bloodGroups {
+  display: flex;
+}
+.bloodGroup {
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+.bloodGroup p {
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.selected {
+  background: blue;
+}
