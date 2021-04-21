@@ -46,7 +46,7 @@ export default function Home(props) {
                         <Button onClick={() => changeRoute("register/recipient")} block className={classes.actionButton}>
                             I am looking for Plasma Donors
                         </Button>
-                        <Button block className={classes.actionButton2}>
+                        <Button onClick={()=>changeRoute('/register/patient')} block className={classes.actionButton2}>
                             I need a counsellor or doctor
                         </Button>
                     </div>
@@ -58,7 +58,7 @@ export default function Home(props) {
                         <Button block className={classes.actionButton} onClick={showModal}>
                             I want to donate Plasma
                         </Button>
-                        <Button block className={classes.actionButton2}>
+                        <Button onClick={()=>changeRoute('/register/consultant')} block className={classes.actionButton2}>
                             I can help as a consultant/doctor
                         </Button>
                         <Button block className={classes.actionButton2}>
