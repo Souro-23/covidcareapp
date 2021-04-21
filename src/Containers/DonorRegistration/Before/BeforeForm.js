@@ -1,57 +1,33 @@
 import React ,{useState} from 'react'
-import classes from '../DonorRegistration.module.css'
+import classes from '../../RegistrationForm.module.css'
 import { Col, Row,Input,Radio,Button,Select } from 'antd'
 import states from '../states.json'
 
-export default function BeforeForm() {
-    const { Option } = Select;
-    const [name, setName] = useState('');
-    const [number, setNumber] = useState('');
-    const [gender, setGender] = useState('');
-    const [state, setState] = useState('');
+const { Option } = Select;
+export default function BeforeForm({
+    namePhoneHandler,
+    onGenderChange,
+    onStateChange,
+    onStepHandler,
+  }) {
 
-    const manageName = (value) => {
-        console.log("name" , value);
-        setName(value);
-    };
-
-    const manageGender = (value) => {
-        console.log("value" , value.target.value);
-        setGender(value);
-    };
-
-    const manageNumber = (value) => {
-        console.log("number" , value);
-        setNumber(value);
-    };
-
-    const manageState = (value) => {
-        console.log("state" , value);
-        setState(value);
-    };
+    
+    
 
     return (
         <>
-         {/* <Row justify='center'>
-            <Col sm={24} xs={24}>
-                <div className={classes.headerBox}>
-                    <span  className={classes.header}>Register As A Donor</span>
-                </div>
-            </Col>
-        </Row> */}
-        <Row  className={classes.formBox}>
-            <div style={{width:'100vw'}}>
+            <div>
                 <div className={classes.formField}>
                     <p className={classes.title}>
                         name
                     </p>
-                    <Input type='text'  onChange={manageName} className={classes.inputField} placeholder="Enter your Name"  />
+                    <Input type='text'  onChange={(e) => namePhoneHandler(e, "name")} className={classes.inputField} placeholder="Enter your Name"  />
                 </div>
                 <div className={classes.formField}>
                     <p className={classes.title}>
                         sex
                     </p>
-                    <Radio.Group size='large'  onChange={manageGender} className={classes.radioGroup}>
+                    <Radio.Group buttonStyle="solid" size='large'  onChange={(e) => onGenderChange(e.target.value)} className={classes.radioGroup}>
                         <Radio.Button className={classes.radioButton} value="male">Male</Radio.Button>
                         <Radio.Button className={classes.radioButton} value="female">Female</Radio.Button>
                         <Radio.Button className={classes.radioButton} value="others">Others</Radio.Button>
@@ -62,14 +38,14 @@ export default function BeforeForm() {
                     <p className={classes.title}>
                         mobile number
                     </p>
-                    <Input type='number'  onChange={manageNumber} className={classes.inputField} placeholder="Enter your Mobile Number"  />
+                    <Input type='number'  onChange={(e) => namePhoneHandler(e, "mobileNumber")} className={classes.inputField} placeholder="Enter your Mobile Number"  />
                 </div>
                 <div className={classes.formField}>
                     <p className={classes.title}>
                         select your state
                     </p>
                     
-                    <Select  placeholder="Select state" style={{ width: '100%' }} onChange={manageState}>
+                    <Select  placeholder="Select state" style={{ width: '100%' }} onChange={onStateChange}>
                     {states.map(state => {
                         return(
                             <Option value={state.key}>{state.name}</Option>
@@ -79,10 +55,6 @@ export default function BeforeForm() {
 
                 </div>
             </div>
-            <Button block className={classes.Button}>
-                Continue
-            </Button>
-        </Row>
 
             
         </>
