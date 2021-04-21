@@ -15,7 +15,7 @@ export default function PlasmaRecipientForm(props) {
   const [state, setState] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
   const [location, setLocation] = useState("");
-  const [covidPositive, setCovidPositive] = useState(null);
+  const [covidPositive, setCovidPositive] = useState(false);
   const [date, setDate] = useState("");
   const [checked, setChecked] = useState(false);
   const [step, setStep] = useState(0);
@@ -49,8 +49,8 @@ export default function PlasmaRecipientForm(props) {
 
     if (location === "") return message.error("Location Required");
 
-    if (covidPositive === null)
-      return message.error("CovidReport Status Required");
+    if (covidPositive === false)
+      return message.error("Covid Positive Report Required");
 
     if (date === "") return message.error("Date Required");
 
@@ -63,7 +63,6 @@ export default function PlasmaRecipientForm(props) {
         gender: gender,
         state: state,
         bloodGroup: bloodGroup,
-        covidPositive: covidPositive,
         location: location,
         date: date,
         timestamp: new Date(),
