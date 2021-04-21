@@ -12,7 +12,7 @@ const slots = [
 ];
 
 
-export default function ConsultantRegistration() {
+export default function ConsultantRegistration(props) {
     const [name, setName] = useState("");
     const [whatsappNo, setWhatsappNo] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
@@ -137,11 +137,13 @@ export default function ConsultantRegistration() {
                 <Col lg={8} sm={16} xs={20}>
                     <Button
                         block
+                        onClick={()=>props.history.push('/consultant-registered')}
                         className={classes.Button}>
                         Register Now
                         </Button>
                 </Col>
             </Row>
+            <br/><br/>
             
         </div>
     )

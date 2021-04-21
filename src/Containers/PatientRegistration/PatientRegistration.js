@@ -37,7 +37,7 @@ export default function PlasmaRecipientForm(props) {
             .add({
                 name: name,
                 mobileNumber: mobileNumber,
-                emailid:emailid,
+                emailid: emailid,
                 age: age,
                 result: result,
                 symptoms: symptoms,
@@ -64,7 +64,7 @@ export default function PlasmaRecipientForm(props) {
                             <Input
                                 type='text'
                                 onChange={(e) => onChangeHandler(e, "name")}
-                                className={classes.inputFieldChanC}
+                                className={classes.inputField}
                                 placeholder='Enter your Name'
                             />
                         </div>
@@ -97,7 +97,7 @@ export default function PlasmaRecipientForm(props) {
                 </div>
                 <Row className={classes.formBox}>
                     <div className={classes.formField}>
-                        <p className={classes.title}>what's your age?</p>
+                        <p><b>What's Your Age?</b></p>
                         <Radio.Group
                             size='large'
                             buttonStyle="solid"
@@ -115,9 +115,11 @@ export default function PlasmaRecipientForm(props) {
                         </Radio.Group>
                     </div>
                 </Row>
+                <br />
+
                 <Row className={classes.formBox}>
-                    <div className={classes.formField}>
-                        <p className={classes.title}>Have You Tested Positive For Coronavirus?</p>
+                    <div className={classes.formField} style={{ height: "auto" }}>
+                        <p><b>Have You Tested Positive For Coronavirus?</b></p>
                         <Radio.Group
                             size='large'
                             buttonStyle="solid"
@@ -127,15 +129,16 @@ export default function PlasmaRecipientForm(props) {
                                 Yes, Tested positive for Coronavirus.
                             </Radio.Button>
                             <br /><br />
-                            <Radio.Button className={classes.radioButton1} value='No'>
+                            <Radio.Button className={classes.radioButton1} style={{ marginTop: "10px", width: "100%" }} value='No'>
                                 No, but I have symptoms.
                             </Radio.Button>
                         </Radio.Group>
                     </div>
-                    <br />
+
                 </Row>
+                <br />
                 <Row className={classes.formBox}>
-                    <div className={classes.formField}>
+                    <div className={classes.formField} style={{ height: "auto" }}>
                         <Checkbox.Group style={{ width: '100%' }} onChange={(e) => onChangeHandler(e, "symptoms")}>
                             <Row>
                                 <Col span={8}>
@@ -179,11 +182,14 @@ export default function PlasmaRecipientForm(props) {
                     </div>
                 </Row>
                 <br />
-                <Row className={classes.formBox}>
-                    <Button block className={classes.Button} onClick={submitHandler}>
-                        Register Now
+                <Row justify="center" >
+                    <Col lg={8} sm={16} xs={20}>
+                        <Button block className={classes.Button} onClick={() => props.history.push('/patient-registered')}>
+                            Register Now
                     </Button>
+                    </Col>
                 </Row>
+                <br/><br/>
 
             </div>
         </>
