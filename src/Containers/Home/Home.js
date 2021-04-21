@@ -46,7 +46,8 @@ export default function Home(props) {
                         <Button onClick={() => changeRoute("register/recipient")} block className={classes.actionButton}>
                             I am looking for Plasma Donors
                         </Button>
-                        <Button block className={classes.actionButton2}>
+                        {/* <Button block className={classes.actionButton2}> */}
+                        <Button onClick={() => changeRoute("register/patient")} block className={classes.actionButton}>
                             I need a counsellor or doctor
                         </Button>
                     </div>
