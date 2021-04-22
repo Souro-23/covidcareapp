@@ -23,6 +23,7 @@ export default function AfterForm({
   onDateChange,
   onCheckedHandler,
   onSubmitHandler,
+  loading
 }) {
   const [selected, setSelected] = useState(-1);
   const onSelect = (val) => {
@@ -32,8 +33,6 @@ export default function AfterForm({
 
   return (
     <div className={classes.after}>
-      <Row justify='center'>
-        <Col md={12} xs={20}>
           <div className={classes.bloodGroupContainer}>
             <p><b>What Blood Group is required?</b></p>
             <div className={classes.bloodGroups}>
@@ -113,11 +112,9 @@ export default function AfterForm({
             </Checkbox>
           </div>
           <br />
-          <Button block className={classes.Button} onClick={onSubmitHandler}>
+          <Button loading={loading} block className={classes.Button} onClick={onSubmitHandler}>
             Register Now
           </Button>
-        </Col>
-      </Row>
     </div>
   );
 }

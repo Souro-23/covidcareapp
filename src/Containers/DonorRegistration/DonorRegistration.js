@@ -20,7 +20,7 @@ export default function PlasmaDonorForm(props) {
     const [recovered, setrecovered] = useState(false)
     const [date, setDate] = useState(null);
     const [checked, setChecked] = useState(false)
-
+    const [loading, setLoading] = useState(false)
     const [step, setStep] = useState(0);
     // OnChangeHandler for "name", "mobileNumber"
     const onChangeHandler = (e, type) => {
@@ -59,24 +59,25 @@ export default function PlasmaDonorForm(props) {
 
         if (checked === false) return message.error("Checkbox empty");
 
-        db.collection("Recipient")
+        setLoading(true)
+        db.collection("Donors")
             .add({
                 name: name,
                 mobileNumber: mobileNumber,
                 gender: gender,
                 state: state,
                 bloodGroup: bloodGroup,
-                covidPositive: covidPositive,
                 date: date,
                 timestamp: new Date(),
             })
             .then((docRef) => {
-                console.log("Document written with ID: ", docRef.id);
+                setLoading(false)
+                props.history.push("/donor-registered")
             })
             .catch((error) => {
+                setLoading(false)
                 console.error("Error adding document: ", error);
             });
-        message.success("Congratulations Model will come here");
     };
 
 
@@ -93,7 +94,6 @@ export default function PlasmaDonorForm(props) {
                             onGenderChange={setGender}
                             onStateChange={setState}
                             onStepHandler={stepHandler}
-
                         />
                         :
                         <AfterForm
@@ -106,7 +106,7 @@ export default function PlasmaDonorForm(props) {
                             onSetrecovered={setrecovered}
 
                         />}
-                    <Button onClick={step === 0 ? () => stepHandler(1) : () => props.history.push("/donor-registered")} block className={classes.Button}>
+                    <Button loading={loading} onClick={step === 0 ? () => stepHandler(1) :submitHandler} block className={classes.Button}>
                         {step === 0 ?
                             "Continue" :
                             "Register Now"}
@@ -117,9 +117,3 @@ export default function PlasmaDonorForm(props) {
         </div>
     </>;
 }
-
-
-{/* <after
-    ,
->
-</after> */}

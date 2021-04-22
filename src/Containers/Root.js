@@ -14,7 +14,11 @@ import SubmitPageDonor from '../Components/SubmitPage/SubmitPageDonor'
 import SubmitPageRecipient from '../Components/SubmitPage/SubmitPageRecipient'
 import SubmitPageConsultant from '../Components/SubmitPage/SubmitPageConsultant'
 import SubmitPagePatient from '../Components/SubmitPage/SubmitPagePatient'
-import DoctorList from './DoctorsList/DoctorList'
+import DoctorsList from "./DoctorsList/DoctorsList";
+import FoodList from "./FoodList/FoodList";
+import OxygenCylinderList from "./OxygenCylinderList/OxygenCylinderList";
+import FoodRegistration from './FoodRegistration/FoodRegistration'
+import OxygenCylinderRegistration from './OxygenCylinderRegistration/OxygenCylinderRegistration'
 
 
 export default function Root() {
@@ -25,11 +29,20 @@ export default function Root() {
             <Route exact path="/register/recipient" component={RecipientRegistration} />
             <Route exact path="/register/consultant" component={ConsultantRegistration} />
             <Route exact path="/register/patient" component={PatientRegistration} />
+            <Route exact path="/register/food-suply" component={FoodRegistration} />
+            <Route exact path="/register/Oxygen-cylinders-supply" component={OxygenCylinderRegistration} />
+
+
             <Route path="/donor-registered" component={SubmitPageDonor} />
             <Route path="/recipient-registered" component={SubmitPageRecipient} />
             <Route path="/consultant-registered" component={SubmitPageConsultant} />
             <Route path="/patient-registered" component={SubmitPagePatient} />
-            <Route path="/doctorlist" component={DoctorList} />
+
+
+            <Route exact path='/doctors' component={DoctorsList} />
+      	    <Route exact path='/food' component={FoodList} />
+            <Route exact path='/oxygenCylinders' component={OxygenCylinderList} />
+
             <Route path="/" component={Home} />
 
         </Switch>
