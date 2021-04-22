@@ -1,6 +1,10 @@
 import { Button, Col, Row, Modal } from 'antd'
 import React, { useState } from 'react'
 import classes from './Home.module.css'
+import help from "../../Assets/Svgs/help.svg";
+import heart from '../../Assets/Svgs/heart.svg'
+import medicine from '../../Assets/Svgs/Image7.png'
+import call from '../../Assets/Svgs/Icon material-call.svg'
 export default function Home(props) {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -32,6 +36,7 @@ export default function Home(props) {
             <Row justify="center" >
                 <Col sm={16} xs={20}>
                     <div className={classes.introCard}>
+                        <img src={help} className={classes.homeIcons} />
                         <p>We are helping connect the <span><b>donors</b></span> with the <span><b>recipients</b></span> during this tough COVID pandemic times</p>
                     </div>
                 </Col>
@@ -46,9 +51,17 @@ export default function Home(props) {
                         <Button onClick={() => changeRoute("register/recipient")} block className={classes.actionButton}>
                             I am looking for Plasma Donors
                         </Button>
-                        <Button onClick={()=>changeRoute('/register/patient')} block className={classes.actionButton2}>
+                        <Button onClick={() => changeRoute('/register/patient')} block className={classes.actionButton2}>
                             I need a counsellor or doctor
                         </Button>
+                        <Button onClick={() => changeRoute('/oxygenCylinders')} block className={classes.actionButton2}>
+                            I am looking for oxygen cylinder
+                        </Button>
+                        <Button onClick={() => changeRoute('/food')} block className={classes.actionButton2}>
+                            I am looking for food delivery
+                        </Button>
+
+
                     </div>
                 </Col>
                 <Col lg={8} md={11} sm={11} xs={20}>
@@ -58,11 +71,14 @@ export default function Home(props) {
                         <Button block className={classes.actionButton} onClick={showModal}>
                             I want to donate Plasma
                         </Button>
-                        <Button onClick={()=>changeRoute('/register/consultant')} block className={classes.actionButton2}>
+                        <Button onClick={() => changeRoute('/register/consultant')} block className={classes.actionButton2}>
                             I can help as a consultant/doctor
                         </Button>
-                        <Button block className={classes.actionButton2}>
-                            I want to volunteer/help
+                        <Button onClick={() => changeRoute('/register/Oxygen-cylinders-supply')} block className={classes.actionButton2}>
+                            I can get Oxygen Cylinders
+                        </Button>
+                        <Button onClick={() => changeRoute('/register/food-suply')} block className={classes.actionButton2}>
+                            I can help with food delivery
                         </Button>
                     </div>
 
@@ -75,10 +91,11 @@ export default function Home(props) {
                 </Col>
             </Row>
             <br />
-            <br />
             <Row justify="center" gutter={[32, 32]} >
                 <Col lg={5} md={11} sm={11} xs={20}>
+
                     <div className={classes.actionCard1}>
+                        <img src={heart} className={classes.homeIcons} />
                         <p> Learn Powerful Breathing Techniques like to help your
                         lungs fight the deadly disease and boost your immunity
                         and fight stress/anxiety</p>
@@ -89,6 +106,10 @@ export default function Home(props) {
                 </Col>
                 <Col lg={5} md={11} sm={11} xs={20}>
                     <div className={classes.actionCard}>
+                        <div className={classes.iconContainer}>
+                            <img src={medicine} className={classes.homeIconsSmall} />
+                        </div>
+
                         <p>Based on German Research, taking Kabasur,
                         along with amruth and tulsi which has
                         efficiency of 85% to fight COVID</p>
@@ -99,6 +120,9 @@ export default function Home(props) {
                 </Col>
                 <Col lg={5} md={11} sm={11} xs={20}>
                     <div className={classes.actionCard}>
+                    <div className={classes.iconContainer}>
+                            <img src={call} className={classes.homeIconsSmall} />
+                        </div>
                         <p>Call on <b style={{ color: "black" }}>080-676-12338</b> where teachers
                         counsellors people undergoing stress and
                         anxiety during the lockdown</p>

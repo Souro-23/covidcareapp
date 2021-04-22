@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import classes from "../RegistrationForm.module.css";
 import BeforeForm from "./Before/BeforeForm";
 import AfterForm from "./After/AfterForm";
-import { message } from "antd";
+import { Col, message, Row } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
 import "firebase/firestore";
 
@@ -19,6 +19,7 @@ export default function PlasmaRecipientForm(props) {
   const [date, setDate] = useState("");
   const [checked, setChecked] = useState(false);
   const [step, setStep] = useState(0);
+  const [loading, setLoading] = useState(false)
 
   // OnChangeHandler for "name", "mobileNumber"
   const onChangeHandler = (e, type) => {
@@ -55,8 +56,9 @@ export default function PlasmaRecipientForm(props) {
     if (date === "") return message.error("Date Required");
 
     if (checked === false) return message.error("Checkbox empty");
-
-    db.collection("Recipient")
+    
+    setLoading(true)
+    db.collection("Recipients")
       .add({
         name: name,
         mobileNumber: mobileNumber,
@@ -68,9 +70,11 @@ export default function PlasmaRecipientForm(props) {
         timestamp: new Date(),
       })
       .then((docRef) => {
+        setLoading(false)
         props.history.push('/recipient-registered')
       })
       .catch((error) => {
+        setLoading(false)
         message.error("Something went wrong")
       });
   };
@@ -80,23 +84,28 @@ export default function PlasmaRecipientForm(props) {
         <div className={classes.formTitle}>
           <h1>Register As A Recipient</h1>
         </div>
-        {step === 0 ? (
-          <BeforeForm
-            namePhoneHandler={onChangeHandler}
-            onGenderChange={setGender}
-            onStateChange={setState}
-            onStepHandler={stepHandler}
-          />
-        ) : (
-          <AfterForm
-            onBloodChange={setBloodGroup}
-            onLocationChange={setLocation}
-            onCovidPositiveChange={setCovidPositive}
-            onDateChange={dateHandler}
-            onCheckedHandler={setChecked}
-            onSubmitHandler={submitHandler}
-          />
-        )}
+        <Row justify="center" >
+          <Col className={classes.formBox} lg={8} sm={16} xs={23}>
+            {step === 0 ? (
+              <BeforeForm
+                namePhoneHandler={onChangeHandler}
+                onGenderChange={setGender}
+                onStateChange={setState}
+                onStepHandler={stepHandler}
+              />
+            ) : (
+              <AfterForm
+                onBloodChange={setBloodGroup}
+                onLocationChange={setLocation}
+                onCovidPositiveChange={setCovidPositive}
+                onDateChange={dateHandler}
+                onCheckedHandler={setChecked}
+                onSubmitHandler={submitHandler}
+                loading={loading}
+              />
+            )}
+          </Col>
+        </Row>
       </div>
     </>
   );

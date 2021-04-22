@@ -12,15 +12,7 @@ export default function BeforeForm({
 }) {
   return (
     <>
-      {/* <Row justify='center'>
-            <Col sm={24} xs={24}>
-                <div className={classes.headerBox}>
-                    <span  className={classes.header}>Register As A Donor</span>
-                </div>
-            </Col>
-        </Row> */}
-      <Row className={classes.formBox}>
-        <div style={{ width: "100vw" }}>
+        <div  >
           <div className={classes.formField}>
             <p className={classes.title}>name</p>
             <Input
@@ -76,7 +68,6 @@ export default function BeforeForm({
           className={classes.Button}>
           Continue
         </Button>
-      </Row>
     </>
   );
 }
