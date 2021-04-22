@@ -1,19 +1,104 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "../RegistrationForm.module.css";
 import { Col, Row, Input, Radio, Button, Select, Checkbox } from "antd";
 import "firebase/firestore";
 import { message } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
+
+
+// images
+import anxiety from "./images/anxiety.svg";
+import bodypain from "./images/bodypain.svg";
+import cough from "./images/cough.svg"
+import diarrhea from "./images/diarrhea.svg";
+import dizziness from "./images/dizziness.svg";
+import fatigue from "./images/fatigue.svg";
+import fever from "./images/fever.svg";
+import headache from "./images/headache.svg";
+import lungs from "./images/lungs.svg";
+import nose from "./images/nose.svg";
+import sore from "./images/sore.svg";
+import taste from "./images/taste.svg";
+
+
 const { Option } = Select;
+
 
 var db = firebase.firestore();
 
+
+
+
 export default function PlasmaRecipientForm(props) {
+
+    const symptom=[
+        {
+            name:"Fever",
+            selected:false,
+            image:fever
+        },
+        {
+            name:"Cough",
+            selected:false,
+            image:cough
+        },
+        {
+            name:"Loss of Smell",
+            selected:false,
+            image:nose
+        },
+        {
+            name:"Loss of Taste",
+            selected:false,
+            image:taste
+        },
+        {
+            name:"Sore Throat",
+            selected:false,
+            image:sore
+        },
+        {
+            name:"Loss of Breath",
+            selected:false,
+            image:lungs
+        },
+        {
+            name:"Dizziness",
+            selected:false,
+            image:dizziness
+        },
+        {
+            name:"Headache",
+            selected:false,
+            image:headache
+        },
+        {
+            name:"Fatigue",
+            selected:false,
+            image:fatigue
+        },
+        {
+            name:"Anxiety",
+            selected:false,
+            image:anxiety
+        },
+        {
+            name:"Diarrhoea",
+            selected:false,
+            image:diarrhea
+        },
+        {
+            name:"Body Pain",
+            selected:false,
+            image:bodypain
+        }
+    ]
+    
+    const [symptoms, setSymptoms] = useState(symptom)
     const [name, setName] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
     const [emailid, setEmailId] = useState("");
     const [age, setAge] = useState("");
-    const [symptoms, setSymptom] = useState("");
     const [result, setResult] = useState("");
     const [checked, setChecked] = useState(false);
 
@@ -27,12 +112,46 @@ export default function PlasmaRecipientForm(props) {
             setEmailId(e.target.value);
         }
     };
+    
 
+    
+
+    const symptomHandler=(Index)=>{
+        console.log("i am being touched")
+        let newstate =symptoms.map((item, index)=>{
+            if(index == Index ){
+                console.log("i am same for index",index)
+                return {
+                    name:item.name,
+                    selected:!item.selected,
+                    image:item.image
+                } 
+            }
+            console.log("i am different")
+            return item
+        })
+        console.log(newstate,"in patient")
+    
+        setSymptoms(newstate)
+    }
 
     const submitHandler = () => {
         if (name === "") return message.error("Name Required");
         if (mobileNumber === "") return message.error("Mobile Number Required");
         if (emailid === "") return message.error("Email Id Required");
+            var noofsymptoms =0;
+            var selectedsymptoms=[];
+        for(var i=0;i<symptoms.length;i++){
+            if(symptoms[i].selected){
+                noofsymptoms = noofsymptoms+ 1;
+                selectedsymptoms.push(symptoms[i].name);
+            }
+        }
+        if(noofsymptoms===0){
+            message.error("You don't have any symptoms");
+        }
+        console.log(selectedsymptoms);
+        return;
         db.collection("Recipient")
             .add({
                 name: name,
@@ -40,7 +159,7 @@ export default function PlasmaRecipientForm(props) {
                 emailid: emailid,
                 age: age,
                 result: result,
-                symptoms: symptoms,
+                symptoms: selectedsymptoms,
             })
             .then((docRef) => {
                 props.history.push('/patient-registered')
@@ -121,7 +240,6 @@ export default function PlasmaRecipientForm(props) {
                     <div className={classes.formField} style={{ height: "auto" }}>
                         <p><b>Have You Tested Positive For Coronavirus?</b></p>
                         <Radio.Group
-                            size='large'
                             buttonStyle="solid"
                             onChange={(e) => onChangeHandler(e, "result")}
                             className={classes.radioGroup}>
@@ -139,52 +257,26 @@ export default function PlasmaRecipientForm(props) {
                 <br />
                 <Row className={classes.formBox}>
                     <div className={classes.formField} style={{ height: "auto" }}>
-                        <Checkbox.Group style={{ width: '100%' }} onChange={(e) => onChangeHandler(e, "symptoms")}>
-                            <Row>
-                                <Col span={8}>
-                                    <Checkbox value="Fever">Fever</Checkbox>
-                                </Col>
-                                <Col span={8}>
-                                    <Checkbox value="Cough">Cough</Checkbox>
-                                </Col>
-                                <Col span={8}>
-                                    <Checkbox value="Loss of Smell">Loss of Smell</Checkbox>
-                                </Col>
-                                <Col span={8}>
-                                    <Checkbox value="Loss of Taste">Loss of Taste</Checkbox>
-                                </Col>
-                                <Col span={8}>
-                                    <Checkbox value="Sore Throat">Sore Throat</Checkbox>
-                                </Col>
-                                <Col span={8}>
-                                    <Checkbox value="Loss of Breath">Loss of Breath</Checkbox>
-                                </Col>
-                                <Col span={8}>
-                                    <Checkbox value="Dizziness">Dizziness</Checkbox>
-                                </Col>
-                                <Col span={8}>
-                                    <Checkbox value="Headache">Headache</Checkbox>
-                                </Col>
-                                <Col span={8}>
-                                    <Checkbox value="Fatigue">Fatigue</Checkbox>
-                                </Col>
-                                <Col span={8}>
-                                    <Checkbox value="Anxiety">Anxiety</Checkbox>
-                                </Col>
-                                <Col span={8}>
-                                    <Checkbox value="Diarrhoea">Diarrhoea</Checkbox>
-                                </Col>
-                                <Col span={8}>
-                                    <Checkbox value="Body Pain">Body Pain</Checkbox>
-                                </Col>
-                            </Row>
-                        </Checkbox.Group>
+                    <Row>
+                        {
+                            symptoms.map((item,index)=>(
+                                    <Col key={index} onClick={()=>symptomHandler(index)} justify="center" span={7}   className={item.selected?classes.selectedcheckBox1:classes.checkBox1}>
+                                            <label  style={{textAlign:'center'}}  for="fever">
+                                                {/* <Checkbox value="Fever">Fever</Checkbox> */}
+                                                <img src={item.image} />
+                                                {/* <input type="checkbox" id="fever" style={{display:'none'}} /> */}
+                                                <div className={classes.text}> {item.name} </div>
+                                            </label>
+                                    </Col>
+                            ))
+                        }
+                    </Row>
                     </div>
                 </Row>
                 <br />
                 <Row justify="center" >
                     <Col lg={8} sm={16} xs={20}>
-                        <Button block className={classes.Button} onClick={() => props.history.push('/patient-registered')}>
+                        <Button block className={classes.Button} onClick={() => submitHandler()}>
                             Register Now
                     </Button>
                     </Col>
