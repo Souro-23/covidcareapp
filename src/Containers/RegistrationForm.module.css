@@ -17,7 +17,6 @@
 
 
 
-
 /*   Before */
 .headerBox{
     padding: 2rem;
@@ -163,6 +162,14 @@
   }
 
   /* PatientRegistration */
+
+.radioGroup{
+  width: 100%;
+}
+.radioButton1{
+  font-size: 15px !important;
+  
+}
 
 .checkBox1{
   width: 86px;

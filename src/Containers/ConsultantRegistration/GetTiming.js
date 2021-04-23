@@ -3,12 +3,12 @@ const check = (count)=>{
             switch(count){
             case '1':console.log("i am 1");
             return timing =[
-                {t:"6am-7pm",sess:"morning",selected:false},
-                {t:"7am-8am",sess:"morning",selected:false},
-                {t:" 8am-9am",sess:"morning",selected:false},
-                {t:"9am-10am",sess:"morning",selected:false},
-                {t:"10am-11am",sess:"morning",selected:false},
-                {t:"11am-12am",sess:"morning",selected:false}
+                {t:"6am-7pm",sess:"Morning",selected:false},
+                {t:"7am-8am",sess:"Morning",selected:false},
+                {t:" 8am-9am",sess:"Morning",selected:false},
+                {t:"9am-10am",sess:"Morning",selected:false},
+                {t:"10am-11am",sess:"Morning",selected:false},
+                {t:"11am-12am",sess:"Morning",selected:false}
             ]
             case '2':console.log("i am 2");
             return timing =[

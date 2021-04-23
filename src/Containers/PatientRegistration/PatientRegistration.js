@@ -151,7 +151,6 @@ export default function PlasmaRecipientForm(props) {
             message.error("You don't have any symptoms");
         }
         console.log(selectedsymptoms);
-        return;
         db.collection("Recipient")
             .add({
                 name: name,
@@ -240,6 +239,7 @@ export default function PlasmaRecipientForm(props) {
                     <div className={classes.formField} style={{ height: "auto" }}>
                         <p><b>Have You Tested Positive For Coronavirus?</b></p>
                         <Radio.Group
+                            size="large"
                             buttonStyle="solid"
                             onChange={(e) => onChangeHandler(e, "result")}
                             className={classes.radioGroup}>
@@ -262,9 +262,7 @@ export default function PlasmaRecipientForm(props) {
                             symptoms.map((item,index)=>(
                                     <Col key={index} onClick={()=>symptomHandler(index)} justify="center" span={7}   className={item.selected?classes.selectedcheckBox1:classes.checkBox1}>
                                             <label  style={{textAlign:'center'}}  for="fever">
-                                                {/* <Checkbox value="Fever">Fever</Checkbox> */}
                                                 <img src={item.image} />
-                                                {/* <input type="checkbox" id="fever" style={{display:'none'}} /> */}
                                                 <div className={classes.text}> {item.name} </div>
                                             </label>
                                     </Col>

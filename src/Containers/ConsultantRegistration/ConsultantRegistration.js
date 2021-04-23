@@ -158,7 +158,7 @@ export default function ConsultantRegistration(props) {
                     </div>
                 </Col>  
 
-
+            {consultTime.length ?
                 <Col className={classes.formBox} lg={8} sm={16} xs={23}>
                     <div className={classes.formField} style={{height:"auto"}} >
                         <p>What will be time for consultation ?</p>
@@ -173,7 +173,10 @@ export default function ConsultantRegistration(props) {
                         ))}
                         </Row>
                     </div>
-                </Col>  
+                </Col> 
+                :
+                null
+            } 
 
 
             </Row>
