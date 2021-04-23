@@ -1,24 +1,25 @@
 import React, { useState } from "react";
-import classes from "./RecipientRegistration.module.css";
+import classes from "../RegistrationForm.module.css";
 import BeforeForm from "./Before/BeforeForm";
 import AfterForm from "./After/AfterForm";
-import { message } from "antd";
+import { Col, message, Row } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
 import "firebase/firestore";
 
 var db = firebase.firestore();
 
-export default function PlasmaRecipientForm() {
+export default function PlasmaRecipientForm(props) {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [state, setState] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
   const [location, setLocation] = useState("");
-  const [covidPositive, setCovidPositive] = useState(null);
+  const [covidPositive, setCovidPositive] = useState(false);
   const [date, setDate] = useState("");
   const [checked, setChecked] = useState(false);
   const [step, setStep] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   // OnChangeHandler for "name", "mobileNumber"
   const onChangeHandler = (e, type) => {
@@ -49,32 +50,33 @@ export default function PlasmaRecipientForm() {
 
     if (location === "") return message.error("Location Required");
 
-    if (covidPositive === null)
-      return message.error("CovidReport Status Required");
+    if (covidPositive === false)
+      return message.error("Covid Positive Report Required");
 
     if (date === "") return message.error("Date Required");
 
     if (checked === false) return message.error("Checkbox empty");
 
-    db.collection("Recipient")
+    setLoading(true);
+    db.collection("Recipients")
       .add({
         name: name,
         mobileNumber: mobileNumber,
         gender: gender,
         state: state,
         bloodGroup: bloodGroup,
-        covidPositive: covidPositive,
         location: location,
         date: date,
         timestamp: new Date(),
       })
       .then((docRef) => {
-        console.log("Document written with ID: ", docRef.id);
+        setLoading(false);
+        props.history.push("/recipient-registered");
       })
       .catch((error) => {
-        console.error("Error adding document: ", error);
+        setLoading(false);
+        message.error("Something went wrong");
       });
-    message.success("Congratulations Model will come here");
   };
   return (
     <>
@@ -82,23 +84,28 @@ export default function PlasmaRecipientForm() {
         <div className={classes.formTitle}>
           <h1>Register As A Recipient</h1>
         </div>
-        {step === 0 ? (
-          <BeforeForm
-            namePhoneHandler={onChangeHandler}
-            onGenderChange={setGender}
-            onStateChange={setState}
-            onStepHandler={stepHandler}
-          />
-        ) : (
-          <AfterForm
-            onBloodChange={setBloodGroup}
-            onLocationChange={setLocation}
-            onCovidPositiveChange={setCovidPositive}
-            onDateChange={dateHandler}
-            onCheckedHandler={setChecked}
-            onSubmitHandler={submitHandler}
-          />
-        )}
+        <Row justify='center'>
+          <Col className={classes.formBox} lg={8} sm={16} xs={23}>
+            {step === 0 ? (
+              <BeforeForm
+                namePhoneHandler={onChangeHandler}
+                onGenderChange={setGender}
+                onStateChange={setState}
+                onStepHandler={stepHandler}
+              />
+            ) : (
+              <AfterForm
+                onBloodChange={setBloodGroup}
+                onLocationChange={setLocation}
+                onCovidPositiveChange={setCovidPositive}
+                onDateChange={dateHandler}
+                onCheckedHandler={setChecked}
+                onSubmitHandler={submitHandler}
+                loading={loading}
+              />
+            )}
+          </Col>
+        </Row>
       </div>
     </>
   );

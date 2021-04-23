@@ -1,6 +1,6 @@
 import React from "react";
 import InfoCard from "../../Components/InfoCard/InfoCard";
-import classes from "../RecipientRegistration/RecipientRegistration.module.css";
+import classes from "../RegistrationForm.module.css";
 import { Col, Row } from "antd";
 
 const foodList = [

@@ -1,6 +1,10 @@
-import { Button, Col, Row , Modal  } from 'antd'
-import React , {useState} from 'react'
+import { Button, Col, Row, Modal } from 'antd'
+import React, { useState } from 'react'
 import classes from './Home.module.css'
+import help from "../../Assets/Svgs/help.svg";
+import heart from '../../Assets/Svgs/heart.svg'
+import medicine from '../../Assets/Svgs/Image7.png'
+import call from '../../Assets/Svgs/Icon material-call.svg'
 export default function Home(props) {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -15,7 +19,7 @@ export default function Home(props) {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
-    const changeRoute=(route)=>{
+    const changeRoute = (route) => {
         console.log(route)
         props.history.push(route)
     }
@@ -32,6 +36,7 @@ export default function Home(props) {
             <Row justify="center" >
                 <Col sm={16} xs={20}>
                     <div className={classes.introCard}>
+                        <img src={help} className={classes.homeIcons} />
                         <p>We are helping connect the <span><b>donors</b></span> with the <span><b>recipients</b></span> during this tough COVID pandemic times</p>
                     </div>
                 </Col>
@@ -43,44 +48,56 @@ export default function Home(props) {
                     <div className={classes.actionCard}>
                         <h1>Relax!</h1>
                         <p > Let us know what you’re looking for?</p>
-                        <Button onClick={()=>changeRoute("register/recipient")} block className={classes.actionButton}>
+                        <Button onClick={() => changeRoute("register/recipient")} block className={classes.actionButton}>
                             I am looking for Plasma Donors
                         </Button>
-                        <Button block className={classes.actionButton2}>
-                            I am looking for Plasma Donors
+                        <Button onClick={() => changeRoute('/register/patient')} block className={classes.actionButton2}>
+                            I need a counsellor or doctor
                         </Button>
+                        <Button onClick={() => changeRoute('/oxygenCylinders')} block className={classes.actionButton2}>
+                            I am looking for oxygen cylinder
+                        </Button>
+                        <Button onClick={() => changeRoute('/food')} block className={classes.actionButton2}>
+                            I am looking for food delivery
+                        </Button>
+
+
                     </div>
                 </Col>
                 <Col lg={8} md={11} sm={11} xs={20}>
                     <div className={classes.actionCard}>
                         <h1>People Need Your Help, Urgently!</h1>
-                        <p style={{textAlign:"left"}}> How can you help?</p>
+                        <p style={{ textAlign: "left" }}> How can you help?</p>
                         <Button block className={classes.actionButton} onClick={showModal}>
                             I want to donate Plasma
                         </Button>
-                        <Button block className={classes.actionButton2}>
+                        <Button onClick={() => changeRoute('/register/consultant')} block className={classes.actionButton2}>
                             I can help as a consultant/doctor
                         </Button>
-                        <Button block className={classes.actionButton2}>
-                            I want to volunteer/help
+                        <Button onClick={() => changeRoute('/register/Oxygen-cylinders-supply')} block className={classes.actionButton2}>
+                            I can get Oxygen Cylinders
+                        </Button>
+                        <Button onClick={() => changeRoute('/register/food-suply')} block className={classes.actionButton2}>
+                            I can help with food delivery
                         </Button>
                     </div>
 
                 </Col>
             </Row>
-            <br/>
+            <br />
             <Row justify="center" >
                 <Col sm={16} xs={20}>
                     <h2><b>What all you can do at home to fight this pandemic?</b></h2>
                 </Col>
             </Row>
-            <br/>
-            <br/>
+            <br />
             <Row justify="center" gutter={[32, 32]} >
                 <Col lg={5} md={11} sm={11} xs={20}>
+
                     <div className={classes.actionCard1}>
-                        <p> Learn Powerful Breathing Techniques like to help your 
-                        lungs fight the deadly disease and boost your immunity  
+                        <img src={heart} className={classes.homeIcons} />
+                        <p> Learn Powerful Breathing Techniques like to help your
+                        lungs fight the deadly disease and boost your immunity
                         and fight stress/anxiety</p>
                         <Button block className={classes.actionButton3}>
                             Want To Know More
@@ -89,8 +106,12 @@ export default function Home(props) {
                 </Col>
                 <Col lg={5} md={11} sm={11} xs={20}>
                     <div className={classes.actionCard}>
-                        <p>Based on German Research, taking Kabasur,  
-                        along with amruth and tulsi which has 
+                        <div className={classes.iconContainer}>
+                            <img src={medicine} className={classes.homeIconsSmall} />
+                        </div>
+
+                        <p>Based on German Research, taking Kabasur,
+                        along with amruth and tulsi which has
                         efficiency of 85% to fight COVID</p>
                         <Button block className={classes.actionButton2}>
                             Want To Know More
@@ -99,8 +120,11 @@ export default function Home(props) {
                 </Col>
                 <Col lg={5} md={11} sm={11} xs={20}>
                     <div className={classes.actionCard}>
-                        <p>Call on <b style={{color:"black"}}>080-676-12338</b> where teachers
-                        counsellors people undergoing stress and  
+                    <div className={classes.iconContainer}>
+                            <img src={call} className={classes.homeIconsSmall} />
+                        </div>
+                        <p>Call on <b style={{ color: "black" }}>080-676-12338</b> where teachers
+                        counsellors people undergoing stress and
                         anxiety during the lockdown</p>
                         <Button block className={classes.actionButton2}>
                             Call Now
@@ -108,7 +132,7 @@ export default function Home(props) {
                     </div>
                 </Col>
             </Row>
-            <br/>
+            <br />
             <Modal
                 title={null}
                 className={classes.modal}
@@ -117,15 +141,25 @@ export default function Home(props) {
                 onCancel={handleCancel}
                 footer={null}
                 closeIcon={<ion-icon name="close-outline"></ion-icon>}>
-                        
-                        {/* Code of eligibility conformation */}
-
-                        <br/><br/><br/><br/>
-                        <Button onClick={()=>changeRoute("register/donor")} block className={classes.actionButton}>
-                           Yes, I am eligible
+                <div className={classes.title1}>
+                    <p>Eligibility Criteria</p>
+                </div>
+                <br />
+                <div className={classes.content}>
+                    <ul>
+                        <li> I was a <span style={{ color: "red" }}><b>COVID</b></span> Positive patient</li>
+                        <li> I am now negative after infection </li>
+                        <li> I have been cured for 14 days </li>
+                        <li> I am healthy and feeling excited to donate plasma </li>
+                        <li> I am between 18-60 years of age </li>
+                    </ul>
+                </div>
+                <br /><br />
+                <Button onClick={() => changeRoute("register/donor")} block className={classes.actionButton}>
+                    Yes, I am eligible
                         </Button>
-                        <Button block className={classes.actionButton2}>
-                            I am not eligible
+                <Button onClick={handleCancel} block className={classes.actionButton2}>
+                    I am not eligible
                         </Button>
             </Modal>
         </>
