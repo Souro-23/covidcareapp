@@ -11,6 +11,12 @@ body{
 }
 
 
+/* radio button side line */
+
+.ant-radio-button-wrapper:not(:first-child)::before{
+  width: 0px !important;
+  height: 0% !important;
+}
 
 /* antd radio buttons */
 

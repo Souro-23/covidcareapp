@@ -147,7 +147,7 @@ export default function FoodRegistration(props) {
             </Row>
             <Row justify="center" >
                 <div className={classes.formTitle}>
-                    <h1>Do they provide free/paid lunch?</h1>
+                    <h4>Do they provide free/paid lunch?</h4>
                 </div>
             </Row>
             <Row justify="center">
@@ -168,7 +168,7 @@ export default function FoodRegistration(props) {
             </Row>
             <Row justify="center" >
                 <div className={classes.formTitle}>
-                    <h1>Is the above Information verified?</h1>
+                    <h4>Is the above Information verified?</h4>
                 </div>
             </Row>
             <Row justify="center">

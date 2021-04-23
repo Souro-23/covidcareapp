@@ -146,8 +146,8 @@ export default function FoodRegistration(props) {
             </Row>
 
             <Row justify="center" >
-                <div className={classes.formTitle}>
-                    <h1>Is the above Information verified?</h1>
+                <div>
+                    <h4>Is the above Information verified?</h4>
                 </div>
             </Row>
             <Row justify="center">
@@ -156,7 +156,7 @@ export default function FoodRegistration(props) {
                         size='large'
                         buttonStyle="solid"
                         onChange={(e) => onChangeHandler(e, "isVerified")}
-                        className={classes.radioGroup}>
+                        className={classes1.group}>
                         <Radio.Button className={classes1.actionButton2} value='Yes'>
                             Yes
                         </Radio.Button>
