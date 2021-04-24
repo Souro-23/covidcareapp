@@ -45,7 +45,7 @@ export default function BeforeForm({
                         select your state
                     </p>
                     
-                    <Select  placeholder="Select state" style={{ width: '100%' }} onChange={onStateChange}>
+                    <Select showSearch placeholder="Select state" style={{ width: '100%' }} onChange={onStateChange}>
                     {states.map(state => {
                         return(
                             <Option value={state.key}>{state.name}</Option>

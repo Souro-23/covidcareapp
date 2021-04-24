@@ -203,3 +203,16 @@
   color: #000000;
 }
 
+
+
+
+
+.select {
+  padding: 5px 20px !important;
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+}
+
+

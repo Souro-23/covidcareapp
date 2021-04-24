@@ -1,88 +1,78 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import InfoCard from "../../Components/InfoCard/InfoCard";
 import classes from "../RegistrationForm.module.css";
-import { Col, Row } from "antd";
+import { Col, Row, Select , Spin } from "antd";
+import firebase from "../../Firebase/FirebaseConfig";
+import {locations} from '../../Constants/location'
+import { LoadingOutlined } from '@ant-design/icons';
+import "firebase/firestore";
 
-const foodList = [
-  {
-    name: "Ritik Gupta",
-    phone: "+91-80107080479",
-    location: "Delhi",
-  },
-  {
-    name: "Sourodeep ghosh roy",
-    phone: "+941233588",
-    location: "Delhi",
-  },
-  {
-    name: "Jaya gaur",
-    phone: "+9564665161",
-    location: "Delhi",
-  },
-  {
-    name: "Manas Srivastava",
-    phone: "+9578626485",
-    location: "Delhi",
-  },
-  {
-    name: "Ritik Gupta",
-    phone: "+91-80107080479",
-    location: "Delhi",
-  },
-  {
-    name: "Sourodeep ghosh roy",
-    phone: "+941233588",
-    location: "Delhi",
-  },
-  {
-    name: "Jaya gaur",
-    phone: "+9564665161",
-    location: "Delhi",
-  },
-  {
-    name: "Manas Srivastava",
-    phone: "+9578626485",
-    location: "Delhi",
-  },
-  {
-    name: "Dr. XYZ",
-    phone: "2646161646",
-    location: "Delhi",
-  },
+var db = firebase.firestore();
 
-  {
-    name: "Jaya gaur",
-    phone: "+9564665161",
-    location: "Delhi",
-  },
-  {
-    name: "Manas Srivastava",
-    phone: "+9578626485",
-    location: "Delhi",
-  },
-  {
-    name: "Dr. XYZ",
-    phone: "2646161646",
-    location: "Delhi",
-  },
-];
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
+const { Option } = Select;
+
+
 export default function FoodList() {
+  const [completeFoodList, setCompleteFoodList] = useState([]);
+  const [foodList, setFoodList] = useState([]);
+  const [loadingData, setLoadingData] = useState(true)
+
+  useEffect(() => {
+    var foodArr = [];
+    db.collection("Food")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          foodArr.push(doc.data());
+        });
+        setLoadingData(false)
+        setCompleteFoodList(foodArr);
+        setFoodList(foodArr);
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  }, []);
+
+  const onLocationChange = (value) => {
+    var foodArr = completeFoodList.filter(
+      (food) => food.location === value
+    );
+    setFoodList(foodArr);
+  };
+
   return (
     <div className={classes.body}>
       <div className={classes.formTitle}>
         <h1>Food Delivery</h1>
       </div>
+      <div className={classes.select}>
+        <Select
+          placeholder='Select Location'
+          style={{ width: "100%" }}
+          showSearch
+          onChange={onLocationChange}>
+          {locations.map((loc) => {
+            return <Option value={loc}>{loc}</Option>;
+          })}
+        </Select>
+      </div>
       <Row justify='center' gutter={[8, 8]}>
         {foodList.map((food, index) => (
-          <Col lg={7} md={8} sm={15} xs={24}>
+          <Col key={index} lg={7} md={8} sm={15} xs={24}>
             <InfoCard
               name={food.name}
               phone={food.phone}
               type='food'
               location={food.location}
+              verified={food.verified}
             />
           </Col>
         ))}
+        {!foodList.length && !loadingData && <p> Oxygen Food Supplier Not Found In This Region</p>}
+        {loadingData && <Spin indicator={antIcon} />}
       </Row>
     </div>
   );

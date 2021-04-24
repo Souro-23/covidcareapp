@@ -48,16 +48,16 @@ export default function PlasmaDonorForm(props) {
     const submitHandler = () => {
         if (bloodGroup === "") return message.error("Blood Group Required");
 
-        if (validAge === false) return message.error("validAge Required");
+        if (validAge === false) return message.error("Valid Age Required");
 
         if (covidPositive === false)
             return message.error("CovidReport Status Required");
 
         if (date === "") return message.error("Date Required");
 
-        if (recovered == false) return message.error("Please fill all the informations");
+        if (recovered == false) return message.error("Please Fill All The Informations");
 
-        if (checked === false) return message.error("Checkbox empty");
+        if (checked === false) return message.error("Checkbox Empty");
 
         setLoading(true)
         db.collection("Donors")

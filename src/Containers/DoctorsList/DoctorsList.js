@@ -1,83 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import InfoCard from "../../Components/InfoCard/InfoCard";
 import classes from "../RegistrationForm.module.css";
-import { Col, Row } from "antd";
+import { Col, Row , Spin} from "antd";
+import firebase from "../../Firebase/FirebaseConfig";
+import "firebase/firestore";
+import { LoadingOutlined } from '@ant-design/icons';
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-const doctorsList = [
-  {
-    name: "Ritik Gupta",
-    phone: "+91-80107080479",
-    location: "Delhi",
-  },
-  {
-    name: "Sourodeep ghosh roy",
-    phone: "+941233588",
-    location: "Delhi",
-  },
-  {
-    name: "Jaya gaur",
-    phone: "+9564665161",
-    location: "Delhi",
-  },
-  {
-    name: "Manas Srivastava",
-    phone: "+9578626485",
-    location: "Delhi",
-  },
-  {
-    name: "Ritik Gupta",
-    phone: "+91-80107080479",
-    location: "Delhi",
-  },
-  {
-    name: "Sourodeep ghosh roy",
-    phone: "+941233588",
-    location: "Delhi",
-  },
-  {
-    name: "Jaya gaur",
-    phone: "+9564665161",
-    location: "Delhi",
-  },
-  {
-    name: "Manas Srivastava",
-    phone: "+9578626485",
-    location: "Delhi",
-  },
-  {
-    name: "Dr. XYZ",
-    phone: "2646161646",
-    location: "Delhi",
-  },
 
-  {
-    name: "Jaya gaur",
-    phone: "+9564665161",
-    location: "Delhi",
-  },
-  {
-    name: "Manas Srivastava",
-    phone: "+9578626485",
-    location: "Delhi",
-  },
-  {
-    name: "Dr. XYZ",
-    phone: "2646161646",
-    location: "Delhi",
-  },
-];
+var db = firebase.firestore();
+
+
 export default function DoctorsList() {
+  const [doctorsList, setDoctorsList] = useState([]);
+  useEffect(() => {
+    var docArr = [];
+    db.collection("Doctors")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          docArr.push(doc.data());
+        });
+        // TODO: SORT DOCTORS ACCORDING TO THEIR AVAILABLE TIME
+        setDoctorsList(docArr);
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  }, []);
+
   return (
     <div className={classes.body}>
       <div className={classes.formTitle}>
         <h1>List of Available Doctors</h1>
       </div>
       <Row justify='center' gutter={[8, 8]}>
-        {doctorsList.map((doctor, index) => (
-          <Col lg={7} md={8} sm={15} xs={24}>
-            <InfoCard name={doctor.name} phone={doctor.phone} type='doctors' />
-          </Col>
-        ))}
+        {doctorsList.length !== 0 &&
+          doctorsList.map((doctor, index) => (
+            <Col key={index} lg={7} md={8} sm={15} xs={24}>
+              <InfoCard
+                name={doctor.name}
+                phone={doctor.whatsappNo}
+                type='doctors'
+              />
+            </Col>
+          ))}
+          {!doctorsList.length && <Spin indicator={antIcon} />}
       </Row>
     </div>
   );

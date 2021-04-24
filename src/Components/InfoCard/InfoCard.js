@@ -1,43 +1,57 @@
-import { Button } from "antd";
+import { Badge, Button } from "antd";
 import React from "react";
 import classes from "./InfoCard.module.css";
-import whatsapp from "../../IconImages/whatsapp.png";
-import pin from "../../IconImages/pin.svg";
+import WhatsApp from "../../Assets/Svgs/WhatsApp.png";
 
-export default function InfoCard({ name, phone, type, location }) {
+export default function InfoCard({ name, phone, type, location, verified }) {
   return (
     <div className={classes.infoCard}>
       <div className={classes.details}>
         <div className={classes.nameAndPhone}>
           <p>{name}</p>
-          <p>{phone}</p>
+          <p>+91-{phone}</p>
         </div>
         {type === "doctors" ? (
-          <Button
-            className={classes.Button}
-            icon={
-              <img
-                src={whatsapp}
-                style={{ height: "20px", width: "20px", paddingRight: "2px" }}
-                alt='WhatsApp Logo'
-              />
-            }>
-            WhatsApp
-          </Button>
+          <a target="blank" href={`https://wa.me/91${phone}`}>
+            <Button
+              className={classes.Button}
+              icon={
+                <img
+                  src={WhatsApp}
+                  style={{ height: "20px", width: "20px", paddingRight: "2px" }}
+                  alt='WhatsApp Logo'
+                />
+              }>
+              WhatsApp
+            </Button>
+          </a>
         ) : (
-          <Button className={classes.Button}>Call Now</Button>
+          <a href={`tel:${phone}`}>
+            <Button className={classes.Button}>Call Now</Button>
+          </a>
         )}
       </div>
       {type === "doctors" ? (
         <div className={classes.status}>Available Now</div>
       ) : (
         <div className={classes.status}>
-          <p>{location}</p>
-          <img
-            src={pin}
-            alt='pin logo'
-            style={{ height: "15px", width: "15px" }}
-          />
+          <div className={classes.location}>
+            <p>{location}</p>
+            <ion-icon name='location-outline'></ion-icon>
+          </div>
+          {verified ? (
+            <Badge
+              style={{
+                backgroundColor: "rgb(88,228,88)",
+                marginBottom: "10px",
+                marginRight: "0px",
+                width: "56px",
+              }}
+              count={"Verified"}
+            />
+          ) : (
+            <></>
+          )}
         </div>
       )}
     </div>

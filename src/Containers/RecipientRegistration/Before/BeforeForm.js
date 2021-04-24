@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import classes from "../../RegistrationForm.module.css";
-import { Col, Row, Input, Radio, Button, Select } from "antd";
+import {  Input, Radio, Button, Select } from "antd";
 import states from "../../DonorRegistration/states.json";
 const { Option } = Select;
 
@@ -55,6 +55,7 @@ export default function BeforeForm({
             <Select
               placeholder='Select state'
               style={{ width: "100%" }}
+              showSearch
               onChange={onStateChange}>
               {states.map((state) => {
                 return <Option value={state.name}>{state.name}</Option>;

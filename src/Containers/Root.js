@@ -19,6 +19,8 @@ import FoodList from "./FoodList/FoodList";
 import OxygenCylinderList from "./OxygenCylinderList/OxygenCylinderList";
 import FoodRegistration from './FoodRegistration/FoodRegistration'
 import OxygenCylinderRegistration from './OxygenCylinderRegistration/OxygenCylinderRegistration'
+import SubmitPageFoodSupply from '../Components/SubmitPage/SubmitPageFoodSupply'
+import SubmitPageOxygen from '../Components/SubmitPage/SubmitPageOxygen'
 
 
 export default function Root() {
@@ -37,6 +39,9 @@ export default function Root() {
             <Route path="/recipient-registered" component={SubmitPageRecipient} />
             <Route path="/consultant-registered" component={SubmitPageConsultant} />
             <Route path="/patient-registered" component={SubmitPagePatient} />
+
+            <Route path="/oxygen-cylinder-registered" component={SubmitPageOxygen} />
+            <Route path="/food-supply-registered" component={SubmitPageFoodSupply} />
 
 
             <Route exact path='/doctors' component={DoctorsList} />

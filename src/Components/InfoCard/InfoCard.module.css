@@ -22,10 +22,18 @@
 }
 .status {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: rgb(88, 228, 88);
+  font-weight: 700;
+}
+.location {
+  display: flex;
   flex-direction: row;
   align-items: baseline;
   color: rgb(88, 228, 88);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .Button {
@@ -37,4 +45,9 @@
   color: #2f61f5 !important;
   height: 35px !important;
   line-height: 20px !important;
+}
+
+ion-icon {
+  font-size: 16px;
+  color: rgb(88, 228, 88);
 }

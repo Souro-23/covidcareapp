@@ -46,8 +46,8 @@ export default function Home(props) {
             <Row justify="center" gutter={[32, 32]}>
                 <Col lg={8} md={11} sm={11} xs={20}>
                     <div className={classes.actionCard}>
-                        <h1>Relax!</h1>
-                        <p > Let us know what you’re looking for?</p>
+                       
+                        <p style={{ textAlign: "left" }}> Let us know what you’re looking for?</p>
                         <Button onClick={() => changeRoute("register/recipient")} block className={classes.actionButton}>
                             I am looking for Plasma Donors
                         </Button>
@@ -66,7 +66,7 @@ export default function Home(props) {
                 </Col>
                 <Col lg={8} md={11} sm={11} xs={20}>
                     <div className={classes.actionCard}>
-                        <h1>People Need Your Help, Urgently!</h1>
+                         
                         <p style={{ textAlign: "left" }}> How can you help?</p>
                         <Button block className={classes.actionButton} onClick={showModal}>
                             I want to donate Plasma
@@ -96,6 +96,7 @@ export default function Home(props) {
 
                     <div className={classes.actionCard1}>
                         <img src={heart} className={classes.homeIcons} />
+                        <br/>
                         <p> Learn Powerful Breathing Techniques like to help your
                         lungs fight the deadly disease and boost your immunity
                         and fight stress/anxiety</p>
@@ -109,7 +110,7 @@ export default function Home(props) {
                         <div className={classes.iconContainer}>
                             <img src={medicine} className={classes.homeIconsSmall} />
                         </div>
-
+                        <br/>
                         <p>Based on German Research, taking Kabasur,
                         along with amruth and tulsi which has
                         efficiency of 85% to fight COVID</p>
@@ -123,6 +124,7 @@ export default function Home(props) {
                     <div className={classes.iconContainer}>
                             <img src={call} className={classes.homeIconsSmall} />
                         </div>
+                        <br/>
                         <p>Call on <b style={{ color: "black" }}>080-676-12338</b> where teachers
                         counsellors people undergoing stress and
                         anxiety during the lockdown</p>

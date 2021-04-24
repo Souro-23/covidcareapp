@@ -1,25 +1,18 @@
 import { Col, Row, Input, Radio, Button, Select } from "antd";
 import React, { useState } from "react";
 import classes from "../RegistrationForm.module.css";
-import classes1 from "../Home/Home.module.css";
 import "firebase/firestore";
 import { message } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
 import states from '../DonorRegistration/states.json'
+import {locations} from '../../Constants/location'
+
 const { Option } = Select;
 
 var db = firebase.firestore();
 
 export default function FoodRegistration(props) {
-    const locations = [
-        "North Delhi",
-        "East Delhi",
-        "South Delhi",
-        "West Delhi",
-        "Gurgaon",
-        "Noida",
-        "Ghaziabad",
-    ];
+    
 
     const [name, setName] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
@@ -29,6 +22,7 @@ export default function FoodRegistration(props) {
     const [isVerified, setIsVerified] = useState("");
     const [isFree, setIsFree] = useState("");
     const [state, setSate] = useState("");
+    const [loading, setLoading] = useState(false)
 
 
     // OnChangeHandler for "name", "mobileNumber"
@@ -37,32 +31,52 @@ export default function FoodRegistration(props) {
             setName(e.target.value);
         } else if (type === "mobileNumber") {
             setMobileNumber(e.target.value);
-        } 
+        }
+        else if (type === "streetNumber") {
+            setStreetNumber(e.target.value);
+        }
+        else if (type === "location") {
+             setLocation(e);
+           
+        }
+        else if (type === "state") {
+            setSate(e);
+        }
+        else if (type === "isVerified") {
+            setIsVerified(e.target.value);
+        }
+        else if (type === "isFree") {
+            setIsFree(e.target.value);
+        }
+        
     };
 
 
     const submitHandler = () => {
         if (name === "") return message.error("Name Required");
-        if (mobileNumber === "") return message.error("Mobile Number Required");
+        if (mobileNumber === "" || mobileNumber.length!==10) return message.error("Mobile Number Required");
         if (state === "") return message.error("State Required");
         if (location === "") return message.error("District Required");
         if (streetNumber === "") return message.error("Street Number Required");
         if (isVerified === "") return message.error("Fill All Field");
         if (isFree === "") return message.error("Fill All Field");
-        db.collection("Recipient")
+        setLoading(true)
+        db.collection("Food")
             .add({
                 name: name,
-                mobileNumber: mobileNumber,
+                phone: mobileNumber,
                 state: state,
                 streetNumber:streetNumber,
-                isVerified:isVerified,
+                verified:isVerified,
                 isFree: isFree,
                 location: location,
             })
             .then((docRef) => {
-                props.history.push('/patient-registered')
+                setLoading(false)
+                props.history.push('/food-supply-registered')
             })
             .catch((error) => {
+                setLoading(false)
                 message.error("Something went wrong")
             });
     };
@@ -70,7 +84,7 @@ export default function FoodRegistration(props) {
         <div className={classes.body}>
             <div className={classes.formTitle}>
                 <h1>Avail Food To People</h1>
-                <h1> Basic Details </h1>
+                <h1>Basic Details </h1>
             </div>
 
             <Row justify="center" >
@@ -121,6 +135,7 @@ export default function FoodRegistration(props) {
                         <Select
                             placeholder='Select Location'
                             style={{ width: "100%" }}
+                            showSearch
                             onChange={(e) => onChangeHandler(e, "location")}>
                             {locations.map((loc) => {
                                 return <Option value={loc}>{loc}</Option>;
@@ -133,7 +148,7 @@ export default function FoodRegistration(props) {
                             select your state
                     </p>
 
-                        <Select placeholder="Select state" style={{ width: '100%' }} onChange={(e) => onChangeHandler(e, "state")}>
+                        <Select showSearch placeholder="Select state" style={{ width: '100%' }} onChange={(e) => onChangeHandler(e, "state")}>
                             {states.map(state => {
                                 return (
                                     <Option value={state.key}>{state.name}</Option>
@@ -145,43 +160,37 @@ export default function FoodRegistration(props) {
                     </div>
                 </Col>
             </Row>
-            <Row justify="center" >
-                <div className={classes.formTitle}>
-                    <h4>Do they provide free/paid lunch?</h4>
-                </div>
-            </Row>
+            <br/>
             <Row justify="center">
                 <Col className={classes.formBox} lg={8} sm={16} xs={23}>
+                <p>Do they provide free/paid lunch?</p>
                     <Radio.Group
                         size='large'
                         buttonStyle="solid"
                         onChange={(e) => onChangeHandler(e, "isFree")}
                         className={classes.radioGroup}>
-                        <Radio.Button className={classes1.actionButton2} value='Paid'>
+                        <Radio.Button className={classes.radioButton} value='Paid'>
                             Paid
                         </Radio.Button>
-                        <Radio.Button className={classes1.actionButton2} value='Free'>
+                        <Radio.Button className={classes.radioButton} value='Free'>
                             Free
                         </Radio.Button>
                     </Radio.Group>
                 </Col>
             </Row>
-            <Row justify="center" >
-                <div className={classes.formTitle}>
-                    <h4>Is the above Information verified?</h4>
-                </div>
-            </Row>
+            <br/>
             <Row justify="center">
                 <Col className={classes.formBox} lg={8} sm={16} xs={23}>
+                <p>Is the above Information verified?</p>
                     <Radio.Group
                         size='large'
                         buttonStyle="solid"
                         onChange={(e) => onChangeHandler(e, "isVerified")}
                         className={classes.radioGroup}>
-                        <Radio.Button className={classes1.actionButton2} value='Yes'>
+                        <Radio.Button className={classes.radioButton} value='Yes'>
                             Yes
                         </Radio.Button>
-                        <Radio.Button className={classes1.actionButton2} value='No'>
+                        <Radio.Button className={classes.radioButton} value='No'>
                             No
                         </Radio.Button>
                     </Radio.Group>
@@ -190,7 +199,7 @@ export default function FoodRegistration(props) {
             <br />
             <Row justify="center" >
                 <Col lg={8} sm={16} xs={20}>
-                    <Button block className={classes.Button} onClick={() => props.history.push('/patient-registered')}>
+                    <Button loading={loading} block className={classes.Button} onClick={submitHandler}>
                         Register Information
                     </Button>
                 </Col>

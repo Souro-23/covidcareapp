@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 import classes from "../../RegistrationForm.module.css";
-import { Row, Radio, Checkbox, Col, DatePicker, Button, Select } from "antd";
+import {  Radio, Checkbox, DatePicker, Select } from "antd";
+
+
+
 
 const { Option } = Select;
 
 const bloodGroup = ["A+", "B+", "O+", "A-", "B-", "O-", "AB+", "AB-"];
 
-const locations = [
-    "North Delhi",
-    "East Delhi",
-    "South Delhi",
-    "West Delhi",
-    "Gurgaon",
-    "Noida",
-    "Ghaziabad",
-];
+
 export default function AfterForm({
     onBloodChange,
     onCovidPositiveChange,

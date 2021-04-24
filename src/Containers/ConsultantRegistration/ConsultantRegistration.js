@@ -7,7 +7,7 @@ import check from "./GetTiming"
 import sunrise from "./images/sunrise.svg";
 import sun from "./images/sun (2).svg";
 import moon from "./images/moon.svg";
-import evening from "./images/eve.svg"
+import evening from "./images/eve.svg" 
 
 
 const slots = [
@@ -16,6 +16,8 @@ const slots = [
     {time:"6pm - 12am", session:"Evening",count:"3",image:evening},
     {time:"12am - 6am", session:"Night",count:"4",image:moon},
 ];
+
+var db = firebase.firestore();
 
 
 export default function ConsultantRegistration(props) {
@@ -28,12 +30,11 @@ export default function ConsultantRegistration(props) {
     const [specialization, setSpecialization] = useState("");
     const [slot, setSlot] = useState(slots);
     const [consultTime, setConsultTime] = useState([]);
+    const [loading, setLoading] = useState(false)
 
     const consultTimeHandler = (count) =>{
         setConsultTime(check(count))
     }
-
-
     const onChangeHandler = (e, type) => {
         if (type === "name") {
             setName(e.target.value);
@@ -48,7 +49,6 @@ export default function ConsultantRegistration(props) {
             setSpecialization(e.target.value);
         }
     };
-
     const consultTimeSelector = (Index) =>{
         let newstate =consultTime.map((item, index)=>{
             if(index == Index ){
@@ -62,6 +62,43 @@ export default function ConsultantRegistration(props) {
         })    
         setConsultTime(newstate)
     }
+    const submitHandler = () => {
+        if (name === "") return message.error("Name Required");
+        if (whatsappNo === "" || whatsappNo.length!==10 ) return message.error("Fill a valid Whatsapp Number");
+        if (MCINumber === "") return message.error("MCINumber Required");
+        if(specialization==="") return message.error("Specialization Required")
+        if(consultTime.length===0) return message.error("Please Fill The Slot")
+        
+        var consultTimeArry = [];
+        for (var i = 0; i < consultTime.length; i++) {
+            if (consultTime[i].selected) {     
+                consultTimeArry.push(consultTime[i].t);
+            }
+        }
+        if (consultTimeArry.length === 0) {
+            message.error("Please select the slot");
+        }
+        setLoading(true)
+
+        db.collection("Doctors")
+            .add({
+                name: name,
+                whatsappNo: whatsappNo,
+                MCINumber: MCINumber,
+                mobileNumber,
+                specialization: specialization,
+                consultTime:consultTimeArry,
+            })
+            .then((docRef) => {
+                setLoading(false)
+                props.history.push('/consultant-registered')
+            })
+            .catch((error) => {
+                setLoading(false)
+                message.error("Something went wrong")
+            });
+    };
+
 
     return (
         <div className={classes.body}>
@@ -88,7 +125,7 @@ export default function ConsultantRegistration(props) {
                         <p className={classes.title}>whatsapp number</p>
                         <Input
                             type='number'
-                            onChange={(e) => onChangeHandler(e, "mobileNumber")}
+                            onChange={(e) => onChangeHandler(e, "whatsappNo")}
                             className={classes.inputField}
                             placeholder='Enter your Mobile Number'
                         />
@@ -145,8 +182,8 @@ export default function ConsultantRegistration(props) {
                     <div className={classes.formField} style={{height:"auto"}} >
                         <p>Select a slot when You Will Be Available For Consultation ?</p>
                         <Row gutter={[10,10]}>
-                        {slot.map(slot=>(
-                            <Col span={8}>
+                        {slot.map((slot, index)=>(
+                            <Col key={index} span={8}>
                                 <div className={classes.timeSlot} onClick={()=>consultTimeHandler(slot.count)} style={{width:"100%",textAlign:"center",backgroundColor:"#A8A8A829", border:"1px solid #C9C9C9", borderRadius:"3px"}} >      
                                     <img src={slot.image}/>            
                                     <p style={{marginBottom:"0", fontWeight:"bold",fontSize:'11px',padding:'0 .3rem '}}>{slot.time}</p>
@@ -185,7 +222,8 @@ export default function ConsultantRegistration(props) {
                 <Col lg={8} sm={16} xs={20}>
                     <Button
                         block
-                        onClick={()=>props.history.push('/consultant-registered')}
+                        loading={loading}
+                        onClick={submitHandler}
                         className={classes.Button}>
                         Register Now
                         </Button>

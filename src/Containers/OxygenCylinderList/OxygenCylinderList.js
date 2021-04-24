@@ -1,88 +1,79 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import InfoCard from "../../Components/InfoCard/InfoCard";
 import classes from "../RegistrationForm.module.css";
-import { Col, Row } from "antd";
+import { Col, Row, Select,Spin } from "antd";
+import firebase from "../../Firebase/FirebaseConfig";
+import { LoadingOutlined } from '@ant-design/icons';
+import {locations} from '../../Constants/location'
 
-const oxygenCylinderList = [
-  {
-    name: "Ritik Gupta",
-    phone: "+91-80107080479",
-    location: "Delhi",
-  },
-  {
-    name: "Sourodeep ghosh roy",
-    phone: "+941233588",
-    location: "Delhi",
-  },
-  {
-    name: "Jaya gaur",
-    phone: "+9564665161",
-    location: "Delhi",
-  },
-  {
-    name: "Manas Srivastava",
-    phone: "+9578626485",
-    location: "Delhi",
-  },
-  {
-    name: "Ritik Gupta",
-    phone: "+91-80107080479",
-    location: "Delhi",
-  },
-  {
-    name: "Sourodeep ghosh roy",
-    phone: "+941233588",
-    location: "Delhi",
-  },
-  {
-    name: "Jaya gaur",
-    phone: "+9564665161",
-    location: "Delhi",
-  },
-  {
-    name: "Manas Srivastava",
-    phone: "+9578626485",
-    location: "Delhi",
-  },
-  {
-    name: "Dr. XYZ",
-    phone: "2646161646",
-    location: "Delhi",
-  },
+import "firebase/firestore";
 
-  {
-    name: "Jaya gaur",
-    phone: "+9564665161",
-    location: "Delhi",
-  },
-  {
-    name: "Manas Srivastava",
-    phone: "+9578626485",
-    location: "Delhi",
-  },
-  {
-    name: "Dr. XYZ",
-    phone: "2646161646",
-    location: "Delhi",
-  },
-];
+const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
+
+
+
+var db = firebase.firestore();
+
+const { Option } = Select;
+
 export default function OxygenCylinderList() {
+  const [completeOclList, setCompleteOclList] = useState([]);
+  const [oclList, setOclList] = useState([]);
+  const [loadingData, setLoadingData] = useState(true)
+
+  useEffect(() => {
+    console.log("Effect Called");
+    var oclArr = [];
+    db.collection("OxygenCylinders")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          oclArr.push(doc.data());
+        });
+        setLoadingData(false)
+        setCompleteOclList(oclArr);
+        setOclList(oclArr);
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  }, []);
+
+  const onLocationChange = (value) => {
+    var oclArr = completeOclList.filter((ocl, index) => ocl.location === value);
+    setOclList(oclArr);
+  };
   return (
     <div className={classes.body}>
       <div className={classes.formTitle}>
         <h1>Oxygen Cylinders List</h1>
       </div>
+      <div className={classes.select}>
+        <Select
+          placeholder='Select Location'
+          style={{ width: "100%" }}
+          showSearch
+          onChange={onLocationChange}>
+          {locations.map((loc) => {
+            return <Option value={loc}>{loc}</Option>;
+          })}
+        </Select>
+      </div>
       <Row justify='center' gutter={[8, 8]}>
-        {oxygenCylinderList.map((ocl, index) => (
+        {oclList.map((ocl, index) => (
           <Col lg={7} md={8} sm={15} xs={24}>
             <InfoCard
               name={ocl.name}
               phone={ocl.phone}
               type='ocl'
               location={ocl.location}
+              verified={ocl.verified}
             />
           </Col>
         ))}
+        {!oclList.length &&  !loadingData && <p> Oxygen Cylinders Supplier Not Found In This Region</p>}
+        {loadingData && <Spin indicator={antIcon} />}
       </Row>
     </div>
   );
