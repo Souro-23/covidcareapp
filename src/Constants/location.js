@@ -1,0 +1,16 @@
+export const locations = [
+    "North Delhi",
+    "South Delhi",
+    "East Delhi",
+    "West Delhi",
+    "North East Delhi",
+    "South East Delhi",
+    "North West Delhi",
+    "South West Delhi",
+    "New Delhi",
+    "Centeral Delhi",
+    "Shahdra",
+    "Gurgaon",
+    "Noida",
+    "Ghaziabad",
+];
