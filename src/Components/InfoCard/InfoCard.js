@@ -3,7 +3,15 @@ import React from "react";
 import classes from "./InfoCard.module.css";
 import WhatsApp from "../../Assets/Svgs/WhatsApp.png";
 
-export default function InfoCard({ name, phone, type, location, verified }) {
+export default function InfoCard({
+  name,
+  phone,
+  type,
+  location,
+  verified,
+  available,
+}) {
+  console.log(available);
   return (
     <div className={classes.infoCard}>
       <div className={classes.details}>
@@ -12,7 +20,7 @@ export default function InfoCard({ name, phone, type, location, verified }) {
           <p>+91-{phone}</p>
         </div>
         {type === "doctors" ? (
-          <a target="blank" href={`https://wa.me/91${phone}`}>
+          <a target='blank' href={`https://wa.me/91${phone}`}>
             <Button
               className={classes.Button}
               icon={
@@ -32,7 +40,7 @@ export default function InfoCard({ name, phone, type, location, verified }) {
         )}
       </div>
       {type === "doctors" ? (
-        <div className={classes.status}>Available Now</div>
+        available && <div className={classes.status}>Available Now</div>
       ) : (
         <div className={classes.status}>
           <div className={classes.location}>

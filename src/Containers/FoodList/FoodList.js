@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import InfoCard from "../../Components/InfoCard/InfoCard";
 import classes from "../RegistrationForm.module.css";
-import { Col, Row, Select , Spin, Empty } from "antd";
+import { Col, Row, Select, Spin } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
-import {locations} from '../../Constants/location'
-import { LoadingOutlined } from '@ant-design/icons';
+import { locations } from "../../Constants/location";
+import { LoadingOutlined } from "@ant-design/icons";
 import "firebase/firestore";
+import { checkVerified } from "../DoctorsList/functions";
 
 var db = firebase.firestore();
 
@@ -13,11 +14,10 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const { Option } = Select;
 
-
 export default function FoodList() {
   const [completeFoodList, setCompleteFoodList] = useState([]);
   const [foodList, setFoodList] = useState([]);
-  const [loadingData, setLoadingData] = useState(true)
+  const [loadingData, setLoadingData] = useState(true);
 
   useEffect(() => {
     var foodArr = [];
@@ -27,9 +27,9 @@ export default function FoodList() {
         querySnapshot.forEach((doc) => {
           foodArr.push(doc.data());
         });
-        setLoadingData(false)
-        setCompleteFoodList(foodArr);
-        setFoodList(foodArr);
+        setCompleteFoodList(checkVerified(foodArr));
+        setFoodList(checkVerified(foodArr));
+        setLoadingData(false);
       })
       .catch((error) => {
         console.log("Error getting documents: ", error);
@@ -37,9 +37,7 @@ export default function FoodList() {
   }, []);
 
   const onLocationChange = (value) => {
-    var foodArr = completeFoodList.filter(
-      (food) => food.location === value
-    );
+    var foodArr = completeFoodList.filter((food) => food.location === value);
     setFoodList(foodArr);
   };
 
@@ -71,7 +69,9 @@ export default function FoodList() {
             />
           </Col>
         ))}
-        {!foodList.length && !loadingData && <Empty description="Food Supplier Not Found In This Region"/>}
+        {!foodList.length && !loadingData && (
+          <p> Oxygen Food Supplier Not Found In This Region</p>
+        )}
         {loadingData && <Spin indicator={antIcon} />}
       </Row>
     </div>

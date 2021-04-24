@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import InfoCard from "../../Components/InfoCard/InfoCard";
 import classes from "../RegistrationForm.module.css";
-import { Col, Row, Select, Spin, Empty } from "antd";
+import { Col, Row, Select, Spin } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
 import { LoadingOutlined } from "@ant-design/icons";
 import { locations } from "../../Constants/location";
 
 import "firebase/firestore";
+import { checkVerified } from "../DoctorsList/functions";
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -28,9 +29,9 @@ export default function OxygenCylinderList() {
         querySnapshot.forEach((doc) => {
           oclArr.push(doc.data());
         });
+        setCompleteOclList(checkVerified(oclArr));
+        setOclList(checkVerified(oclArr));
         setLoadingData(false);
-        setCompleteOclList(oclArr);
-        setOclList(oclArr);
       })
       .catch((error) => {
         console.log("Error getting documents: ", error);
@@ -70,7 +71,7 @@ export default function OxygenCylinderList() {
           </Col>
         ))}
         {!oclList.length && !loadingData && (
-          <Empty description='Oxygen Cylinder Supplier Not Found In This Region' />
+          <p> Oxygen Cylinders Supplier Not Found In This Region</p>
         )}
         {loadingData && <Spin indicator={antIcon} />}
       </Row>

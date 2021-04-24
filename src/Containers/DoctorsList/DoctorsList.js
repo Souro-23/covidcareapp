@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import InfoCard from "../../Components/InfoCard/InfoCard";
 import classes from "../RegistrationForm.module.css";
-import { Col, Row , Spin} from "antd";
+import { Col, Row, Spin } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
 import "firebase/firestore";
-import { LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined } from "@ant-design/icons";
+import { checkAvailability } from "./functions";
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-
 var db = firebase.firestore();
-
 
 export default function DoctorsList() {
   const [doctorsList, setDoctorsList] = useState([]);
@@ -21,8 +20,7 @@ export default function DoctorsList() {
         querySnapshot.forEach((doc) => {
           docArr.push(doc.data());
         });
-        // TODO: SORT DOCTORS ACCORDING TO THEIR AVAILABLE TIME
-        setDoctorsList(docArr);
+        setDoctorsList(checkAvailability(docArr));
       })
       .catch((error) => {
         console.log("Error getting documents: ", error);
@@ -42,10 +40,11 @@ export default function DoctorsList() {
                 name={doctor.name}
                 phone={doctor.whatsappNo}
                 type='doctors'
+                available={doctor.isAvailable}
               />
             </Col>
           ))}
-          {!doctorsList.length && <Spin indicator={antIcon} />}
+        {!doctorsList.length && <Spin indicator={antIcon} />}
       </Row>
     </div>
   );
