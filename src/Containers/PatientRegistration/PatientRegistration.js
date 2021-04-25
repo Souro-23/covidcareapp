@@ -26,6 +26,7 @@ var db = firebase.firestore();
 
 
 export default function PlasmaRecipientForm(props) {
+    window.scrollTo(0, 0);
 
     const symptom = [
         {

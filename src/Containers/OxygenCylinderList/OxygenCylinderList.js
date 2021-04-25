@@ -60,7 +60,7 @@ export default function OxygenCylinderList() {
       </div>
       <Row justify='center' gutter={[8, 8]}>
         {oclList.map((ocl, index) => (
-          <Col lg={7} md={8} sm={15} xs={24}>
+          <Col key={index} lg={7} md={8} sm={15} xs={24}>
             <InfoCard
               name={ocl.name}
               phone={ocl.phone}

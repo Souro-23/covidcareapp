@@ -12,7 +12,7 @@ const { Option } = Select;
 var db = firebase.firestore();
 
 export default function FoodRegistration(props) {
-
+    window.scrollTo(0, 0);
     const [name, setName] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
     const [checked, setChecked] = useState(false);

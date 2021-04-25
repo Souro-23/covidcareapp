@@ -70,7 +70,7 @@ export default function FoodList() {
           </Col>
         ))}
         {!foodList.length && !loadingData && (
-          <p> Oxygen Food Supplier Not Found In This Region</p>
+          <p>Food Supplier Not Found In This Region</p>
         )}
         {loadingData && <Spin indicator={antIcon} />}
       </Row>

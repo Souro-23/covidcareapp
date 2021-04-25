@@ -22,7 +22,7 @@ var db = firebase.firestore();
 
 export default function ConsultantRegistration(props) {
     
-
+    window.scrollTo(0, 0);
     const [name, setName] = useState("");
     const [whatsappNo, setWhatsappNo] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");

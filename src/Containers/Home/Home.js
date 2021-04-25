@@ -20,7 +20,6 @@ export default function Home(props) {
         setIsModalVisible(false);
     };
     const changeRoute = (route) => {
-        console.log(route)
         props.history.push(route)
     }
     return (
