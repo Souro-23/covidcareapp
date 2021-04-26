@@ -79,6 +79,7 @@
 .actionButton{
     background-color: #2F61F5!important;
     color: white!important;
+    text-align: left !important;
     height: 50px!important;
     border-radius: 4px!important;
     border: none!important;
@@ -97,8 +98,8 @@
 .actionButton2{
     background-color: white!important;
     color: #2F61F5!important;
-    padding: 0 !important;
     height: 50px!important;
+    text-align: left !important;
     border-radius: 4px!important;
     border: 1px solid #2F61F5!important;
     font-size: 15px;

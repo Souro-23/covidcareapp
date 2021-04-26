@@ -74,21 +74,16 @@
 .radioButton{ 
     border-radius: 5px !important;
     opacity: 1;
-    margin-right:15px!important;
 }
+
 
 .radioButton1{ 
-  width: 100%;
-  font-size: 10px;
-
-}
-
-.ant-radio-button-wrapper:not(:first-child)::before{
-    width: 0px !important;
+  width: 100% !important;
+  font-size: 14px !important;
 }
 
 .Button{
-    height: 42px !important;
+    height: 40px !important;
     background: #2F61F5 0% 0% no-repeat padding-box !important;
     border-radius: 4px !important;
     opacity: 1;
@@ -164,15 +159,24 @@
   /* PatientRegistration */
 
 .radioGroup{
+  width: 100% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+.patientGroup{
+  display: block;
   width: 100%;
 }
-.radioButton1{
-  font-size: 15px !important;
-  
+
+.symptomsBox{
+  display: flex !important;
+  justify-content: space-around !important;
+  flex-wrap: wrap !important;
 }
 
 .checkBox1{
-  width: 86px;
+  width: 20vw;
   height: 72px;
   display: flex !important;
   justify-content: center !important;
@@ -181,10 +185,10 @@
   border: 1px solid #C9C9C9;
   border-radius: 4px;
   opacity: 1;
-  margin: .35rem;
+  margin: 3px 0;
 }
 .selectedcheckBox1{
-  width: 86px;
+  width: 20vw;
   height: 72px;
   display: flex !important;
   justify-content: center !important;
@@ -193,7 +197,8 @@
   border: 1px solid #2F61F5;
   border-radius: 4px;
   opacity: 1;
-  margin: .35rem;
+  margin: 3px 0;
+
 }
 
 .text{
@@ -216,3 +221,15 @@
 }
 
 
+
+
+/* food registration */
+
+.FoodradioGroup{
+  width: 100% !important;
+  display: flex !important;
+}
+.FoodradioButton{
+  border-radius: 5px !important;
+  margin: 1px 1.5rem 1px 0 !important;
+}

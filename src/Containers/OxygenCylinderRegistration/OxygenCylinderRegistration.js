@@ -1,5 +1,5 @@
 import { Col, Row, Input, Radio, Button, Select } from "antd";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import classes from "../RegistrationForm.module.css";
 import "firebase/firestore";
 import { message } from "antd";
@@ -12,7 +12,9 @@ const { Option } = Select;
 var db = firebase.firestore();
 
 export default function FoodRegistration(props) {
-    window.scrollTo(0, 0);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
     const [name, setName] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
     const [checked, setChecked] = useState(false);
@@ -163,11 +165,11 @@ export default function FoodRegistration(props) {
                         size='large'
                         buttonStyle="solid"
                         onChange={(e) => onChangeHandler(e, "isVerified")}
-                        className={classes.radioGroup}>
-                        <Radio.Button className={classes.radioButton} value='Yes'>
+                        className={classes.FoodradioGroup}>
+                        <Radio.Button className={classes.FoodradioButton} value='Yes'>
                             Yes
                         </Radio.Button>
-                        <Radio.Button className={classes.radioButton} value='No'>
+                        <Radio.Button className={classes.FoodradioButton} value='No'>
                             No
                         </Radio.Button>
                     </Radio.Group>

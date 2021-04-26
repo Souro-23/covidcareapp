@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import classes from "../RegistrationForm.module.css";
 import { Button, Col, Input, message, Row } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
@@ -22,7 +22,9 @@ var db = firebase.firestore();
 
 export default function ConsultantRegistration(props) {
     
-    window.scrollTo(0, 0);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
     const [name, setName] = useState("");
     const [whatsappNo, setWhatsappNo] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
