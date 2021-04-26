@@ -34,7 +34,7 @@ export default function ConsultantRegistration(props) {
     const [consultTime, setConsultTime] = useState([]);
     const [loading, setLoading] = useState(false)
 
-    const consultTimeHandler = (count) =>{
+    const consultTimeHandler = (count) =>{ 
         setConsultTime(check(count))
     }
     const onChangeHandler = (e, type) => {
@@ -57,7 +57,8 @@ export default function ConsultantRegistration(props) {
                 return {
                     t:item.t,
                     sess:item.sess,
-                    selected:!item.selected
+                    selected:!item.selected,
+                    tFormat:item.tFormat
                 } 
             }
             return item
@@ -74,7 +75,7 @@ export default function ConsultantRegistration(props) {
         var consultTimeArry = [];
         for (var i = 0; i < consultTime.length; i++) {
             if (consultTime[i].selected) {     
-                consultTimeArry.push(consultTime[i].t);
+                consultTimeArry.push(consultTime[i].tFormat);
             }
         }
         if (consultTimeArry.length === 0) {
@@ -87,9 +88,10 @@ export default function ConsultantRegistration(props) {
                 name: name,
                 whatsappNo: whatsappNo,
                 MCINumber: MCINumber,
-                mobileNumber,
+                phone:mobileNumber,
                 specialization: specialization,
-                consultTime:consultTimeArry,
+                consultTime:consultTimeArry.join(','),
+                timestamp:new Date()
             })
             .then((docRef) => {
                 setLoading(false)
@@ -221,7 +223,7 @@ export default function ConsultantRegistration(props) {
             </Row>
             <br/>
             <Row justify="center" >
-                <Col lg={8} sm={16} xs={20}>
+                <Col lg={8} sm={16} xs={23}>
                     <Button
                         block
                         loading={loading}

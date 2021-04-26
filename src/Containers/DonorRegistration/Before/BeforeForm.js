@@ -1,13 +1,13 @@
 import React ,{useState} from 'react'
 import classes from '../../RegistrationForm.module.css'
 import { Col, Row,Input,Radio,Button,Select } from 'antd'
-import states from '../states.json'
+import { locations } from '../../../Constants/location'
 
 const { Option } = Select;
 export default function BeforeForm({
     namePhoneHandler,
     onGenderChange,
-    onStateChange,
+    onLocationChange,
     onStepHandler,
   }) {
 
@@ -42,13 +42,13 @@ export default function BeforeForm({
                 </div>
                 <div className={classes.formField}>
                     <p className={classes.title}>
-                        select your state
+                    What’s your location?
                     </p>
                     
-                    <Select showSearch placeholder="Select state" style={{ width: '100%' }} onChange={onStateChange}>
-                    {states.map(state => {
+                    <Select showSearch placeholder="Select state" style={{ width: '100%' }} onChange={onLocationChange}>
+                    {locations.map(location => {
                         return(
-                            <Option value={state.key}>{state.name}</Option>
+                            <Option value={location}>{location}</Option>
                         )})
                     }    
                     </Select>

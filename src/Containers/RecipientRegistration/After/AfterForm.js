@@ -82,10 +82,10 @@ export default function AfterForm({
           size='large'
           buttonStyle="solid"
           onChange={(e) => onCovidPositiveChange(e.target.value)}>
-          <Radio.Button className={classes.covidPositive} value={true}>
+          <Radio.Button className={classes.radioButton} value={true}>
             Yes
               </Radio.Button>
-          <Radio.Button className={classes.covidPositive} value={false}>
+          <Radio.Button className={classes.radioButton} value={false}>
             No
               </Radio.Button>
         </Radio.Group>

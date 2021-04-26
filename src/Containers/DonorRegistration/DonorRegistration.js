@@ -13,7 +13,7 @@ export default function PlasmaDonorForm(props) {
     const [name, setName] = useState("");
     const [gender, setGender] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
-    const [state, setState] = useState("");
+    const [location, setLocation] = useState("");
     const [bloodGroup, setBloodGroup] = useState("");
     const [validAge, setvalidAge] = useState(false)
     const [covidPositive, setCovidPositive] = useState(false)
@@ -37,7 +37,7 @@ export default function PlasmaDonorForm(props) {
         if (name === "") return message.error("Name Required");
         if (mobileNumber === "") return message.error("Mobile Number Required");
         if (gender === "") return message.error("Gender Required");
-        if (state === "") return message.error("State Required");
+        if (location === "") return message.error("location Required");
         return "Success";
     };
     const dateHandler = (date, dateString) => {
@@ -63,11 +63,11 @@ export default function PlasmaDonorForm(props) {
         db.collection("Donors")
             .add({
                 name: name,
-                mobileNumber: mobileNumber,
+                phone: mobileNumber,
                 gender: gender,
-                state: state,
+                location:location,
                 bloodGroup: bloodGroup,
-                date: date,
+                screeningDate: date,
                 timestamp: new Date(),
             })
             .then((docRef) => {
@@ -92,7 +92,7 @@ export default function PlasmaDonorForm(props) {
                         <BeforeForm
                             namePhoneHandler={onChangeHandler}
                             onGenderChange={setGender}
-                            onStateChange={setState}
+                            onLocationChange={setLocation}
                             onStepHandler={stepHandler}
                         />
                         :

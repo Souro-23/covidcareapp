@@ -4,7 +4,7 @@ import { Col, Row, Input, Radio, Button, Select } from "antd";
 import "firebase/firestore";
 import { message } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
-
+  
 
 // images
 import anxiety from "./images/anxiety.svg";
@@ -154,11 +154,12 @@ export default function PlasmaRecipientForm(props) {
         db.collection("Patients")
             .add({
                 name: name,
-                mobileNumber: mobileNumber,
-                emailid: emailid,
+                phone: mobileNumber,
+                emailId: emailid,
                 age: age,
                 testedPositive: result,
-                symptoms: selectedsymptoms,
+                symptoms: selectedsymptoms.join(','),
+                timestamp:new Date()
             })
             .then((docRef) => {
                 setLoading(false)
@@ -248,11 +249,11 @@ export default function PlasmaRecipientForm(props) {
                                 onChange={(e) => onChangeHandler(e, "result")}
                                 className={classes.patientGroup}
                                 >
-                                <Radio.Button onClick={()=>setHave(false)} className={classes.radioButton1} value='Yes'>
+                                <Radio.Button onClick={()=>setHave(false)} className={classes.radioButton1} value='yes'>
                                     Yes, Tested positive for Coronavirus.
                             </Radio.Button>
                                 <br /><br />
-                                <Radio.Button onClick={()=>setHave(true)} className={classes.radioButton1} style={{ marginTop: "10px", width: "100%" }} value='No'>
+                                <Radio.Button onClick={()=>setHave(true)} className={classes.radioButton1} style={{ marginTop: "10px", width: "100%" }} value='no'>
                                     No, but I have symptoms.
                             </Radio.Button>
                             </Radio.Group>
@@ -281,13 +282,9 @@ export default function PlasmaRecipientForm(props) {
                     null
                     }
                     <br />
-                    <Row justify="center" >
-                        <Col lg={8} sm={16} xs={20}>
-                            <Button loading={loading} block className={classes.Button} onClick={() => submitHandler()}>
+                    <Button loading={loading} block className={classes.Button} onClick={() => submitHandler()}>
                                 Register Now
                     </Button>
-                        </Col>
-                    </Row>
                     <br /><br />
 
                 </div>

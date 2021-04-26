@@ -74,6 +74,7 @@
 .radioButton{ 
     border-radius: 5px !important;
     opacity: 1;
+    margin-right: 10px!important;
 }
 
 
@@ -161,7 +162,7 @@
 .radioGroup{
   width: 100% !important;
   display: flex !important;
-  justify-content: space-between !important;
+  /* justify-content: space-between !important; */
 }
 
 .patientGroup{

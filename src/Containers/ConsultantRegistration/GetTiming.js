@@ -3,13 +3,14 @@ const check = (count)=>{
             switch(count){
             case '1': 
             return timing =[
-                {t:"6am-7pm",sess:"Morning",selected:false},
-                {t:"7am-8am",sess:"Morning",selected:false},
-                {t:" 8am-9am",sess:"Morning",selected:false},
-                {t:"9am-10am",sess:"Morning",selected:false},
-                {t:"10am-11am",sess:"Morning",selected:false},
-                {t:"11am-12am",sess:"Morning",selected:false}
+                {t:"6am-7pm",sess:"Morning",selected:false,tFormat:"0600-0700" },
+                {t:"7am-8am",sess:"Morning",selected:false, tFormat:"0700-0800"},
+                {t:" 8am-9am",sess:"Morning",selected:false, tFormat:"0800-0900"},
+                {t:"9am-10am",sess:"Morning",selected:false, tFormat:"0900-1000"},
+                {t:"10am-11am",sess:"Morning",selected:false , tFormat:"1000-1100"},
+                {t:"11am-12am",sess:"Morning",selected:false, tFormat:"1100-1200"}
             ]
+            // TODO rest
             case '2': 
             return timing =[
                 {t:"12pm-1pm",sess:"Afternoon",selected:false},

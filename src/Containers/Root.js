@@ -59,8 +59,7 @@ export default function Root() {
 
                 <Route path='/login' component={Login} />
 
-                <Route exact path ="/admin" component={Admin}/>
-                <Route path="/admin/food" component={FoodTable}/>
+                <Route  path ="/admin" component={Admin}/>
  
 
                 <Route path="/" component={Home} />

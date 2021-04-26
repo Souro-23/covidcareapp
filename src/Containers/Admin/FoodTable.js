@@ -108,8 +108,13 @@ export default class FoodTable extends React.Component {
                 editable: true,
             },
             {
-                title: 'address',
-                dataIndex: 'address',
+                title: 'Street Number',
+                dataIndex: 'streetNumber',
+                editable: true,
+            },
+            {
+                title: 'Location',
+                dataIndex: 'location',
                 editable: true,
             },
             {
@@ -121,6 +126,8 @@ export default class FoodTable extends React.Component {
                 title: 'verified',
                 dataIndex: 'verified',
                 editable: true,
+                sorter: (a, b) => a.verified.length - b.verified.length,
+                sortDirections: ['descend', 'ascend'],
             },
             {
                 title: 'operation',
@@ -138,16 +145,16 @@ export default class FoodTable extends React.Component {
             count: 0,
         };
 
-        db.collection("Food")
-            .onSnapshot((querySnapshot) => {
+        db.collection("Food").onSnapshot((querySnapshot) => {
                 var data = []
                 querySnapshot.forEach((doc) => {
                     data.push({
                         isFree: doc.data().isFree,
                         verified: doc.data().verified,
                         name: doc.data().name,
+                        streetNumber:doc.data().streetNumber,
+                        location:doc.data().location,
                         phone: doc.data().phone,
-                        address: doc.data().location,
                         key: doc.id,
                     })
                 })
@@ -159,7 +166,7 @@ export default class FoodTable extends React.Component {
     handleDelete = (key) => {
         const dataSource = [...this.state.dataSource];
 
-        db.collection("cities").doc(key).delete().then(() => {
+        db.collection("Food").doc(key).delete().then(() => {
             console.log("Document successfully deleted!");
         }).catch((error) => {
             console.error("Error removing document: ", error);
@@ -172,16 +179,16 @@ export default class FoodTable extends React.Component {
         const { count, dataSource } = this.state;
         const newData = {
             key: count,
-            name: "enter name here",
+            name: "Enter Name Here",
             phone: "",
             isFree: "",
             verified: "",
-            address: "",
+            location: "",
+            streetNumber:"",
             newItem: true
-
         };
         this.setState({
-            dataSource: [...dataSource, newData],
+            dataSource: [newData,...dataSource ],
             count: count + 1,
         });
     };
@@ -190,18 +197,22 @@ export default class FoodTable extends React.Component {
         if (row.newItem) {
             db.collection("Food").add({
                 name: row.name,
-                location: row.address,
+                location: row.location,
+                streetNumber:row.streetNumber,
                 phone: row.phone,
                 isFree: row.isFree,
-                verified: row.verified
+                verified: row.verified,
+                timestamp:new Date()
             })
         } else {
             db.collection("Food").doc(row.key).set({
                 name: row.name,
-                location: row.address,
+                location: row.location,
+                streetNumber:row.streetNumber,
                 phone: row.phone,
                 isFree: row.isFree,
-                verified: row.verified
+                verified: row.verified,
+                timestamp:new Date()
             })
         }
         const newData = [...this.state.dataSource];
@@ -238,8 +249,7 @@ export default class FoodTable extends React.Component {
             };
         });
         return (
-            <div style={{padding:"20px"}}>
-                <br/><br/><br/>
+            <div>
                 <Button
                     onClick={this.handleAdd}
                     type="primary"
@@ -253,6 +263,7 @@ export default class FoodTable extends React.Component {
                     components={components}
                     rowClassName={() => 'editable-row'}
                     bordered
+                    pagination
                     dataSource={dataSource}
                     columns={columns}
                 />

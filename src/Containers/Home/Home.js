@@ -113,7 +113,7 @@ export default function Home(props) {
                         <p>Based on German Research, taking Kabasur,
                         along with amruth and tulsi which has
                         efficiency of 85% to fight COVID</p>
-                        <Button block className={classes.actionButton2}>
+                        <Button block className={classes.actionButton4}>
                             Want To Know More
                         </Button>
                     </div>
@@ -127,7 +127,7 @@ export default function Home(props) {
                         <p>Call on <b style={{ color: "black" }}>080-676-12338</b> where teachers
                         counsellors people undergoing stress and
                         anxiety during the lockdown</p>
-                        <Button block className={classes.actionButton2}>
+                        <Button block className={classes.actionButton4}  >
                             Call Now
                         </Button>
                     </div>

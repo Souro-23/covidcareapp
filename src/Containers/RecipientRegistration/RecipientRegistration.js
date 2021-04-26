@@ -42,7 +42,6 @@ export default function PlasmaRecipientForm(props) {
     if (name === "") return message.error("Name Required");
     if (mobileNumber === "") return message.error("Mobile Number Required");
     if (gender === "") return message.error("Gender Required");
-    if (state === "") return message.error("State Required");
     return "Success";
   };
   const submitHandler = () => {
@@ -61,12 +60,11 @@ export default function PlasmaRecipientForm(props) {
     db.collection("Recipients")
       .add({
         name: name,
-        mobileNumber: mobileNumber,
+        phone: mobileNumber,
         gender: gender,
-        state: state,
         bloodGroup: bloodGroup,
         location: location,
-        date: date,
+        screeningDate: date,
         timestamp: new Date(),
       })
       .then((docRef) => {

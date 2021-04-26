@@ -13,7 +13,7 @@ export default function Login(props) {
         console.log('Success:', values);
         login(values.username, values.password).then(res=>{
             localStorage.setItem("user", res.user.uid)
-            props.history.push("/admin")
+            props.history.push("/admin/food")
         })
         .catch(err=>{
             console.log(err)
@@ -36,6 +36,8 @@ export default function Login(props) {
         <br/>
         <Row justify="center">
             <Col className={classes.formBox}  lg={7}>
+                <h2>Admin Login</h2>
+                <br/><br/><br/>
                 <Form  
                     name="basic"
                     initialValues={{ remember: true }}
@@ -55,8 +57,8 @@ export default function Login(props) {
                     >
                         <Input.Password className={classes.inputField} placeholder="Password" />
                     </Form.Item>
-                    <br/>
-                    <br/>
+                    
+                 
                     
                     <Form.Item >
                         <Button className={classes.Button} block type="primary" htmlType="submit">

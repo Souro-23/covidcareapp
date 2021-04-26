@@ -58,7 +58,7 @@ export default function FoodRegistration(props) {
     const submitHandler = () => {
         if (name === "") return message.error("Name Required");
         if (mobileNumber === "" || mobileNumber.length!==10) return message.error("Mobile Number Required");
-        if (state === "") return message.error("State Required");
+        
         if (location === "") return message.error("District Required");
         if (streetNumber === "") return message.error("Street Number Required");
         if (isVerified === "") return message.error("Fill All Field");
@@ -68,11 +68,12 @@ export default function FoodRegistration(props) {
             .add({
                 name: name,
                 phone: mobileNumber,
-                state: state,
                 streetNumber:streetNumber,
                 verified:isVerified,
                 isFree: isFree,
                 location: location,
+                timestamp:new Date()
+
             })
             .then((docRef) => {
                 setLoading(false)
@@ -145,22 +146,6 @@ export default function FoodRegistration(props) {
                             })}
                         </Select>
                     </div>
-
-                    <div className={classes.formField}>
-                        <p className={classes.title}>
-                            select your state
-                    </p>
-
-                        <Select showSearch placeholder="Select state" style={{ width: '100%' }} onChange={(e) => onChangeHandler(e, "state")}>
-                            {states.map(state => {
-                                return (
-                                    <Option value={state.key}>{state.name}</Option>
-                                )
-                            })
-                            }
-                        </Select>
-
-                    </div>
                 </Col>
             </Row>
             <br/>
@@ -172,10 +157,10 @@ export default function FoodRegistration(props) {
                         buttonStyle="solid"
                         onChange={(e) => onChangeHandler(e, "isFree")}
                         className={classes.FoodradioGroup}>
-                        <Radio.Button className={classes.FoodradioButton} value='Paid'>
+                        <Radio.Button className={classes.radioButton} value='paid'>
                             Paid
                         </Radio.Button>
-                        <Radio.Button className={classes.FoodradioButton} value='Free'>
+                        <Radio.Button className={classes.radioButton} value='free'>
                             Free
                         </Radio.Button>
                     </Radio.Group>
@@ -190,10 +175,10 @@ export default function FoodRegistration(props) {
                         buttonStyle="solid"
                         onChange={(e) => onChangeHandler(e, "isVerified")}
                         className={classes.FoodradioGroup}>
-                        <Radio.Button className={classes.FoodradioButton} value='Yes'>
+                        <Radio.Button className={classes.radioButton} value='yes'>
                             Yes
                         </Radio.Button>
-                        <Radio.Button className={classes.FoodradioButton} value='No'>
+                        <Radio.Button className={classes.radioButton} value='no'>
                             No
                         </Radio.Button>
                     </Radio.Group>

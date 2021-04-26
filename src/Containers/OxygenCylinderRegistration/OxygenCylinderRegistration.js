@@ -54,7 +54,6 @@ export default function FoodRegistration(props) {
     const submitHandler = () => {
         if (name === "") return message.error("Name Required");
         if (mobileNumber === "" ||  mobileNumber.length!==10 ) return message.error("Valid Mobile Number Required");
-        if (state === "") return message.error("State Required");
         if (location === "") return message.error("District Required");
         if (streetNumber === "") return message.error("Street Number Required");
         if (isVerified === "") return message.error("Fill All Field");
@@ -63,10 +62,10 @@ export default function FoodRegistration(props) {
             .add({
                 name: name,
                 phone: mobileNumber,
-                state: state,
                 streetNumber: streetNumber,
                 verified: isVerified,
                 location: location,
+                timestamp:new Date()
             })
             .then((docRef) => {
                 setLoading(false)
@@ -166,10 +165,10 @@ export default function FoodRegistration(props) {
                         buttonStyle="solid"
                         onChange={(e) => onChangeHandler(e, "isVerified")}
                         className={classes.FoodradioGroup}>
-                        <Radio.Button className={classes.FoodradioButton} value='Yes'>
+                        <Radio.Button className={classes.radioButton} value='yes'>
                             Yes
                         </Radio.Button>
-                        <Radio.Button className={classes.FoodradioButton} value='No'>
+                        <Radio.Button className={classes.radioButton} value='no'>
                             No
                         </Radio.Button>
                     </Radio.Group>
