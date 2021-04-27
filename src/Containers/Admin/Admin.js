@@ -33,7 +33,6 @@ export default function Admin(props) {
         props.history.push('/login')
     }
 
-
     return (
         <Layout>
             <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>

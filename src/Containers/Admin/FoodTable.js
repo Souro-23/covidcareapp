@@ -49,7 +49,7 @@ export default class FoodTable extends React.Component {
                 dataIndex: 'location',
                 editable: true,
                 filters: this.returnLocation(),
-                onFilter: (value, record) => record.location.indexOf(value) === 0,
+                onFilter: (value, record) => record.location?.indexOf(value) === 0,
             },
             {
                 title: 'isFree',
@@ -66,13 +66,13 @@ export default class FoodTable extends React.Component {
                     },
                 ],
                 filterMultiple: false,
-                onFilter: (value, record) => record.isFree.indexOf(value) === 0,
+                onFilter: (value, record) => record.isFree?.indexOf(value) === 0,
             },
             {
                 title: 'verified',
                 dataIndex: 'verified',
                 editable: true,
-                sorter: (a, b) => a.verified.length - b.verified.length,
+                sorter: (a, b) => a.verified?.length - b.verified?.length,
                 sortDirections: ['descend', 'ascend'],
                 filters: [
                     {
@@ -85,7 +85,7 @@ export default class FoodTable extends React.Component {
                     },
                 ],
                 filterMultiple: false,
-                onFilter: (value, record) => record.verified.indexOf(value) === 0,
+                onFilter: (value, record) => record.verified?.indexOf(value) === 0,
             },
             {
                 title: 'operation',
@@ -240,22 +240,23 @@ export default class FoodTable extends React.Component {
 
         if (row.newItem) {
             db.collection("Food").add({
-                name: row.name,
-                location: row.location,
-                streetNumber: row.streetNumber,
-                phone: row.phone,
-                isFree: row.isFree,
-                verified: row.verified,
+                name: row.name?row.name:"",
+                location: row.location?row.location:"",
+                streetNumber: row.streetNumber?row.streetNumber:"",
+                phone: row.phone?row.phone:"",
+                isFree: row.isFree?row.isFree:"",
+                verified: row.verified?row.verified:"",
                 timestamp: new Date()
             })
         } else {
+            console.log(row)
             db.collection("Food").doc(row.key).set({
-                name: row.name,
-                location: row.location,
-                streetNumber: row.streetNumber,
-                phone: row.phone,
-                isFree: row.isFree,
-                verified: row.verified,
+                name: row.name?row.name:"",
+                location: row.location?row.location:"",
+                streetNumber: row.streetNumber?row.streetNumber:"",
+                phone: row.phone?row.phone:"",
+                isFree: row.isFree?row.isFree:"",
+                verified: row.verified?row.verified:"",
                 timestamp: new Date()
             })
         }
