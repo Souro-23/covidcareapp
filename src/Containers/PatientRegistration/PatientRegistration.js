@@ -1,10 +1,10 @@
-import React, {  useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "../RegistrationForm.module.css";
 import { Col, Row, Input, Radio, Button, Select } from "antd";
 import "firebase/firestore";
 import { message } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
-  
+
 
 // images
 import anxiety from "./images/anxiety.svg";
@@ -19,6 +19,7 @@ import lungs from "./images/lungs.svg";
 import nose from "./images/nose.svg";
 import sore from "./images/sore.svg";
 import taste from "./images/taste.svg";
+import FormHeader from "../../Components/FormHeader/FormHeader";
 
 
 
@@ -116,7 +117,7 @@ export default function PlasmaRecipientForm(props) {
         else if (type === "age") {
             setAge(e.target.value)
         }
-        else if(type==="result"){
+        else if (type === "result") {
             setResult(e.target.value)
         }
     };
@@ -140,7 +141,7 @@ export default function PlasmaRecipientForm(props) {
         if (name === "") return message.error("Name Required");
         if (mobileNumber === "") return message.error("Mobile Number Required");
         if (emailid === "") return message.error("Email Id Required");
-        if(result===false) return message.error("Please Fill All The Details")
+        if (result === false) return message.error("Please Fill All The Details")
         var noofsymptoms = 0;
         var selectedsymptoms = [];
         for (var i = 0; i < symptoms.length; i++) {
@@ -159,7 +160,7 @@ export default function PlasmaRecipientForm(props) {
                 age: age,
                 testedPositive: result,
                 symptoms: selectedsymptoms.join(','),
-                timestamp:new Date()
+                timestamp: new Date()
             })
             .then((docRef) => {
                 setLoading(false)
@@ -176,9 +177,8 @@ export default function PlasmaRecipientForm(props) {
         <Row justify="center" >
             <Col lg={8} sm={16} xs={23}>
                 <div className={classes.body}>
-                    <div className={classes.formTitle}>
-                        <h1>Register As A Patient</h1>
-                    </div>
+                    <FormHeader title="Register As A Patient" onBackPress={() => props.history.push('/')} />
+                    <h2><b>Basic Details</b></h2>
                     <Row className={classes.formBox}>
                         <div style={{ width: "100vw" }}>
                             <div className={classes.formField}>
@@ -214,9 +214,9 @@ export default function PlasmaRecipientForm(props) {
                     </Row>
                 </div>
                 <div className={classes.body}>
-                    <div className={classes.formTitle}>
-                        <h1>COVID Details</h1>
-                    </div>
+
+                    <br />
+                    <h2><b>COVID Details</b></h2>
                     <div className={classes.formBox}>
                         <div className={classes.formField}>
                             <p><b>What's Your Age?</b></p>
@@ -225,7 +225,7 @@ export default function PlasmaRecipientForm(props) {
                                 buttonStyle="solid"
                                 onChange={(e) => onChangeHandler(e, "age")}
                                 className={classes.radioGroup}
-                                >
+                            >
                                 <Radio.Button className={classes.radioButton} value='18-35'>
                                     18-35
                                 </Radio.Button>
@@ -248,12 +248,12 @@ export default function PlasmaRecipientForm(props) {
                                 buttonStyle="solid"
                                 onChange={(e) => onChangeHandler(e, "result")}
                                 className={classes.patientGroup}
-                                >
-                                <Radio.Button onClick={()=>setHave(false)} className={classes.radioButton1} value='yes'>
+                            >
+                                <Radio.Button onClick={() => setHave(false)} className={classes.radioButton1} value='yes'>
                                     Yes, Tested positive for Coronavirus.
                             </Radio.Button>
                                 <br /><br />
-                                <Radio.Button onClick={()=>setHave(true)} className={classes.radioButton1} style={{ marginTop: "10px", width: "100%" }} value='no'>
+                                <Radio.Button onClick={() => setHave(true)} className={classes.radioButton1} style={{ marginTop: "10px", width: "100%" }} value='no'>
                                     No, but I have symptoms.
                             </Radio.Button>
                             </Radio.Group>
@@ -261,29 +261,29 @@ export default function PlasmaRecipientForm(props) {
 
                     </Row>
                     <br />
-                    {have?
-                    <Row className={classes.formBox}>
-                        <div  style={{ height: "auto" }}>
-                            <Row className={classes.symptomsBox}>
-                                {
-                                    symptoms.map((item, index) => (
-                                        <Col key={index} onClick={() => symptomHandler(index)} justify="center" span={7} className={item.selected ? classes.selectedcheckBox1 : classes.checkBox1}>
-                                            <label style={{ textAlign: 'center' }} for="fever">
-                                                <img src={item.image} />
-                                                <div className={classes.text}> {item.name} </div>
-                                            </label>
-                                        </Col>
-                                    ))
-                                }
-                            </Row>
-                        </div>
-                    </Row>
-                    :
-                    null
+                    {have ?
+                        <Row className={classes.formBox}>
+                            <div style={{ height: "auto" }}>
+                                <Row className={classes.symptomsBox}>
+                                    {
+                                        symptoms.map((item, index) => (
+                                            <Col key={index} onClick={() => symptomHandler(index)} justify="center" span={7} className={item.selected ? classes.selectedcheckBox1 : classes.checkBox1}>
+                                                <label style={{ textAlign: 'center' }} for="fever">
+                                                    <img src={item.image} />
+                                                    <div className={classes.text}> {item.name} </div>
+                                                </label>
+                                            </Col>
+                                        ))
+                                    }
+                                </Row>
+                            </div>
+                        </Row>
+                        :
+                        null
                     }
                     <br />
                     <Button loading={loading} block className={classes.Button} onClick={() => submitHandler()}>
-                                Register Now
+                        Register Now
                     </Button>
                     <br /><br />
 

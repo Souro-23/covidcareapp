@@ -1,11 +1,12 @@
 import { Col, Row, Input, Radio, Button, Select } from "antd";
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "../RegistrationForm.module.css";
 import "firebase/firestore";
 import { message } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
 import states from '../DonorRegistration/states.json'
-import {locations} from '../../Constants/location'
+import { locations } from '../../Constants/location'
+import FormHeader from "../../Components/FormHeader/FormHeader";
 
 const { Option } = Select;
 
@@ -15,7 +16,7 @@ export default function FoodRegistration(props) {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
-   
+
 
     const [name, setName] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
@@ -39,8 +40,8 @@ export default function FoodRegistration(props) {
             setStreetNumber(e.target.value);
         }
         else if (type === "location") {
-             setLocation(e);
-           
+            setLocation(e);
+
         }
         else if (type === "state") {
             setSate(e);
@@ -51,14 +52,14 @@ export default function FoodRegistration(props) {
         else if (type === "isFree") {
             setIsFree(e.target.value);
         }
-        
+
     };
 
 
     const submitHandler = () => {
         if (name === "") return message.error("Name Required");
-        if (mobileNumber === "" || mobileNumber.length!==10) return message.error("Mobile Number Required");
-        
+        if (mobileNumber === "" || mobileNumber.length !== 10) return message.error("Mobile Number Required");
+
         if (location === "") return message.error("District Required");
         if (streetNumber === "") return message.error("Street Number Required");
         if (isVerified === "") return message.error("Fill All Field");
@@ -68,11 +69,11 @@ export default function FoodRegistration(props) {
             .add({
                 name: name,
                 phone: mobileNumber,
-                streetNumber:streetNumber,
-                verified:isVerified,
+                streetNumber: streetNumber,
+                verified: isVerified,
                 isFree: isFree,
                 location: location,
-                timestamp:new Date()
+                timestamp: new Date()
 
             })
             .then((docRef) => {
@@ -86,10 +87,16 @@ export default function FoodRegistration(props) {
     };
     return (
         <div className={classes.body}>
-            <div className={classes.formTitle}>
-                <h1>Avail Food To People</h1>
-                <h1>Basic Details </h1>
-            </div>
+            <Row justify="center" >
+                <Col lg={8} sm={16} xs={23}>
+                    <FormHeader title="Avail Food To People" onBackPress={() => props.history.push('/')} />
+                </Col>
+            </Row>
+            <Row justify="center" >
+                <Col lg={8} sm={16} xs={20}>
+                    <h2><b>Basic Details</b></h2>
+                </Col>
+            </Row>
 
             <Row justify="center" >
                 <Col className={classes.formBox} lg={8} sm={16} xs={23}>
@@ -116,9 +123,10 @@ export default function FoodRegistration(props) {
                 </Col>
             </Row>
             <Row justify="center" >
-                <div className={classes.formTitle}>
-                    <h1>Food Location Details</h1>
-                </div>
+                <Col lg={8} sm={16} xs={20}>
+                    <br/>
+                    <h2><b>Food Location Details</b></h2>
+                </Col>
             </Row>
             <Row justify="center">
                 <Col className={classes.formBox} lg={8} sm={16} xs={23}>
@@ -148,10 +156,10 @@ export default function FoodRegistration(props) {
                     </div>
                 </Col>
             </Row>
-            <br/>
+            <br />
             <Row justify="center">
                 <Col className={classes.formBox} lg={8} sm={16} xs={23}>
-                <p>Do they provide free/paid lunch?</p>
+                    <p>Do they provide free/paid lunch?</p>
                     <Radio.Group
                         size='large'
                         buttonStyle="solid"
@@ -166,10 +174,10 @@ export default function FoodRegistration(props) {
                     </Radio.Group>
                 </Col>
             </Row>
-            <br/>
+            <br />
             <Row justify="center">
                 <Col className={classes.formBox} lg={8} sm={16} xs={23}>
-                <p>Is the above Information verified?</p>
+                    <p>Is the above Information verified?</p>
                     <Radio.Group
                         size='large'
                         buttonStyle="solid"

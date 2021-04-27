@@ -5,6 +5,7 @@ import AfterForm from "./After/AfterForm";
 import { Col, message, Row } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
 import "firebase/firestore";
+import FormHeader from "../../Components/FormHeader/FormHeader";
 
 var db = firebase.firestore();
 
@@ -12,7 +13,6 @@ export default function PlasmaRecipientForm(props) {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
-  const [state, setState] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
   const [location, setLocation] = useState("");
   const [covidPositive, setCovidPositive] = useState(false);
@@ -55,7 +55,7 @@ export default function PlasmaRecipientForm(props) {
     if (date === "") return message.error("Date Required");
 
     if (checked === false) return message.error("Checkbox empty");
-    
+
     setLoading(true)
     db.collection("Recipients")
       .add({
@@ -79,22 +79,25 @@ export default function PlasmaRecipientForm(props) {
   return (
     <>
       <div className={classes.body}>
-        <div className={classes.formTitle}>
-          <h1>Register As A Recipient</h1>
-        </div>
+        <Row justify="center" >
+          <Col lg={8} sm={16} xs={23}>
+            <FormHeader title="Register As A Recipient" onBackPress={() => props.history.push('/')} />
+
+          </Col>
+        </Row>
         <Row justify="center" >
           <Col className={classes.formBox} lg={8} sm={16} xs={23}>
+
             {step === 0 ? (
               <BeforeForm
                 namePhoneHandler={onChangeHandler}
                 onGenderChange={setGender}
-                onStateChange={setState}
+                onLocationChange={setLocation}
                 onStepHandler={stepHandler}
               />
             ) : (
               <AfterForm
                 onBloodChange={setBloodGroup}
-                onLocationChange={setLocation}
                 onCovidPositiveChange={setCovidPositive}
                 onDateChange={dateHandler}
                 onCheckedHandler={setChecked}

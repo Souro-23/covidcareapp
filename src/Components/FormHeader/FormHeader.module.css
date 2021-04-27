@@ -1,0 +1,18 @@
+.formTitle{
+    display: flex;
+    padding: 1.5rem 0 0.7rem 0;
+    align-items: center;
+  }
+  .formTitle h1{
+    font-size: 18px;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+    margin:0 0 0 10px;
+  }
+
+  .formTitle ion-icon{
+      font-size:24px;
+      color: black;
+      cursor: pointer;
+
+  }

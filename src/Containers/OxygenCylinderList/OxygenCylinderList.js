@@ -5,6 +5,7 @@ import { Col, Row, Select, Spin } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
 import { LoadingOutlined } from "@ant-design/icons";
 import { locations } from "../../Constants/location";
+import FormHeader from '../../Components/FormHeader/FormHeader'
 
 import "firebase/firestore";
 import { checkVerified } from "../DoctorsList/functions";
@@ -15,7 +16,7 @@ var db = firebase.firestore();
 
 const { Option } = Select;
 
-export default function OxygenCylinderList() {
+export default function OxygenCylinderList(props) {
   const [completeOclList, setCompleteOclList] = useState([]);
   const [oclList, setOclList] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
@@ -44,9 +45,12 @@ export default function OxygenCylinderList() {
   };
   return (
     <div className={classes.body}>
-      <div className={classes.formTitle}>
-        <h1>Oxygen Cylinders List</h1>
-      </div>
+      <Row justify="center" >
+          <Col lg={8} sm={16} xs={23}>
+            <FormHeader title="Oxygen Cylinders List" onBackPress={() => props.history.push('/')} />
+
+          </Col>
+        </Row>
       <div className={classes.select}>
         <Select
           placeholder='Select Location'

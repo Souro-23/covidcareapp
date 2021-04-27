@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import classes from "../../RegistrationForm.module.css";
 import { Radio, Checkbox, DatePicker, Button, Select } from "antd";
-import { locations } from '../../../Constants/location'
 
 const { Option } = Select;
 
@@ -11,7 +10,6 @@ const bloodGroup = ["A+", "B+", "O+", "A-", "B-", "O-", "AB+", "AB-"];
 
 export default function AfterForm({
   onBloodChange,
-  onLocationChange,
   onCovidPositiveChange,
   onDateChange,
   onCheckedHandler,
@@ -60,18 +58,7 @@ export default function AfterForm({
               );
           })}
         </div>
-        <p><b>What’s your location?</b></p>
-        <Select
-          showSearch
-          placeholder='Select Location'
-          style={{ width: "100%" }}
-          onChange={onLocationChange}>
-          {locations.map((loc) => {
-            return <Option value={loc}>{loc}</Option>;
-          })}
-        </Select>
-        <br />
-        <br />
+        <br/>
         <p><b>
           Do you have a covid-19 positive report ( rapid antigen test or RT
           PCR) within six months of day of donation ?

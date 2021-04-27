@@ -7,6 +7,7 @@ import { locations } from "../../Constants/location";
 import { LoadingOutlined } from "@ant-design/icons";
 import "firebase/firestore";
 import { checkVerified } from "../DoctorsList/functions";
+import FormHeader from '../../Components/FormHeader/FormHeader'
 
 var db = firebase.firestore();
 
@@ -14,7 +15,7 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const { Option } = Select;
 
-export default function FoodList() {
+export default function FoodList(props) {
   const [completeFoodList, setCompleteFoodList] = useState([]);
   const [foodList, setFoodList] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
@@ -43,9 +44,12 @@ export default function FoodList() {
 
   return (
     <div className={classes.body}>
-      <div className={classes.formTitle}>
-        <h1>Food Delivery</h1>
-      </div>
+      <Row justify="center" >
+          <Col lg={8} sm={16} xs={23}>
+            <FormHeader title="Food Delivery" onBackPress={() => props.history.push('/')} />
+
+          </Col>
+        </Row>
       <div className={classes.select}>
         <Select
           placeholder='Select Location'

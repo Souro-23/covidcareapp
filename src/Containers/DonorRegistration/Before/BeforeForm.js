@@ -45,7 +45,7 @@ export default function BeforeForm({
                     What’s your location?
                     </p>
                     
-                    <Select showSearch placeholder="Select state" style={{ width: '100%' }} onChange={onLocationChange}>
+                    <Select showSearch placeholder="Select location" style={{ width: '100%' }} onChange={onLocationChange}>
                     {locations.map(location => {
                         return(
                             <Option value={location}>{location}</Option>

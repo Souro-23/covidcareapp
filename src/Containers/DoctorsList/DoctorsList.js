@@ -6,11 +6,12 @@ import firebase from "../../Firebase/FirebaseConfig";
 import "firebase/firestore";
 import { LoadingOutlined } from "@ant-design/icons";
 import { checkAvailability } from "./functions";
+import FormHeader from "../../Components/FormHeader/FormHeader";
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 var db = firebase.firestore();
 
-export default function DoctorsList() {
+export default function DoctorsList(props) {
   const [doctorsList, setDoctorsList] = useState([]);
   useEffect(() => {
     var docArr = [];
@@ -29,9 +30,12 @@ export default function DoctorsList() {
 
   return (
     <div className={classes.body}>
-      <div className={classes.formTitle}>
-        <h1>List of Available Doctors</h1>
-      </div>
+      <Row justify="center" >
+          <Col lg={8} sm={16} xs={23}>
+            <FormHeader title="List of Available Doctors" onBackPress={() => props.history.push('/')} />
+
+          </Col>
+        </Row>
       <Row justify='center' gutter={[8, 8]}>
         {doctorsList.length !== 0 &&
           doctorsList.map((doctor, index) => (

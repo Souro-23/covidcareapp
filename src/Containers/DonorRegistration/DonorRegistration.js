@@ -5,6 +5,7 @@ import { Button, Col, message, Row } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
 import "firebase/firestore";
 import AfterForm from "./After/AfterForm";
+import FormHeader from "../../Components/FormHeader/FormHeader";
 
 var db = firebase.firestore();
 
@@ -29,7 +30,7 @@ export default function PlasmaDonorForm(props) {
         } else if (type === "mobileNumber") {
             setMobileNumber(e.target.value);
         }
-    }; 
+    };
     const stepHandler = (val) => {
         if (checkForm1Status() === "Success") setStep(val);
     };
@@ -65,7 +66,7 @@ export default function PlasmaDonorForm(props) {
                 name: name,
                 phone: mobileNumber,
                 gender: gender,
-                location:location,
+                location: location,
                 bloodGroup: bloodGroup,
                 screeningDate: date,
                 timestamp: new Date(),
@@ -83,9 +84,11 @@ export default function PlasmaDonorForm(props) {
 
     return <>
         <div className={classes.body}>
-            <div className={classes.formTitle}>
-                <h1>Register As A Donor</h1>
-            </div>
+            <Row justify="center" >
+                <Col lg={8} sm={16} xs={23}>
+                    <FormHeader title="Register As A Donor" onBackPress={() => props.history.push('/')} />
+                </Col>
+            </Row>
             <Row justify="center" >
                 <Col className={classes.formBox} lg={8} sm={16} xs={23}>
                     {step === 0 ?
@@ -106,7 +109,7 @@ export default function PlasmaDonorForm(props) {
                             onSetrecovered={setrecovered}
 
                         />}
-                    <Button loading={loading} onClick={step === 0 ? () => stepHandler(1) :submitHandler} block className={classes.Button}>
+                    <Button loading={loading} onClick={step === 0 ? () => stepHandler(1) : submitHandler} block className={classes.Button}>
                         {step === 0 ?
                             "Continue" :
                             "Register Now"}
