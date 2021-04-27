@@ -4,7 +4,7 @@ export const checkAvailability = (docArr) => {
 
   var newArr = docArr.map((doc, index) => {
     var isAvailable = false;
-    console.log(doc.consultTime)
+    console.log(doc.consultTime);
     doc.consultTime.split(',').forEach((t, index) => {
       if (t.substring(0, 2) === currHour.toString()) {
         isAvailable = true;
