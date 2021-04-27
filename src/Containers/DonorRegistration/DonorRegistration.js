@@ -73,7 +73,7 @@ export default function PlasmaDonorForm(props) {
             })
             .then((docRef) => {
                 setLoading(false)
-                props.history.push("/donor-registered")
+                props.history.push("/donor-registered/"+docRef.id)
             })
             .catch((error) => {
                 setLoading(false)

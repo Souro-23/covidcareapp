@@ -2,6 +2,7 @@ import { Button, Col, Row } from 'antd'
 import React from 'react'
 import classes from '../../Containers/Home/Home.module.css'
 import icon from "../../Assets/Svgs/Congratulations1.svg"
+import { copytoClipboard } from './Functions'
 export default function SubmitPageFoodSupply(props) {
     return (
         <Row justify="center">
@@ -13,10 +14,13 @@ export default function SubmitPageFoodSupply(props) {
                 <img src={icon} style={{height:"130px", width:"100%"}} />
                 <br/><br/>
                 <div className={classes.content}>
+                <h1>Take Screenshot or copy this Reference Id</h1>
+                    <p onClick={()=>copytoClipboard(props.match.params.docId)} style={{color:"green" , textAlign:"center", fontWeight:"bold" , cursor:"pointer"}}>{props.match.params.docId}</p>
+                    
                     <h1>Your Name Has Been Added To The List Of Food Distibutors</h1>
                 </div>
                 <br /><br />
-                <Button onClick={() =>props.history.push("/")} block className={classes.actionButton}>
+                <Button onClick={() =>props.history.push("/")} block className={classes.actionButton5}>
                 Go to Homescreen
                 </Button>
             </Col>

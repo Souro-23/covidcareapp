@@ -127,7 +127,16 @@
     margin: 0 .5rem 10px 0 !important;
     /* margin-bottom: 10px; */
 }
+.actionButton5{
+    background-color: #2F61F5!important;
+    color: white!important;
+    height: 50px!important;
+    border-radius: 4px!important;
+    border: none!important;
+    font-size: 15px;
+    margin-bottom: 10px;
 
+}
 
 
 /* Eligibility Modal Styling */

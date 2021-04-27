@@ -78,7 +78,7 @@ export default function FoodRegistration(props) {
             })
             .then((docRef) => {
                 setLoading(false)
-                props.history.push('/food-supply-registered')
+                props.history.push('/food-supply-registered/'+docRef.id)
             })
             .catch((error) => {
                 setLoading(false)

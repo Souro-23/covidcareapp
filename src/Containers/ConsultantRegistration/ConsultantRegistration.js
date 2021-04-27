@@ -96,7 +96,7 @@ export default function ConsultantRegistration(props) {
             })
             .then((docRef) => {
                 setLoading(false)
-                props.history.push('/consultant-registered')
+                props.history.push('/consultant-registered/'+docRef.id)
             })
             .catch((error) => {
                 setLoading(false)

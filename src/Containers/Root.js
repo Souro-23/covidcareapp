@@ -44,13 +44,13 @@ export default function Root() {
                 <Route exact path="/register/Oxygen-cylinders-supply" component={OxygenCylinderRegistration} />
 
 
-                <Route path="/donor-registered" component={SubmitPageDonor} />
-                <Route path="/recipient-registered" component={SubmitPageRecipient} />
-                <Route path="/consultant-registered" component={SubmitPageConsultant} />
-                <Route path="/patient-registered" component={SubmitPagePatient} />
+                <Route path="/donor-registered/:docId" component={SubmitPageDonor} />
+                <Route path="/recipient-registered/:docId" component={SubmitPageRecipient} />
+                <Route path="/consultant-registered/:docId" component={SubmitPageConsultant} />
+                <Route path="/patient-registered/:docId" component={SubmitPagePatient} />
 
-                <Route path="/oxygen-cylinder-registered" component={SubmitPageOxygen} />
-                <Route path="/food-supply-registered" component={SubmitPageFoodSupply} />
+                <Route path="/oxygen-cylinder-registered/:docId" component={SubmitPageOxygen} />
+                <Route path="/food-supply-registered/:docId" component={SubmitPageFoodSupply} />
 
 
                 <Route exact path='/doctors' component={DoctorsList} />

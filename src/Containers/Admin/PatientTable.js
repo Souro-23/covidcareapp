@@ -22,33 +22,31 @@ export class PatientTable extends Component {
         ...this.getColumnSearchProps("id"),
       },
       {
-        title: "name",
+        title: "Name",
         dataIndex: "name",
         editable: true,
         ...this.getColumnSearchProps("name"),
       },
       {
-        title: "phone",
+        title: "Phone Number",
         dataIndex: "phone",
         editable: true,
         ...this.getColumnSearchProps("phone"),
       },
       {
-        title: "age",
+        title: "Age",
         dataIndex: "age",
         editable: true,
       },
       {
-        title: "symptoms",
+        title: "Symptoms",
         dataIndex: "symptoms",
         editable: true,
       },
       {
-        title: "testedPositive",
+        title: "Tested Positive",
         dataIndex: "testedPositive",
         editable: true,
-        sorter: (a, b) => a.verified.length - b.verified.length,
-        sortDirections: ["descend", "ascend"],
         filters: [
           {
             text: "yes",
@@ -60,7 +58,7 @@ export class PatientTable extends Component {
           },
         ],
         filterMultiple: false,
-        onFilter: (value, record) => record.verified.indexOf(value) === 0,
+        onFilter: (value, record) => record.testedPositive?.indexOf(value) === 0,
       },
       {
         title: "operation",
@@ -235,20 +233,20 @@ export class PatientTable extends Component {
   handleSave = (row) => {
     if (row.newItem) {
       db.collection("Patients").add({
-        name: row.name,
-        phone: row.phone,
-        age: row.age,
-        symptoms: row.symptoms,
-        testedPositive: row.testedPositive,
+        name: row.name?row.name:"",
+        phone: row.phone?row.phone:"",
+        age: row.age?row.age:"",
+        symptoms: row.symptoms?row.symptoms:"",
+        testedPositive: row.testedPositive?row.testedPositive:"",
         timestamp: new Date(),
       });
     } else {
       db.collection("Patients").doc(row.key).set({
-        name: row.name,
-        phone: row.phone,
-        age: row.age,
-        symptoms: row.symptoms,
-        testedPositive: row.testedPositive,
+        name: row.name?row.name:"",
+        phone: row.phone?row.phone:"",
+        age: row.age?row.age:"",
+        symptoms: row.symptoms?row.symptoms:"",
+        testedPositive: row.testedPositive?row.testedPositive:"",
         timestamp: new Date(),
       });
     }

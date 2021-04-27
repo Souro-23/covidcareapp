@@ -22,6 +22,7 @@ export default function DoctorsList(props) {
           docArr.push(doc.data());
         });
         setDoctorsList(checkAvailability(docArr));
+        console.log(checkAvailability(docArr));
       })
       .catch((error) => {
         console.log("Error getting documents: ", error);
@@ -30,12 +31,14 @@ export default function DoctorsList(props) {
 
   return (
     <div className={classes.body}>
-      <Row justify="center" >
-          <Col lg={8} sm={16} xs={23}>
-            <FormHeader title="List of Available Doctors" onBackPress={() => props.history.push('/')} />
-
-          </Col>
-        </Row>
+      <Row justify='center'>
+        <Col lg={8} sm={16} xs={23}>
+          <FormHeader
+            title='List of Available Doctors'
+            onBackPress={() => props.history.push("/")}
+          />
+        </Col>
+      </Row>
       <Row justify='center' gutter={[8, 8]}>
         {doctorsList.length !== 0 &&
           doctorsList.map((doctor, index) => (
@@ -45,6 +48,7 @@ export default function DoctorsList(props) {
                 phone={doctor.whatsappNo}
                 type='doctors'
                 available={doctor.isAvailable}
+                timeSlots={doctor.timeSlots}
               />
             </Col>
           ))}

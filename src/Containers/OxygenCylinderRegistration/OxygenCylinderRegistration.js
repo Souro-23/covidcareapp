@@ -70,7 +70,7 @@ export default function FoodRegistration(props) {
             })
             .then((docRef) => {
                 setLoading(false)
-                props.history.push('/oxygen-cylinder-registered')
+                props.history.push('/oxygen-cylinder-registered/'+docRef.id)
             })
             .catch((error) => {
                 setLoading(false)

@@ -66,8 +66,6 @@ export default class FoodTable extends React.Component {
           title: 'verified',
           dataIndex: 'verified',
           editable: true,
-          sorter: (a, b) => a.verified?.length - b.verified?.length,
-          sortDirections: ['descend', 'ascend'],
           filters: [
               {
                   text: 'yes',

@@ -21,41 +21,38 @@ export default class DoctorTable extends React.Component {
         ...this.getColumnSearchProps("id"),
       },
       {
-        title: "name",
+        title: "Name",
         dataIndex: "name",
         editable: true,
         ...this.getColumnSearchProps("name"),
       },
       {
-        title: "whatsappNo",
+        title: "Whatsapp Number",
         dataIndex: "whatsappNo",
         editable: true,
         ...this.getColumnSearchProps("whatsappNo"),
       },
       {
-        title: "phone",
+        title: "Phone Number",
         dataIndex: "phone",
         editable: true,
         ...this.getColumnSearchProps("phone"),
       },
       {
-        title: "MCINumber",
+        title: "MCI Number",
         dataIndex: "MCINumber",
         editable: true,
+        ...this.getColumnSearchProps("MCINumber"),
       },
       {
-        title: "consultTime",
+        title: "Consult Time",
         dataIndex: "consultTime",
         editable: true,
-        filters: this.returnLocation(),
-        onFilter: (value, record) => record.consultTime.indexOf(value) === 0,
       },
       {
-        title: "specialization",
+        title: "Specialization",
         dataIndex: "specialization",
         editable: true,
-        filters: this.returnLocation(),
-        onFilter: (value, record) => record.specialization.indexOf(value) === 0,
       },
       {
         title: "operation",
@@ -232,22 +229,22 @@ export default class DoctorTable extends React.Component {
   handleSave = (row) => {
     if (row.newItem) {
       db.collection("Doctors").add({
-        name: row.name,
-        MCINumber: row.MCINumber,
-        specialization: row.specialization,
-        phone: row.phone,
-        whatsappNo: row.whatsappNo,
-        consultTime: row.consultTime,
+        name: row.name?row.name:"",
+        MCINumber: row.MCINumber?row.MCINumber:"",
+        specialization: row.specialization?row.specialization:"",
+        phone: row.phone?row.phone:"",
+        whatsappNo: row.whatsappNo?row.whatsappNo:"",
+        consultTime: row.consultTime?row.consultTime:"",
         timestamp: new Date(),
       });
     } else {
       db.collection("Food").doc(row.key).set({
-        name: row.name,
-        MCINumber: row.MCINumber,
-        specialization: row.specialization,
-        phone: row.phone,
-        whatsappNo: row.whatsappNo,
-        consultTime: row.consultTime,
+        name: row.name?row.name:"",
+        MCINumber: row.MCINumber?row.MCINumber:"",
+        specialization: row.specialization?row.specialization:"",
+        phone: row.phone?row.phone:"",
+        whatsappNo: row.whatsappNo?row.whatsappNo:"",
+        consultTime: row.consultTime?row.consultTime:"",
         timestamp: new Date(),
       });
     }

@@ -69,7 +69,7 @@ export default function PlasmaRecipientForm(props) {
       })
       .then((docRef) => {
         setLoading(false)
-        props.history.push('/recipient-registered')
+        props.history.push('/recipient-registered/'+docRef.id)
       })
       .catch((error) => {
         setLoading(false)
