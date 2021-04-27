@@ -42,7 +42,7 @@ export default function Home(props) {
             </Row>
             <br />
             <br />
-            <Row justify="center">
+            <Row gutter={[32,32]} justify="center">
                 <Col lg={8} md={11} sm={11} xs={20}>
                     <div className={classes.actionCard}>
                        

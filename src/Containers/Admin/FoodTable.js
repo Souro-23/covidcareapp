@@ -1,126 +1,72 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
-import { Table, Input, Button, Popconfirm, Form, Radio } from 'antd';
+import React from 'react';
+import { Table, Input, Button, Popconfirm, Space } from 'antd';
+import Highlighter from 'react-highlight-words';
+import { SearchOutlined } from '@ant-design/icons';
+
 import "firebase/firestore";
 import firebase from "../../Firebase/FirebaseConfig";
+import BulkUpload from "./BulkUpload";
 import './Table.css'
+import { locations } from '../../Constants/location';
+import { EditableCell, EditableRow } from './TableFunctions';
 
 
 
-const EditableContext = React.createContext(null);
+
 var db = firebase.firestore();
 
 
-
-const EditableRow = ({ index, ...props }) => {
-    const [form] = Form.useForm();
-    return (
-        <Form form={form} component={false}>
-            <EditableContext.Provider value={form}>
-                <tr {...props} />
-            </EditableContext.Provider>
-        </Form>
-    );
-};
-
-const EditableCell = ({
-    title,
-    editable,
-    isBoolean,
-    children,
-    dataIndex,
-    record,
-    handleSave,
-    isRadio,
-    ...restProps
-}) => {
-    const [editing, setEditing] = useState(false);
-    const inputRef = useRef(null);
-    const form = useContext(EditableContext);
-    useEffect(() => {
-        if (editing) {
-            inputRef.current.focus();
-        }
-    }, [editing]);
-
-    const toggleEdit = () => {
-        setEditing(!editing);
-        form.setFieldsValue({
-            [dataIndex]: record[dataIndex],
-        });
-    };
-
-    const save = async () => {
-        try {
-            const values = await form.validateFields();
-            toggleEdit();
-            handleSave({ ...record, ...values });
-        } catch (errInfo) {
-            console.log('Save failed:', errInfo);
-        }
-    };
-
-    let childNode = children;
-
-    if (editable) {
-        childNode = editing ? (
-            <Form.Item
-                style={{
-                    margin: 0,
-                }}
-                name={dataIndex}
-                rules={[
-                    {
-                        required: true,
-                        message: `${title} is required.`,
-                    },
-                ]}
-            >
-                <Input ref={inputRef} onPressEnter={save} onBlur={save} />
-            </Form.Item>
-        ) : (
-            <div
-                className="editable-cell-value-wrap"
-                style={{
-                    paddingRight: 24,
-                }}
-                onClick={toggleEdit}
-            >
-                {children}
-            </div>
-        );
-    }
-
-    return <td {...restProps}>{childNode}</td>;
-};
 
 export default class FoodTable extends React.Component {
     constructor(props) {
         super(props);
         this.columns = [
             {
+                title: 'ID',
+                dataIndex: 'id',
+                ...this.getColumnSearchProps('id')
+            },
+            {
                 title: 'name',
                 dataIndex: 'name',
                 editable: true,
+                ...this.getColumnSearchProps('name')
             },
             {
                 title: 'phone',
                 dataIndex: 'phone',
                 editable: true,
+                ...this.getColumnSearchProps('phone')
             },
             {
                 title: 'Street Number',
                 dataIndex: 'streetNumber',
                 editable: true,
+
             },
             {
-                title: 'Location',
+                title: 'location',
                 dataIndex: 'location',
                 editable: true,
+                filters: this.returnLocation(),
+                onFilter: (value, record) => record.location.indexOf(value) === 0,
             },
             {
                 title: 'isFree',
                 dataIndex: 'isFree',
                 editable: true,
+                filters: [
+                    {
+                        text: 'free',
+                        value: 'free',
+                    },
+                    {
+                        text: 'paid',
+                        value: 'paid',
+                    },
+                ],
+                filterMultiple: false,
+                onFilter: (value, record) => record.isFree.indexOf(value) === 0,
             },
             {
                 title: 'verified',
@@ -128,6 +74,18 @@ export default class FoodTable extends React.Component {
                 editable: true,
                 sorter: (a, b) => a.verified.length - b.verified.length,
                 sortDirections: ['descend', 'ascend'],
+                filters: [
+                    {
+                        text: 'yes',
+                        value: 'yes',
+                    },
+                    {
+                        text: 'no',
+                        value: 'no',
+                    },
+                ],
+                filterMultiple: false,
+                onFilter: (value, record) => record.verified.indexOf(value) === 0,
             },
             {
                 title: 'operation',
@@ -145,23 +103,109 @@ export default class FoodTable extends React.Component {
             count: 0,
         };
 
-        db.collection("Food").onSnapshot((querySnapshot) => {
-                var data = []
-                querySnapshot.forEach((doc) => {
-                    data.push({
-                        isFree: doc.data().isFree,
-                        verified: doc.data().verified,
-                        name: doc.data().name,
-                        streetNumber:doc.data().streetNumber,
-                        location:doc.data().location,
-                        phone: doc.data().phone,
-                        key: doc.id,
-                    })
+        db.collection("Food").orderBy("timestamp", "desc").onSnapshot((querySnapshot) => {
+            var data = []
+            querySnapshot.forEach((doc) => {
+                data.push({
+                    id: doc.id,
+                    isFree: doc.data().isFree,
+                    verified: doc.data().verified,
+                    name: doc.data().name,
+                    streetNumber: doc.data().streetNumber,
+                    location: doc.data().location,
+                    phone: doc.data().phone,
+                    key: doc.id,
                 })
-                this.setState({ dataSource: data, count: data.length })
             })
+            this.setState({ dataSource: data, count: data.length })
+        })
     }
+    getColumnSearchProps = dataIndex => ({
+        filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
+            <div style={{ padding: 8 }}>
+                <Input
+                    ref={node => {
+                        this.searchInput = node;
+                    }}
+                    placeholder={`Search ${dataIndex}`}
+                    value={selectedKeys[0]}
+                    onChange={e => setSelectedKeys(e.target.value ? [e.target.value] : [])}
+                    onPressEnter={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
+                    style={{ width: 188, marginBottom: 8, display: 'block' }}
+                />
+                <Space>
+                    <Button
+                        type="primary"
+                        onClick={() => this.handleSearch(selectedKeys, confirm, dataIndex)}
+                        icon={<SearchOutlined />}
+                        size="small"
+                        style={{ width: 90 }}
+                    >
+                        Search
+              </Button>
+                    <Button onClick={() => this.handleReset(clearFilters)} size="small" style={{ width: 90 }}>
+                        Reset
+              </Button>
+                    <Button
+                        type="link"
+                        size="small"
+                        onClick={() => {
+                            confirm({ closeDropdown: false });
+                            this.setState({
+                                searchText: selectedKeys[0],
+                                searchedColumn: dataIndex,
+                            });
+                        }}
+                    >
+                        Filter
+              </Button>
+                </Space>
+            </div>
+        ),
+        filterIcon: filtered => <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />,
+        onFilter: (value, record) =>
+            record[dataIndex]
+                ? record[dataIndex].toString().toLowerCase().includes(value.toLowerCase())
+                : '',
+        onFilterDropdownVisibleChange: visible => {
+            if (visible) {
+                setTimeout(() => this.searchInput.select(), 100);
+            }
+        },
+        render: text =>
+            this.state.searchedColumn === dataIndex ? (
+                <Highlighter
+                    highlightStyle={{ backgroundColor: '#ffc069', padding: 0 }}
+                    searchWords={[this.state.searchText]}
+                    autoEscape
+                    textToHighlight={text ? text.toString() : ''}
+                />
+            ) : (
+                text
+            ),
+    });
 
+    handleSearch = (selectedKeys, confirm, dataIndex) => {
+        confirm();
+        this.setState({
+            searchText: selectedKeys[0],
+            searchedColumn: dataIndex,
+        });
+    };
+
+    handleReset = clearFilters => {
+        clearFilters();
+        this.setState({ searchText: '' });
+    };
+
+    returnLocation = () => {
+        return locations.map(location => {
+            return {
+                text: location,
+                value: location
+            }
+        })
+    }
 
     handleDelete = (key) => {
         const dataSource = [...this.state.dataSource];
@@ -184,11 +228,11 @@ export default class FoodTable extends React.Component {
             isFree: "",
             verified: "",
             location: "",
-            streetNumber:"",
+            streetNumber: "",
             newItem: true
         };
         this.setState({
-            dataSource: [newData,...dataSource ],
+            dataSource: [newData, ...dataSource],
             count: count + 1,
         });
     };
@@ -198,21 +242,21 @@ export default class FoodTable extends React.Component {
             db.collection("Food").add({
                 name: row.name,
                 location: row.location,
-                streetNumber:row.streetNumber,
+                streetNumber: row.streetNumber,
                 phone: row.phone,
                 isFree: row.isFree,
                 verified: row.verified,
-                timestamp:new Date()
+                timestamp: new Date()
             })
         } else {
             db.collection("Food").doc(row.key).set({
                 name: row.name,
                 location: row.location,
-                streetNumber:row.streetNumber,
+                streetNumber: row.streetNumber,
                 phone: row.phone,
                 isFree: row.isFree,
                 verified: row.verified,
-                timestamp:new Date()
+                timestamp: new Date()
             })
         }
         const newData = [...this.state.dataSource];
@@ -256,9 +300,7 @@ export default class FoodTable extends React.Component {
                     style={{
                         marginBottom: 16,
                     }}
-                >
-                    Add a row
-        </Button>
+                >Add a row </Button>
                 <Table
                     components={components}
                     rowClassName={() => 'editable-row'}
@@ -267,6 +309,9 @@ export default class FoodTable extends React.Component {
                     dataSource={dataSource}
                     columns={columns}
                 />
+                <br />
+                <BulkUpload database="Food" />
+                <br /><br />
             </div>
         );
     }
