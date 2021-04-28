@@ -55,7 +55,7 @@ export default function FoodRegistration(props) {
     const submitHandler = () => {
         if (name === "") return message.error("Name Required");
         if (mobileNumber === "" || mobileNumber.length !== 10) return message.error("Valid Mobile Number Required");
-        if (location === "") return message.error("District Required");
+        if (location === "") return message.error("Location Required");
         if (streetNumber === "") return message.error("Street Number Required");
         if (isVerified === "") return message.error("Fill All Field");
         setLoading(true)

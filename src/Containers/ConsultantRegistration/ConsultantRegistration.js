@@ -13,7 +13,7 @@ import FormHeader from "../../Components/FormHeader/FormHeader";
 
 const slots = [
     { time: "6am - 12pm", session: "Morning", count: "1", image: sunrise },
-    { time: "12am - 6pm", session: "Afternoon", count: "2", image: sun },
+    { time: "12pm - 6pm", session: "Afternoon", count: "2", image: sun },
     { time: "6pm - 12am", session: "Evening", count: "3", image: evening },
     { time: "12am - 6am", session: "Night", count: "4", image: moon },
 ];

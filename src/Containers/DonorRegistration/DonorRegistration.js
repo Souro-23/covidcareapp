@@ -56,7 +56,7 @@ export default function PlasmaDonorForm(props) {
 
         if (date === "") return message.error("Date Required");
 
-        if (recovered == false) return message.error("Please Fill All The Informations");
+        if (recovered == false) return message.error("You need to get Fully Recovered And Free Of Symptoms");
 
         if (checked === false) return message.error("Checkbox Empty");
 

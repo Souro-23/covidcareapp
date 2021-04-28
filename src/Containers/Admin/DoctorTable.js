@@ -238,7 +238,7 @@ export default class DoctorTable extends React.Component {
         timestamp: new Date(),
       });
     } else {
-      db.collection("Food").doc(row.key).set({
+      db.collection("Doctors").doc(row.key).set({
         name: row.name?row.name:"",
         MCINumber: row.MCINumber?row.MCINumber:"",
         specialization: row.specialization?row.specialization:"",

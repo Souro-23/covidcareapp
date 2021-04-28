@@ -243,7 +243,7 @@ export class OxygenCylinders extends Component {
         timestamp: new Date(),
       });
     } else {
-      db.collection("Food").doc(row.key).set({
+      db.collection("OxygenCylinders").doc(row.key).set({
         name: row.name?row.name:"",
         location: row.location?row.location:"",
         streetNumber: row.streetNumber?row.streetNumber:"",
