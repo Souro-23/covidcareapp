@@ -6,8 +6,12 @@ import firebase from "../../Firebase/FirebaseConfig";
 import { locations } from "../../Constants/location";
 import { LoadingOutlined } from "@ant-design/icons";
 import "firebase/firestore";
-import { checkVerified } from "../DoctorsList/functions";
-import FormHeader from '../../Components/FormHeader/FormHeader'
+import {
+  checkVerified,
+  timeDifference,
+  timeDifferenceString,
+} from "../DoctorsList/functions";
+import FormHeader from "../../Components/FormHeader/FormHeader";
 
 var db = firebase.firestore();
 
@@ -26,7 +30,8 @@ export default function FoodList(props) {
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          foodArr.push(doc.data());
+          let ago = timeDifference(doc.data().timestamp);
+          foodArr.push({ ...doc.data(), ago: ago });
         });
         setCompleteFoodList(checkVerified(foodArr));
         setFoodList(checkVerified(foodArr));
@@ -44,12 +49,14 @@ export default function FoodList(props) {
 
   return (
     <div className={classes.body}>
-      <Row justify="center" >
-          <Col lg={8} sm={16} xs={23}>
-            <FormHeader title="Food Delivery" onBackPress={() => props.history.push('/')} />
-
-          </Col>
-        </Row>
+      <Row justify='center'>
+        <Col lg={8} sm={16} xs={23}>
+          <FormHeader
+            title='Food Delivery'
+            onBackPress={() => props.history.push("/")}
+          />
+        </Col>
+      </Row>
       <div className={classes.select}>
         <Select
           placeholder='Select Location'
@@ -70,6 +77,7 @@ export default function FoodList(props) {
               type='food'
               location={food.location}
               verified={food.verified}
+              ago={food.ago}
             />
           </Col>
         ))}

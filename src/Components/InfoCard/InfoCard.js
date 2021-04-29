@@ -10,6 +10,8 @@ export default function InfoCard({
   location,
   verified,
   available,
+  timeSlots,
+  ago,
 }) {
   console.log(available);
   return (
@@ -18,6 +20,7 @@ export default function InfoCard({
         <div className={classes.nameAndPhone}>
           <p>{name}</p>
           <p>+91-{phone}</p>
+          <p style={{ color: "grey", fontSize: "12px" }}>{ago}</p>
         </div>
         {type === "doctors" ? (
           <a target='blank' href={`https://wa.me/91${phone}`}>
@@ -40,7 +43,21 @@ export default function InfoCard({
         )}
       </div>
       {type === "doctors" ? (
-        available && <div className={classes.status}>Available Now</div>
+        <div className={classes.available}>
+          {available && <div className={classes.status}>Available Now</div>}
+          <div>
+            {timeSlots.map((timeSlot, index) => (
+              <p
+                style={{
+                  color: "grey",
+                  fontSize: "12px",
+                  marginBottom: "0px",
+                }}>
+                {timeSlot}
+              </p>
+            ))}
+          </div>
+        </div>
       ) : (
         <div className={classes.status}>
           <div className={classes.location}>

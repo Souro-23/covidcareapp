@@ -4,16 +4,35 @@ export const checkAvailability = (docArr) => {
 
   var newArr = docArr.map((doc, index) => {
     var isAvailable = false;
-    console.log(doc.consultTime);
-    doc.consultTime.split(',').forEach((t, index) => {
-      if (t.substring(0, 2) === currHour.toString()) {
+    let timeAvailable = [];
+    doc.consultTime.split(",").forEach((t, index) => {
+      timeAvailable.push(t);
+      console.log(
+        t.substring(0, 2) === currHour.toString(),
+        t.substring(0, 2),
+        currHour.toString()
+      );
+      if (
+        t.substring(0, 2) >= "12" &&
+        t.substring(0, 2) === currHour.toString()
+      ) {
+        isAvailable = true;
+        return true;
+      }
+      if (
+        t.substring(0, 2) <= "12" &&
+        t.substring(0, 2) === "0" + currHour.toString()
+      ) {
         isAvailable = true;
         return true;
       }
     });
+    // Converts time from 24Hr format to 12Hr formal
+    let timeSlots = convertTimeAvailable(timeAvailable);
     return {
       ...doc,
       isAvailable,
+      timeSlots,
     };
   });
 
@@ -31,6 +50,44 @@ const sortAvailabilty = (arr) => {
   return sortedArray;
 };
 
+const convertTimeAvailable = (timeSlotArray) => {
+  return timeSlotArray.map((time, index) => {
+    let preMeridiem = "am";
+    let postMeridiem = "am";
+    let preTime = time.substring(0, 4);
+    let postTime = time.substring(5, 9);
+
+    if (preTime >= "1200" && preTime !== "2300") {
+      preMeridiem = "pm";
+      postMeridiem = "pm";
+      preTime = "0" + (preTime - "1200").toString();
+      postTime = "0" + (postTime - "1200").toString();
+    }
+    if (preTime === "1100") {
+      preMeridiem = "am";
+      postMeridiem = "pm";
+      preTime = "1100";
+      postTime = "1200";
+    }
+    if (preTime === "2300") {
+      preMeridiem = "pm";
+      postMeridiem = "am";
+      preTime = "1100";
+      postTime = "1200";
+    }
+
+    return (
+      preTime.substring(0, 2) +
+      // ":00" +
+      preMeridiem +
+      " - " +
+      postTime.substring(0, 2) +
+      // ":00" +
+      postMeridiem
+    );
+  });
+};
+
 export const checkVerified = (arr) => {
   var sortedArray = [];
   arr.forEach((a, index) => {
@@ -40,4 +97,24 @@ export const checkVerified = (arr) => {
     if (!a.verified) sortedArray.push(a);
   });
   return sortedArray;
+};
+
+export const timeDifference = (timestamp) => {
+  var difference = new Date() - timestamp.toDate();
+
+  var daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
+  difference -= daysDifference * 1000 * 60 * 60 * 24;
+
+  var hoursDifference = Math.floor(difference / 1000 / 60 / 60);
+  difference -= hoursDifference * 1000 * 60 * 60;
+
+  var minutesDifference = Math.floor(difference / 1000 / 60);
+  difference -= minutesDifference * 1000 * 60;
+
+  var secondsDifference = Math.floor(difference / 1000);
+
+  if (daysDifference) return daysDifference + "d ago";
+  if (hoursDifference) return hoursDifference + "h ago";
+  if (minutesDifference) return minutesDifference + "m ago";
+  if (secondsDifference) return "Just now";
 };

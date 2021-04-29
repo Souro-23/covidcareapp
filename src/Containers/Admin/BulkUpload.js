@@ -2,7 +2,8 @@ import React, { useRef, useState } from "react";
 import * as XLSX from "xlsx";
 import "firebase/firestore";
 import firebase from "../../Firebase/FirebaseConfig";
-import { Button } from "antd";
+import { Button, message } from "antd";
+import { databaseVariableValidation } from "./functions";
 
 var db = firebase.firestore();
 
@@ -27,9 +28,15 @@ export default function BulkUpload({ database }) {
       const ws = wb.Sheets[wsname];
       /* Convert array of arrays */
       const data = XLSX.utils.sheet_to_json(ws, { header: 0 });
-      /* Update state */
-      setData(data);
-      setCols(make_cols(ws["!ref"]));
+      const inputCols = XLSX.utils.sheet_to_json(ws, { header: 1 })[0];
+      if (databaseVariableValidation(database, inputCols)) {
+        /* Update state */
+        setData(data);
+        setCols(make_cols(ws["!ref"]));
+      } else {
+        message.error("Excel fields no matched with Database fields.");
+        fileInput.current.value = "";
+      }
     };
     if (rABS) reader.readAsBinaryString(fileobj);
     else reader.readAsArrayBuffer(fileobj);

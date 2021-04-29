@@ -5,10 +5,10 @@ import { Col, Row, Select, Spin } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
 import { LoadingOutlined } from "@ant-design/icons";
 import { locations } from "../../Constants/location";
-import FormHeader from '../../Components/FormHeader/FormHeader'
+import FormHeader from "../../Components/FormHeader/FormHeader";
 
 import "firebase/firestore";
-import { checkVerified } from "../DoctorsList/functions";
+import { checkVerified, timeDifference } from "../DoctorsList/functions";
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -28,7 +28,8 @@ export default function OxygenCylinderList(props) {
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          oclArr.push(doc.data());
+          let ago = timeDifference(doc.data().timestamp);
+          oclArr.push({ ...doc.data(), ago: ago });
         });
         setCompleteOclList(checkVerified(oclArr));
         setOclList(checkVerified(oclArr));
@@ -45,12 +46,14 @@ export default function OxygenCylinderList(props) {
   };
   return (
     <div className={classes.body}>
-      <Row justify="center" >
-          <Col lg={8} sm={16} xs={23}>
-            <FormHeader title="Oxygen Cylinders List" onBackPress={() => props.history.push('/')} />
-
-          </Col>
-        </Row>
+      <Row justify='center'>
+        <Col lg={8} sm={16} xs={23}>
+          <FormHeader
+            title='Oxygen Cylinders List'
+            onBackPress={() => props.history.push("/")}
+          />
+        </Col>
+      </Row>
       <div className={classes.select}>
         <Select
           placeholder='Select Location'
@@ -71,6 +74,7 @@ export default function OxygenCylinderList(props) {
               type='ocl'
               location={ocl.location}
               verified={ocl.verified}
+              ago={ocl.ago}
             />
           </Col>
         ))}
