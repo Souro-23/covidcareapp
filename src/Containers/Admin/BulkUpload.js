@@ -2,8 +2,8 @@ import React, { useRef, useState } from "react";
 import * as XLSX from "xlsx";
 import "firebase/firestore";
 import firebase from "../../Firebase/FirebaseConfig";
-import { Button, message } from "antd";
-import { databaseVariableValidation } from "./functions";
+import { Button, message, Tooltip } from "antd";
+import { databaseVariableValidation, getDatabaseVariables } from "./functions";
 
 var db = firebase.firestore();
 
@@ -82,20 +82,39 @@ export default function BulkUpload({ database }) {
   return (
     <div
       style={{
-        height: "100px",
         backgroundColor: "white",
         borderRadius: "10px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        padding: "20px",
       }}>
-      <input ref={fileInput} type='file' onChange={fileHandler} />
-      {data && (
-        <Button onClick={() => uploadData(data)} loading={loading}>
-          {" "}
-          Upload
-        </Button>
-      )}
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <h1>Bulk Upload</h1>
+        <Tooltip
+          title={
+            "Excel Column must be :" + getDatabaseVariables(database).join(",")
+          }>
+          <ion-icon
+            style={{ fontSize: "24px", color: "grey" }}
+            name='alert-circle-outline'></ion-icon>
+        </Tooltip>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}>
+        <input ref={fileInput} type='file' onChange={fileHandler} />
+        {data && (
+          <Button onClick={() => uploadData(data)} loading={loading}>
+            {" "}
+            Upload
+          </Button>
+        )}
+        <br />
+        <br />
+        <br />
+        <br />
+      </div>
     </div>
   );
 }

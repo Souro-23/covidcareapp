@@ -54,7 +54,7 @@ export default class DonorsTable extends React.Component {
         dataIndex: "location",
         editable: true,
         filters: this.returnLocation(),
-        onFilter: (value, record) => record.location.indexOf(value) === 0,
+        onFilter: (value, record) => record.location?.indexOf(value) === 0,
       },
       {
         title: "operation",
@@ -231,22 +231,22 @@ export default class DonorsTable extends React.Component {
   handleSave = (row) => {
     if (row.newItem) {
       db.collection("Donors").add({
-        name: row.name,
-        phone: row.phone,
-        bloodGroup: row.bloodGroup,
-        screeningDate: row.screeningDate,
-        gender: row.gender,
-        location: row.location,
+        name: row.name?row.name:"",
+        phone: row.phone?row.phone:"",
+        bloodGroup: row.bloodGroup?row.bloodGroup:"",
+        screeningDate: row.screeningDate?row.screeningDate:"",
+        gender: row.gender?row.gender:"",
+        location: row.location?row.location:"",
         timestamp: new Date(),
       });
     } else {
       db.collection("Donors").doc(row.key).set({
-        name: row.name,
-        phone: row.phone,
-        bloodGroup: row.bloodGroup,
-        screeningDate: row.screeningDate,
-        gender: row.gender,
-        location: row.location,
+        name: row.name?row.name:"",
+        phone: row.phone?row.phone:"",
+        bloodGroup: row.bloodGroup?row.bloodGroup:"",
+        screeningDate: row.screeningDate?row.screeningDate:"",
+        gender: row.gender?row.gender:"",
+        location: row.location?row.location:"",
         timestamp: new Date(),
       });
     }

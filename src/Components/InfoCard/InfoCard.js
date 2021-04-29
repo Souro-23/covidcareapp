@@ -64,7 +64,7 @@ export default function InfoCard({
             <p>{location}</p>
             <ion-icon name='location-outline'></ion-icon>
           </div>
-          {verified ? (
+          {verified ==="yes" ? (
             <Badge
               style={{
                 backgroundColor: "rgb(88,228,88)",

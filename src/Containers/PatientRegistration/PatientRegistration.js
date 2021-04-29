@@ -97,7 +97,6 @@ export default function PlasmaRecipientForm(props) {
     const [symptoms, setSymptoms] = useState(symptom)
     const [name, setName] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
-    const [emailid, setEmailId] = useState("");
     const [age, setAge] = useState("");
     const [result, setResult] = useState(false);
     const [loading, setLoading] = useState(false)
@@ -111,8 +110,6 @@ export default function PlasmaRecipientForm(props) {
             setName(e.target.value);
         } else if (type === "mobileNumber") {
             setMobileNumber(e.target.value);
-        } else if (type === "emailid") {
-            setEmailId(e.target.value);
         }
         else if (type === "age") {
             setAge(e.target.value)
@@ -140,7 +137,6 @@ export default function PlasmaRecipientForm(props) {
     const submitHandler = () => {
         if (name === "") return message.error("Name Required");
         if (mobileNumber === "") return message.error("Mobile Number Required");
-        if (emailid === "") return message.error("Email Id Required");
         if (result === false) return message.error("Please Fill All The Details")
         var noofsymptoms = 0;
         var selectedsymptoms = [];
@@ -156,7 +152,6 @@ export default function PlasmaRecipientForm(props) {
             .add({
                 name: name,
                 phone: mobileNumber,
-                emailId: emailid,
                 age: age,
                 testedPositive: result,
                 symptoms: selectedsymptoms.join(','),
@@ -164,7 +159,7 @@ export default function PlasmaRecipientForm(props) {
             })
             .then((docRef) => {
                 setLoading(false)
-                props.history.push('/patient-registered')
+                props.history.push('/patient-registered/'+docRef.id)
             })
             .catch((error) => {
                 setLoading(false)
@@ -198,16 +193,6 @@ export default function PlasmaRecipientForm(props) {
                                     onChange={(e) => onChangeHandler(e, "mobileNumber")}
                                     className={classes.inputField}
                                     placeholder='Enter your Mobile Number'
-                                />
-                            </div>
-                            <div className={classes.formField}>
-                                <p className={classes.title}>email id</p>
-                                <Input
-                                    type='email'
-                                    // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                                    onChange={(e) => onChangeHandler(e, "emailid")}
-                                    className={classes.inputField}
-                                    placeholder='Enter your Email ID'
                                 />
                             </div>
                         </div>

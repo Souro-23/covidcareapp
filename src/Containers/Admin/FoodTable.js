@@ -39,85 +39,82 @@ export default class FoodTable extends React.Component {
         editable: true,
       },
       {
-        title: "location",
-        dataIndex: "location",
-        editable: true,
-        filters: this.returnLocation(),
-        onFilter: (value, record) => record.location.indexOf(value) === 0,
+          title: 'location',
+          dataIndex: 'location',
+          editable: true,
+          filters: this.returnLocation(),
+          onFilter: (value, record) => record.location?.indexOf(value) === 0,
       },
       {
-        title: "isFree",
-        dataIndex: "isFree",
-        editable: true,
-        filters: [
-          {
-            text: "free",
-            value: "free",
-          },
-          {
-            text: "paid",
-            value: "paid",
-          },
-        ],
-        filterMultiple: false,
-        onFilter: (value, record) => record.isFree.indexOf(value) === 0,
+          title: 'isFree',
+          dataIndex: 'isFree',
+          editable: true,
+          filters: [
+              {
+                  text: 'free',
+                  value: 'free',
+              },
+              {
+                  text: 'paid',
+                  value: 'paid',
+              },
+          ],
+          filterMultiple: false,
+          onFilter: (value, record) => record.isFree?.indexOf(value) === 0,
       },
       {
-        title: "verified",
-        dataIndex: "verified",
-        editable: true,
-        sorter: (a, b) => a.verified.length - b.verified.length,
-        sortDirections: ["descend", "ascend"],
-        filters: [
-          {
-            text: "yes",
-            value: "yes",
-          },
-          {
-            text: "no",
-            value: "no",
-          },
-        ],
-        filterMultiple: false,
-        onFilter: (value, record) => record.verified.indexOf(value) === 0,
+          title: 'verified',
+          dataIndex: 'verified',
+          editable: true,
+          filters: [
+              {
+                  text: 'yes',
+                  value: 'yes',
+              },
+              {
+                  text: 'no',
+                  value: 'no',
+              },
+          ],
+          filterMultiple: false,
+          onFilter: (value, record) => record.verified?.indexOf(value) === 0,
       },
       {
-        title: "operation",
-        dataIndex: "operation",
-        render: (_, record) =>
-          this.state.dataSource.length >= 1 ? (
-            <Popconfirm
-              title='Sure to delete?'
-              onConfirm={() => this.handleDelete(record.key)}>
-              <a>Delete</a>
-            </Popconfirm>
-          ) : null,
+          title: 'operation',
+          dataIndex: 'operation',
+          render: (_, record) =>
+              this.state.dataSource.length >= 1 ? (
+                  <Popconfirm title="Sure to delete?" onConfirm={() => this.handleDelete(record.key)}>
+                      <a>Delete</a>
+                  </Popconfirm>
+              ) : null,
       },
-    ];
-    this.state = {
+  ];
+  this.state = {
       dataSource: [],
       count: 0,
-    };
+  };
 
-    db.collection("Food")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((querySnapshot) => {
-        var data = [];
-        querySnapshot.forEach((doc) => {
-          data.push({
-            id: doc.id,
-            isFree: doc.data().isFree,
-            verified: doc.data().verified,
-            name: doc.data().name,
-            streetNumber: doc.data().streetNumber,
-            location: doc.data().location,
-            phone: doc.data().phone,
-            key: doc.id,
-          });
-        });
-        this.setState({ dataSource: data, count: data.length });
+  db.collection("Food")
+  .orderBy("timestamp", "desc")
+  .onSnapshot((querySnapshot) => {
+    var data = [];
+    querySnapshot.forEach((doc) => {
+      data.push({
+        id: doc.id,
+        isFree: doc.data().isFree,
+        verified: doc.data().verified,
+        name: doc.data().name,
+        streetNumber: doc.data().streetNumber,
+        location: doc.data().location,
+        phone: doc.data().phone,
+        key: doc.id,
       });
-  }
+    });
+    this.setState({ dataSource: data, count: data.length });
+  });
+}
+
   getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
       setSelectedKeys,
@@ -198,6 +195,7 @@ export default class FoodTable extends React.Component {
       ),
   });
 
+
   handleSearch = (selectedKeys, confirm, dataIndex) => {
     confirm();
     this.setState({
@@ -222,67 +220,65 @@ export default class FoodTable extends React.Component {
 
   handleDelete = (key) => {
     const dataSource = [...this.state.dataSource];
-
-    db.collection("Food")
-      .doc(key)
-      .delete()
-      .then(() => {
-        console.log("Document successfully deleted!");
-      })
-      .catch((error) => {
-        console.error("Error removing document: ", error);
-      });
-    this.setState({
-      dataSource: dataSource.filter((item) => item.key !== key),
-    });
-  };
-  handleAdd = () => {
-    const { count, dataSource } = this.state;
-    const newData = {
-      key: count,
-      name: "Enter Name Here",
-      phone: "",
-      isFree: "",
-      verified: "",
-      location: "",
-      streetNumber: "",
-      newItem: true,
+        db.collection("Food").doc(key).delete().then(() => {
+            console.log("Document successfully deleted!");
+        }).catch((error) => {
+            console.error("Error removing document: ", error);
+        });
+        this.setState({
+            dataSource: dataSource.filter((item) => item.key !== key),
+        });
     };
-    this.setState({
-      dataSource: [newData, ...dataSource],
-      count: count + 1,
-    });
-  };
-  handleSave = (row) => {
-    if (row.newItem) {
-      db.collection("Food").add({
-        name: row.name,
-        location: row.location,
-        streetNumber: row.streetNumber,
-        phone: row.phone,
-        isFree: row.isFree,
-        verified: row.verified,
-        timestamp: new Date(),
-      });
-    } else {
-      db.collection("Food").doc(row.key).set({
-        name: row.name,
-        location: row.location,
-        streetNumber: row.streetNumber,
-        phone: row.phone,
-        isFree: row.isFree,
-        verified: row.verified,
-        timestamp: new Date(),
-      });
-    }
-    const newData = [...this.state.dataSource];
-    const index = newData.findIndex((item) => row.key === item.key);
-    const item = newData[index];
-    newData.splice(index, 1, { ...item, ...row });
-    this.setState({
-      dataSource: newData,
-    });
-  };
+    handleAdd = () => {
+        const { count, dataSource } = this.state;
+        const newData = {
+            key: count,
+            name: "Enter Name Here",
+            phone: "",
+            isFree: "",
+            verified: "",
+            location: "",
+            streetNumber: "",
+            newItem: true
+        };
+        this.setState({
+            dataSource: [newData, ...dataSource],
+            count: count + 1,
+        });
+    };
+    handleSave = (row) => {
+
+        if (row.newItem) {
+            db.collection("Food").add({
+                name: row.name?row.name:"",
+                location: row.location?row.location:"",
+                streetNumber: row.streetNumber?row.streetNumber:"",
+                phone: row.phone?row.phone:"",
+                isFree: row.isFree?row.isFree:"",
+                verified: row.verified?row.verified:"",
+                timestamp: new Date()
+            })
+        } else {
+            console.log(row)
+            db.collection("Food").doc(row.key).set({
+                name: row.name?row.name:"",
+                location: row.location?row.location:"",
+                streetNumber: row.streetNumber?row.streetNumber:"",
+                phone: row.phone?row.phone:"",
+                isFree: row.isFree?row.isFree:"",
+                verified: row.verified?row.verified:"",
+                timestamp: new Date()
+            })
+        }
+        const newData = [...this.state.dataSource];
+        const index = newData.findIndex((item) => row.key === item.key);
+        const item = newData[index];
+        newData.splice(index, 1, { ...item, ...row });
+        this.setState({
+            dataSource: newData,
+        });
+    };
+  
 
   render() {
     const { dataSource } = this.state;

@@ -43,14 +43,12 @@ export class OxygenCylinders extends Component {
         dataIndex: "location",
         editable: true,
         filters: this.returnLocation(),
-        onFilter: (value, record) => record.location.indexOf(value) === 0,
+        onFilter: (value, record) => record.location?.indexOf(value) === 0,
       },
       {
         title: "verified",
         dataIndex: "verified",
         editable: true,
-        sorter: (a, b) => a.verified.length - b.verified.length,
-        sortDirections: ["descend", "ascend"],
         filters: [
           {
             text: "yes",
@@ -62,7 +60,7 @@ export class OxygenCylinders extends Component {
           },
         ],
         filterMultiple: false,
-        onFilter: (value, record) => record.verified.indexOf(value) === 0,
+        onFilter: (value, record) => record.verified?.indexOf(value) === 0,
       },
       {
         title: "operation",
@@ -237,20 +235,20 @@ export class OxygenCylinders extends Component {
   handleSave = (row) => {
     if (row.newItem) {
       db.collection("OxygenCylinders").add({
-        name: row.name,
-        location: row.location,
-        streetNumber: row.streetNumber,
-        phone: row.phone,
-        verified: row.verified,
+        name: row.name?row.name:"",
+        location: row.location?row.location:"",
+        streetNumber: row.streetNumber?row.streetNumber:"",
+        phone: row.phone?row.phone:"",
+        verified: row.verified?row.verified:"",
         timestamp: new Date(),
       });
     } else {
-      db.collection("Food").doc(row.key).set({
-        name: row.name,
-        location: row.location,
-        streetNumber: row.streetNumber,
-        phone: row.phone,
-        verified: row.verified,
+      db.collection("OxygenCylinders").doc(row.key).set({
+        name: row.name?row.name:"",
+        location: row.location?row.location:"",
+        streetNumber: row.streetNumber?row.streetNumber:"",
+        phone: row.phone?row.phone:"",
+        verified: row.verified?row.verified:"",
         timestamp: new Date(),
       });
     }
