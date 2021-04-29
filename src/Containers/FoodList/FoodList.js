@@ -78,6 +78,7 @@ export default function FoodList(props) {
               location={food.location}
               verified={food.verified}
               ago={food.ago}
+              isFree={food.isFree}
             />
           </Col>
         ))}

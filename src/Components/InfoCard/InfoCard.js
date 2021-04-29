@@ -2,6 +2,8 @@ import { Badge, Button } from "antd";
 import React from "react";
 import classes from "./InfoCard.module.css";
 import WhatsApp from "../../Assets/Svgs/WhatsApp.png";
+import { ClockCircleOutlined } from "@ant-design/icons";
+import { Tag } from "antd";
 
 export default function InfoCard({
   name,
@@ -12,6 +14,7 @@ export default function InfoCard({
   available,
   timeSlots,
   ago,
+  isFree,
 }) {
   console.log(available);
   return (
@@ -19,8 +22,10 @@ export default function InfoCard({
       <div className={classes.details}>
         <div className={classes.nameAndPhone}>
           <p>{name}</p>
-          <p>+91-{phone}</p>
-          <p style={{ color: "grey", fontSize: "12px" }}>{ago}</p>
+          <p style={{ color: "rgb(88,228,88)" }}>{phone}</p>
+          <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+            {isFree}
+          </p>
         </div>
         {type === "doctors" ? (
           <a target='blank' href={`https://wa.me/91${phone}`}>
@@ -64,16 +69,17 @@ export default function InfoCard({
             <p>{location}</p>
             <ion-icon name='location-outline'></ion-icon>
           </div>
-          {verified ==="yes" ? (
-            <Badge
+          {verified === "yes" ? (
+            <Tag
+              color='rgb(88,228,88)'
               style={{
-                backgroundColor: "rgb(88,228,88)",
                 marginBottom: "10px",
-                marginRight: "0px",
-                width: "56px",
+                borderRadius: "10px",
+                paddingBottom: "1px",
               }}
-              count={"Verified"}
-            />
+              icon={<ClockCircleOutlined />}>
+              Verified {ago}
+            </Tag>
           ) : (
             <></>
           )}
@@ -82,3 +88,13 @@ export default function InfoCard({
     </div>
   );
 }
+
+// {/*<Badge
+//   style={{
+//     backgroundColor: "rgb(88,228,88)",
+//     marginBottom: "10px",
+//     marginRight: "0px",
+//     width: "56px",
+//   }}
+//   count={"Verified"}
+// />;

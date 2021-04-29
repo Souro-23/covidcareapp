@@ -16,9 +16,10 @@
 
 .nameAndPhone p {
   margin-bottom: 0px;
-  white-space: nowrap;
+  /* white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; */
+  word-break: break-all;
 }
 .status {
   display: flex;
