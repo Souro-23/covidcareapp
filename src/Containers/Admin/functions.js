@@ -12,6 +12,8 @@ export const databaseVariableValidation = (database, inputCols) => {
       return checkVariables(getDatabaseVariables(database), inputCols);
     case "Food":
       return checkVariables(getDatabaseVariables(database), inputCols);
+    case "LabTestCenters":
+      return checkVariables(getDatabaseVariables(database), inputCols);
     default:
       break;
   }
@@ -59,6 +61,8 @@ export const getDatabaseVariables = (database) => {
         "screeningDate",
         "location",
       ];
+    case "LabTestCenters":
+      return ["name", "phone", "homeTest", "charges", "location"];
     default:
       break;
   }

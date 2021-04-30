@@ -1,8 +1,8 @@
-import { Badge, Button } from "antd";
+import { Button } from "antd";
 import React from "react";
 import classes from "./InfoCard.module.css";
 import WhatsApp from "../../Assets/Svgs/WhatsApp.png";
-import { ClockCircleOutlined } from "@ant-design/icons";
+import { ClockCircleOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import { Tag } from "antd";
 
 export default function InfoCard({
@@ -15,17 +15,24 @@ export default function InfoCard({
   timeSlots,
   ago,
   isFree,
+  charges,
+  homeTest,
 }) {
-  console.log(available);
   return (
     <div className={classes.infoCard}>
       <div className={classes.details}>
         <div className={classes.nameAndPhone}>
           <p>{name}</p>
           <p style={{ color: "rgb(88,228,88)" }}>{phone}</p>
-          <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
-            {isFree}
-          </p>
+          {type === "lab" ? (
+            <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+              Charge - &#x20B9;{charges}
+            </p>
+          ) : (
+            <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+              {isFree}
+            </p>
+          )}
         </div>
         {type === "doctors" ? (
           <a target='blank' href={`https://wa.me/91${phone}`}>
@@ -42,7 +49,7 @@ export default function InfoCard({
             </Button>
           </a>
         ) : (
-          <a href={`tel:${phone}`}>
+          <a href={`tel:${phone.substring(0, 10)}`}>
             <Button className={classes.Button}>Call Now</Button>
           </a>
         )}
@@ -69,7 +76,7 @@ export default function InfoCard({
             <p>{location}</p>
             <ion-icon name='location-outline'></ion-icon>
           </div>
-          {verified === "yes" ? (
+          {(type === "food" || type === "ocl") && verified === "yes" ? (
             <Tag
               color='rgb(88,228,88)'
               style={{
@@ -81,20 +88,21 @@ export default function InfoCard({
               Verified {ago}
             </Tag>
           ) : (
-            <></>
+            homeTest === "yes" && (
+              <Tag
+                color='rgb(88,228,88)'
+                style={{
+                  marginBottom: "10px",
+                  borderRadius: "10px",
+                  paddingBottom: "1px",
+                }}
+                icon={<CheckCircleOutlined />}>
+                Home Test - {homeTest}
+              </Tag>
+            )
           )}
         </div>
       )}
     </div>
   );
 }
-
-// {/*<Badge
-//   style={{
-//     backgroundColor: "rgb(88,228,88)",
-//     marginBottom: "10px",
-//     marginRight: "0px",
-//     width: "56px",
-//   }}
-//   count={"Verified"}
-// />;

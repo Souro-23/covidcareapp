@@ -7,11 +7,6 @@ export const checkAvailability = (docArr) => {
     let timeAvailable = [];
     doc.consultTime.split(",").forEach((t, index) => {
       timeAvailable.push(t);
-      console.log(
-        t.substring(0, 2) === currHour.toString(),
-        t.substring(0, 2),
-        currHour.toString()
-      );
       if (
         t.substring(0, 2) >= "12" &&
         t.substring(0, 2) === currHour.toString()
@@ -88,14 +83,23 @@ const convertTimeAvailable = (timeSlotArray) => {
   });
 };
 
-export const checkVerified = (arr) => {
+export const checkVerified = (arr, type) => {
   var sortedArray = [];
-  arr.forEach((a, index) => {
-    if (a.verified) sortedArray.push(a);
-  });
-  arr.forEach((a, index) => {
-    if (!a.verified) sortedArray.push(a);
-  });
+  if (type === "food" || type === "ocl") {
+    arr.forEach((a, index) => {
+      if (a.verified === "yes") sortedArray.push(a);
+    });
+    arr.forEach((a, index) => {
+      if (a.verified === "no") sortedArray.push(a);
+    });
+  } else if (type === "lab") {
+    arr.forEach((a, index) => {
+      if (a.homeTest === "yes") sortedArray.push(a);
+    });
+    arr.forEach((a, index) => {
+      if (a.homeTest === "no") sortedArray.push(a);
+    });
+  }
   return sortedArray;
 };
 

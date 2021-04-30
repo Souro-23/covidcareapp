@@ -22,7 +22,6 @@ export default function DoctorsList(props) {
           docArr.push(doc.data());
         });
         setDoctorsList(checkAvailability(docArr));
-        console.log(checkAvailability(docArr));
       })
       .catch((error) => {
         console.log("Error getting documents: ", error);

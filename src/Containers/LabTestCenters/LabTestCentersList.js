@@ -15,22 +15,24 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const { Option } = Select;
 
-export default function FoodList(props) {
-  const [completeFoodList, setCompleteFoodList] = useState([]);
-  const [foodList, setFoodList] = useState([]);
+export default function LabTestCentersList(props) {
+  const [completeLabTestCentersList, setCompleteLabTestCentersList] = useState(
+    []
+  );
+  const [labList, setLabList] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
 
   useEffect(() => {
-    var foodArr = [];
-    db.collection("Food")
+    var labArr = [];
+    db.collection("LabTestCenters")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           let ago = timeDifference(doc.data().timestamp);
-          foodArr.push({ ...doc.data(), ago: ago });
+          labArr.push({ ...doc.data(), ago: ago });
         });
-        setCompleteFoodList(checkVerified(foodArr, "food"));
-        setFoodList(checkVerified(foodArr, "food"));
+        setCompleteLabTestCentersList(checkVerified(labArr, "lab"));
+        setLabList(checkVerified(labArr, "lab"));
         setLoadingData(false);
       })
       .catch((error) => {
@@ -39,8 +41,10 @@ export default function FoodList(props) {
   }, []);
 
   const onLocationChange = (value) => {
-    var foodArr = completeFoodList.filter((food) => food.location === value);
-    setFoodList(foodArr);
+    var labArr = completeLabTestCentersList.filter(
+      (lab) => lab.location === value
+    );
+    setLabList(labArr);
   };
 
   return (
@@ -48,7 +52,7 @@ export default function FoodList(props) {
       <Row justify='center'>
         <Col lg={8} sm={16} xs={23}>
           <FormHeader
-            title='Food Delivery'
+            title='Lab Test Centers'
             onBackPress={() => props.history.push("/")}
           />
         </Col>
@@ -65,21 +69,21 @@ export default function FoodList(props) {
         </Select>
       </div>
       <Row justify='center' gutter={[8, 8]}>
-        {foodList.map((food, index) => (
+        {labList.map((lab, index) => (
           <Col key={index} lg={7} md={8} sm={15} xs={24}>
             <InfoCard
-              name={food.name}
-              phone={food.phone}
-              type='food'
-              location={food.location}
-              verified={food.verified}
-              ago={food.ago}
-              isFree={food.isFree}
+              name={lab.name}
+              phone={lab.phone}
+              type='lab'
+              location={lab.location}
+              homeTest={lab.homeTest}
+              ago={lab.ago}
+              charges={lab.charges}
             />
           </Col>
         ))}
-        {!foodList.length && !loadingData && (
-          <p>Food Supplier Not Found In This Region</p>
+        {!labList.length && !loadingData && (
+          <p>Lab Test Centers Not Found In This Region</p>
         )}
         {loadingData && <Spin indicator={antIcon} />}
       </Row>

@@ -31,8 +31,8 @@ export default function OxygenCylinderList(props) {
           let ago = timeDifference(doc.data().timestamp);
           oclArr.push({ ...doc.data(), ago: ago });
         });
-        setCompleteOclList(checkVerified(oclArr));
-        setOclList(checkVerified(oclArr));
+        setCompleteOclList(checkVerified(oclArr, "ocl"));
+        setOclList(checkVerified(oclArr, "ocl"));
         setLoadingData(false);
       })
       .catch((error) => {

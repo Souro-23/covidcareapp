@@ -10,6 +10,7 @@ import OxygenCylinders from "./OxygenCylinders";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import "./Admin.css";
 import { NavLink } from "react-router-dom";
+import LabTestCentersTable from "./LabTestCentersTable";
 
 const { Header, Content, Footer } = Layout;
 
@@ -55,6 +56,9 @@ export default function Admin(props) {
               Oxygen Cylinder Suppliers
             </NavLink>
           </Menu.Item>
+          <Menu.Item key='7'>
+            <NavLink to='/admin/labtestcenters'>Lab Test Centers</NavLink>
+          </Menu.Item>
         </Menu>
       </Header>
       <Content
@@ -76,6 +80,7 @@ export default function Admin(props) {
         <Route path='/admin/oxygen-cylinder' component={OxygenCylinders} />
         <Route path='/admin/donors' component={DonorsTable} />
         <Route path='/admin/recipient' component={RecipientTable} />
+        <Route path='/admin/labtestcenters' component={LabTestCentersTable} />
       </Content>
     </Layout>
   );
