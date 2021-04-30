@@ -58,10 +58,10 @@ export default function Home(props) {
                         </Button>
                         
                         <Button onClick={() => changeRoute('/food')} block className={classes.actionButton2}>
-                            Looking for food delivery?
+                            Looking for food ?
                         </Button>
-                        <Button onClick={() => changeRoute('/labs')} block className={classes.actionButton2}>
-                            Want to do Lab Test?
+                        <Button onClick={() => changeRoute('/labtestcenters')} block className={classes.actionButton2}>
+                            Looking for Lab Test?
                         </Button>
 
 

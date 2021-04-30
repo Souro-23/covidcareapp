@@ -38,6 +38,7 @@ export default function InfoCard({
           <a target='blank' href={`https://wa.me/91${phone}`}>
             <Button
               className={classes.Button}
+              disabled={!available}
               icon={
                 <img
                   src={WhatsApp}
