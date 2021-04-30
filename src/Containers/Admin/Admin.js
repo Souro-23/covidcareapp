@@ -10,11 +10,7 @@ import OxygenCylinders from "./OxygenCylinders";
 import { Layout, Menu, Breadcrumb, Button } from "antd";
 import "./Admin.css";
 import { NavLink } from "react-router-dom";
-<<<<<<< HEAD
 import LabTestCentersTable from "./LabTestCentersTable";
-=======
-import LabsTable from "./LabsTable";
->>>>>>> 5fc4e76cbf3d305cb829ec21bbd5b00ff52d53c7
 
 const { Header, Content, Footer } = Layout;
 
