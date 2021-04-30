@@ -25,6 +25,7 @@ import Login from './Admin/Login'
 import { AuthProvider } from "../Contexts/AuthContext"
 import Admin from './Admin/Admin'
 import FoodTable from './Admin/FoodTable'
+import LabsList from './LabsList/LabsList'
 
 
 
@@ -55,6 +56,7 @@ export default function Root() {
 
                 <Route exact path='/doctors' component={DoctorsList} />
                 <Route exact path='/food' component={FoodList} />
+                <Route exact path='/labs' component={LabsList} />
                 <Route exact path='/oxygenCylinders' component={OxygenCylinderList} />
 
                 <Route path='/login' component={Login} />
