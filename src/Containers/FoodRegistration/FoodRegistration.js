@@ -143,7 +143,7 @@ export default function FoodRegistration(props) {
             <Select
               placeholder='Select Location'
               style={{ width: "100%" }}
-              showSearch
+              listHeight={450}
               onChange={(e) => onChangeHandler(e, "location")}>
               {locations.map((loc) => {
                 return <Option value={loc}>{loc}</Option>;

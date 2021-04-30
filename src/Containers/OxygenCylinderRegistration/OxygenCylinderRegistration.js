@@ -22,7 +22,6 @@ export default function FoodRegistration(props) {
     const [location, setLocation] = useState("");
     const [streetNumber, setStreetNumber] = useState("");
     const [isVerified, setIsVerified] = useState("");
-    const [state, setSate] = useState("");
     const [loading, setLoading] = useState(false)
 
 
@@ -41,9 +40,6 @@ export default function FoodRegistration(props) {
         else if (type === "location") {
             setLocation(e);
 
-        }
-        else if (type === "state") {
-            setSate(e);
         }
         else if (type === "isVerified") {
             setIsVerified(e.target.value);
@@ -135,32 +131,16 @@ export default function FoodRegistration(props) {
                     </div>
 
                     <div className={classes.formField}>
-                        <p className={classes.title}>select district</p>
+                        <p className={classes.title}>Select District</p>
                         <Select
                             placeholder='Select District'
-                            showSearch
+                            listHeight={450}
                             style={{ width: "100%" }}
                             onChange={(e) => onChangeHandler(e, "location")}>
                             {locations.map((loc) => {
                                 return <Option value={loc}>{loc}</Option>;
                             })}
                         </Select>
-                    </div>
-
-                    <div className={classes.formField}>
-                        <p className={classes.title}>
-                            select your state
-                    </p>
-
-                        <Select showSearch placeholder="Select state" style={{ width: '100%' }} onChange={(e) => onChangeHandler(e, "state")}>
-                            {states.map(state => {
-                                return (
-                                    <Option value={state.key}>{state.name}</Option>
-                                )
-                            })
-                            }
-                        </Select>
-
                     </div>
                 </Col>
             </Row>

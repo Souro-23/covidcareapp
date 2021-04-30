@@ -58,7 +58,7 @@ export default function OxygenCylinderList(props) {
         <Select
           placeholder='Select Location'
           style={{ width: "100%" }}
-          showSearch
+          listHeight={450}
           onChange={onLocationChange}>
           {locations.map((loc) => {
             return <Option value={loc}>{loc}</Option>;

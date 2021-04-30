@@ -51,13 +51,13 @@ export default function Home(props) {
                             I am looking for Plasma Donors
                         </Button>
                         <Button onClick={() => changeRoute('/register/patient')} block className={classes.actionButton2}>
-                            I need a counsellor or doctor
+                            Need a counsellor or doctor?
                         </Button>
                         <Button onClick={() => changeRoute('/oxygenCylinders')} block className={classes.actionButton2}>
-                            I am looking for oxygen cylinder
+                            Want oxygen cylinder?
                         </Button>
                         <Button onClick={() => changeRoute('/food')} block className={classes.actionButton2}>
-                            I am looking for food delivery
+                            Looking for food delivery?
                         </Button>
 
 
