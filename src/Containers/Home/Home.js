@@ -54,13 +54,13 @@ export default function Home(props) {
                 </Col>
             </Row>
             <br />
-            <Row gutter={[32,32]} justify="center">
+            <Row >
                 <Col lg={8} md={11} sm={11} xs={20}>
                     <Section1/>
                 </Col>
             </Row>
             <br />
-            <Row gutter={[32,32]} justify="center">
+            <Row >
                 <Col lg={8} md={11} sm={11} xs={20}>
                     {/* <div className={classes.actionCard}>
                        
@@ -92,7 +92,7 @@ export default function Home(props) {
                     <Section3/>
                 </Col>
             </Row>          
-            <Row gutter={[32,32]} justify="center">  
+            <Row >  
                 <Col lg={8} md={11} sm={11} xs={20}>
                     {/* <div className={classes.actionCard}>
                          
@@ -123,7 +123,7 @@ export default function Home(props) {
                 </Col>
             </Row>
             <br />
-            <Row justify="center" gutter={[32, 32]} >
+            <Row justify="center">
                 <Col lg={5} md={11} sm={11} xs={20}>
 
                     <div className={classes.actionCard1}>
