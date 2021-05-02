@@ -84,7 +84,7 @@ export default function Home(props) {
         </Col>
       </Row>
       <Row justify='center'>
-        <Col sm={16} xs={20}>
+        <Col sm={16} xs={24}>
           <Section3 />
         </Col>
       </Row>

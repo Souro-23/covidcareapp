@@ -1,6 +1,7 @@
 import { Button } from "antd";
 import React from "react";
 import classes from "./Section3.module.css";
+import anxietyGirl from "../../Assets/Svgs/anxietyGirl.svg";
 
 export default function Section3() {
   return (
@@ -10,6 +11,9 @@ export default function Section3() {
       <p>FREE SESSIONS</p>
       <p>ON BREATHING TECHNIQUES</p>
       <Button className={classes.section3Button}>I'm Intrested</Button>
+      <div className={classes.iconGirl}>
+        <img src={anxietyGirl} alt='girl icon' />
+      </div>
     </div>
   );
 }
