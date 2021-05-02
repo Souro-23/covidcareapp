@@ -13,7 +13,7 @@ export default function Section1() {
     return (
     <Row className={classes.formBox}>
         <Col>
-            <h1 className={classes.superText}>Are you a <span className={classes.spanText}>covid</span> patient?</h1>
+            <h1 className={classes.superText}>Are you a <br/><span className={classes.spanText}>covid</span> patient?</h1>
             <p className={classes.subText}>We have got your back in this</p>
         </Col>
         <Row className={classes.symptomsBox}>
@@ -34,7 +34,7 @@ export default function Section1() {
                 <img src={bs} />
                 <div className={classes.text}> Breathing Sessions </div>
             </label>
-        </Col>
+        </Col> 
         <Col justify="center" className={classes.selectedcheckBox1}>
             <label style={{ textAlign: 'center' }} for="fever">
                 <img src={tt} />

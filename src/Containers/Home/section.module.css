@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
-.formBox{
+
+.formBox{   
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 20px #CCCCCC29;
     opacity: 1;
@@ -14,14 +15,14 @@
     width: 100vw;
   }
 
-.superText{
-    
+.superText{ 
     text-align: left;
     font: normal normal bold 27px/27px Raleway;
     letter-spacing: 0px;
     margin-bottom: 0;
     color: #000000;
     text-transform: uppercase;
+    font-weight: bold;
 }
 .spanText{
     color:rgb(245, 83, 48);
@@ -43,7 +44,7 @@
   }
 
   .selectedcheckBox1{
-    width: 40%;
+    width: 48%;
     height: 72px;
     display: flex !important;
     justify-content: center !important;
@@ -52,6 +53,7 @@
     border-radius: 4px;
     opacity: 1;
     margin-bottom: 12px;
+    cursor: pointer;
   
   }
   .text{
@@ -67,6 +69,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
+      
   }
   .image{
       height: 2.2rem;
@@ -95,7 +98,7 @@
     opacity: 1;
 }
 .selected{
-    width: 40%;
+    width: 48%;
     height: 72px;
     display: flex !important;
     justify-content: center !important;

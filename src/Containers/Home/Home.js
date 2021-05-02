@@ -16,6 +16,7 @@ export default function Home(props) {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => {
+        console.log("hello")
         setIsModalVisible(true);
     };
 
@@ -62,83 +63,28 @@ export default function Home(props) {
             <br />
             <Row >
                 <Col lg={8} md={11} sm={11} xs={20}>
-                    {/* <div className={classes.actionCard}>
-                       
-                        <p style={{ textAlign: "left" }}> Let us know what you’re looking for?</p>
-                        <Button onClick={() => changeRoute("register/recipient")} block className={classes.actionButton}>
-                            I am looking for Plasma Donors
-                        </Button>
-                        <Button onClick={() => changeRoute('/register/patient')} block className={classes.actionButton2}>
-                            Need a counsellor or doctor?
-                        </Button>
-                        <Button onClick={() => changeRoute('/oxygenCylinders')} block className={classes.actionButton2}>
-                            Want oxygen cylinder?
-                        </Button>
-                        
-                        <Button onClick={() => changeRoute('/food')} block className={classes.actionButton2}>
-                            Looking for food ?
-                        </Button>
-                        <Button onClick={() => changeRoute('/labtestcenters')} block className={classes.actionButton2}>
-                            Looking for Lab Test?
-                        </Button>
-
-
-                    </div> */}
-                    <Section2/>
+                    <Section2 changeRoute={changeRoute} />
                 </Col>    
             </Row>    
             <Row justify="center" >
                 <Col sm={16} xs={20}>
-                    <Section3/>
+                    <Section3 />
                 </Col>
             </Row>          
             <Row >  
                 <Col lg={8} md={11} sm={11} xs={20}>
-                    {/* <div className={classes.actionCard}>
-                         
-                        <p style={{ textAlign: "left" }}> How can you help?</p>
-                        <Button block className={classes.actionButton} onClick={showModal}>
-                            I want to donate Plasma
-                        </Button>
-                        <Button onClick={() => changeRoute('/register/consultant')} block className={classes.actionButton2}>
-                            I can help as a consultant/doctor
-                        </Button>
-                        <Button onClick={() => changeRoute('/register/Oxygen-cylinders-supply')} block className={classes.actionButton2}>
-                            I can get Oxygen Cylinders
-                        </Button>
-                        <Button onClick={() => changeRoute('/register/food-suply')} block className={classes.actionButton2}>
-                            I can help with food delivery
-                        </Button>
-                    </div> */}
-                    <Section4/>
+                    <Section4 showModal={showModal} changeRoute={changeRoute}/>
 
                 </Col>
             </Row>
             <br/>
             
             <br />
-            <Row justify="center" >
-                <Col sm={16} xs={20}>
-                    <h2><b>What all you can do at home to fight this pandemic?</b></h2>
-                </Col>
-            </Row>
-            <br />
-            <Row justify="center">
-                <Col lg={5} md={11} sm={11} xs={20}>
-
-                    <div className={classes.actionCard1}>
-                        <img src={heart} className={classes.homeIcons} />
-                        <br/>
-                        <p> Learn Powerful Breathing Techniques like to help your
-                        lungs fight the deadly disease and boost your immunity
-                        and fight stress/anxiety</p>
-                        <Button block className={classes.actionButton3}>
-                            Want To Know More
-                        </Button>
-                    </div>
-                </Col>
+            <Row gutter={[0,24]} justify="center">
                 <Col lg={5} md={11} sm={11} xs={20}>
                     <div className={classes.actionCard}>
+                        <h1 style={{textAlign:"center", marginBottom:"0px"}}>KABASUR <span style={{color:"orangered"}}>KUDINEER</span></h1>
+                        <h4 style={{fontSize:"10px" , textAlign:"center", color:"#ADADAD"}}>EFFECTIVE MEDICINE TO FIGHT COVID - 19</h4>
                         <div className={classes.iconContainer}>
                             <img src={medicine} className={classes.homeIconsSmall} />
                         </div>
