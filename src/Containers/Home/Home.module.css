@@ -34,7 +34,7 @@
 }
 .introCard p{
     font-family: 'Lato', sans-serif;
-    font-size: 16px; 
+    font-size: 16px;
     color: rgb(87, 85, 85);
 }
 .introCard span {
@@ -58,15 +58,81 @@
 .actionCard p{
     text-align: center;
     font-family: 'Lato', sans-serif;
-    font-size: 14px; 
+    font-size: 14px;
     color: black
 }
 .actionCard1{
-    background: #F5532F 0% 0% no-repeat padding-box;
+    background: #F5532F 0% 0% no-repeat
+     padding-box;
     box-shadow: 0px 2px 20px #AAAAAA29;
     border-radius: 5px;
     padding: 20px;
     justify-content: space-around;
+}
+
+.actionCardCarousal{
+    background: #F5532F;
+    box-shadow: 0px 2px 20px #AAAAAA29;
+    border-radius: 0px;
+    padding: 20px;
+    height:auto;
+    justify-content: space-around;
+}
+
+.carouselText1{
+    font: normal normal bold 23px/20px Oswald;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+.carouselText2{
+    text-align: left;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.carouselText3{
+    top: 310px;
+    left: 36px;
+    width: 130px;
+    height: 38px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 2px solid #FFFFFF;
+    opacity: 1;
+}
+
+.carousalSlide2a{
+    top: 141px;
+    left: 36px;
+    width: 179px;
+    height: 89px;
+    text-align: left;
+    letter-spacing: NaNpx;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.carousalSlide2b{
+    top: 233px;
+    left: 36px;
+    width: 185px;
+    height: 48px;
+    text-align: left;
+    font: normal normal bold 19px/20px Oswald;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
+.carousalSlide2c{
+    top: 133px;
+    left: -9px;
+    width: 378px;
+    height: 243px;
+    background: #F4532F 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    opacity: 1;
 }
 
 .actionCard1 p{
@@ -90,6 +156,11 @@
 .group{
     display: flex !important;
     justify-content: flex-start !important;
+}
+
+.group1{
+    display: flex !important;
+    justify-content: 'center' !important;
 }
 
 
@@ -154,7 +225,7 @@
     font-family: 'Lato', sans-serif;
     font-weight: 700;
     text-align: center;
-    font-size: 16px; 
+    font-size: 16px;
     color: rgb(87, 85, 85);
 }
 .content h2{

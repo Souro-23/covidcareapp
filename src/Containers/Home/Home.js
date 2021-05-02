@@ -1,10 +1,11 @@
-import { Button, Col, Row, Modal } from 'antd'
+import { Button, Col, Row, Modal  } from 'antd'
 import React, { useState } from 'react'
 import classes from './Home.module.css'
 import help from "../../Assets/Svgs/help.svg";
 import heart from '../../Assets/Svgs/heart.svg'
 import medicine from '../../Assets/Svgs/Image7.png'
-import call from '../../Assets/Svgs/Icon material-call.svg'
+import call from '../../Assets/Svgs/Icon material-call.svg';
+import CarouselComponent from './CarouselComponent.js';
 export default function Home(props) {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -30,6 +31,12 @@ export default function Home(props) {
                     <div className={classes.title}>
                         <h1 >NCRfightsCOVID’19</h1>
                     </div>
+                </Col>
+            </Row>
+            <br />
+            <Row justify="center" gutter={[32, 32]}>
+                <Col lg={8} md={11} sm={11} xs={20}>
+                      <CarouselComponent />
                 </Col>
             </Row>
             <br />
