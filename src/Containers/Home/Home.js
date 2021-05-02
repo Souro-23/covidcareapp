@@ -5,6 +5,13 @@ import help from "../../Assets/Svgs/help.svg";
 import heart from '../../Assets/Svgs/heart.svg'
 import medicine from '../../Assets/Svgs/Image7.png'
 import call from '../../Assets/Svgs/Icon material-call.svg'
+import Section0 from  './Section0'
+import Section1 from  './Section1' 
+import Section2 from  './Section2' 
+import Section3 from  './Section3' 
+import Section4 from  './Section4'
+
+
 export default function Home(props) {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -26,25 +33,36 @@ export default function Home(props) {
         <>
             <Row >
                 <Col sm={24} xs={24}>
-                    <div className={classes.title}>
+                    {/* <div className={classes.title}>
                         <h1 >NCRfightsCOVID’19</h1>
-                    </div>
+                    </div> 
+                    
+                    icon section
+                    
+                    */}
+                    
                 </Col>
             </Row>
             <br />
             <Row justify="center" >
                 <Col sm={16} xs={20}>
-                    <div className={classes.introCard}>
+                    {/* <div className={classes.introCard}>
                         <img src={help} className={classes.homeIcons} />
                         <p>We are helping connect the <span><b>donors</b></span> with the <span><b>recipients</b></span> during this tough COVID pandemic times</p>
-                    </div>
+                    </div> */}
+                    <Section0/>
                 </Col>
             </Row>
             <br />
+            <Row gutter={[32,32]} justify="center">
+                <Col lg={8} md={11} sm={11} xs={20}>
+                    <Section1/>
+                </Col>
+            </Row>
             <br />
             <Row gutter={[32,32]} justify="center">
                 <Col lg={8} md={11} sm={11} xs={20}>
-                    <div className={classes.actionCard}>
+                    {/* <div className={classes.actionCard}>
                        
                         <p style={{ textAlign: "left" }}> Let us know what you’re looking for?</p>
                         <Button onClick={() => changeRoute("register/recipient")} block className={classes.actionButton}>
@@ -65,10 +83,18 @@ export default function Home(props) {
                         </Button>
 
 
-                    </div>
+                    </div> */}
+                    <Section2/>
+                </Col>    
+            </Row>    
+            <Row justify="center" >
+                <Col sm={16} xs={20}>
+                    <Section3/>
                 </Col>
+            </Row>          
+            <Row gutter={[32,32]} justify="center">  
                 <Col lg={8} md={11} sm={11} xs={20}>
-                    <div className={classes.actionCard}>
+                    {/* <div className={classes.actionCard}>
                          
                         <p style={{ textAlign: "left" }}> How can you help?</p>
                         <Button block className={classes.actionButton} onClick={showModal}>
@@ -83,10 +109,13 @@ export default function Home(props) {
                         <Button onClick={() => changeRoute('/register/food-suply')} block className={classes.actionButton2}>
                             I can help with food delivery
                         </Button>
-                    </div>
+                    </div> */}
+                    <Section4/>
 
                 </Col>
             </Row>
+            <br/>
+            
             <br />
             <Row justify="center" >
                 <Col sm={16} xs={20}>
