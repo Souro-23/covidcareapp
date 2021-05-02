@@ -15,9 +15,7 @@
   }
 
 .superText{
-    top: 417px;
-    left: 38px;
-    width: 213px;
+    
     text-align: left;
     font: normal normal bold 27px/27px Raleway;
     letter-spacing: 0px;
@@ -29,8 +27,6 @@
     color:rgb(245, 83, 48);
 }
 .subText{
-    top: 478px;
-    left: 40px;
     width: 164px;
     margin:10px 0;
     text-align: left;
@@ -47,7 +43,7 @@
   }
 
   .selectedcheckBox1{
-    width:38vw;
+    width: 40%;
     height: 72px;
     display: flex !important;
     justify-content: center !important;
@@ -99,7 +95,7 @@
     opacity: 1;
 }
 .selected{
-    width:38vw;
+    width: 40%;
     height: 72px;
     display: flex !important;
     justify-content: center !important;
@@ -109,4 +105,22 @@
     border-radius: 4px;
     opacity: 1;
     margin-bottom: 12px;
+}
+
+@media screen and (min-width:600px) {
+    .formBox{
+        width: 100vw;
+    }
+    .symptomsBox{
+        display: flex !important;
+        justify-content: space-around !important;
+        flex-wrap: wrap !important;
+        margin: 0 auto;
+        width: 80vw;
+    }
+    .Button{
+        width: 60vw !important;
+        margin: 10px auto;
+    }
+ 
 }

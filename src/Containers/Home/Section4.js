@@ -11,7 +11,7 @@ export default function Section4() {
     return (
         <Row className={classes.formBox}>
         <Col style={{marginBottom:'1rem'}}>
-            <h1 style={{fontSize:'18.5px'}} className={classes.superText}>Come forward, <span className={classes.spanText}>Donate/Share Leads</span> </h1>
+            <h1 style={{fontSize:'20px'}} className={classes.superText}>Come forward, <span className={classes.spanText}>Donate/Share Leads</span> </h1>
         </Col>
         <Row className={classes.symptomsBox}>
         <Col style={{backgroundColor:'#2F61F5'}} justify="center" className={classes.selected}>
