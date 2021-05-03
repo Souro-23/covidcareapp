@@ -63,9 +63,25 @@ export default function BulkUpload({ database }) {
           age: doc.age ? doc.age.toString() : "",
         };
       }
+      if (database === "LabTestCenters") {
+        toString = {
+          charges: doc.charges ? doc.charges.toString() : "",
+        };
+      }
+      if (database === "BreathingSessions") {
+        toString = {
+          age: doc.age ? doc.age.toString() : "",
+          timeSlot: doc.timeSlot ? doc.timeSlot.toString() : "",
+        };
+      }
       if (database === "Recipients" || database === "Donors") {
         toString = {
           screeningDate: doc.screeningDate ? doc.screeningDate.toString() : "",
+        };
+      }
+      if (database === "Food" || database === "OxygenCylinders") {
+        toString = {
+          streetNumber: doc.streetNumber ? doc.streetNumber.toString() : "",
         };
       }
 

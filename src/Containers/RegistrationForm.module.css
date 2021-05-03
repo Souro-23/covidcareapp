@@ -2,6 +2,9 @@
 .body {
   background-color: #f7f9ff;
 }
+.body p {
+  font-weight: 600;
+}
 .formTitle {
   padding: 1.5rem 0 0.7rem 0;
 }

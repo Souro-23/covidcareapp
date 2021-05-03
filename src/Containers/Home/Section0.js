@@ -7,7 +7,7 @@ import bannerPlasma from "../../Assets/Svgs/bannerPlasma.svg";
 export default function Section0({ changeRoute, showModal }) {
   return (
     <div justify-content='center' className={classes.actionCardCarousal}>
-      <Carousel dotPosition={"bottom"}>
+      <Carousel dotPosition={"bottom"} autoplay={true}>
         <div className={classes.banner1}>
           <p className={classes.carouselText11}>DONATE</p>
           <p className={classes.carouselText12}>USED O2 CYLINDERS</p>
