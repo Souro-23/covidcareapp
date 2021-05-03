@@ -5,6 +5,7 @@ import help from "../../Assets/Svgs/help.svg";
 import heart from "../../Assets/Svgs/heart.svg";
 import medicine from "../../Assets/Svgs/Image7.png";
 import call from "../../Assets/Svgs/Icon material-call.svg";
+import artOfLiving from '../../Assets/Images/artOfLiving.jpg'
 import Section0 from "./Section0";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
@@ -33,27 +34,21 @@ export default function Home(props) {
         <>
             <Row>
                 <Col sm={24} xs={24}>
-                    {/* <div className={classes.title}>
-                        <h1 >NCRfightsCOVID’19</h1>
-                    </div> 
+                    <div style={{backgroundColor:"white" , display:"flex",justifyContent:"center"}}>
+                    <img src={artOfLiving} width="100px"/>
+                    </div>
                     
-                    icon section
-                    
-                    */}
                 </Col>
             </Row>
-            <br />
             <Row justify='center'>
                 <Col sm={16} xs={24}>
                     <Section0 />
                 </Col>
             </Row>
             <br />
-            <Row >
-                <Col lg={8} md={11} sm={11} xs={20}>
-                    <Section1 />
-                </Col>
-            </Row>
+         
+            <Section1 />
+                
             <br />
             <Row >
                 <Col lg={8} md={11} sm={11} xs={20}>
