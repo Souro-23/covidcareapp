@@ -34,6 +34,13 @@ export const checkAvailability = (docArr) => {
   return sortAvailabilty(newArr);
 };
 
+export const countAvailableDoctors = (docArr) => {
+  var count = 0;
+  docArr.forEach((doc, index) => {
+    if (doc.isAvailable) count = count + 1;
+  });
+  return count;
+};
 const sortAvailabilty = (arr) => {
   var sortedArray = [];
   arr.forEach((a, index) => {

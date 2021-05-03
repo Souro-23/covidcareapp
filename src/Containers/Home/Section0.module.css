@@ -1,40 +1,85 @@
-.actionCardCarousal{
-    background: #F5532F;
-    box-shadow: 0px 2px 20px #AAAAAA29;
-    border-radius: 0px;
-    padding: 35px;
+.actionCardCarousal {
+  background: #f5532f;
+  box-shadow: 0px 2px 20px #aaaaaa29;
+  border-radius: 0px;
+  padding: 30px;
+  height: 243px;
+  border-radius: 2px;
+}
+.actionCardCarousal p {
+  margin-bottom: 0px;
 }
 
-.carouselText1{
-    font: normal normal bold 23px/20px Oswald;
-    letter-spacing:0px;
-    font-size: 53px;
-    margin:15px 0px;
-    color: #FFFFFF;
-
-}
-.carouselText11{
-    font: normal normal bold 23px/20px Oswald;
-    letter-spacing: 0px;
-    font-size: 20px;
-    color: #FFFFFF;
-
-}
-.carouselText2{
-    text-align: left;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    opacity: 1;
-    font-size: 14px;
-    line-height:15px;
-
+/*CLASSES FOR FIRST CAROUSEL*/
+.carouselText11 {
+  font: normal normal bold 53px/20px Oswald;
+  letter-spacing: 0px;
+  margin: 15px 0px;
+  color: #ffffff;
 }
 
-.carouselText3{
-    width: 120px!important;
-    height: 38px!important;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    border: 2px solid #FFFFFF;
-    opacity: 1;
-    border-radius: 4px!important;
+.carouselText12 {
+  font: normal normal bold 20px/20px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+}
+
+.carouselText13 {
+  text-align: left;
+  font: normal normal normal 12px/13px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+  width: 209px;
+  height: 59px;
+  margin-bottom: 5px;
+}
+
+.carouselText14 {
+  width: 130px !important;
+  height: 38px !important;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 2px solid #ffffff;
+  opacity: 1;
+  border-radius: 4px !important;
+  font: normal normal 600 14px/17px Lato !important;
+  letter-spacing: 0px !important;
+  color: #383533 !important;
+  opacity: 1 !important;
+  margin-top: 5px;
+}
+
+/*CLASSES FOR SECOND CAROUSEL*/
+.carouselText21 {
+  font: normal normal bold 53px/20px Oswald;
+  letter-spacing: 0px;
+  margin: 15px 0px;
+  color: #ffffff;
+}
+
+.carouselText22 {
+  font: normal normal bold 20px/20px Oswald;
+  letter-spacing: 3.6px;
+  color: #ffffff;
+}
+
+.carouselText23 {
+  text-align: left;
+  font: normal normal bold 19px/20px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.carouselText24 {
+  width: 130px !important;
+  height: 38px !important;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 2px solid #ffffff;
+  opacity: 1;
+  border-radius: 4px !important;
+  font: normal normal 600 14px/17px Lato !important;
+  letter-spacing: 0px !important;
+  color: #383533 !important;
+  opacity: 1 !important;
+  margin-top: 20px;
 }

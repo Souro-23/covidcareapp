@@ -8,7 +8,12 @@
 }
 
 .section3Card > p:nth-child(1) {
-  font: normal normal bold 35px/34px Oswald;
+  font-family: Oswald;
+  font-weight: bold;
+  font-size: 35px;
+  line-height: 34px;
+  font-style: normal;
+  font-variant: normal;
   letter-spacing: 0px;
   margin-bottom: 0px;
 }
@@ -37,7 +42,7 @@
   background: #ffffff 0% 0% no-repeat padding-box !important;
   border: 2px solid #ffffff !important;
   opacity: 1 !important;
-  font: normal normal 600 14px/17px Lato;
+  font: normal normal 600 14px/17px Lato !important;
   letter-spacing: 0px !important;
   color: #383533 !important;
   opacity: 1 !important;
@@ -83,7 +88,7 @@
     background: #ffffff 0% 0% no-repeat padding-box !important;
     border: 2px solid #ffffff !important;
     opacity: 1 !important;
-    font: normal normal 600 14px/17px Lato;
+    font: normal normal 600 12px/17px Lato !important;
     letter-spacing: 0px !important;
     color: #383533 !important;
     opacity: 1 !important;
