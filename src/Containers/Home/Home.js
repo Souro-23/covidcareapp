@@ -42,29 +42,23 @@ export default function Home(props) {
             </Row>
             <Row justify='center'>
                 <Col sm={16} xs={24}>
-                    <Section0 />
+                    <Section0 showModal={showModal} changeRoute={changeRoute} />
                 </Col>
             </Row>
             <br />
          
-            <Section1 />
+            <Section1 {...props} />
                 
             <br />
-            <Row >
-                <Col lg={8} md={11} sm={11} xs={20}>
-                    <Section2 changeRoute={changeRoute} />
-                </Col>
-            </Row>
+            <Section2 changeRoute={changeRoute} />
+            <br/>
             <Row justify="center" >
                 <Col sm={16} xs={24}>
                     <Section3 />
                 </Col>
             </Row>
-            <Row >
-                <Col lg={8} md={11} sm={11} xs={20}>
-                    <Section4 showModal={showModal} changeRoute={changeRoute} />
-                </Col>
-            </Row>
+            <br/>
+           <Section4 showModal={showModal} changeRoute={changeRoute} />
             <br />
             <Row gutter={[0, 24]} justify="center">
                 <Col lg={5} md={11} sm={11} xs={20}>

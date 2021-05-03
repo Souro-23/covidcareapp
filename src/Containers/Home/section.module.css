@@ -77,7 +77,7 @@
   }
 
   .Button{
-    height: 40px !important;
+    height: 48px !important;
     background: #2F61F5 0% 0% no-repeat padding-box !important;
     border-radius: 4px !important;
     opacity: 1;
@@ -112,7 +112,8 @@
 
 @media screen and (min-width:600px) {
     .formBox{
-        width: 100vw;
+        width: 66vw;
+        margin:auto;
     }
     .symptomsBox{
         display: flex !important;
@@ -120,6 +121,7 @@
         flex-wrap: wrap !important;
         margin: 0 auto;
         width: 80vw;
+        
     }
     .Button{
         width: 60vw !important;
@@ -127,3 +129,4 @@
     }
  
 }
+

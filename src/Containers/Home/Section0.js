@@ -7,11 +7,14 @@ import medicine from '../../Assets/Svgs/Image7.png'
 import call from '../../Assets/Svgs/Icon material-call.svg'
 
 
-export default function Section0(props) {
+export default function Section0({
+    changeRoute,
+    showModal
+}) {
     return (
          <div justify-content="center" className={classes.actionCardCarousal}>
          <Carousel  dotPosition={'bottom'}>
-         <Row justify="center" >
+         <Row justify="center" >  
              <Col lg={5} md={11} sm={11} xs={20}>
                  <h1 className={classes.carouselText1}>
                  DONATE 
@@ -20,9 +23,11 @@ export default function Section0(props) {
                  <p className={classes.carouselText2}>
                  Recovered Indiviuals & Acquaintance of unfortunately deceased individuals who have cylinders with them. Help us in reaching out to them.
                  </p>
-                <Button className={classes.carouselText3}>
+                <Button onClick={()=>changeRoute('/register/donate-o2-cylinders')} className={classes.carouselText3}>
                   Share Contact
                 </Button>
+                <br/><br/>
+                <br/>
              </Col>
              </Row>
              <Row justify="center" >
@@ -34,7 +39,7 @@ export default function Section0(props) {
                      <h2 className={classes.carouselText11}>BLOOD PLASMA</h2>
                      <p className={classes.carouselText2}>
                             INSPIRE OTHERS BECOME A SUPER-HERO  </p>
-                         <Button className={classes.carouselText3}>
+                         <Button onClick={showModal} className={classes.carouselText3}>
                              Donate Plasma
                          </Button>
                    

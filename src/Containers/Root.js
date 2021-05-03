@@ -23,6 +23,7 @@ import Login from "./Admin/Login";
 import { AuthProvider } from "../Contexts/AuthContext";
 import Admin from "./Admin/Admin";
 import LabTestCentersList from "./LabTestCenters/LabTestCentersList";
+import FreeO2CylinderRegistration from "./DonateO2Form/DonateO2form";
 
 export default function Root() {
   return (
@@ -46,6 +47,16 @@ export default function Root() {
           path='/register/Oxygen-cylinders-supply'
           component={OxygenCylinderRegistration}
         />
+        <Route
+          exact
+          path='/register/donate-o2-cylinders'
+          component={FreeO2CylinderRegistration}
+        />
+
+
+
+
+
 
         <Route path='/donor-registered/:docId' component={SubmitPageDonor} />
         <Route
@@ -70,10 +81,17 @@ export default function Root() {
           component={SubmitPageFoodSupply}
         />
 
+
+
+
+
+
+
         <Route exact path='/doctors' component={DoctorsList} />
         <Route exact path='/food' component={FoodList} />
         <Route exact path='/oxygenCylinders' component={OxygenCylinderList} />
         <Route exact path='/labtestcenters' component={LabTestCentersList} />
+        <Route exact path="/freeconsultation"/>
 
         <Route path='/login' component={Login} />
 

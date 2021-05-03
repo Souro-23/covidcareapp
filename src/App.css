@@ -41,3 +41,11 @@ body {
 .ant-select-selection-item{
   margin-top: 3.5px;
 }
+
+
+
+
+.ant-carousel .slick-dots{
+  justify-content: flex-start!important;
+  margin-left: 0px!important;
+}
