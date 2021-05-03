@@ -1,0 +1,101 @@
+.section3Card {
+  background: #f4532f;
+  color: #ffffff;
+  padding: 30px;
+  height: 243px;
+  position: relative;
+  border-radius: 2px;
+}
+
+.section3Card > p:nth-child(1) {
+  font: normal normal bold 35px/34px Oswald;
+  letter-spacing: 0px;
+  margin-bottom: 0px;
+}
+
+.section3Card > p:nth-child(2) {
+  font: normal normal bold 35px/34px Oswald;
+  letter-spacing: 0px;
+  margin-bottom: 15px;
+}
+
+.section3Card > p:nth-child(3) {
+  text-align: left;
+  font: normal normal 900 16px/13px Lato;
+  letter-spacing: 0px;
+  margin-bottom: 5px;
+}
+
+.section3Card > p:nth-child(4) {
+  font: normal normal bold 10px/13px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin-bottom: 25px;
+}
+
+.section3Button {
+  background: #ffffff 0% 0% no-repeat padding-box !important;
+  border: 2px solid #ffffff !important;
+  opacity: 1 !important;
+  font: normal normal 600 14px/17px Lato;
+  letter-spacing: 0px !important;
+  color: #383533 !important;
+  opacity: 1 !important;
+  width: 130px !important;
+  height: 38px !important;
+}
+
+.iconGirl {
+  position: absolute;
+  right: 25px;
+  top: 36%;
+  width: 144px;
+  height: 173px;
+}
+
+@media (max-width: 360px) {
+  .section3Card > p:nth-child(1) {
+    font: normal normal bold 30px/29px Oswald;
+    letter-spacing: 0px;
+    margin-bottom: 0px;
+  }
+
+  .section3Card > p:nth-child(2) {
+    font: normal normal bold 30px/29px Oswald;
+    letter-spacing: 0px;
+    margin-bottom: 15px;
+  }
+  .section3Card > p:nth-child(3) {
+    text-align: left;
+    font: normal normal 900 14px/10px Lato;
+    letter-spacing: 0px;
+    margin-bottom: 5px;
+  }
+
+  .section3Card > p:nth-child(4) {
+    font: normal normal bold 8px/10px Lato;
+    letter-spacing: 0px;
+    color: #ffffff;
+    margin-bottom: 25px;
+  }
+
+  .section3Button {
+    background: #ffffff 0% 0% no-repeat padding-box !important;
+    border: 2px solid #ffffff !important;
+    opacity: 1 !important;
+    font: normal normal 600 14px/17px Lato;
+    letter-spacing: 0px !important;
+    color: #383533 !important;
+    opacity: 1 !important;
+    width: 100px !important;
+    height: 38px !important;
+  }
+
+  .iconGirl {
+    position: absolute;
+    right: 40px;
+    top: 37%;
+    width: 120px;
+    height: 150px;
+  }
+}
