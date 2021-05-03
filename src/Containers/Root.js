@@ -24,6 +24,7 @@ import { AuthProvider } from "../Contexts/AuthContext";
 import Admin from "./Admin/Admin";
 import LabTestCentersList from "./LabTestCenters/LabTestCentersList";
 import FreeO2CylinderRegistration from "./DonateO2Form/DonateO2form";
+import BreathingSessionRegistration from "./BreathingSessionRegistrations/BreathingSessionRegistration";
 
 export default function Root() {
   return (
@@ -51,6 +52,11 @@ export default function Root() {
           exact
           path='/register/donate-o2-cylinders'
           component={FreeO2CylinderRegistration}
+        />
+        <Route
+          exact
+          path='/register/breating-session'
+          component={BreathingSessionRegistration}
         />
 
 

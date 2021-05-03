@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
 import classes from "./section.module.css"
+import homeClasses from "./Home.module.css"
 import fc from "../../Assets/Icons/communication (1).svg"
 import sd from "../../Assets/Icons/stethoscope (1).svg"
 import bs from "../../Assets/Icons/Group 159434.svg"
 import tt from "../../Assets/Icons/Page-1.svg"
 import hc from "../../Assets/Icons/safety-suit (1).svg"
 import vc from "../../Assets/Icons/smartphone.svg"
+import thermometer from "../../Assets/Svgs/thermometer.svg"
+import heartbeat from "../../Assets/Svgs/heartbeat.svg"
+import Group from "../../Assets/Svgs/Group 159507.svg"
+import medical from "../../Assets/Svgs/medical-report.svg"
+import application from "../../Assets/Svgs/application.svg" 
 
 import { Col, Row, Button, Modal } from "antd";
 
@@ -79,41 +85,81 @@ export default function Section1(props) {
             </Row>
             <Modal
                 title={null}
-                className={classes.modal}
+                className={homeClasses.modal}
                 visible={isModalVisible}
                 onOk={handleOk}
                 onCancel={handleCancel}
                 footer={null}
                 closeIcon={<ion-icon name='close-outline'></ion-icon>}>
-                <div className={classes.title1}>
+                <div className={homeClasses.title1}>
                     <p>Eligibility Criteria</p>
                 </div>
-                <br />
-                <div className={classes.content}>
+                <p><b>Dear patient,</b><br />We are happy to help you.</p>
+                <div className={homeClasses.content}>
+                    <ul>
+                        <li>When you opt for teleconsultation, it is imperative you realize its limitations.</li>
+                        <li>The consultation is a medical advise as per the clinical judgement of the doctor.</li>
+                        <li> I am healthy and feeling excited to donate plasma </li>
+                        <li>You are requested to call the doctors in their specified time slots <span style={{ color: "orangered" }}>ONLY</span></li>
+                        <li>After your consultation, if you wish you to consult the same doctor again; it is advisable to join the group at the same time on the next day.</li>
+                        <li>If you need to consult same doctor again on the same day, we cannot ensure a <span style={{ color: "orangered" }}>free</span> consultation with the same doctor. But, free consultation with another doctor can be arranged in the same way.</li>
+                        <li>You are advised to keep your these vitals ready before calling :</li>
+                    </ul>
+                    <div style={{padding:"0 20px",display:"flex", justifyContent:"center"}}>
+                        <Col justify="center" className={classes.iconBox1}>
+                            <label style={{ textAlign: 'center' }} for="fever">
+                                <img src={thermometer} />
+                                <div className={classes.text}>Temperature</div>
+                            </label>
+                        </Col>
+                        <Col justify="center" className={classes.iconBox1}>
+                            <label style={{ textAlign: 'center' }} for="fever">
+                                <img src={Group} />
+                                <div className={classes.text}>O2 Level</div>
+                            </label>
+                        </Col>
+                        <Col justify="center" className={classes.iconBox1}>
+                            <label style={{ textAlign: 'center' }} for="fever">
+                                <img src={heartbeat} />
+                                <div className={classes.text}>Pulse</div>
+                            </label>
+                        </Col>
+                    </div>
                     <ul>
                         <li>
-                            {" "}
-                            I was a{" "}
-                            <span style={{ color: "red" }}>
-                                <b>COVID</b>
-                            </span>{" "}
-              Positive patient
-            </li>
-                        <li> I am now negative after infection </li>
-                        <li> I have been cured for 14 days </li>
-                        <li> I am healthy and feeling excited to donate plasma </li>
-                        <li> I am between 18-60 years of age </li>
+                        You are advised to keep your these reports (if you have) ready before calling
+                        </li>
                     </ul>
+                    <div style={{padding:"0 20px",display:"flex", justifyContent:"center"}}>
+                        <Col justify="center" className={classes.iconBox1}>
+                            <label style={{ textAlign: 'center' }} for="fever">
+                                <img src={medical} />
+                                <div className={classes.text}>Covid Report</div>
+                            </label>
+                        </Col>
+                        <Col justify="center" className={classes.iconBox1}>
+                            <label style={{ textAlign: 'center' }} for="fever">
+                                <img src={sd} />
+                                <div className={classes.text}>CT Scan</div>
+                            </label>
+                        </Col>
+                        <Col justify="center" className={classes.iconBox1}>
+                            <label style={{ textAlign: 'center' }} for="fever">
+                                <img src={application} />
+                                <div className={classes.text}>Other Reports</div>
+                            </label>
+                        </Col>
+                    </div>
+                   
                 </div>
-                <br />
-                <br />
+                <br/>
                 <Button
                     onClick={() => changeRoute("freeconsultation")}
                     block
-                    className={classes.actionButton}>
+                    className={homeClasses.actionButton}>
                     Yes, I am eligible
         </Button>
-                <Button onClick={handleCancel} block className={classes.actionButton2}>
+                <Button onClick={handleCancel} block className={homeClasses.actionButton2}>
                     I am not eligible
         </Button>
             </Modal>
