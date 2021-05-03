@@ -55,8 +55,20 @@ export default function BulkUpload({ database }) {
         toString = {
           MCINumber: doc.MCINumber ? doc.MCINumber.toString() : "",
           whatsappNo: doc.whatsappNo ? doc.whatsappNo.toString() : "",
+          consultTime: doc.consultTime ? doc.consultTime.toString() : "",
         };
       }
+      if (database === "Patients") {
+        toString = {
+          age: doc.age ? doc.age.toString() : "",
+        };
+      }
+      if (database === "Recipients" || database === "Donors") {
+        toString = {
+          screeningDate: doc.screeningDate ? doc.screeningDate.toString() : "",
+        };
+      }
+
       db.collection(database)
         .add({
           ...doc,
