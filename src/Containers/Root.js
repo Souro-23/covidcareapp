@@ -19,6 +19,13 @@ import FoodRegistration from "./FoodRegistration/FoodRegistration";
 import OxygenCylinderRegistration from "./OxygenCylinderRegistration/OxygenCylinderRegistration";
 import SubmitPageFoodSupply from "../Components/SubmitPage/SubmitPageFoodSupply";
 import SubmitPageOxygen from "../Components/SubmitPage/SubmitPageOxygen";
+import SubmitPageDonateO2 from "../Components/SubmitPage/SubmitPageDonateO2";
+import SubmitPageBreathingSession from "../Components/SubmitPage/SubmitPageBreathingSession";
+
+
+
+
+
 import Login from "./Admin/Login";
 import { AuthProvider } from "../Contexts/AuthContext";
 import Admin from "./Admin/Admin";
@@ -83,6 +90,16 @@ export default function Root() {
           path='/food-supply-registered/:docId'
           component={SubmitPageFoodSupply}
         />
+        <Route
+          path='/Donate-o2Cylinder-registered/:docId'
+          component={SubmitPageDonateO2}
+        />
+        <Route
+          path='/breathing-session-registered/:docId'
+          component={SubmitPageBreathingSession}
+        />
+
+        
 
         <Route exact path='/doctors' component={DoctorsList} />
         <Route exact path='/food' component={FoodList} />
