@@ -14,7 +14,8 @@ export default function BreathingSessionRegistration(props) {
     const [name, setName] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
     const [age, setAge] = useState("");
-    const [result, setResult] = useState(false);
+    const [stressed, setStressed] = useState("");
+    const [timeSlot, setTimeSlot] = useState("")
     const [loading, setLoading] = useState(false)
 
     const [have, setHave] = useState(false)
@@ -27,28 +28,36 @@ export default function BreathingSessionRegistration(props) {
         else if (type === "age") {
             setAge(e.target.value)
         }
-        else if (type === "result") {
-            setResult(e.target.value)
+        else if (type === "stressed") {
+            setStressed(e.target.value)
+        }
+        else if (type === "timeSlot") {
+            setTimeSlot(e.target.value)
         }
     };
     const submitHandler = () => {
         if (name === "") return message.error("Name Required");
         if (mobileNumber === "") return message.error("Mobile Number Required");
+        if(stressed==="") return message.error("Fill All The Details")
+        if(timeSlot==="") return message.error("Time Slot Required")
         setLoading(true)
 
-        db.collection("Patients")
+        db.collection("BreathingSessions")
             .add({
                 name: name,
                 phone: mobileNumber,
                 age: age,
+                timeSlot:timeSlot,
+                stressed:stressed,
                 timestamp: new Date()
             })
             .then((docRef) => {
                 setLoading(false)
-                props.history.push('/patient-registered/'+docRef.id)
+                props.history.push('/breathing-session-registered/'+docRef.id)
             })
             .catch((error) => {
                 setLoading(false)
+                console.log(error)
                 message.error("Something went wrong")
             });
     };
@@ -101,14 +110,14 @@ export default function BreathingSessionRegistration(props) {
                                 <Radio.Group
                                     size="large"
                                     buttonStyle="solid"
-                                    onChange={(e) => onChangeHandler(e, "result")}
+                                    onChange={(e) => onChangeHandler(e, "stressed")}
                                     className={classes.patientGroup}
                                 >
-                                    <Radio.Button onClick={() => setHave(false)} className={classes.radioButton1} value='yes'>
+                                    <Radio.Button onClick={() => setHave(false)} className={classes.radioButton1} value='no'>
                                         <p style={{ width: "250px" }}>I am feeling fine</p>
                                     </Radio.Button>
                                     <br /><br />
-                                    <Radio.Button onClick={() => setHave(true)} className={classes.radioButton1} style={{ marginTop: "10px", width: "100%" }} value='no'>
+                                    <Radio.Button onClick={() => setHave(true)} className={classes.radioButton1} style={{ marginTop: "10px", width: "100%" }} value='yes'>
                                         I feel stressed
                             </Radio.Button>
                                 </Radio.Group>
@@ -121,31 +130,31 @@ export default function BreathingSessionRegistration(props) {
                             <Radio.Group
                                 size="large"
                                 buttonStyle="solid"
-                                onChange={(e) => onChangeHandler(e, "timeSlots")}
+                                onChange={(e) => onChangeHandler(e, "timeSlot")}
                                 style={{width:"100%"}}
                             >
 
                                 <div style={{display:"flex", width:"100%"}}>
-                                    <Radio.Button style={{ width: "50%" }} onClick={() => setHave(false)} className={classes.radioButton} value='7:00 - 7:30 am'>
+                                    <Radio.Button style={{ width: "50%" }} onClick={() => setHave(false)} className={classes.radioButton} value='0700-0730'>
                                         <small>7:00 - 7:30 am</small>
                                     </Radio.Button>
-                                    <Radio.Button style={{ width: "50%" }} onClick={() => setHave(true)} className={classes.radioButton} value='10:00 - 10:30 am'>
+                                    <Radio.Button style={{ width: "50%" }} onClick={() => setHave(true)} className={classes.radioButton} value='1000-1030'>
                                         <small>10:00 - 10:30 am</small>
                                     </Radio.Button>
                                 </div>
                                 <div style={{display:"flex", width:"100%", marginTop:"10px"}}>
-                                <Radio.Button style={{ width: "50%" }} onClick={() => setHave(false)} className={classes.radioButton} value='4:00 - 4:30 pm'>
+                                <Radio.Button style={{ width: "50%" }} onClick={() => setHave(false)} className={classes.radioButton} value='1600-1630'>
                                     <small>4:00 - 4:30 pm</small>
                                 </Radio.Button>
-                                 <Radio.Button style={{width:"50%"}}  onClick={() => setHave(true)} className={classes.radioButton} value='7:00 - 7:30 pm'>
+                                 <Radio.Button style={{width:"50%"}}  onClick={() => setHave(true)} className={classes.radioButton} value='1900-1930'>
                                 <small>7:00 - 7:30 pm</small>
                             </Radio.Button>
                                 </div>
                                 <div style={{display:"flex", width:"100%", marginTop:"10px"}}>
-                                <Radio.Button style={{width:"50%"}}  onClick={() => setHave(false)} className={classes.radioButton}  value='9:00 - 9:30 pm'>
+                                <Radio.Button style={{width:"50%"}}  onClick={() => setHave(false)} className={classes.radioButton}  value='2100-2130'>
                                 <small>9:00 - 9:30 pm</small>
                             </Radio.Button>
-                                <Radio.Button style={{width:"50%"}}  onClick={() => setHave(true)} className={classes.radioButton} value='11:00 - 11:30 pm'>
+                                <Radio.Button style={{width:"50%"}}  onClick={() => setHave(true)} className={classes.radioButton} value='2300-2330'>
                                 <small>11:00 - 11:30 pm</small>
                             </Radio.Button>
                                 </div>

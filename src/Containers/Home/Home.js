@@ -54,7 +54,7 @@ export default function Home(props) {
             <br/>
             <Row justify="center" >
                 <Col sm={16} xs={24}>
-                    <Section3 />
+                    <Section3 changeRoute={changeRoute}/>
                 </Col>
             </Row>
             <br/>

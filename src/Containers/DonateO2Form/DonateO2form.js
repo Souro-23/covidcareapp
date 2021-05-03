@@ -40,7 +40,7 @@ export default function FreeO2CylinderRegistration(props) {
     if (location === "") return message.error("District Required");
     
     setLoading(true);
-    db.collection("FreeO2Cylinders")
+    db.collection("OxygenCylinderContacts")
       .add({
         name: name,
         phone: mobileNumber,
@@ -49,7 +49,7 @@ export default function FreeO2CylinderRegistration(props) {
       })
       .then((docRef) => {
         setLoading(false);
-        props.history.push("/free-o2-Cylinder-registered/" + docRef.id);
+        props.history.push("/Donate-o2Cylinder-registered/" + docRef.id);
       })
       .catch((error) => {
         setLoading(false);
