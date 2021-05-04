@@ -63,7 +63,7 @@ export default function PlasmaRecipientForm(props) {
             <Col lg={8} sm={16} xs={23}>
                 <div className={classes.body}>
                     <FormHeader title="Register As A Patient" onBackPress={() => props.history.push('/')} />
-                    <h2><b>Basic Details</b></h2>
+                    
                     <Row className={classes.formBox}>
                         <div style={{ width: "100vw" }}>
                             <div className={classes.formField}>
