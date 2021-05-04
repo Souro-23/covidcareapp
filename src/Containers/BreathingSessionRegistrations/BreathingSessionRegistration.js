@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row, Input, Radio, Button, message } from "antd";
 import classes from "../RegistrationForm.module.css";
 import FormHeader from "../../Components/FormHeader/FormHeader";
@@ -7,6 +7,10 @@ import firebase from "../../Firebase/FirebaseConfig";
 var db = firebase.firestore();
 
 export default function BreathingSessionRegistration(props) {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [name, setName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [age, setAge] = useState("");
@@ -25,7 +29,7 @@ export default function BreathingSessionRegistration(props) {
       setStressed(e.target.value);
     } else if (type === "timeSlot") {
       setTimeSlot(e.target.value);
-    }
+    }  
   };
   const submitHandler = () => {
     if (name === "") return message.error("Name Required");

@@ -37,7 +37,7 @@ export default function SaturationList(props) {
       <Row justify='center'>
         <Col lg={8} sm={16} xs={23}>
           <FormHeader
-            title='List of Available Doctors'
+            title='Select Saturation Level'
             onBackPress={() => props.history.push("/")}
           />
         </Col>

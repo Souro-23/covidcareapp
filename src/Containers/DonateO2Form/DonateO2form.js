@@ -53,6 +53,7 @@ export default function FreeO2CylinderRegistration(props) {
       })
       .catch((error) => {
         setLoading(false);
+        console.log(error)
         message.error("Something went wrong");
       });
   };
