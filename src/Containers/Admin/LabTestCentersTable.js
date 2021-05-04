@@ -303,6 +303,7 @@ export class LabTestCentersTable extends Component {
           pagination
           dataSource={dataSource}
           columns={columns}
+          locale={{ emptyText: "Not Authorized" }}
         />
         <br />
         <BulkUpload database='LabTestCenters' />

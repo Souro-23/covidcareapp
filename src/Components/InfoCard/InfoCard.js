@@ -79,7 +79,7 @@ export default function InfoCard({
           </div>
           {(type === "food" || type === "ocl") && verified === "yes" ? (
             <Tag
-              color='rgb(88,228,88)'
+              color='red-inverse'
               style={{
                 marginBottom: "10px",
                 borderRadius: "10px",

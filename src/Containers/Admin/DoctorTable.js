@@ -229,24 +229,26 @@ export default class DoctorTable extends React.Component {
   handleSave = (row) => {
     if (row.newItem) {
       db.collection("Doctors").add({
-        name: row.name?row.name:"",
-        MCINumber: row.MCINumber?row.MCINumber:"",
-        specialization: row.specialization?row.specialization:"",
-        phone: row.phone?row.phone:"",
-        whatsappNo: row.whatsappNo?row.whatsappNo:"",
-        consultTime: row.consultTime?row.consultTime:"",
+        name: row.name ? row.name : "",
+        MCINumber: row.MCINumber ? row.MCINumber : "",
+        specialization: row.specialization ? row.specialization : "",
+        phone: row.phone ? row.phone : "",
+        whatsappNo: row.whatsappNo ? row.whatsappNo : "",
+        consultTime: row.consultTime ? row.consultTime : "",
         timestamp: new Date(),
       });
     } else {
-      db.collection("Doctors").doc(row.key).set({
-        name: row.name?row.name:"",
-        MCINumber: row.MCINumber?row.MCINumber:"",
-        specialization: row.specialization?row.specialization:"",
-        phone: row.phone?row.phone:"",
-        whatsappNo: row.whatsappNo?row.whatsappNo:"",
-        consultTime: row.consultTime?row.consultTime:"",
-        timestamp: new Date(),
-      });
+      db.collection("Doctors")
+        .doc(row.key)
+        .set({
+          name: row.name ? row.name : "",
+          MCINumber: row.MCINumber ? row.MCINumber : "",
+          specialization: row.specialization ? row.specialization : "",
+          phone: row.phone ? row.phone : "",
+          whatsappNo: row.whatsappNo ? row.whatsappNo : "",
+          consultTime: row.consultTime ? row.consultTime : "",
+          timestamp: new Date(),
+        });
     }
     const newData = [...this.state.dataSource];
     const index = newData.findIndex((item) => row.key === item.key);
@@ -298,6 +300,7 @@ export default class DoctorTable extends React.Component {
           pagination
           dataSource={dataSource}
           columns={columns}
+          locale={{ emptyText: "Not Authorized" }}
         />
         <br />
         <BulkUpload database='Doctors' />

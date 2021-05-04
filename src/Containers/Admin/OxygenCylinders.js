@@ -235,22 +235,24 @@ export class OxygenCylinders extends Component {
   handleSave = (row) => {
     if (row.newItem) {
       db.collection("OxygenCylinders").add({
-        name: row.name?row.name:"",
-        location: row.location?row.location:"",
-        streetNumber: row.streetNumber?row.streetNumber:"",
-        phone: row.phone?row.phone:"",
-        verified: row.verified?row.verified:"",
+        name: row.name ? row.name : "",
+        location: row.location ? row.location : "",
+        streetNumber: row.streetNumber ? row.streetNumber : "",
+        phone: row.phone ? row.phone : "",
+        verified: row.verified ? row.verified : "",
         timestamp: new Date(),
       });
     } else {
-      db.collection("OxygenCylinders").doc(row.key).set({
-        name: row.name?row.name:"",
-        location: row.location?row.location:"",
-        streetNumber: row.streetNumber?row.streetNumber:"",
-        phone: row.phone?row.phone:"",
-        verified: row.verified?row.verified:"",
-        timestamp: new Date(),
-      });
+      db.collection("OxygenCylinders")
+        .doc(row.key)
+        .set({
+          name: row.name ? row.name : "",
+          location: row.location ? row.location : "",
+          streetNumber: row.streetNumber ? row.streetNumber : "",
+          phone: row.phone ? row.phone : "",
+          verified: row.verified ? row.verified : "",
+          timestamp: new Date(),
+        });
     }
     const newData = [...this.state.dataSource];
     const index = newData.findIndex((item) => row.key === item.key);
@@ -301,6 +303,7 @@ export class OxygenCylinders extends Component {
           pagination
           dataSource={dataSource}
           columns={columns}
+          locale={{ emptyText: "Not Authorized" }}
         />
         <br />
         <BulkUpload database='OxygenCylinders' />

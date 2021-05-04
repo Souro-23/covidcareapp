@@ -231,24 +231,26 @@ export default class DonorsTable extends React.Component {
   handleSave = (row) => {
     if (row.newItem) {
       db.collection("Donors").add({
-        name: row.name?row.name:"",
-        phone: row.phone?row.phone:"",
-        bloodGroup: row.bloodGroup?row.bloodGroup:"",
-        screeningDate: row.screeningDate?row.screeningDate:"",
-        gender: row.gender?row.gender:"",
-        location: row.location?row.location:"",
+        name: row.name ? row.name : "",
+        phone: row.phone ? row.phone : "",
+        bloodGroup: row.bloodGroup ? row.bloodGroup : "",
+        screeningDate: row.screeningDate ? row.screeningDate : "",
+        gender: row.gender ? row.gender : "",
+        location: row.location ? row.location : "",
         timestamp: new Date(),
       });
     } else {
-      db.collection("Donors").doc(row.key).set({
-        name: row.name?row.name:"",
-        phone: row.phone?row.phone:"",
-        bloodGroup: row.bloodGroup?row.bloodGroup:"",
-        screeningDate: row.screeningDate?row.screeningDate:"",
-        gender: row.gender?row.gender:"",
-        location: row.location?row.location:"",
-        timestamp: new Date(),
-      });
+      db.collection("Donors")
+        .doc(row.key)
+        .set({
+          name: row.name ? row.name : "",
+          phone: row.phone ? row.phone : "",
+          bloodGroup: row.bloodGroup ? row.bloodGroup : "",
+          screeningDate: row.screeningDate ? row.screeningDate : "",
+          gender: row.gender ? row.gender : "",
+          location: row.location ? row.location : "",
+          timestamp: new Date(),
+        });
     }
     const newData = [...this.state.dataSource];
     const index = newData.findIndex((item) => row.key === item.key);
@@ -300,6 +302,7 @@ export default class DonorsTable extends React.Component {
           pagination
           dataSource={dataSource}
           columns={columns}
+          locale={{ emptyText: "Not Authorized" }}
         />
         <br />
         <BulkUpload database='Donors' />

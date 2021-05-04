@@ -58,7 +58,8 @@ export class BreathingSessions extends Component {
           },
         ],
         filterMultiple: false,
-        onFilter: (value, record) => record.testedPositive?.indexOf(value) === 0,
+        onFilter: (value, record) =>
+          record.testedPositive?.indexOf(value) === 0,
       },
       {
         title: "operation",
@@ -221,8 +222,8 @@ export class BreathingSessions extends Component {
       name: "Enter Name Here",
       phone: "",
       age: "",
-      stressed:"",
-      timeSlot:"",
+      stressed: "",
+      timeSlot: "",
       newItem: true,
     };
     this.setState({
@@ -233,22 +234,24 @@ export class BreathingSessions extends Component {
   handleSave = (row) => {
     if (row.newItem) {
       db.collection("BreathingSessions").add({
-        name: row.name?row.name:"",
-        phone: row.phone?row.phone:"",
-        age: row.age?row.age:"",
-        stressed: row.stressed?row.stressed:"",
-        timeSlot: row.timeSlot?row.timeSlot:"",
+        name: row.name ? row.name : "",
+        phone: row.phone ? row.phone : "",
+        age: row.age ? row.age : "",
+        stressed: row.stressed ? row.stressed : "",
+        timeSlot: row.timeSlot ? row.timeSlot : "",
         timestamp: new Date(),
       });
     } else {
-      db.collection("BreathingSessions").doc(row.key).set({
-        name: row.name?row.name:"",
-        phone: row.phone?row.phone:"",
-        age: row.age?row.age:"",
-        tressed: row.stressed?row.stressed:"",
-        timeSlot: row.timeSlot?row.timeSlot:"",
-        timestamp: new Date(),
-      });
+      db.collection("BreathingSessions")
+        .doc(row.key)
+        .set({
+          name: row.name ? row.name : "",
+          phone: row.phone ? row.phone : "",
+          age: row.age ? row.age : "",
+          tressed: row.stressed ? row.stressed : "",
+          timeSlot: row.timeSlot ? row.timeSlot : "",
+          timestamp: new Date(),
+        });
     }
     const newData = [...this.state.dataSource];
     const index = newData.findIndex((item) => row.key === item.key);
@@ -300,6 +303,7 @@ export class BreathingSessions extends Component {
           pagination
           dataSource={dataSource}
           columns={columns}
+          locale={{ emptyText: "Not Authorized" }}
         />
         <br />
         <BulkUpload database='BreathingSessions' />
@@ -311,4 +315,3 @@ export class BreathingSessions extends Component {
 }
 
 export default BreathingSessions;
-
