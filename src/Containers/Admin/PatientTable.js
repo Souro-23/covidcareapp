@@ -65,7 +65,7 @@ export class PatientTable extends Component {
             id: doc.id,
             name: doc.data().name,
             phone: doc.data().phone,
-            saturationLevel:doc.data().saturationLevel,
+            saturationLevel: doc.data().saturationLevel,
             key: doc.id,
           });
         });
@@ -196,7 +196,7 @@ export class PatientTable extends Component {
       key: count,
       name: "Enter Name Here",
       phone: "",
-      saturationLevel:"",
+      saturationLevel: "",
       newItem: true,
     };
     this.setState({
@@ -207,18 +207,20 @@ export class PatientTable extends Component {
   handleSave = (row) => {
     if (row.newItem) {
       db.collection("Patients").add({
-        name: row.name?row.name:"",
-        phone: row.phone?row.phone:"",
-        saturationLevel: row.saturationLevel?row.saturationLevel:"",
+        name: row.name ? row.name : "",
+        phone: row.phone ? row.phone : "",
+        saturationLevel: row.saturationLevel ? row.saturationLevel : "",
         timestamp: new Date(),
       });
     } else {
-      db.collection("Patients").doc(row.key).set({
-        name: row.name?row.name:"",
-        phone: row.phone?row.phone:"",
-        saturationLevel: row.saturationLevel?row.saturationLevel:"",
-        timestamp: new Date(),
-      });
+      db.collection("Patients")
+        .doc(row.key)
+        .set({
+          name: row.name ? row.name : "",
+          phone: row.phone ? row.phone : "",
+          saturationLevel: row.saturationLevel ? row.saturationLevel : "",
+          timestamp: new Date(),
+        });
     }
     const newData = [...this.state.dataSource];
     const index = newData.findIndex((item) => row.key === item.key);
@@ -270,6 +272,7 @@ export class PatientTable extends Component {
           pagination
           dataSource={dataSource}
           columns={columns}
+          locale={{ emptyText: "Not Authorized" }}
         />
         <br />
         <BulkUpload database='Patients' />
