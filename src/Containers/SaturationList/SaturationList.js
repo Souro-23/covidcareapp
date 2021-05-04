@@ -17,7 +17,13 @@ var db = firebase.firestore();
 
 export default function SaturationList(props) {
   const [availableDoctors, setAvailableDoctors] = useState(0);
+  const [whatsappGroup, setWhatsappGroup] = useState([]);
   useEffect(() => {
+    getDoctorsCount();
+    getWhatsAppInfo();
+  }, []);
+
+  const getDoctorsCount = () => {
     var docArr = [];
     db.collection("Doctors")
       .get()
@@ -30,7 +36,22 @@ export default function SaturationList(props) {
       .catch((error) => {
         console.log("Error getting documents: ", error);
       });
-  }, []);
+  };
+
+  const getWhatsAppInfo = () => {
+    var whatsappArr = [];
+    db.collection("WhatsAppGroupLinks")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          whatsappArr.push(doc.data());
+        });
+        setWhatsappGroup(whatsappArr);
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  };
 
   return (
     <div className={classes.body}>
@@ -48,54 +69,31 @@ export default function SaturationList(props) {
         </div>
       </Row>
       <Row justify='center' gutter={[8, 8]}>
-        <Col key={1} lg={7} md={8} sm={15} xs={24}>
-          <div className={classes.saturationCard}>
-            <p>{"85 < Saturation Level < 94"}</p>
-            <a
-              target='blank'
-              href='https://chat.whatsapp.com/DJQU2dXhUBm6tNUsfGXNyV'>
-              <Button
-                className={classes.saturationButton}
-                icon={
-                  <img
-                    src={WhatsApp}
-                    style={{
-                      height: "20px",
-                      width: "20px",
-                      paddingRight: "2px",
-                    }}
-                    alt='WhatsApp Logo'
-                  />
-                }>
-                Join Group
-              </Button>
-            </a>
-          </div>
-        </Col>
-        <Col key={2} lg={7} md={8} sm={15} xs={24}>
-          <div className={classes.saturationCard}>
-            <p>{"Saturation Level > 94"}</p>
-            <a
-              target='blank'
-              href='https://chat.whatsapp.com/I0O5lv4rZZhLlNBO3KA2I0'>
-              <Button
-                className={classes.saturationButton}
-                icon={
-                  <img
-                    src={WhatsApp}
-                    style={{
-                      height: "20px",
-                      width: "20px",
-                      paddingRight: "2px",
-                    }}
-                    alt='WhatsApp Logo'
-                  />
-                }>
-                Join Group
-              </Button>
-            </a>
-          </div>
-        </Col>
+        {whatsappGroup.map((wts, index) => (
+          <Col key={index} lg={7} md={8} sm={15} xs={24}>
+            <div className={classes.saturationCard}>
+              <p>{wts.name}</p>
+              <a target='blank' href={wts.link}>
+                <Button
+                  className={classes.saturationButton}
+                  icon={
+                    <img
+                      src={WhatsApp}
+                      style={{
+                        height: "20px",
+                        width: "20px",
+                        paddingRight: "2px",
+                      }}
+                      alt='WhatsApp Logo'
+                    />
+                  }>
+                  Join Group
+                </Button>
+              </a>
+            </div>
+          </Col>
+        ))}
+
         {!availableDoctors === 0 && <Spin indicator={antIcon} />}
       </Row>
     </div>
