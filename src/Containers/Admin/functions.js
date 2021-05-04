@@ -63,6 +63,13 @@ export const getDatabaseVariables = (database) => {
       ];
     case "LabTestCenters":
       return ["name", "phone", "homeTest", "charges", "location"];
+    case "OxygenCylinderContacts":
+      return ["name", "phone", "location"];
+    case "BreathingSessions":
+      return ["name", "phone", "location", "age", "stressed", "timeSlot"];
+
+
+
     default:
       break;
   }

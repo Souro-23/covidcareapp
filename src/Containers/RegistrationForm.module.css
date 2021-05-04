@@ -1,217 +1,202 @@
 /* Donor */
-.body{
-    background-color: #F7F9FF;
-  }
-  .formTitle{
-    padding: 1.5rem 0 0.7rem 0;
-  }
-  .formTitle h1{
-    font-size: 18px;
-    font-family: 'Lato', sans-serif;
-    text-align: left;
-  }
-
-
-
-
-
-
+.body {
+  background-color: #f7f9ff;
+}
+.body p {
+  font-weight: 600;
+}
+.formTitle {
+  padding: 1.5rem 0 0.7rem 0;
+}
+.formTitle h1 {
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  text-align: left;
+}
 
 /*   Before */
-.headerBox{
-    padding: 2rem;
+.headerBox {
+  padding: 2rem;
 }
 
-.header{
-    top: 101px;
-    left: 38px;
-    width: 159px;
-    height: 22px;
-    text-align: left;
-    font: normal normal normal 18px/22px Lato;
-    letter-spacing: 0px;
-    color: #2F2F2F;
-    opacity: 1;
+.header {
+  top: 101px;
+  left: 38px;
+  width: 159px;
+  height: 22px;
+  text-align: left;
+  font: normal normal normal 18px/22px Lato;
+  letter-spacing: 0px;
+  color: #2f2f2f;
+  opacity: 1;
 }
 
-.formBox{
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 12px #A8A8A829;
-    border-radius: 7px;
-    opacity: 1;
-    padding: 1.5rem;
-
+.formBox {
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 12px #a8a8a829;
+  border-radius: 7px;
+  opacity: 1;
+  padding: 1.5rem;
 }
 
-.formField{
-    height: auto;
-    opacity: 1;
-    margin: 2rem 0;
+.formField {
+  height: auto;
+  opacity: 1;
+  margin: 2rem 0;
 }
-.formField:first-child{
-    margin: 0;
+.formField:first-child {
+  margin: 0;
 }
-.title{
-    height: 11px;
-    text-align: left;
-    font: normal normal normal 9px/11px Lato;
-    letter-spacing: 0px;
-    color: #000000;
-    text-transform: uppercase;
-    opacity: 1;
+.title {
+  height: 11px;
+  text-align: left;
+  font: normal normal normal 9px/11px Lato!important;
+  letter-spacing: 0px;
+  color: #000000;
+  text-transform: uppercase;
+  opacity: 1;
 }
-.inputField{
-    /* top: .5rem; */
-    width: 100%;
-    height: 40px;
-    opacity: 1;
+.inputField {
+  /* top: .5rem; */
+  width: 100%;
+  height: 40px;
+  opacity: 1;
 }
 .inputField:active {
-    border: 1px solid #2F61F5;
+  border: 1px solid #2f61f5;
 }
 
-
-.radioButton{ 
-    border-radius: 5px !important;
-    opacity: 1;
-    margin-right: 10px!important;
+.radioButton {
+  border-radius: 5px !important;
+  opacity: 1;
+  margin-right: 10px !important;
 }
 
-
-.radioButton1{ 
+.radioButton1 {
   width: 100% !important;
   font-size: 14px !important;
 }
 
-.Button{
-    height: 40px !important;
-    background: #2F61F5 0% 0% no-repeat padding-box !important;
-    border-radius: 4px !important;
-    opacity: 1;
-    color: white !important;
+.Button {
+  height: 40px !important;
+  background: #2f61f5 0% 0% no-repeat padding-box !important;
+  border-radius: 4px !important;
+  opacity: 1;
+  color: white !important;
+  text-align: center;
+}
+
+@media only screen and (min-width: 900px) {
+  .headerBox {
+    padding: 2rem;
     text-align: center;
+  }
 }
-
-@media only screen and (min-width: 900px){
-    .headerBox{
-        padding: 2rem;
-        text-align: center;
-    }
-}
-
-
 
 /* after */
 .bloodGroupContainer p {
-    font-size: 16px;
-    font-family: "Lato", sans-serif;
-  }
-  .bloodGroups {
-    display: flex;
-  }
-  .bloodGroup {
-    height: 3rem;
-    width: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fafafa;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid grey;
-    cursor: pointer;
-  }
-  .bloodGroup p {
-    margin-bottom: 0;
-    font-size: 16px;
-    font-weight: 500;
-  }
-  
-  .selected {
-    background: blue;
-    background: #2f61f5;
-    color: white;
-  }
-  
-  .covidPositive {
-    margin-right: 1rem;
-    border-radius: 3px !important;
-  }
-  .checkbox {
-    margin-top: 1.5rem;
-  }
+  font-size: 16px;
+  font-family: "Lato", sans-serif;
+}
+.bloodGroups {
+  display: flex;
+}
+.bloodGroup {
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fafafa;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+.bloodGroup p {
+  margin-bottom: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
 
+.selected {
+  background: blue;
+  background: #2f61f5;
+  color: white;
+}
 
+.covidPositive {
+  margin-right: 1rem;
+  border-radius: 3px !important;
+}
+.checkbox {
+  margin-top: 1.5rem;
+}
 
-  /* ConsultantRegistration */
+/* ConsultantRegistration */
 
-  .timeSlot{
-    margin: 2px .5px;
-    padding: .4rem 0;
-  }
+.timeSlot {
+  margin: 2px 0.5px;
+  padding: 0.4rem 0;
+}
 
-  .selectedtimeSlot{
-    margin: 2px .5px;
-    padding: .4rem 0;
-    border: 1px solid #2F61F5 !important;
-  }
+.selectedtimeSlot {
+  margin: 2px 0.5px;
+  padding: 0.4rem 0;
+  border: 1px solid #2f61f5 !important;
+}
 
-  /* PatientRegistration */
+/* PatientRegistration */
 
-.radioGroup{
+.radioGroup {
   width: 100% !important;
   display: flex !important;
   /* justify-content: space-between !important; */
 }
 
-.patientGroup{
+.patientGroup {
   display: block;
   width: 100%;
 }
 
-.symptomsBox{
+.symptomsBox {
   display: flex !important;
   justify-content: space-around !important;
   flex-wrap: wrap !important;
 }
 
-.checkBox1{
+.checkBox1 {
   width: 20vw;
   height: 72px;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  background: #F8F8F8 0% 0% no-repeat padding-box;
-  border: 1px solid #C9C9C9;
+  background: #f8f8f8 0% 0% no-repeat padding-box;
+  border: 1px solid #c9c9c9;
   border-radius: 4px;
   opacity: 1;
   margin: 3px 0;
 }
-.selectedcheckBox1{
+.selectedcheckBox1 {
   width: 20vw;
   height: 72px;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  background: #F8F8F8 0% 0% no-repeat padding-box;
-  border: 1px solid #2F61F5;
+  background: #f8f8f8 0% 0% no-repeat padding-box;
+  border: 1px solid #2f61f5;
   border-radius: 4px;
   opacity: 1;
   margin: 3px 0;
-
 }
 
-.text{
+.text {
   font: normal normal normal 14px/17px Lato;
   letter-spacing: 0px;
   font-size: smaller;
   color: #000000;
 }
-
-
-
-
 
 .select {
   padding: 5px 20px !important;
@@ -221,16 +206,51 @@
   margin-bottom: 15px;
 }
 
-
-
-
 /* food registration */
 
-.FoodradioGroup{
+.FoodradioGroup {
   width: 100% !important;
   display: flex !important;
 }
-.FoodradioButton{
+.FoodradioButton {
   border-radius: 5px !important;
   margin: 1px 1.5rem 1px 0 !important;
+}
+
+.availableHeader {
+  padding: 10px !important;
+  background: #009f2b !important;
+  color: white !important;
+  text-align: center !important;
+  width: 100%;
+}
+
+.saturationCard {
+  background: #ffffff 0% 0% no-repeat;
+  box-shadow: 0px 3px 12px #a8a8a829;
+  border-radius: 7px;
+  opacity: 1;
+  padding: 40px;
+}
+
+.saturationCard p {
+  text-align: left;
+  font: normal normal normal 14px/17px Lato;
+  letter-spacing: 0px;
+  color: #000000;
+  font-weight: 600px;
+  text-transform: capitalize;
+  opacity: 1;
+}
+
+.saturationButton {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid #2f61f5 !important;
+  color: #2f61f5 !important;
+  height: 40px !important;
+  line-height: 20px !important;
+  border-radius: 3px !important;
 }

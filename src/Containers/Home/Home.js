@@ -1,201 +1,153 @@
-import { Button, Col, Row, Modal } from 'antd'
-import React, { useState } from 'react'
-import classes from './Home.module.css'
+import { Button, Col, Row, Modal } from "antd";
+import React, { useState } from "react";
+import classes from "./Home.module.css";
 import help from "../../Assets/Svgs/help.svg";
-import heart from '../../Assets/Svgs/heart.svg'
-import medicine from '../../Assets/Svgs/Image7.png'
-import call from '../../Assets/Svgs/Icon material-call.svg'
-import Section0 from  './Section0'
-import Section1 from  './Section1' 
-import Section2 from  './Section2' 
-import Section3 from  './Section3' 
-import Section4 from  './Section4'
-
+import heart from "../../Assets/Svgs/heart.svg";
+import medicine from "../../Assets/Svgs/Image7.png";
+import call from "../../Assets/Svgs/Icon material-call.svg";
+import artOfLiving from "../../Assets/Images/artOfLiving.jpg";
+import Section0 from "./Section0";
+import Section1 from "./Section1";
+import Section2 from "./Section2";
+import Section3 from "./Section3";
+import Section4 from "./Section4";
 
 export default function Home(props) {
-    const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    console.log("hello");
+    setIsModalVisible(true);
+  };
 
-    const showModal = () => {
-        setIsModalVisible(true);
-    };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
 
-    const handleOk = () => {
-        setIsModalVisible(false);
-    };
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
+  const changeRoute = (route) => {
+    props.history.push(route);
+  };
+  return (
+    <>
+      <Row>
+        <Col sm={24} xs={24}>
+          <div
+            style={{
+              backgroundColor: "white",
+              display: "flex",
+              justifyContent: "center",
+            }}>
+            <img src={artOfLiving} width='100px' height="100px" />
+          </div>
+        </Col>
+      </Row>
+      <Row justify='center'>
+        <Col sm={16} xs={24}>
+          <Section0 showModal={showModal} changeRoute={changeRoute} />
+        </Col>
+      </Row>
+      <br />
 
-    const handleCancel = () => {
-        setIsModalVisible(false);
-    };
-    const changeRoute = (route) => {
-        props.history.push(route)
-    }
-    return (
-        <>
-            <Row >
-                <Col sm={24} xs={24}>
-                    {/* <div className={classes.title}>
-                        <h1 >NCRfightsCOVID’19</h1>
-                    </div> 
-                    
-                    icon section
-                    
-                    */}
-                    
-                </Col>
-            </Row>
+      <Section1 {...props} />
+
+      <br />
+      <Section2 changeRoute={changeRoute} />
+      <br />
+      <Row justify='center'>
+        <Col sm={16} xs={24}>
+          <Section3 changeRoute={changeRoute} />
+        </Col>
+      </Row>
+      <br />
+      <Section4 showModal={showModal} changeRoute={changeRoute} />
+      <br />
+      <Row gutter={[, 24]} justify='center'>
+        <Col sm={8} xs={20}>
+          <div className={classes.actionCard}>
+            <h1  style={{ textAlign: "center", marginBottom: "0px", lineHeight:"25px"  }}>
+              KABASUR <span style={{ color: "orangered",}}>KUDINEER</span>
+            </h1>
+            <h4
+              style={{
+                fontSize: "10px",
+                textAlign: "center",
+                color: "#ADADAD",
+              }}>
+              EFFECTIVE MEDICINE TO FIGHT COVID - 19
+            </h4>
+            <div className={classes.iconContainer}>
+              <img src={medicine} className={classes.homeIconsSmall} />
+            </div>
             <br />
-            <Row justify="center" >
-                <Col sm={16} xs={20}>
-                    {/* <div className={classes.introCard}>
-                        <img src={help} className={classes.homeIcons} />
-                        <p>We are helping connect the <span><b>donors</b></span> with the <span><b>recipients</b></span> during this tough COVID pandemic times</p>
-                    </div> */}
-                    <Section0/>
-                </Col>
-            </Row>
+            <p>
+              Based on German Research, taking Kabasur, along with amruth and
+              tulsi which has efficiency of 85% to fight COVID
+            </p>
+            <Button block className={classes.actionButton4}>
+              Want To Know More
+            </Button>
+          </div>
+        </Col>
+        <Col  sm={8} xs={20}>
+          <div className={classes.actionCard}>
+            <div className={classes.iconContainer}>
+              <img src={call} className={classes.homeIconsSmall} />
+            </div>
             <br />
-            <Row >
-                <Col lg={8} md={11} sm={11} xs={20}>
-                    <Section1/>
-                </Col>
-            </Row>
-            <br />
-            <Row >
-                <Col lg={8} md={11} sm={11} xs={20}>
-                    {/* <div className={classes.actionCard}>
-                       
-                        <p style={{ textAlign: "left" }}> Let us know what you’re looking for?</p>
-                        <Button onClick={() => changeRoute("register/recipient")} block className={classes.actionButton}>
-                            I am looking for Plasma Donors
-                        </Button>
-                        <Button onClick={() => changeRoute('/register/patient')} block className={classes.actionButton2}>
-                            Need a counsellor or doctor?
-                        </Button>
-                        <Button onClick={() => changeRoute('/oxygenCylinders')} block className={classes.actionButton2}>
-                            Want oxygen cylinder?
-                        </Button>
-                        
-                        <Button onClick={() => changeRoute('/food')} block className={classes.actionButton2}>
-                            Looking for food ?
-                        </Button>
-                        <Button onClick={() => changeRoute('/labtestcenters')} block className={classes.actionButton2}>
-                            Looking for Lab Test?
-                        </Button>
-
-
-                    </div> */}
-                    <Section2/>
-                </Col>    
-            </Row>    
-            <Row justify="center" >
-                <Col sm={16} xs={20}>
-                    <Section3/>
-                </Col>
-            </Row>          
-            <Row >  
-                <Col lg={8} md={11} sm={11} xs={20}>
-                    {/* <div className={classes.actionCard}>
-                         
-                        <p style={{ textAlign: "left" }}> How can you help?</p>
-                        <Button block className={classes.actionButton} onClick={showModal}>
-                            I want to donate Plasma
-                        </Button>
-                        <Button onClick={() => changeRoute('/register/consultant')} block className={classes.actionButton2}>
-                            I can help as a consultant/doctor
-                        </Button>
-                        <Button onClick={() => changeRoute('/register/Oxygen-cylinders-supply')} block className={classes.actionButton2}>
-                            I can get Oxygen Cylinders
-                        </Button>
-                        <Button onClick={() => changeRoute('/register/food-suply')} block className={classes.actionButton2}>
-                            I can help with food delivery
-                        </Button>
-                    </div> */}
-                    <Section4/>
-
-                </Col>
-            </Row>
-            <br/>
-            
-            <br />
-            <Row justify="center" >
-                <Col sm={16} xs={20}>
-                    <h2><b>What all you can do at home to fight this pandemic?</b></h2>
-                </Col>
-            </Row>
-            <br />
-            <Row justify="center">
-                <Col lg={5} md={11} sm={11} xs={20}>
-
-                    <div className={classes.actionCard1}>
-                        <img src={heart} className={classes.homeIcons} />
-                        <br/>
-                        <p> Learn Powerful Breathing Techniques like to help your
-                        lungs fight the deadly disease and boost your immunity
-                        and fight stress/anxiety</p>
-                        <Button block className={classes.actionButton3}>
-                            Want To Know More
-                        </Button>
-                    </div>
-                </Col>
-                <Col lg={5} md={11} sm={11} xs={20}>
-                    <div className={classes.actionCard}>
-                        <div className={classes.iconContainer}>
-                            <img src={medicine} className={classes.homeIconsSmall} />
-                        </div>
-                        <br/>
-                        <p>Based on German Research, taking Kabasur,
-                        along with amruth and tulsi which has
-                        efficiency of 85% to fight COVID</p>
-                        <Button block className={classes.actionButton4}>
-                            Want To Know More
-                        </Button>
-                    </div>
-                </Col>
-                <Col lg={5} md={11} sm={11} xs={20}>
-                    <div className={classes.actionCard}>
-                    <div className={classes.iconContainer}>
-                            <img src={call} className={classes.homeIconsSmall} />
-                        </div>
-                        <br/>
-                        <p>Call on <b style={{ color: "black" }}>080-676-12338</b> where teachers
-                        counsellors people undergoing stress and
-                        anxiety during the lockdown</p>
-                        <Button block className={classes.actionButton4}  >
-                            Call Now
-                        </Button>
-                    </div>
-                </Col>
-            </Row>
-            <br />
-            <Modal
-                title={null}
-                className={classes.modal}
-                visible={isModalVisible}
-                onOk={handleOk}
-                onCancel={handleCancel}
-                footer={null}
-                closeIcon={<ion-icon name="close-outline"></ion-icon>}>
-                <div className={classes.title1}>
-                    <p>Eligibility Criteria</p>
-                </div>
-                <br />
-                <div className={classes.content}>
-                    <ul>
-                        <li> I was a <span style={{ color: "red" }}><b>COVID</b></span> Positive patient</li>
-                        <li> I am now negative after infection </li>
-                        <li> I have been cured for 14 days </li>
-                        <li> I am healthy and feeling excited to donate plasma </li>
-                        <li> I am between 18-60 years of age </li>
-                    </ul>
-                </div>
-                <br /><br />
-                <Button onClick={() => changeRoute("register/donor")} block className={classes.actionButton}>
-                    Yes, I am eligible
-                        </Button>
-                <Button onClick={handleCancel} block className={classes.actionButton2}>
-                    I am not eligible
-                        </Button>
-            </Modal>
-        </>
-    )
+            <p>
+              Call on <b style={{ color: "black" }}>080-676-12338</b> where
+              teachers counsellors people undergoing stress and anxiety during
+              the lockdown
+            </p>
+            <Button block className={classes.actionButton4}>
+              Call Now
+            </Button>
+          </div>
+        </Col>
+      </Row>
+      <br />
+      <Modal
+        title={null}
+        className={classes.modal}
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={null}
+        closeIcon={<ion-icon name='close-outline'></ion-icon>}>
+        <div className={classes.title1}>
+          <p>Eligibility Criteria</p>
+        </div>
+        <br />
+        <div className={classes.content}>
+          <ul>
+            <li>
+              {" "}
+              I was a{" "}
+              <span style={{ color: "red" }}>
+                <b>COVID</b>
+              </span>{" "}
+              Positive patient
+            </li>
+            <li> I am now negative after infection </li>
+            <li> I have been cured for 14 days </li>
+            <li> I am healthy and feeling excited to donate plasma </li>
+            <li> I am between 18-60 years of age </li>
+          </ul>
+        </div>
+        <br />
+        <br />
+        <Button
+          onClick={() => changeRoute("register/donor")}
+          block
+          className={classes.actionButton}>
+          Yes, I am eligible
+        </Button>
+        <Button onClick={handleCancel} block className={classes.actionButton2}>
+          I am not eligible
+        </Button>
+      </Modal>
+    </>
+  );
 }

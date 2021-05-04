@@ -19,10 +19,21 @@ import FoodRegistration from "./FoodRegistration/FoodRegistration";
 import OxygenCylinderRegistration from "./OxygenCylinderRegistration/OxygenCylinderRegistration";
 import SubmitPageFoodSupply from "../Components/SubmitPage/SubmitPageFoodSupply";
 import SubmitPageOxygen from "../Components/SubmitPage/SubmitPageOxygen";
+import SubmitPageDonateO2 from "../Components/SubmitPage/SubmitPageDonateO2";
+import SubmitPageBreathingSession from "../Components/SubmitPage/SubmitPageBreathingSession";
+
+
+
+
+
 import Login from "./Admin/Login";
 import { AuthProvider } from "../Contexts/AuthContext";
 import Admin from "./Admin/Admin";
 import LabTestCentersList from "./LabTestCenters/LabTestCentersList";
+import FreeO2CylinderRegistration from "./DonateO2Form/DonateO2form";
+import BreathingSessionRegistration from "./BreathingSessionRegistrations/BreathingSessionRegistration";
+import SaturationList from "./SaturationList/SaturationList";
+
 
 export default function Root() {
   return (
@@ -45,6 +56,16 @@ export default function Root() {
           exact
           path='/register/Oxygen-cylinders-supply'
           component={OxygenCylinderRegistration}
+        />
+        <Route
+          exact
+          path='/register/donate-o2-cylinders'
+          component={FreeO2CylinderRegistration}
+        />
+        <Route
+          exact
+          path='/register/breating-session'
+          component={BreathingSessionRegistration}
         />
 
         <Route path='/donor-registered/:docId' component={SubmitPageDonor} />
@@ -69,17 +90,28 @@ export default function Root() {
           path='/food-supply-registered/:docId'
           component={SubmitPageFoodSupply}
         />
+        <Route
+          path='/Donate-o2Cylinder-registered/:docId'
+          component={SubmitPageDonateO2}
+        />
+        <Route
+          path='/breathing-session-registered/:docId'
+          component={SubmitPageBreathingSession}
+        />
+
+        
 
         <Route exact path='/doctors' component={DoctorsList} />
         <Route exact path='/food' component={FoodList} />
         <Route exact path='/oxygenCylinders' component={OxygenCylinderList} />
         <Route exact path='/labtestcenters' component={LabTestCentersList} />
+        <Route exact path='/freeconsultation' component={SaturationList} />
 
         <Route path='/login' component={Login} />
 
         <Route path='/admin' component={Admin} />
 
-        <Route path='/' component={Home} />
+        <Route path='/' component={Home}/>
       </Switch>
     </AuthProvider>
   );

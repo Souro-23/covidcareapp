@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;700&display=swap");
+
 body {
   background-color: #f7f9ff !important;
 }
@@ -38,6 +40,15 @@ body {
 .ant-select-selection-search-input {
   margin-top: 3.5px !important;
 }
-.ant-select-selection-item{
+.ant-select-selection-item {
   margin-top: 3.5px;
+}
+
+.ant-carousel .slick-dots {
+  justify-content: flex-start !important;
+  margin-left: 0px !important;
+}
+
+.ant-carousel {
+  margin-top: -5px !important;
 }

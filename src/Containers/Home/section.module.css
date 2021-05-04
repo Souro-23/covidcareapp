@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 
-.formBox{
+
+.formBox{   
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 20px #CCCCCC29;
     opacity: 1;
@@ -14,14 +15,14 @@
     width: 100vw;
   }
 
-.superText{
-    
+.superText{ 
     text-align: left;
     font: normal normal bold 27px/27px Raleway;
     letter-spacing: 0px;
     margin-bottom: 0;
     color: #000000;
     text-transform: uppercase;
+    font-weight: bold;
 }
 .spanText{
     color:rgb(245, 83, 48);
@@ -52,8 +53,22 @@
     border-radius: 4px;
     opacity: 1;
     margin-bottom: 12px;
+    cursor: pointer;
   
   }
+  .iconBox1{
+    width: 30%;
+    height: 72px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    opacity: 1;
+    
+  }
+
+
+
+
   .text{
     font: normal normal normal 14px/17px Lato;
     letter-spacing: 0px;
@@ -67,6 +82,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
+      
   }
   .image{
       height: 2.2rem;
@@ -74,7 +90,7 @@
   }
 
   .Button{
-    height: 40px !important;
+    height: 48px !important;
     background: #2F61F5 0% 0% no-repeat padding-box !important;
     border-radius: 4px !important;
     opacity: 1;
@@ -109,7 +125,8 @@
 
 @media screen and (min-width:600px) {
     .formBox{
-        width: 100vw;
+        width: 66vw;
+        margin:auto;
     }
     .symptomsBox{
         display: flex !important;
@@ -117,6 +134,7 @@
         flex-wrap: wrap !important;
         margin: 0 auto;
         width: 80vw;
+        
     }
     .Button{
         width: 60vw !important;
@@ -124,3 +142,4 @@
     }
  
 }
+

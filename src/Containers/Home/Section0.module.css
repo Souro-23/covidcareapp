@@ -1,0 +1,123 @@
+.actionCardCarousal {
+  background: #f5532f;
+  box-shadow: 0px 2px 20px #aaaaaa29;
+  border-radius: 0px;
+  padding: 30px;
+  height: 243px;
+  border-radius: 2px;
+}
+.actionCardCarousal p {
+  margin-bottom: 0px;
+  position: relative;
+}
+
+/*CLASSES FOR FIRST CAROUSEL*/
+.banner1 {
+  margin-left: 2px;
+}
+.carouselText11 {
+  font: normal normal bold 53px/20px Oswald;
+  letter-spacing: 0px;
+  margin-top: 15px;
+  color: #ffffff;
+}
+
+.banner1 > p:nth-child(3) {
+  margin-top: 10px;
+}
+.carouselText12 {
+  font: normal normal bold 20px/20px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin-top: 15px;
+}
+
+.carouselText13 {
+  text-align: left;
+  font: normal normal normal 12px/13px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+}
+
+.carouselText14 {
+  width: 130px !important;
+  height: 38px !important;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 2px solid #ffffff;
+  opacity: 1;
+  border-radius: 4px !important;
+  font: normal normal 600 14px/17px Lato !important;
+  letter-spacing: 0px !important;
+  color: #383533 !important;
+  opacity: 1 !important;
+  margin-top: 10px !important;
+}
+
+.bannerImage1 {
+  position: absolute;
+  top: 6%;
+  right: 60%;
+}
+
+/*CLASSES FOR SECOND CAROUSEL*/
+.banner2 {
+  margin-left: 2px;
+}
+.carouselText21 {
+  font: normal normal bold 53px/20px Oswald;
+  letter-spacing: 0px;
+  margin: 15px 0px;
+  color: #ffffff;
+}
+
+.carouselText22 {
+  font: normal normal bold 20px/20px Oswald;
+  letter-spacing: 3.6px;
+  color: #ffffff;
+}
+
+.carouselText23 {
+  text-align: left;
+  font: normal normal bold 19px/20px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.carouselText24 {
+  width: 130px !important;
+  height: 38px !important;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 2px solid #ffffff;
+  opacity: 1;
+  border-radius: 4px !important;
+  font: normal normal 600 14px/17px Lato !important;
+  letter-spacing: 0px !important;
+  color: #383533 !important;
+  opacity: 1 !important;
+  margin-top: 20px;
+}
+
+.bannerImage2 {
+  position: absolute;
+  top: 9%;
+  right: 41%;
+}
+
+@media (max-width: 330px) {
+  .bannerImage1 {
+    position: absolute;
+    top: 6%;
+    right: 59%;
+  }
+
+  .carouselText13 {
+    font-size: 10px;
+  }
+
+  .bannerImage2 {
+    position: absolute;
+    top: 9%;
+    right: 40%;
+  }
+}

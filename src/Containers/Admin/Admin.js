@@ -11,6 +11,8 @@ import { Layout, Menu, Breadcrumb, Button } from "antd";
 import "./Admin.css";
 import { NavLink } from "react-router-dom";
 import LabTestCentersTable from "./LabTestCentersTable";
+import OxygenCylinderContacts from "./OxygenCylinderContacts";
+import BreathingSessions from "./BreathingSessions";
 
 const { Header, Content, Footer } = Layout;
 
@@ -59,6 +61,12 @@ export default function Admin(props) {
           <Menu.Item key='7'>
             <NavLink to='/admin/labtestcenters'>Lab Test Centers</NavLink>
           </Menu.Item>
+          <Menu.Item key='8'>
+            <NavLink to='/admin/OxygenCylinderContacts'>Oxygen Cylinder Contacts</NavLink>
+          </Menu.Item>
+          <Menu.Item key='9'>
+            <NavLink to='/admin/BreathingSessions'>Breathing Sessions</NavLink>
+          </Menu.Item>
         </Menu>
       </Header>
       <Content
@@ -81,6 +89,8 @@ export default function Admin(props) {
         <Route path='/admin/donors' component={DonorsTable} />
         <Route path='/admin/recipient' component={RecipientTable} />
         <Route path='/admin/labtestcenters' component={LabTestCentersTable} />
+        <Route path='/admin/BreathingSessions' component={BreathingSessions} />
+        <Route path='/admin/OxygenCylinderContacts' component={OxygenCylinderContacts} />
       </Content>
     </Layout>
   );
