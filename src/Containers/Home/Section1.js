@@ -193,13 +193,13 @@ export default function Section1(props) {
         </div>
         <br />
         <Button
-          onClick={() => changeRoute("freeconsultation")}
+          onClick={() => changeRoute("/register/patient")}
           block
           className={homeClasses.actionButton}>
           Yes, I am eligible
         </Button>
         <Button
-          onClick={handleCancel}
+          onClick={handleCancel}   
           block
           className={homeClasses.actionButton2}>
           I am not eligible

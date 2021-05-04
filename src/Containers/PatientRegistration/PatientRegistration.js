@@ -4,21 +4,6 @@ import { Col, Row, Input, Radio, Button, Select } from "antd";
 import "firebase/firestore";
 import { message } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
-
-
-// images
-import anxiety from "./images/anxiety.svg";
-import bodypain from "./images/bodypain.svg";
-import cough from "./images/cough.svg"
-import diarrhea from "./images/diarrhea.svg";
-import dizziness from "./images/dizziness.svg";
-import fatigue from "./images/fatigue.svg";
-import fever from "./images/fever.svg";
-import headache from "./images/headache.svg";
-import lungs from "./images/lungs.svg";
-import nose from "./images/nose.svg";
-import sore from "./images/sore.svg";
-import taste from "./images/taste.svg";
 import FormHeader from "../../Components/FormHeader/FormHeader";
 
 
@@ -30,78 +15,10 @@ export default function PlasmaRecipientForm(props) {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
-
-    const symptom = [
-        {
-            name: "Fever",
-            selected: false,
-            image: fever
-        },
-        {
-            name: "Cough",
-            selected: false,
-            image: cough
-        },
-        {
-            name: "Loss of Smell",
-            selected: false,
-            image: nose
-        },
-        {
-            name: "Loss of Taste",
-            selected: false,
-            image: taste
-        },
-        {
-            name: "Sore Throat",
-            selected: false,
-            image: sore
-        },
-        {
-            name: "Loss of Breath",
-            selected: false,
-            image: lungs
-        },
-        {
-            name: "Dizziness",
-            selected: false,
-            image: dizziness
-        },
-        {
-            name: "Headache",
-            selected: false,
-            image: headache
-        },
-        {
-            name: "Fatigue",
-            selected: false,
-            image: fatigue
-        },
-        {
-            name: "Anxiety",
-            selected: false,
-            image: anxiety
-        },
-        {
-            name: "Diarrhoea",
-            selected: false,
-            image: diarrhea
-        },
-        {
-            name: "Body Pain",
-            selected: false,
-            image: bodypain
-        }
-    ]
-
-    const [symptoms, setSymptoms] = useState(symptom)
     const [name, setName] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
-    const [age, setAge] = useState("");
-    const [result, setResult] = useState(false);
+    const [saturationLevel, setSaturationLevel] = useState("");
     const [loading, setLoading] = useState(false)
-
-    const [have, setHave] = useState(false)
 
 
     // OnChangeHandler for "name", "mobileNumber"
@@ -111,55 +28,28 @@ export default function PlasmaRecipientForm(props) {
         } else if (type === "mobileNumber") {
             setMobileNumber(e.target.value);
         }
-        else if (type === "age") {
-            setAge(e.target.value)
-        }
-        else if (type === "result") {
-            setResult(e.target.value)
+        else if (type === "saturationLevel") {
+            setSaturationLevel(e.target.value)
         }
     };
-
-    const symptomHandler = (Index) => {
-        let newstate = symptoms.map((item, index) => {
-            if (index == Index) {
-                return {
-                    name: item.name,
-                    selected: !item.selected,
-                    image: item.image
-                }
-            }
-
-            return item
-        })
-        setSymptoms(newstate)
-    }
 
     const submitHandler = () => {
         if (name === "") return message.error("Name Required");
         if (mobileNumber === "") return message.error("Mobile Number Required");
-        if (result === false) return message.error("Please Fill All The Details")
-        var noofsymptoms = 0;
-        var selectedsymptoms = [];
-        for (var i = 0; i < symptoms.length; i++) {
-            if (symptoms[i].selected) {
-                noofsymptoms = noofsymptoms + 1;
-                selectedsymptoms.push(symptoms[i].name);
-            }
-        }
+        if (saturationLevel === "") return message.error("O2 Saturation Level Required");
+
         setLoading(true)
 
         db.collection("Patients")
             .add({
                 name: name,
                 phone: mobileNumber,
-                age: age,
-                testedPositive: result,
-                symptoms: selectedsymptoms.join(','),
+                saturationLevel: saturationLevel,
                 timestamp: new Date()
             })
             .then((docRef) => {
                 setLoading(false)
-                props.history.push('/patient-registered/'+docRef.id)
+                props.history.push('/freeconsultation')
             })
             .catch((error) => {
                 setLoading(false)
@@ -195,83 +85,19 @@ export default function PlasmaRecipientForm(props) {
                                     placeholder='Enter your Mobile Number'
                                 />
                             </div>
-                        </div>
-                    </Row>
-                </div>
-                <div className={classes.body}>
-
-                    <br />
-                    <h2><b>COVID Details</b></h2>
-                    <div className={classes.formBox}>
-                        <div className={classes.formField}>
-                            <p><b>What's Your Age?</b></p>
-                            <Radio.Group
-                                size='large'
-                                buttonStyle="solid"
-                                onChange={(e) => onChangeHandler(e, "age")}
-                                className={classes.radioGroup}
-                            >
-                                <Radio.Button className={classes.radioButton} value='18-35'>
-                                    18-35
-                                </Radio.Button>
-                                <Radio.Button className={classes.radioButton} value='35-50'>
-                                    35-50
-                                </Radio.Button>
-                                <Radio.Button className={classes.radioButton} value='50+'>
-                                    50+
-                                </Radio.Button>
-                            </Radio.Group>
-                        </div>
-                    </div>
-                    <br />
-
-                    <Row className={classes.formBox}>
-                        <div className={classes.formField} style={{ height: "auto" }}>
-                            <p><b>Have You Tested Positive For Coronavirus?</b></p>
-                            <Radio.Group
-                                size="large"
-                                buttonStyle="solid"
-                                onChange={(e) => onChangeHandler(e, "result")}
-                                className={classes.patientGroup}
-                            >
-                                <Radio.Button onClick={() => setHave(false)} className={classes.radioButton1} value='yes'>
-                                    Yes, Tested positive for Coronavirus.
-                            </Radio.Button>
-                                <br /><br />
-                                <Radio.Button onClick={() => setHave(true)} className={classes.radioButton1} style={{ marginTop: "10px", width: "100%" }} value='no'>
-                                    No, but I have symptoms.
-                            </Radio.Button>
-                            </Radio.Group>
-                        </div>
-
-                    </Row>
-                    <br />
-                    {have ?
-                        <Row className={classes.formBox}>
-                            <div style={{ height: "auto" }}>
-                                <Row className={classes.symptomsBox}>
-                                    {
-                                        symptoms.map((item, index) => (
-                                            <Col key={index} onClick={() => symptomHandler(index)} justify="center" span={7} className={item.selected ? classes.selectedcheckBox1 : classes.checkBox1}>
-                                                <label style={{ textAlign: 'center' }} for="fever">
-                                                    <img src={item.image} />
-                                                    <div className={classes.text}> {item.name} </div>
-                                                </label>
-                                            </Col>
-                                        ))
-                                    }
-                                </Row>
+                            <div className={classes.formField}>
+                                <p className={classes.title}>Oxygen Saturation without any support</p>
+                                <Input
+                                    type='text'
+                                    onChange={(e) => onChangeHandler(e, "saturationLevel")}
+                                    className={classes.inputField}
+                                    placeholder='Enter Oxygen Saturation'
+                                />
                             </div>
-                        </Row>
-                        :
-                        null
-                    }
-                    <br />
-                    <Button loading={loading} block className={classes.Button} onClick={() => submitHandler()}>
-                        Register Now
-                    </Button>
-                    <br /><br />
-
+                            <Button loading={loading} block className={classes.Button} onClick={() => submitHandler()}>Register Now</Button>
+                            <br /><br />
+                        </div>
+                    </Row>
                 </div>
             </Col>
         </Row>

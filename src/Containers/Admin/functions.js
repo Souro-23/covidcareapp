@@ -42,7 +42,7 @@ export const getDatabaseVariables = (database) => {
         "consultTime",
       ];
     case "Patients":
-      return ["name", "phone", "age", "symptoms", "testedPositive"];
+      return ["name", "phone", "saturationLevel"];
     case "Donors":
       return [
         "name",
