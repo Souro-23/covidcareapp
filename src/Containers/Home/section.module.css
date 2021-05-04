@@ -43,7 +43,7 @@
   }
 
   .selectedcheckBox1{
-    width: 40%;
+    width: 48%;
     height: 72px;
     display: flex !important;
     justify-content: center !important;
@@ -95,7 +95,7 @@
     opacity: 1;
 }
 .selected{
-    width: 40%;
+    width: 48%;
     height: 72px;
     display: flex !important;
     justify-content: center !important;
