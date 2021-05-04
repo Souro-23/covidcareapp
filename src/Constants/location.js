@@ -15,4 +15,5 @@ export const locations = [
   "Gurgaon",
   "Noida/Greater Noida",
   "Ghaziabad",
+  "Faridabad"
 ];

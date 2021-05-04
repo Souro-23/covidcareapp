@@ -58,7 +58,7 @@ export default function InfoCard({
       {type === "doctors" ? (
         <div className={classes.available}>
           {available && <div className={classes.status}>Available Now</div>}
-          <div>
+          {/* <div>
             {timeSlots.map((timeSlot, index) => (
               <p
                 style={{
@@ -69,7 +69,7 @@ export default function InfoCard({
                 {timeSlot}
               </p>
             ))}
-          </div>
+          </div> */}
         </div>
       ) : (
         <div className={classes.status}>
