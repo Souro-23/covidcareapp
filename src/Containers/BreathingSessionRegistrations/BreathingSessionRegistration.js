@@ -4,18 +4,29 @@ import classes from "../RegistrationForm.module.css";
 import FormHeader from "../../Components/FormHeader/FormHeader";
 import firebase from "../../Firebase/FirebaseConfig";
 
+
+const t=[
+  {time:"7:00 - 7:30 am" , selected:false,tFormat:"0700-0730"},
+  {time:"10:00 - 10:30 am" , selected:false,tFormat:"1000-1030"},
+  {time:"4:00 - 4:30 pm" , selected:false,tFormat:"1600-1630"},
+  {time:"7:00 - 7:30 pm" , selected:false,tFormat:"1900-1930"},
+  {time:"9:00 - 9:30 pm" , selected:false,tFormat:"2100-2130"},
+  {time:"11:00 - 11:30 pm" , selected:false,tFormat:"2300-2330"}
+]
+
 var db = firebase.firestore();
 
 export default function BreathingSessionRegistration(props) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
   }, []);
   const [name, setName] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [age, setAge] = useState("");
   const [stressed, setStressed] = useState("");
-  const [timeSlot, setTimeSlot] = useState("");
+  const [timeSlot, setTimeSlot] = useState(t);
   const [loading, setLoading] = useState(false);
 
   const onChangeHandler = (e, type) => {
@@ -31,6 +42,21 @@ export default function BreathingSessionRegistration(props) {
       setTimeSlot(e.target.value);
     }  
   };
+
+
+  const TimeSelector = (Index) => {
+    let newState = timeSlot.map((item,index) =>{
+      if(index === Index){
+        return{
+          time: item.time,
+          selected : !item.selected
+        }
+      }
+      return item
+    })
+    setTimeSlot(newState)
+  }
+
   const submitHandler = () => {
     if (name === "") return message.error("Name Required");
     if (mobileNumber === "") return message.error("Mobile Number Required");
@@ -38,12 +64,20 @@ export default function BreathingSessionRegistration(props) {
     if (timeSlot === "") return message.error("Time Slot Required");
     setLoading(true);
 
+    var selectedTime =[];
+    for(var i=0;i<timeSlot.length;i++){
+      if(timeSlot[i].selected){
+        selectedTime.push(timeSlot[i].time);
+      }
+    }
+
+
     db.collection("BreathingSessions")
       .add({
         name: name,
         phone: mobileNumber,
         age: age,
-        timeSlot: timeSlot,
+        timeSlot: selectedTime,
         stressed: stressed,
         timestamp: new Date(),
       })
@@ -131,58 +165,17 @@ export default function BreathingSessionRegistration(props) {
                 <br />
                 Select your preferred time slot to join any of the Above batches
               </p>
-              <Radio.Group
-                size='large'
-                buttonStyle='solid'
-                onChange={(e) => onChangeHandler(e, "timeSlot")}
-                style={{ width: "100%" }}>
-                <div style={{ display: "flex", width: "100%" }}>
-                  <Radio.Button
-                    style={{ width: "50%" }}
-                    className={classes.radioButton}
-                    value='0700-0730'>
-                    <small>7:00 - 7:30 am</small>
-                  </Radio.Button>
-                  <Radio.Button
-                    style={{ width: "50%" }}
-                    className={classes.radioButton}
-                    value='1000-1030'>
-                    <small>10:00 - 10:30 am</small>
-                  </Radio.Button>
-                </div>
-                <div
-                  style={{ display: "flex", width: "100%", marginTop: "10px" }}>
-                  <Radio.Button
-                    style={{ width: "50%" }}
-                    className={classes.radioButton}
-                    value='1600-1630'>
-                    <small>4:00 - 4:30 pm</small>
-                  </Radio.Button>
-                  <Radio.Button
-                    style={{ width: "50%" }}
-                    className={classes.radioButton}
-                    value='1900-1930'>
-                    <small>7:00 - 7:30 pm</small>
-                  </Radio.Button>
-                </div>
-                <div
-                  style={{ display: "flex", width: "100%", marginTop: "10px" }}>
-                  <Radio.Button
-                    style={{ width: "50%" }}
-                    className={classes.radioButton}
-                    value='2100-2130'>
-                    <small>9:00 - 9:30 pm</small>
-                  </Radio.Button>
-                  <Radio.Button
-                    style={{ width: "50%" }}
-                    className={classes.radioButton}
-                    value='2300-2330'>
-                    <small>11:00 - 11:30 pm</small>
-                  </Radio.Button>
-                </div>
-              </Radio.Group>
-              <br />
-              <br />
+              
+      <Row className={classes.symptomsBox}>
+        {timeSlot.map((item,index)=>(
+          <Col onClick={()=>TimeSelector(index)} key={index} className={classes.breathing_time} span={11} >
+            <div className={item.selected? classes.breathing_timeSlot_selected : classes.breathing_timeSlot} >
+              <p style={{ marginBottom: "0",fontSize:'11px', padding: '0 .3rem ' }}>{item.time}</p>
+            </div>
+          </Col>
+        ))}
+      </Row>
+      <br />
               <Button
                 loading={loading}
                 block

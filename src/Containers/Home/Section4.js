@@ -18,25 +18,25 @@ export default function Section4({
         </Col>
         <Row className={classes.symptomsBox}>
         <Col onClick={showModal} style={{backgroundColor:'#2F61F5'}} justify="center" className={classes.selected}>
-            <label style={{ textAlign: 'center' }} for="fever">
+            <label style={{ textAlign: 'center' }} >
                 <img src={plasma} />
                 <div style={{color:'white'}} className={classes.text}> Donate Plasma </div>
             </label>
         </Col>
         <Col onClick={() => changeRoute('/register/Oxygen-cylinders-supply')} justify="center" className={classes.selected}>
-            <label style={{ textAlign: 'center' }} for="fever">
+            <label style={{ textAlign: 'center' }}>
                 <img src={oxygen} />
                 <div className={classes.text}> Oxygen Cylinder </div>
             </label>
         </Col>
         <Col  onClick={() => changeRoute('/register/food-suply')} justify="center" className={classes.selected}>
-            <label style={{ textAlign: 'center' }} for="fever">
+            <label style={{ textAlign: 'center' }}>
                 <img src={food} />
                 <div className={classes.text}> Food Delivery </div>
             </label>
         </Col>
         <Col justify="center" className={classes.selected}>
-            <label style={{ textAlign: 'center' }} for="fever">
+            <label style={{ textAlign: 'center' }}>
                 <img src={lab} />
                 <div className={classes.text}> Lab Tests </div>
             </label>

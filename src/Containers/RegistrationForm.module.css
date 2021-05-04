@@ -121,7 +121,6 @@
 }
 
 .selected {
-  background: blue;
   background: #2f61f5;
   color: white;
 }
@@ -253,4 +252,35 @@
   height: 40px !important;
   line-height: 20px !important;
   border-radius: 3px !important;
+}
+
+/* breathing session */
+
+.breathing_time{
+  height: 40px;
+  background-color: #F8F8F8;
+  margin-bottom: 9px;
+}
+
+.breathing_timeSlot{
+  display: flex !important;
+  align-items: center !important;
+  text-align: left;
+  padding: 0 8px;
+  height: 40px;
+  width: 100%;
+  border: 1px solid #C9C9C9;
+  border-radius: 3px; 
+}
+.breathing_timeSlot_selected{
+  display: flex !important;
+  align-items: center !important;
+  background-color: #2F61F5;
+  color: white;
+  text-align: left;
+  padding: 0 8px;
+  height: 40px;
+  width: 100%;
+  border: 1px solid #C9C9C9;
+  border-radius: 3px; 
 }
