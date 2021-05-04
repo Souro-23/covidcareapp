@@ -49,7 +49,8 @@ export default function BreathingSessionRegistration(props) {
       if(index === Index){
         return{
           time: item.time,
-          selected : !item.selected
+          selected : !item.selected,
+          tFormat:item.tFormat
         }
       }
       return item
@@ -67,7 +68,7 @@ export default function BreathingSessionRegistration(props) {
     var selectedTime =[];
     for(var i=0;i<timeSlot.length;i++){
       if(timeSlot[i].selected){
-        selectedTime.push(timeSlot[i].time);
+        selectedTime.push(timeSlot[i].tFormat);
       }
     }
 
@@ -77,7 +78,7 @@ export default function BreathingSessionRegistration(props) {
         name: name,
         phone: mobileNumber,
         age: age,
-        timeSlot: selectedTime,
+        timeSlot: selectedTime.join(','),
         stressed: stressed,
         timestamp: new Date(),
       })

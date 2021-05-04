@@ -77,7 +77,7 @@ export default function LabTestCentersRegistration(props) {
       <Row justify='center'>
         <Col className={classes.formBox} lg={8} sm={16} xs={23}>
           <div className={classes.formField}>
-            <p className={classes.title}>enter name of the food distributor</p>
+            <p className={classes.title}>enter name of the Lab</p>
             <Input
               type='text'
               onChange={(e) => onChangeHandler(e, "name")}

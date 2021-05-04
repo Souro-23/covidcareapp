@@ -1,4 +1,6 @@
 export const locations = [
+  "Entire Delhi/NCR",
+  "Entire Delhi",
   "North Delhi",
   "South Delhi",
   "East Delhi",
