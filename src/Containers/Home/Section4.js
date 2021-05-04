@@ -35,7 +35,7 @@ export default function Section4({
                 <div className={classes.text}> Food Delivery </div>
             </label>
         </Col>
-        <Col justify="center" className={classes.selected}>
+        <Col  onClick={()=>changeRoute("/register/lab-test-centers")} justify="center" className={classes.selected}>
             <label style={{ textAlign: 'center' }} for="fever">
                 <img src={lab} />
                 <div className={classes.text}> Lab Tests </div>

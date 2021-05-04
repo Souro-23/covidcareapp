@@ -33,6 +33,7 @@ import LabTestCentersList from "./LabTestCenters/LabTestCentersList";
 import FreeO2CylinderRegistration from "./DonateO2Form/DonateO2form";
 import BreathingSessionRegistration from "./BreathingSessionRegistrations/BreathingSessionRegistration";
 import SaturationList from "./SaturationList/SaturationList";
+import LabTestCentersRegistration from "./LabTestCentersRegistration/LabTestCentersRegistration";
 
 
 export default function Root() {
@@ -67,6 +68,16 @@ export default function Root() {
           path='/register/breating-session'
           component={BreathingSessionRegistration}
         />
+        <Route
+          exact
+          path='/register/lab-test-centers'
+          component={LabTestCentersRegistration}
+        />
+
+
+
+
+
 
         <Route path='/donor-registered/:docId' component={SubmitPageDonor} />
         <Route

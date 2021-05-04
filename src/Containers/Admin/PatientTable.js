@@ -34,31 +34,9 @@ export class PatientTable extends Component {
         ...this.getColumnSearchProps("phone"),
       },
       {
-        title: "Age",
-        dataIndex: "age",
+        title: "Oxygen Saturation",
+        dataIndex: "saturationLevel",
         editable: true,
-      },
-      {
-        title: "Symptoms",
-        dataIndex: "symptoms",
-        editable: true,
-      },
-      {
-        title: "Tested Positive",
-        dataIndex: "testedPositive",
-        editable: true,
-        filters: [
-          {
-            text: "yes",
-            value: "yes",
-          },
-          {
-            text: "no",
-            value: "no",
-          },
-        ],
-        filterMultiple: false,
-        onFilter: (value, record) => record.testedPositive?.indexOf(value) === 0,
       },
       {
         title: "operation",
@@ -87,9 +65,7 @@ export class PatientTable extends Component {
             id: doc.id,
             name: doc.data().name,
             phone: doc.data().phone,
-            age: doc.data().age,
-            symptoms: doc.data().symptoms,
-            testedPositive: doc.data().testedPositive,
+            saturationLevel:doc.data().saturationLevel,
             key: doc.id,
           });
         });
@@ -220,9 +196,7 @@ export class PatientTable extends Component {
       key: count,
       name: "Enter Name Here",
       phone: "",
-      age: "",
-      symptoms: "",
-      testedPositive: "",
+      saturationLevel:"",
       newItem: true,
     };
     this.setState({
@@ -235,18 +209,14 @@ export class PatientTable extends Component {
       db.collection("Patients").add({
         name: row.name?row.name:"",
         phone: row.phone?row.phone:"",
-        age: row.age?row.age:"",
-        symptoms: row.symptoms?row.symptoms:"",
-        testedPositive: row.testedPositive?row.testedPositive:"",
+        saturationLevel: row.saturationLevel?row.saturationLevel:"",
         timestamp: new Date(),
       });
     } else {
       db.collection("Patients").doc(row.key).set({
         name: row.name?row.name:"",
         phone: row.phone?row.phone:"",
-        age: row.age?row.age:"",
-        symptoms: row.symptoms?row.symptoms:"",
-        testedPositive: row.testedPositive?row.testedPositive:"",
+        saturationLevel: row.saturationLevel?row.saturationLevel:"",
         timestamp: new Date(),
       });
     }
