@@ -1,10 +1,23 @@
 import { Button, Col, Row, Modal, Carousel } from "antd";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Section0.module.css";
 import bannerTank from "../../Assets/Svgs/bannerTank.svg";
 import bannerPlasma from "../../Assets/Svgs/bannerPlasma.svg";
+import { getNodeText } from "@testing-library/dom";
 
 export default function Section0({ changeRoute, showModal }) {
+  // const setDelay = () => {
+  //   setTimeout(() => {
+  //     next()
+  //     console.log("Delay -> 3");
+  //   }, 3000);
+  // };
+
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     Carousel.next();
+  //   }, 5000);
+  // }, []);
   return (
     <div justify-content='center' className={classes.actionCardCarousal}>
       <Carousel dotPosition={"bottom"} autoplay={true}>

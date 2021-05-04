@@ -40,7 +40,7 @@ export class OxygenCylinderContacts extends Component {
         filters: this.returnLocation(),
         onFilter: (value, record) => record.location?.indexOf(value) === 0,
       },
-      
+
       {
         title: "operation",
         dataIndex: "operation",
@@ -66,7 +66,7 @@ export class OxygenCylinderContacts extends Component {
         querySnapshot.forEach((doc) => {
           data.push({
             id: doc.id,
-            name: doc.data().name,        
+            name: doc.data().name,
             location: doc.data().location,
             phone: doc.data().phone,
             key: doc.id,
@@ -274,6 +274,7 @@ export class OxygenCylinderContacts extends Component {
           pagination
           dataSource={dataSource}
           columns={columns}
+          locale={{ emptyText: "Not Authorized" }}
         />
         <br />
         <BulkUpload database='OxygenCylinderContacts' />
@@ -285,4 +286,3 @@ export class OxygenCylinderContacts extends Component {
 }
 
 export default OxygenCylinderContacts;
-

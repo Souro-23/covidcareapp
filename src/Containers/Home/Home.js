@@ -39,7 +39,7 @@ export default function Home(props) {
               display: "flex",
               justifyContent: "center",
             }}>
-            <img src={artOfLiving} width='100px' height="100px" />
+            <img src={artOfLiving} width='100px' height='100px' />
           </div>
         </Col>
       </Row>
@@ -64,10 +64,15 @@ export default function Home(props) {
       <Section4 showModal={showModal} changeRoute={changeRoute} />
       <br />
       <Row gutter={[, 24]} justify='center'>
-        <Col sm={8} xs={20}>
+        <Col md={8} sm={16} xs={24}>
           <div className={classes.actionCard}>
-            <h1  style={{ textAlign: "center", marginBottom: "0px", lineHeight:"25px"  }}>
-              KABASUR <span style={{ color: "orangered",}}>KUDINEER</span>
+            <h1
+              style={{
+                textAlign: "center",
+                marginBottom: "0px",
+                lineHeight: "25px",
+              }}>
+              KABASUR <span style={{ color: "orangered" }}>KUDINEER</span>
             </h1>
             <h4
               style={{
@@ -90,7 +95,7 @@ export default function Home(props) {
             </Button>
           </div>
         </Col>
-        <Col  sm={8} xs={20}>
+        <Col md={8} sm={16} xs={24}>
           <div className={classes.actionCard}>
             <div className={classes.iconContainer}>
               <img src={call} className={classes.homeIconsSmall} />
