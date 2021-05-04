@@ -21,8 +21,10 @@ export default function LabTestCentersList(props) {
   );
   const [labList, setLabList] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
-
+  const [location, setLocation] = useState("");
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     var labArr = [];
     db.collection("LabTestCenters")
       .get()
@@ -45,6 +47,7 @@ export default function LabTestCentersList(props) {
       (lab) => lab.location === value
     );
     setLabList(labArr);
+    setLocation(value);
   };
 
   return (
@@ -83,7 +86,7 @@ export default function LabTestCentersList(props) {
           </Col>
         ))}
         {!labList.length && !loadingData && (
-          <p>Lab Test Centers Not Found In This Region</p>
+          <p>Lab Test Centers Not Found for {location}</p>
         )}
         {loadingData && <Spin indicator={antIcon} />}
       </Row>

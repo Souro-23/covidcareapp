@@ -77,25 +77,34 @@ export class BreathingSessions extends Component {
     this.state = {
       dataSource: [],
       count: 0,
+      emptyTableText: "",
     };
 
     db.collection("BreathingSessions")
       .orderBy("timestamp", "desc")
-      .onSnapshot((querySnapshot) => {
-        var data = [];
-        querySnapshot.forEach((doc) => {
-          data.push({
-            id: doc.id,
-            name: doc.data().name,
-            phone: doc.data().phone,
-            age: doc.data().age,
-            stressed: doc.data().stressed,
-            timeSlot: doc.data().timeSlot,
-            key: doc.id,
+      .onSnapshot(
+        (querySnapshot) => {
+          var data = [];
+          querySnapshot.forEach((doc) => {
+            data.push({
+              id: doc.id,
+              name: doc.data().name,
+              phone: doc.data().phone,
+              age: doc.data().age,
+              stressed: doc.data().stressed,
+              timeSlot: doc.data().timeSlot,
+              key: doc.id,
+            });
           });
-        });
-        this.setState({ dataSource: data, count: data.length });
-      });
+          this.setState({ dataSource: data, count: data.length });
+        },
+        (error) => {
+          console.log("Error", error);
+          this.setState({
+            emptyTableText: "Not Authorized",
+          });
+        }
+      );
   }
   getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -303,7 +312,7 @@ export class BreathingSessions extends Component {
           pagination
           dataSource={dataSource}
           columns={columns}
-          locale={{ emptyText: "Not Authorized" }}
+          locale={{ emptyText: this.state.emptyTableText }}
         />
         <br />
         <BulkUpload database='BreathingSessions' />

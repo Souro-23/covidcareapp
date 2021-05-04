@@ -19,7 +19,7 @@ export default function FoodList(props) {
   const [completeFoodList, setCompleteFoodList] = useState([]);
   const [foodList, setFoodList] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
-
+  const [location, setLocation] = useState("");
   useEffect(() => {
     var foodArr = [];
     db.collection("Food")
@@ -32,6 +32,7 @@ export default function FoodList(props) {
         setCompleteFoodList(checkVerified(foodArr, "food"));
         setFoodList(checkVerified(foodArr, "food"));
         setLoadingData(false);
+        window.scrollTo(0, 0);
       })
       .catch((error) => {
         console.log("Error getting documents: ", error);
@@ -41,6 +42,7 @@ export default function FoodList(props) {
   const onLocationChange = (value) => {
     var foodArr = completeFoodList.filter((food) => food.location === value);
     setFoodList(foodArr);
+    setLocation(value);
   };
 
   return (
@@ -79,7 +81,7 @@ export default function FoodList(props) {
           </Col>
         ))}
         {!foodList.length && !loadingData && (
-          <p>Food Supplier Not Found In This Region</p>
+          <p>Food Supplier Not Found for {location}</p>
         )}
         {loadingData && <Spin indicator={antIcon} />}
       </Row>

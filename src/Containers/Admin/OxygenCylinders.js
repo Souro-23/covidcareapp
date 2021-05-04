@@ -78,25 +78,34 @@ export class OxygenCylinders extends Component {
     this.state = {
       dataSource: [],
       count: 0,
+      emptyTableText: "",
     };
 
     db.collection("OxygenCylinders")
       .orderBy("timestamp", "desc")
-      .onSnapshot((querySnapshot) => {
-        var data = [];
-        querySnapshot.forEach((doc) => {
-          data.push({
-            id: doc.id,
-            verified: doc.data().verified,
-            name: doc.data().name,
-            streetNumber: doc.data().streetNumber,
-            location: doc.data().location,
-            phone: doc.data().phone,
-            key: doc.id,
+      .onSnapshot(
+        (querySnapshot) => {
+          var data = [];
+          querySnapshot.forEach((doc) => {
+            data.push({
+              id: doc.id,
+              verified: doc.data().verified,
+              name: doc.data().name,
+              streetNumber: doc.data().streetNumber,
+              location: doc.data().location,
+              phone: doc.data().phone,
+              key: doc.id,
+            });
           });
-        });
-        this.setState({ dataSource: data, count: data.length });
-      });
+          this.setState({ dataSource: data, count: data.length });
+        },
+        (error) => {
+          console.log("Error", error);
+          this.setState({
+            emptyTableText: "Not Authorized",
+          });
+        }
+      );
   }
   getColumnSearchProps = (dataIndex) => ({
     filterDropdown: ({
@@ -303,7 +312,7 @@ export class OxygenCylinders extends Component {
           pagination
           dataSource={dataSource}
           columns={columns}
-          locale={{ emptyText: "Not Authorized" }}
+          locale={{ emptyText: this.state.emptyTableText }}
         />
         <br />
         <BulkUpload database='OxygenCylinders' />

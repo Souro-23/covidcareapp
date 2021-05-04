@@ -20,9 +20,9 @@ export default function OxygenCylinderList(props) {
   const [completeOclList, setCompleteOclList] = useState([]);
   const [oclList, setOclList] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
-
+  const [location, setLocation] = useState("");
   useEffect(() => {
-    console.log("Effect Called");
+    window.scrollTo(0, 0);
     var oclArr = [];
     db.collection("OxygenCylinders")
       .get()
@@ -43,6 +43,7 @@ export default function OxygenCylinderList(props) {
   const onLocationChange = (value) => {
     var oclArr = completeOclList.filter((ocl, index) => ocl.location === value);
     setOclList(oclArr);
+    setLocation(value);
   };
   return (
     <div className={classes.body}>
@@ -79,7 +80,11 @@ export default function OxygenCylinderList(props) {
           </Col>
         ))}
         {!oclList.length && !loadingData && (
-          <p> Oxygen Cylinders Supplier Not Found In This Region</p>
+          <p>
+            {" "}
+            Oxygen Cylinders Supplier <br />
+            Not Found for {location}
+          </p>
         )}
         {loadingData && <Spin indicator={antIcon} />}
       </Row>
