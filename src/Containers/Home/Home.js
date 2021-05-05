@@ -68,16 +68,16 @@ export default function Home(props) {
           <div className={classes.actionCard}>
             <h1
               style={{
-                textAlign: "center",
+                textAlign: "left",
                 marginBottom: "0px",
                 lineHeight: "25px",
               }}>
-              KABASUR <span style={{ color: "orangered" }}>KUDINEER</span>
+               <span style={{ color: "orangered" }}>IMMUNITY </span>KIT
             </h1>
             <h4
               style={{
                 fontSize: "10px",
-                textAlign: "center",
+                textAlign: "left",
                 color: "#ADADAD",
               }}>
               EFFECTIVE MEDICINE TO FIGHT COVID - 19
@@ -86,13 +86,13 @@ export default function Home(props) {
               <img src={medicine} className={classes.homeIconsSmall} />
             </div>
             <br />
-            <p>
+            <p style={{textAlign:"left"}}>
               Based on German Research, taking Kabasur, along with amruth and
               tulsi which has efficiency of 85% to fight COVID
             </p>
-            <Button block className={classes.actionButton4}>
-              Want To Know More
-            </Button>
+            <a target="_blank" href="https://wa.me/919821287908"><Button block className={classes.actionButton4}>
+              Join Group(WA) For Info
+            </Button></a>
           </div>
         </Col>
         <Col md={8} sm={16} xs={24}>
@@ -101,14 +101,14 @@ export default function Home(props) {
               <img src={call} className={classes.homeIconsSmall} />
             </div>
             <br />
-            <p>
+            <p style={{textAlign:"left"}}>
               Call on <b style={{ color: "black" }}>080-676-12338</b> where
               teachers counsellors people undergoing stress and anxiety during
               the lockdown
             </p>
-            <Button block className={classes.actionButton4}>
+            <a href="tel:8067612338"><Button block className={classes.actionButton4}>
               Call Now
-            </Button>
+            </Button></a>
           </div>
         </Col>
       </Row>

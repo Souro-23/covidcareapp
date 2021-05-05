@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from "./section.module.css"
 
-import plasma from "../../Assets/Icons/blood.svg"
+import plasma from "../../Assets/Icons/Group 159525.svg"
 import oxygen from "../../Assets/Icons/oxygen-tank.svg"
 import food from "../../Assets/Icons/food.svg"
 import lab from "../../Assets/Icons/flask.svg"
@@ -20,10 +20,10 @@ export default function Section2({
             </Col>
             
             <Row className={classes.symptomsBox}>
-                <Col onClick={() => changeRoute("register/recipient")} style={{ backgroundColor: '#2F61F5' }} justify="center" className={classes.selected}>
+                <Col onClick={() => changeRoute("register/recipient")}  justify="center" className={classes.selected}>
                     <label style={{ textAlign: 'center' }} for="fever">
                         <img src={plasma} />
-                        <div style={{ color: 'white' }} className={classes.text}> Plasma Donors </div>
+                        <div className={classes.text}> Plasma Donors </div>
                     </label>
                 </Col>
                 <Col onClick={() => changeRoute('/oxygenCylinders')} justify="center" className={classes.selected}>
