@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from "./section.module.css"
-import plasma from "../../Assets/Icons/blood.svg"
+import plasma from "../../Assets/Icons/Group 159525.svg"
 import oxygen from "../../Assets/Icons/oxygen-tank.svg"
 import food from "../../Assets/Icons/food.svg"
 import lab from "../../Assets/Icons/flask.svg"
@@ -17,10 +17,10 @@ export default function Section4({
                 <h1 style={{ fontSize: '20px' }} className={classes.superText}>Come forward,<br /> <span className={classes.spanText}>Donate/Share Leads</span> </h1>
             </Col>
             <Row className={classes.symptomsBox}>
-                <Col onClick={showModal} style={{ backgroundColor: '#2F61F5' }} justify="center" className={classes.selected}>
+                <Col onClick={showModal}  justify="center" className={classes.selected}>
                     <label style={{ textAlign: 'center' }} >
                         <img src={plasma} />
-                        <div style={{ color: 'white' }} className={classes.text}> Donate Plasma </div>
+                        <div  className={classes.text}> Donate Plasma </div>
                     </label>
                 </Col>
                 <Col onClick={() => changeRoute('/register/Oxygen-cylinders-supply')} justify="center" className={classes.selected}>
