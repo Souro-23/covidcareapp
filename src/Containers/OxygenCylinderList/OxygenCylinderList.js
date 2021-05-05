@@ -41,6 +41,11 @@ export default function OxygenCylinderList(props) {
   }, []);
 
   const onLocationChange = (value) => {
+    if (value === "Entire Delhi/NCR" || value === "Entire Delhi") {
+      setOclList(completeOclList);
+      setLocation(value);
+      return;
+    }
     var oclArr = completeOclList.filter((ocl, index) => ocl.location === value);
     setOclList(oclArr);
     setLocation(value);
@@ -59,7 +64,7 @@ export default function OxygenCylinderList(props) {
         <Select
           placeholder='Select Location'
           style={{ width: "100%" }}
-          listHeight={450}
+          listHeight={570}
           onChange={onLocationChange}>
           {locations.map((loc) => {
             return <Option value={loc}>{loc}</Option>;

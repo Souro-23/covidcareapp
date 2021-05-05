@@ -16,7 +16,9 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 var db = firebase.firestore();
 
 export default function SaturationList(props) {
-  const [availableDoctors, setAvailableDoctors] = useState(0);
+  const [availableDoctors, setAvailableDoctors] = useState(
+    "Doctors are Available Now"
+  );
   const [whatsappGroup, setWhatsappGroup] = useState([]);
   useEffect(() => {
     getDoctorsCount();
@@ -31,7 +33,8 @@ export default function SaturationList(props) {
         querySnapshot.forEach((doc) => {
           docArr.push(doc.data());
         });
-        setAvailableDoctors(countAvailableDoctors(checkAvailability(docArr)));
+        let numberOfDoctors = countAvailableDoctors(checkAvailability(docArr));
+        setAvailableDoctors(`${numberOfDoctors} Doctors are Available Now`);
       })
       .catch((error) => {
         console.log("Error getting documents: ", error);
@@ -64,9 +67,7 @@ export default function SaturationList(props) {
         </Col>
       </Row>
       <Row>
-        <div className={classes.availableHeader}>
-          {availableDoctors} Doctors Available Now
-        </div>
+        <div className={classes.availableHeader}>{availableDoctors}</div>
       </Row>
       <Row justify='center' gutter={[8, 8]}>
         {whatsappGroup.map((wts, index) => (
@@ -94,7 +95,7 @@ export default function SaturationList(props) {
           </Col>
         ))}
 
-        {!availableDoctors === 0 && <Spin indicator={antIcon} />}
+        {!availableDoctors === "" && <Spin indicator={antIcon} />}
       </Row>
     </div>
   );

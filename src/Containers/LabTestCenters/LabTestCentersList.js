@@ -43,6 +43,11 @@ export default function LabTestCentersList(props) {
   }, []);
 
   const onLocationChange = (value) => {
+    if (value === "Entire Delhi/NCR" || value === "Entire Delhi") {
+      setLabList(completeLabTestCentersList);
+      setLocation(value);
+      return;
+    }
     var labArr = completeLabTestCentersList.filter(
       (lab) => lab.location === value
     );
@@ -64,7 +69,7 @@ export default function LabTestCentersList(props) {
         <Select
           placeholder='Select Location'
           style={{ width: "100%" }}
-          listHeight={450}
+          listHeight={570}
           onChange={onLocationChange}>
           {locations.map((loc) => {
             return <Option value={loc}>{loc}</Option>;

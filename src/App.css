@@ -44,11 +44,14 @@ body {
   margin-top: 3.5px;
 }
 
-.ant-carousel .slick-dots {
+/* ANTD CAROUSEL*/
+
+.slick-dots {
   justify-content: flex-start !important;
-  margin-left: 0px !important;
+  margin-left: 19px !important;
+  margin-bottom: 5px !important;
 }
 
 .ant-carousel {
-  margin-top: -5px !important;
+  /* margin-top: -5px !important; */
 }
