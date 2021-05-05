@@ -71,7 +71,7 @@ export default function Home(props) {
                 marginBottom: "0px",
                 lineHeight: "25px",
               }}>
-               <span style={{ color: "orangered" }}>IMMUNITY </span>KIT
+              <span style={{ color: "orangered" }}>IMMUNITY </span>KIT
             </h1>
             <h4
               style={{
@@ -81,33 +81,32 @@ export default function Home(props) {
               }}>
               EFFECTIVE MEDICINE TO FIGHT COVID - 19
             </h4>
-            <div className={classes.iconContainer}>
-              <img src={medicine} className={classes.homeIconsSmall} />
-            </div>
+
             <br />
-            <p style={{textAlign:"left"}}>
+            <p style={{ textAlign: "left" }}>
               Based on German Research, taking Kabasur, along with amruth and
               tulsi which has efficiency of 85% to fight COVID
             </p>
-            <a target="_blank" href="https://wa.me/919821287908"><Button block className={classes.actionButton4}>
-              Join Group(WA) For Info
-            </Button></a>
+            <a target='_blank' href='https://wa.me/919821287908'>
+              <Button block className={classes.actionButton4}>
+                Join Group(WA) For Info
+              </Button>
+            </a>
           </div>
         </Col>
         <Col md={8} sm={16} xs={24}>
           <div className={classes.actionCard}>
-            <div className={classes.iconContainer}>
-              <img src={call} className={classes.homeIconsSmall} />
-            </div>
             <br />
-            <p style={{textAlign:"left"}}>
+            <p style={{ textAlign: "left" }}>
               Call on <b style={{ color: "black" }}>080-676-12338</b> where
               teachers counsellors people undergoing stress and anxiety during
               the lockdown
             </p>
-            <a href="tel:8067612338"><Button block className={classes.actionButton4}>
-              Call Now
-            </Button></a>
+            <a href='tel:8067612338'>
+              <Button block className={classes.actionButton4}>
+                Call Now
+              </Button>
+            </a>
           </div>
         </Col>
       </Row>

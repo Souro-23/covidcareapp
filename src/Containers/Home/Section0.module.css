@@ -1,28 +1,11 @@
-/* .actionCardCarousal {
-  background: #f5532f;
-  box-shadow: 0px 2px 20px #aaaaaa29;
-  border-radius: 0px;
-  padding: 30px;
-  height: 243px;
-  border-radius: 2px;
-} */
-/* .actionCardCarousal p {
-  margin-bottom: 0px;
-  position: relative;
-} */
-.carouselDots {
-  color: red;
-}
-
 /*CSS FOR BANNER 1*/
 .banner1 {
   /* margin-left: 2px; */
   background: #f5532f;
   box-shadow: 0px 2px 20px #aaaaaa29;
   border-radius: 0px;
-  padding: 30px;
+  padding: 20px;
   height: inherit;
-  border-radius: 2px;
   position: relative;
   height: 243px;
 }
@@ -80,9 +63,8 @@
   background: #f5532f;
   box-shadow: 0px 2px 20px #aaaaaa29;
   border-radius: 0px;
-  padding: 30px;
+  padding: 20px;
   height: 243px;
-  border-radius: 2px;
   position: relative;
 }
 
@@ -135,9 +117,8 @@
   background: #f5532f;
   box-shadow: 0px 2px 20px #aaaaaa29;
   border-radius: 0px;
-  padding: 30px;
+  padding: 20px;
   height: inherit;
-  border-radius: 2px;
   position: relative;
   height: 243px;
 }
@@ -155,7 +136,7 @@
 
 .carouselText32 {
   text-align: left;
-  font: normal normal medium 30px/27px Oswald;
+  font: normal normal 600 30px/34px Oswald;
   letter-spacing: 0px;
   color: #ffffff;
   text-transform: uppercase;
@@ -182,10 +163,84 @@
   font: normal normal bold 18px/16px Lato;
   letter-spacing: 0px;
   color: #ffffff;
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
 }
 
 .carouselText36 {
+  background: #ffffff 0% 0% no-repeat padding-box !important;
+  border: 2px solid #ffffff !important;
+  opacity: 1 !important;
+  text-align: center !important;
+  font: normal normal 600 11px/15px Lato !important;
+  letter-spacing: 0px !important;
+  color: #383533 !important;
+  text-transform: capitalize !important;
+  opacity: 1 !important;
+  height: 34px !important;
+  width: 120px !important;
+}
+
+.bannerImage3 {
+  position: absolute;
+  bottom: 0px;
+  right: -2px;
+}
+
+/*CSS FOR BANNER 4*/
+.banner4 {
+  background: #f5532f;
+  box-shadow: 0px 2px 20px #aaaaaa29;
+  border-radius: 0px;
+  padding: 20px;
+  height: inherit;
+  position: relative;
+  height: 243px;
+}
+
+.banner4 p {
+  margin-bottom: 0px;
+}
+
+.carouselText41 {
+  text-align: left;
+  font: normal normal bold 47px/40px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.carouselText42 {
+  text-align: left;
+  font: normal normal bold 21px/20px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.carouselText43 {
+  text-align: left;
+  font: normal normal normal 12px/13px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.carouselText44 {
+  text-align: left;
+  font: normal normal bold 12px/16px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.carouselText45 {
+  text-align: left;
+  font: normal normal bold 18px/16px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+}
+
+.carouselText46 {
   background: #ffffff 0% 0% no-repeat padding-box !important;
   border: 2px solid #ffffff !important;
   opacity: 1 !important;
@@ -195,27 +250,122 @@
   color: #383533 !important;
   text-transform: capitalize !important;
   opacity: 1 !important;
-  height: 34 !important;
-  width: 112px !important;
+  margin-top: 20px !important;
 }
 
-/*CSS FOR BANNER 4*/
+.bannerImage4 {
+  position: absolute;
+  bottom: 45px;
+  right: 9px;
+}
 
 /*CSS FOR BANNER 5*/
+.banner5 {
+  background: #f5532f;
+  box-shadow: 0px 2px 20px #aaaaaa29;
+  border-radius: 0px;
+  padding: 20px;
+  height: inherit;
+  position: relative;
+  height: 243px;
+}
+
+.banner5 p {
+  margin-bottom: 0px;
+}
+
+.carouselText51 {
+  text-align: left;
+  font: normal normal bold 60px/45px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+  opacity: 1;
+}
+.carouselText52 {
+  text-align: left;
+  font: normal normal bold 21px/29px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.carouselText53 {
+  text-align: left;
+  font: normal normal normal 12px/9px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: capitalize;
+}
+
+.carouselText54 {
+  margin-top: 10px;
+  text-align: left;
+  font: normal normal bold 12px/16px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+}
+
+.carouselText55 {
+  text-align: left;
+  font: normal normal bold 18px/16px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+}
+
+.carouselText56 {
+  margin-top: 15px !important;
+  text-align: center !important;
+  font: normal normal 600 12px/15px Lato !important;
+  letter-spacing: 0px !important;
+  color: #383533 !important;
+  text-transform: capitalize !important;
+  opacity: 1 !important;
+  background: #ffffff 0% 0% no-repeat padding-box !important;
+  border: 2px solid #ffffff !important;
+  opacity: 1 !important;
+}
+
+.bannerImage5 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
 @media (max-width: 330px) {
   .bannerImage1 {
     position: absolute;
-    top: 6%;
-    right: 59%;
+    bottom: 0;
+    right: 5px;
   }
 
   .carouselText13 {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .bannerImage2 {
     position: absolute;
-    top: 9%;
-    right: 40%;
+    bottom: 0;
+    right: 20px;
+  }
+
+  .carouselText33 {
+    font-size: 10px;
+  }
+
+  .carouselText43 {
+    font-size: 11px;
+  }
+  .bannerImage4 {
+    bottom: 25px;
+  }
+
+  .carouselText53 {
+    font-size: 11px;
+  }
+
+  .carouselText56 {
+    width: 112px !important;
+    font-size: 10px !important;
   }
 }
