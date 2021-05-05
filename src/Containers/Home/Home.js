@@ -43,12 +43,11 @@ export default function Home(props) {
           </div>
         </Col>
       </Row>
-      <Row justify='center'>
+      <Row justify='center' className={classes.bannerSectionRow}>
         <Col sm={16} xs={24}>
           <Section0 showModal={showModal} changeRoute={changeRoute} />
         </Col>
       </Row>
-      <br />
 
       <Section1 {...props} />
 

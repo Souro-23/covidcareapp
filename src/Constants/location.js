@@ -12,8 +12,9 @@ export const locations = [
   "New Delhi",
   "Central Delhi",
   "Shahdra",
+  "Dwarka",
   "Gurgaon",
   "Noida/Greater Noida",
   "Ghaziabad",
-  "Faridabad"
+  "Faridabad",
 ];

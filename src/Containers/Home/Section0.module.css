@@ -1,19 +1,34 @@
-.actionCardCarousal {
+/* .actionCardCarousal {
   background: #f5532f;
   box-shadow: 0px 2px 20px #aaaaaa29;
   border-radius: 0px;
   padding: 30px;
   height: 243px;
   border-radius: 2px;
-}
-.actionCardCarousal p {
+} */
+/* .actionCardCarousal p {
   margin-bottom: 0px;
   position: relative;
+} */
+.carouselDots {
+  color: red;
 }
 
-/*CLASSES FOR FIRST CAROUSEL*/
+/*CSS FOR BANNER 1*/
 .banner1 {
-  margin-left: 2px;
+  /* margin-left: 2px; */
+  background: #f5532f;
+  box-shadow: 0px 2px 20px #aaaaaa29;
+  border-radius: 0px;
+  padding: 30px;
+  height: inherit;
+  border-radius: 2px;
+  position: relative;
+  height: 243px;
+}
+
+.banner1 p {
+  margin-bottom: 0px;
 }
 .carouselText11 {
   font: normal normal bold 53px/20px Oswald;
@@ -50,18 +65,29 @@
   letter-spacing: 0px !important;
   color: #383533 !important;
   opacity: 1 !important;
-  margin-top: 10px !important;
+  margin-top: 15px !important;
 }
 
 .bannerImage1 {
   position: absolute;
-  top: 6%;
-  right: 60%;
+  top: 16%;
+  right: 4%;
 }
 
-/*CLASSES FOR SECOND CAROUSEL*/
+/*CSS FOR BANNER 2*/
 .banner2 {
-  margin-left: 2px;
+  /* margin-left: 2px; */
+  background: #f5532f;
+  box-shadow: 0px 2px 20px #aaaaaa29;
+  border-radius: 0px;
+  padding: 30px;
+  height: 243px;
+  border-radius: 2px;
+  position: relative;
+}
+
+.banner2 p {
+  margin-bottom: 0px;
 }
 .carouselText21 {
   font: normal normal bold 53px/20px Oswald;
@@ -100,10 +126,82 @@
 
 .bannerImage2 {
   position: absolute;
-  top: 9%;
-  right: 41%;
+  top: 19%;
+  right: 6%;
 }
 
+/* CSS FOR BANNER 3*/
+.banner3 {
+  background: #f5532f;
+  box-shadow: 0px 2px 20px #aaaaaa29;
+  border-radius: 0px;
+  padding: 30px;
+  height: inherit;
+  border-radius: 2px;
+  position: relative;
+  height: 243px;
+}
+
+.banner3 p {
+  margin-bottom: 0px;
+}
+.carouselText31 {
+  text-align: left;
+  font: normal normal bold 36px/27px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.carouselText32 {
+  text-align: left;
+  font: normal normal medium 30px/27px Oswald;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.carouselText33 {
+  text-align: left;
+  font: normal normal normal 12px/13px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-transform: capitalize;
+}
+
+.carouselText34 {
+  text-align: left;
+  font: normal normal bold 12px/16px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin-top: 10px;
+}
+
+.carouselText35 {
+  text-align: left;
+  font: normal normal bold 18px/16px Lato;
+  letter-spacing: 0px;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.carouselText36 {
+  background: #ffffff 0% 0% no-repeat padding-box !important;
+  border: 2px solid #ffffff !important;
+  opacity: 1 !important;
+  text-align: center !important;
+  font: normal normal 600 12px/15px Lato !important;
+  letter-spacing: 0px !important;
+  color: #383533 !important;
+  text-transform: capitalize !important;
+  opacity: 1 !important;
+  height: 34 !important;
+  width: 112px !important;
+}
+
+/*CSS FOR BANNER 4*/
+
+/*CSS FOR BANNER 5*/
 @media (max-width: 330px) {
   .bannerImage1 {
     position: absolute;

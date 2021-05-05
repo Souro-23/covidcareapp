@@ -176,6 +176,9 @@
   color: rgb(87, 85, 85);
 }
 
+.bannerSectionRow {
+  height: 243px !important;
+}
 @media (min-width: 768px) {
   .actionCard {
     padding: 25px;

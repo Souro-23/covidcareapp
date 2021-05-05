@@ -40,6 +40,11 @@ export default function FoodList(props) {
   }, []);
 
   const onLocationChange = (value) => {
+    if (value === "Entire Delhi/NCR" || value === "Entire Delhi") {
+      setFoodList(completeFoodList);
+      setLocation(value);
+      return;
+    }
     var foodArr = completeFoodList.filter((food) => food.location === value);
     setFoodList(foodArr);
     setLocation(value);
@@ -59,7 +64,7 @@ export default function FoodList(props) {
         <Select
           placeholder='Select Location'
           style={{ width: "100%" }}
-          listHeight={450}
+          listHeight={570}
           onChange={onLocationChange}>
           {locations.map((loc) => {
             return <Option value={loc}>{loc}</Option>;
