@@ -45,40 +45,76 @@ export default function Section1(props) {
         </Col>
         <Row className={classes.symptomsBox}>
           <Col justify='center' className={classes.selectedcheckBox1}>
+            <div className={classes.box2}>
+            <div className={classes.box3}>
+            <div className={classes.box4}>
             <label style={{ textAlign: "center" }} for='fever'>
               <img src={fc} />
               <div className={classes.text}> Free Consultation </div>
             </label>
+            </div>
+            </div>
+            </div>
           </Col>
           <Col justify='center' className={classes.selectedcheckBox1}>
+            <div className={classes.box2}>
+            <div className={classes.box3}>
+            <div className={classes.box4}>
             <label style={{ textAlign: "center" }} for='fever'>
               <img src={sd} />
               <div className={classes.text}> Special Doctors </div>
             </label>
+            </div>
+            </div>
+            </div>
           </Col>
           <Col justify='center' className={classes.selectedcheckBox1}>
+            <div className={classes.box2}>
+            <div className={classes.box3}>
+            <div className={classes.box4}>
             <label style={{ textAlign: "center" }} for='fever'>
               <img src={bs} />
               <div className={classes.text}> Breathing Sessions </div>
             </label>
+            </div>
+            </div>
+            </div>
           </Col>
           <Col justify='center' className={classes.selectedcheckBox1}>
+            <div className={classes.box2}>
+            <div className={classes.box3}>
+            <div className={classes.box4}>
             <label style={{ textAlign: "center" }} for='fever'>
               <img src={tt} />
               <div className={classes.text}> Tips & Tricks </div>
             </label>
+            </div>
+            </div>
+            </div>
           </Col>
           <Col justify='center' className={classes.selectedcheckBox1}>
+            <div className={classes.box2}>
+            <div className={classes.box3}>
+            <div className={classes.box4}>
             <label style={{ textAlign: "center" }} for='fever'>
               <img src={hc} />
               <div className={classes.text}> Home Consultation </div>
             </label>
+            </div>
+            </div>
+            </div>
           </Col>
           <Col justify='center' className={classes.selectedcheckBox1}>
+            <div className={classes.box2}>
+            <div className={classes.box3}>
+            <div className={classes.box4}>
             <label style={{ textAlign: "center" }} for='fever'>
               <img src={vc} />
               <div className={classes.text}> Video Call </div>
             </label>
+            </div>
+            </div>
+            </div>
           </Col>
         </Row>
         <Button onClick={showModal} block className={classes.Button}>

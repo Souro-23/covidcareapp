@@ -49,13 +49,59 @@
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    border: 1px solid #F0F0F0;
-    border-radius: 4px;
+    position: relative;
     opacity: 1;
     margin-bottom: 12px;
     cursor: pointer;
-  
   }
+  .box4{
+      display: flex !important;
+      justify-content: center !important;
+  }
+ 
+
+
+  .selectedcheckBox1:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    /* background-color: cyan; */
+    height: 75%;
+    width: 50%;
+    border-left: 1px solid #e2e2e2;
+  }
+  .box2:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* background-color: blue; */
+    height: 50%;
+    width: 75%;
+    border-top: 1px solid #e2e2e2;
+  }
+  .box3:before{
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 75%;
+    width: 50%;
+    /* background-color: brown; */
+    border-right: 1px solid #e2e2e2;
+  }
+  .box4:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50%;
+    /* background-color: chocolate; */
+    width: 75%;
+    border-bottom: 1px solid #e2e2e2;
+  }
+
   .iconBox1{
     width: 30%;
     height: 72px;
