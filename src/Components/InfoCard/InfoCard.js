@@ -80,8 +80,8 @@ export default function InfoCard({
           {(type === "food" || type === "ocl") && verified === "yes" ? (
             <Tag
               color='red-inverse'
-              style={{
-                marginBottom: "10px",
+              style={{ 
+                marginRight:"0",
                 borderRadius: "10px",
                 paddingBottom: "1px",
               }}
@@ -93,7 +93,6 @@ export default function InfoCard({
               <Tag
                 color='rgb(88,228,88)'
                 style={{
-                  marginBottom: "10px",
                   borderRadius: "10px",
                   paddingBottom: "1px",
                 }}
