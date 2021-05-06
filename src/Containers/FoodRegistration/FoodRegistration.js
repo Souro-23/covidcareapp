@@ -48,7 +48,7 @@ export default function FoodRegistration(props) {
 
   const submitHandler = () => {
     if (name === "") return message.error("Name Required");
-    if (mobileNumber === "" || mobileNumber.length !== 10)
+    if (mobileNumber === "")
       return message.error("Mobile Number Required");
 
     if (location === "") return message.error("District Required");
@@ -143,7 +143,7 @@ export default function FoodRegistration(props) {
             <Select
               placeholder='Select Location'
               style={{ width: "100%" }}
-              listHeight={450}
+              listHeight={570}
               onChange={(e) => onChangeHandler(e, "location")}>
               {locations.map((loc) => {
                 return <Option value={loc}>{loc}</Option>;

@@ -50,7 +50,7 @@ export default function FoodRegistration(props) {
 
     const submitHandler = () => {
         if (name === "") return message.error("Name Required");
-        if (mobileNumber === "" || mobileNumber.length !== 10) return message.error("Valid Mobile Number Required");
+        if (mobileNumber === "") return message.error("Valid Mobile Number Required");
         if (location === "") return message.error("Location Required");
         if (streetNumber === "") return message.error("Street Number Required");
         if (isVerified === "") return message.error("Fill All Field");
@@ -134,7 +134,7 @@ export default function FoodRegistration(props) {
                         <p className={classes.title}>Select District</p>
                         <Select
                             placeholder='Select District'
-                            listHeight={450}
+                            listHeight={570}
                             style={{ width: "100%" }}
                             onChange={(e) => onChangeHandler(e, "location")}>
                             {locations.map((loc) => {

@@ -54,7 +54,7 @@ export default function BeforeForm({
         <div className={classes.formField}>
           <p className={classes.title}>What’s your location?</p>
           <Select
-            listHeight={450}
+            listHeight={570}
             placeholder='Select Location'
             style={{ width: "100%" }}
             onChange={onLocationChange}>

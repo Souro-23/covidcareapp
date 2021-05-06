@@ -45,7 +45,7 @@ export default function BeforeForm({
                     What’s your location?
                     </p>
                     
-                    <Select  listHeight={450} listHeight={450}  placeholder="Select location" style={{ width: '100%' }} onChange={onLocationChange}>
+                    <Select  listHeight={570} listHeight={570}  placeholder="Select location" style={{ width: '100%' }} onChange={onLocationChange}>
                     {locations.map(location => {
                         return(
                             <Option value={location}>{location}</Option>

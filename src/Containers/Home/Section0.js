@@ -9,12 +9,13 @@ import bannerPrevention from "../../Assets/Svgs/bannerPrevention.svg";
 import { getNodeText } from "@testing-library/dom";
 
 export default function Section0({ changeRoute, showModal }) {
-  return (
+  return (   
     <div>
       <Carousel
         dotPosition={"bottom"}
         dots={classes.carouselDots}
-        autoplay={true}>
+        autoplay={true}
+        >
         <div className={classes.banner1}>
           <p className={classes.carouselText11}>DONATE</p>
           <p className={classes.carouselText12}>USED O2 CYLINDERS</p>
@@ -56,13 +57,13 @@ export default function Section0({ changeRoute, showModal }) {
           <p className={classes.carouselText31}>POST - COVID</p>
           <p className={classes.carouselText32}>REHABILITATION</p>
           <p className={classes.carouselText33}>
-            With Medidation, Breath and Yoga
+            With Meditation, Breath and Yoga
           </p>
           <p className={classes.carouselText34}>3- DAY FREE ONLINE</p>
           <p className={classes.carouselText35}>PROGRAMME</p>
-          <Button onClick={showModal} className={classes.carouselText36}>
+          <a target="_blank" href="https://www.artofliving.org/in-en/search/course#distance=50&sSearch=India&st=&lat=&lng=&ctype=555888&acol=0&c=in&cc=&d1=&d2=&time=&course_language=&gtag="><Button   className={classes.carouselText36}>
             Register For Free
-          </Button>
+          </Button></a>
           <div className={classes.bannerImage3}>
             <img src={bannerPostCovid} alt='Post covid icon' />
           </div>
@@ -71,13 +72,13 @@ export default function Section0({ changeRoute, showModal }) {
           <p className={classes.carouselText41}>IMMUNITY</p>
           <p className={classes.carouselText42}>BOOST & PREVENTION</p>
           <p className={classes.carouselText43}>
-            With Medidation, Breath and Yoga
+            With Meditation, Breath and Yoga
           </p>
           <p className={classes.carouselText44}>3- DAY FREE ONLINE</p>
           <p className={classes.carouselText45}>PROGRAMME</p>
-          <Button onClick={showModal} className={classes.carouselText46}>
+          <a target="_blank" href="https://www.artofliving.org/in-en/search/course#distance=50&sSearch=India&st=&lat=&lng=&ctype=435533&acol=0&c=in&cc=&d1=&d2=&time=&course_language=&gtag="><Button  className={classes.carouselText46}>
             Register For Free
-          </Button>
+          </Button></a>
           <div className={classes.bannerImage4}>
             <img src={bannerPrevention} alt='prevention icon' />
           </div>
@@ -86,13 +87,13 @@ export default function Section0({ changeRoute, showModal }) {
           <p className={classes.carouselText51}>HOME</p>
           <p className={classes.carouselText52}>ISOLATION & CARE</p>
           <p className={classes.carouselText53}>
-            With Medidation, Breath and Yoga
+            With Meditation, Breath and Yoga
           </p>
           <p className={classes.carouselText54}>3- DAY FREE ONLINE</p>
           <p className={classes.carouselText55}>PROGRAMME</p>
-          <Button onClick={showModal} className={classes.carouselText56}>
+          <a target="_blank" href="https://www.artofliving.org/in-en/search/course#distance=50&sSearch=India&st=&lat=&lng=&ctype=555881&acol=0&c=in&cc=&d1=&d2=&time=&course_language=&gtag="><Button   className={classes.carouselText56}>
             Register For Free
-          </Button>
+          </Button></a>
           <div className={classes.bannerImage5}>
             <img src={bannerHomeCare} alt='prevention icon' />
           </div>

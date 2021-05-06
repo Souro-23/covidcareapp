@@ -50,7 +50,7 @@ export default function InfoCard({
             </Button>
           </a>
         ) : (
-          <a href={`tel:${phone.substring(0, 10)}`}>
+          <a href={`tel:${phone}`}>
             <Button className={classes.Button}>Call Now</Button>
           </a>
         )}

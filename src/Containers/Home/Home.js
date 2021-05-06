@@ -110,7 +110,6 @@ export default function Home(props) {
           </div>
         </Col>
       </Row>
-      <br />
       <Modal
         title={null}
         className={classes.modal}

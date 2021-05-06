@@ -42,12 +42,11 @@ export default function PlasmaRecipientForm(props) {
     if (name === "") return message.error("Name Required");
     if (mobileNumber === "") return message.error("Mobile Number Required");
     if (gender === "") return message.error("Gender Required");
+    if (location === "") return message.error("Location Required");
     return "Success";
   };
   const submitHandler = () => {
     if (bloodGroup === "") return message.error("Blood Group Required");
-
-    if (location === "") return message.error("Location Required");
 
     if (covidPositive === false)
       return message.error("Covid Positive Report Required");
