@@ -77,7 +77,7 @@ export default function FoodRegistration(props) {
         <div className={classes.body}>
             <Row justify="center" >
                 <Col lg={8} sm={16} xs={23}>
-                    <FormHeader title="Avail Oxygen Cylinders" onBackPress={() => props.history.push('/')} />
+                    <FormHeader title="Share lead for O2 cylinder" onBackPress={() => props.history.push('/')} />
                 </Col>
             </Row>
             <Row justify="center" >

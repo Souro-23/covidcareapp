@@ -66,9 +66,6 @@ export default function SaturationList(props) {
           />
         </Col>
       </Row>
-      <Row>
-        <div className={classes.availableHeader}>{availableDoctors}</div>
-      </Row>
       <Row justify='center' gutter={[8, 8]}>
         {whatsappGroup.map((wts, index) => (
           <Col key={index} lg={7} md={8} sm={15} xs={24}>
@@ -94,6 +91,11 @@ export default function SaturationList(props) {
             </div>
           </Col>
         ))}
+        {whatsappGroup.length?<Col lg={7} md={8} sm={15} xs={24}>
+          <div className={classes.saturationCard}>
+            <p>If oxygen Saturation level is below 85  please visit your nearest hospital.</p>
+          </div>
+        </Col>:null}
 
         {!availableDoctors === "" && <Spin indicator={antIcon} />}
       </Row>

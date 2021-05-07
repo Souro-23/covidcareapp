@@ -89,13 +89,21 @@ export default function Home(props) {
             </p>
             <a target='_blank' href='https://wa.me/919821287908'>
               <Button block className={classes.actionButton4}>
-                Join Group(WA) For Info
+                Chat Now to know more
               </Button>
             </a>
           </div>
         </Col>
         <Col md={8} sm={16} xs={24}>
           <div className={classes.actionCard}>
+          <h1
+              style={{
+                textAlign: "left",
+                marginBottom: "0px",
+                lineHeight: "25px",
+              }}>
+              <span style={{ color: "orangered" }}>Anxiety </span>Helpline Number 
+            </h1>
             <br />
             <p style={{ textAlign: "left" }}>
               Call on <b style={{ color: "black" }}>080-676-12338</b> where
