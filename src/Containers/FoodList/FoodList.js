@@ -22,7 +22,7 @@ export default function FoodList(props) {
   const [location, setLocation] = useState("");
   useEffect(() => {
     var foodArr = [];
-    db.collection("Food")
+    db.collection("Food").orderBy("timestamp", "desc")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {

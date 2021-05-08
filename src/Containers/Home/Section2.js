@@ -14,7 +14,7 @@ export default function Section2({
 }) {
     return (  
         <Row className={classes.formBox}>
-            <Col style={{ marginBottom: '1rem' }}>
+            <Col>
                 <h1 style={{ fontSize: '20px' }} className={classes.superText}>We are there to<br /> <span className={classes.spanText}>Help you out with</span> </h1>
                 <p className={classes.subText}>Currently available in NCR</p>
             </Col>

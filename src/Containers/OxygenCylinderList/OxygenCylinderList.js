@@ -8,7 +8,12 @@ import { locations } from "../../Constants/location";
 import FormHeader from "../../Components/FormHeader/FormHeader";
 
 import "firebase/firestore";
+// import "firebase/analytics";
 import { checkVerified, timeDifference } from "../DoctorsList/functions";
+
+
+
+
 
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -23,8 +28,9 @@ export default function OxygenCylinderList(props) {
   const [location, setLocation] = useState("");
   useEffect(() => {
     window.scrollTo(0, 0);
+    // firebase.analytics().logEvent('goal_completion', { name: 'lever_puzzle'});
     var oclArr = [];
-    db.collection("OxygenCylinders")
+    db.collection("OxygenCylinders").orderBy("timestamp", "desc")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {

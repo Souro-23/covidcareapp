@@ -40,7 +40,11 @@ export class OxygenCylinderContacts extends Component {
         filters: this.returnLocation(),
         onFilter: (value, record) => record.location?.indexOf(value) === 0,
       },
-
+      {
+        title:"Last Updated",
+        dataIndex:"timestamp",
+        editable:false
+      },
       {
         title: "operation",
         dataIndex: "operation",
@@ -66,12 +70,22 @@ export class OxygenCylinderContacts extends Component {
         (querySnapshot) => {
           var data = [];
           querySnapshot.forEach((doc) => {
+            const timestamp = doc.data().timestamp.toDate()
+            const date = timestamp.getDate()
+            const month = timestamp.getMonth()
+            const year = timestamp.getFullYear()
+            const hours = timestamp.getHours()
+            const mins = timestamp.getMinutes() 
+
+            const lastupdated = date+"/"+ month+"/"+ year + "  "+ hours+":"+ mins
+           
             data.push({
               id: doc.id,
               name: doc.data().name,
               location: doc.data().location,
               phone: doc.data().phone,
               key: doc.id,
+              timestamp:lastupdated
             });
           });
           this.setState({ dataSource: data, count: data.length });

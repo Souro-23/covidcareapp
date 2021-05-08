@@ -57,6 +57,11 @@ export default class RecipientTable extends React.Component {
         onFilter: (value, record) => record.location?.indexOf(value) === 0,
       },
       {
+        title:"Last Updated",
+        dataIndex:"timestamp",
+        editable:false
+      },
+      {
         title: "operation",
         dataIndex: "operation",
         render: (_, record) =>
@@ -81,6 +86,15 @@ export default class RecipientTable extends React.Component {
         (querySnapshot) => {
           var data = [];
           querySnapshot.forEach((doc) => {
+            const timestamp = doc.data().timestamp.toDate()
+            const date = timestamp.getDate()
+            const month = timestamp.getMonth()
+            const year = timestamp.getFullYear()
+            const hours = timestamp.getHours()
+            const mins = timestamp.getMinutes() 
+
+            const lastupdated = date+"/"+ month+"/"+ year + "  "+ hours+":"+ mins
+           
             data.push({
               id: doc.id,
               name: doc.data().name,
@@ -89,6 +103,7 @@ export default class RecipientTable extends React.Component {
               bloodGroup: doc.data().bloodGroup,
               gender: doc.data().gender,
               location: doc.data().location,
+              timestamp:lastupdated,
               key: doc.id,
             });
           });

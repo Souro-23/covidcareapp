@@ -102,7 +102,7 @@ export default function Home(props) {
                 marginBottom: "0px",
                 lineHeight: "25px",
               }}>
-              <span style={{ color: "orangered" }}>Anxiety </span>Helpline Number 
+              <span style={{ color: "orangered" }}>ANXIETY </span>HELPLINE NUMBER 
             </h1>
             <br />
             <p style={{ textAlign: "left" }}>

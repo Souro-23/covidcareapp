@@ -55,6 +55,11 @@ export default class DoctorTable extends React.Component {
         editable: true,
       },
       {
+        title:"Last Updated",
+        dataIndex:"timestamp",
+        editable:false
+      },
+      {
         title: "operation",
         dataIndex: "operation",
         render: (_, record) =>
@@ -79,6 +84,15 @@ export default class DoctorTable extends React.Component {
         (querySnapshot) => {
           var data = [];
           querySnapshot.forEach((doc) => {
+            const timestamp = doc.data().timestamp.toDate()
+            const date = timestamp.getDate()
+            const month = timestamp.getMonth()
+            const year = timestamp.getFullYear()
+            const hours = timestamp.getHours()
+            const mins = timestamp.getMinutes() 
+
+            const lastupdated = date+"/"+ month+"/"+ year + "  "+ hours+":"+ mins
+           
             data.push({
               id: doc.id,
               name: doc.data().name,
@@ -87,6 +101,7 @@ export default class DoctorTable extends React.Component {
               phone: doc.data().phone,
               whatsappNo: doc.data().whatsappNo,
               consultTime: doc.data().consultTime,
+              timestamp:lastupdated,
               key: doc.id,
             });
           });

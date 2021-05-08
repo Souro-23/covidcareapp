@@ -26,7 +26,7 @@ export default function LabTestCentersList(props) {
     window.scrollTo(0, 0);
 
     var labArr = [];
-    db.collection("LabTestCenters")
+    db.collection("LabTestCenters").orderBy("timestamp", "desc")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {

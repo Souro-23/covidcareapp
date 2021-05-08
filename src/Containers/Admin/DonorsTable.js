@@ -7,7 +7,10 @@ import "firebase/firestore";
 import firebase from "../../Firebase/FirebaseConfig";
 import BulkUpload from "./BulkUpload";
 import "./Table.css";
-import { locations } from "../../Constants/location";
+
+import states from '../DonorRegistration/states.json'
+
+
 import { EditableCell, EditableRow } from "./TableFunctions";
 
 var db = firebase.firestore();
@@ -57,6 +60,11 @@ export default class DonorsTable extends React.Component {
         onFilter: (value, record) => record.location?.indexOf(value) === 0,
       },
       {
+        title:"Last Updated",
+        dataIndex:"timestamp",
+        editable:false
+      },
+      {
         title: "operation",
         dataIndex: "operation",
         render: (_, record) =>
@@ -81,6 +89,15 @@ export default class DonorsTable extends React.Component {
         (querySnapshot) => {
           var data = [];
           querySnapshot.forEach((doc) => {
+            const timestamp = doc.data().timestamp.toDate()
+            const date = timestamp.getDate()
+            const month = timestamp.getMonth()
+            const year = timestamp.getFullYear()
+            const hours = timestamp.getHours()
+            const mins = timestamp.getMinutes() 
+
+            const lastupdated = date+"/"+ month+"/"+ year + "  "+ hours+":"+ mins
+           
             data.push({
               id: doc.id,
               name: doc.data().name,
@@ -89,9 +106,11 @@ export default class DonorsTable extends React.Component {
               bloodGroup: doc.data().bloodGroup,
               gender: doc.data().gender,
               location: doc.data().location,
+              timestamp:lastupdated,
               key: doc.id,
             });
           });
+          console.log(data)
           this.setState({ dataSource: data, count: data.length });
         },
         (error) => {
@@ -196,10 +215,10 @@ export default class DonorsTable extends React.Component {
   };
 
   returnLocation = () => {
-    return locations.map((location) => {
+    return states.map((state) => {
       return {
-        text: location,
-        value: location,
+        text: state.name,
+        value: state.name,
       };
     });
   };

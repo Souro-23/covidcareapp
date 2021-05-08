@@ -13,7 +13,7 @@ export default function Section4({
 }) {
     return (
         <Row className={classes.formBox}>
-            <Col style={{ marginBottom: '1rem' }}>
+            <Col>
                 <h1 style={{ fontSize: '20px' }} className={classes.superText}>Come forward,<br /> <span className={classes.spanText}>Donate/Share Leads</span> </h1>
                 <p className={classes.subText}>Currently available in NCR</p>
             </Col>

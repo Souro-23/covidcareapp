@@ -51,25 +51,13 @@ export default function InfoCard({
           </a>
         ) : (
           <a href={`tel:${phone}`}>
-            <Button className={classes.Button}>Call Now</Button>
+            <Button disabled={phone===""} className={classes.Button}>Call Now</Button>
           </a>
         )}
       </div>
       {type === "doctors" ? (
         <div className={classes.available}>
           {available && <div className={classes.status}>Available Now</div>}
-          {/* <div>
-            {timeSlots.map((timeSlot, index) => (
-              <p
-                style={{
-                  color: "grey",
-                  fontSize: "12px",
-                  marginBottom: "0px",
-                }}>
-                {timeSlot}
-              </p>
-            ))}
-          </div> */}
         </div>
       ) : (
         <div className={classes.status}>

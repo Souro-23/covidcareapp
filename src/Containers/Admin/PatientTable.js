@@ -39,6 +39,11 @@ export class PatientTable extends Component {
         editable: true,
       },
       {
+        title:"Last Updated",
+        dataIndex:"timestamp",
+        editable:false
+      },
+      {
         title: "operation",
         dataIndex: "operation",
         render: (_, record) =>
@@ -63,12 +68,23 @@ export class PatientTable extends Component {
         (querySnapshot) => {
           var data = [];
           querySnapshot.forEach((doc) => {
+            const timestamp = doc.data().timestamp.toDate()
+            const date = timestamp.getDate()
+            const month = timestamp.getMonth()
+            const year = timestamp.getFullYear()
+            const hours = timestamp.getHours()
+            const mins = timestamp.getMinutes() 
+
+            const lastupdated = date+"/"+ month+"/"+ year + "  "+ hours+":"+ mins
+           
             data.push({
               id: doc.id,
               name: doc.data().name,
               phone: doc.data().phone,
               saturationLevel: doc.data().saturationLevel,
               key: doc.id,
+              timestamp:lastupdated,
+
             });
           });
           this.setState({ dataSource: data, count: data.length });
