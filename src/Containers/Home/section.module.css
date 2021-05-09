@@ -6,11 +6,12 @@
     box-shadow: 0px 3px 20px #CCCCCC29;
     opacity: 1;
     padding: 2rem;
-    width: 100vw;
+    width: 41vw;
+    margin: auto;
 }
 .symptomsBox{
     display: flex !important;
-    justify-content: space-around !important;
+    justify-content: space-between !important;
     flex-wrap: wrap !important;
     width: 100vw;
   }
@@ -142,7 +143,8 @@
     opacity: 1;
     color: white !important;
     text-align: center;
-    margin-top: 10px;
+    margin-top:5px;
+    
 }
 
 
@@ -169,23 +171,41 @@
     margin-bottom: 12px;
 }
 
-@media screen and (min-width:600px) {
-    .formBox{
-        width: 66vw;
-        margin:auto;
+@media screen and   (max-width:992px) {
+  .formBox{
+    width: 58vw;
+    margin:auto;
     }
-    .symptomsBox{
-        display: flex !important;
-        justify-content: space-around !important;
-        flex-wrap: wrap !important;
-        margin: 0 auto;
-        width: 80vw;
-        
-    }
-    .Button{
-        width: 60vw !important;
-        margin: 10px auto;
-    }
+  .symptomsBox{
+    display: flex !important;
+    /* justify-content: space-around !important; */
+    flex-wrap: wrap !important;
+    margin: 0 auto;
+    width:80vw;
+    
+}
+.Button{
+    width: 60vw !important;
+    margin: 10px auto;
+}
+
+}
+@media screen and (max-width:768px) {
+  .formBox{
+    width:83vw;
+    margin:auto;
+  }
  
 }
+@media screen and (max-width:576px) {
+  .formBox{
+    width:100vw;
+    margin:auto;
+  }
+ 
+}
+
+
+
+
 

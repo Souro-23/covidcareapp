@@ -13,8 +13,11 @@ export default function Section4({
 }) {
     return (
         <Row className={classes.formBox}>
-            <Col style={{ marginBottom: '1rem' }}>
-                <h1 style={{ fontSize: '20px' }} className={classes.superText}>Come forward,<br /> <span className={classes.spanText}>Donate/Share Leads</span> </h1>
+            <Col>
+                <h1 style={{ fontSize: '20px' }} className={classes.superText}>I  <span className={classes.spanText}>Want To Help </span>With </h1>
+                {/* <p className={classes.subText}>Currently available in NCR</p> */}
+                <br/>
+
             </Col>
             <Row className={classes.symptomsBox}>
                 <Col onClick={showModal}  justify="center" className={classes.selected}>
@@ -26,7 +29,7 @@ export default function Section4({
                 <Col onClick={() => changeRoute('/register/Oxygen-cylinders-supply')} justify="center" className={classes.selected}>
                     <label style={{ textAlign: 'center' }}>
                         <img src={oxygen} />
-                        <div className={classes.text}> Oxygen Cylinder </div>
+                        <div className={classes.text}> Refill O2 Cylinder </div>
                     </label>
                 </Col>
                 <Col onClick={() => changeRoute('/register/food-suply')} justify="center" className={classes.selected}>

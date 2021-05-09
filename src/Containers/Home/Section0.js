@@ -13,8 +13,8 @@ export default function Section0({ changeRoute, showModal }) {
     <div>
       <Carousel
         dotPosition={"bottom"}
-        dots={classes.carouselDots}
-        autoplay={true}
+        dots={classes.carouselDots}  
+        // autoplay={true}
         >
         <div className={classes.banner1}>
           <p className={classes.carouselText11}>DONATE</p>

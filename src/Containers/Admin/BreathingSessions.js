@@ -62,6 +62,11 @@ export class BreathingSessions extends Component {
           record.testedPositive?.indexOf(value) === 0,
       },
       {
+        title:"Last Updated",
+        dataIndex:"timestamp",
+        editable:false
+      },
+      {
         title: "operation",
         dataIndex: "operation",
         render: (_, record) =>
@@ -86,6 +91,15 @@ export class BreathingSessions extends Component {
         (querySnapshot) => {
           var data = [];
           querySnapshot.forEach((doc) => {
+            const timestamp = doc.data().timestamp.toDate()
+            const date = timestamp.getDate()
+            const month = timestamp.getMonth()
+            const year = timestamp.getFullYear()
+            const hours = timestamp.getHours()
+            const mins = timestamp.getMinutes() 
+
+            const lastupdated = date+"/"+ month+"/"+ year + "  "+ hours+":"+ mins
+            
             data.push({
               id: doc.id,
               name: doc.data().name,
@@ -94,6 +108,7 @@ export class BreathingSessions extends Component {
               stressed: doc.data().stressed,
               timeSlot: doc.data().timeSlot,
               key: doc.id,
+              timestamp:lastupdated
             });
           });
           this.setState({ dataSource: data, count: data.length });

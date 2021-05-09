@@ -12,7 +12,7 @@ export default function Section3({
       <p>& STRESS</p>
       <p>FREE SESSIONS</p>
       <p>ON BREATHING TECHNIQUES</p>
-      <Button onClick={()=>changeRoute("/register/breating-session")} className={classes.section3Button}>I'm Intrested</Button>
+      <Button onClick={()=>changeRoute("/register/breating-session")} className={classes.section3Button}>I'm Interested</Button>
       <div className={classes.iconGirl}>
         <img src={anxietyGirl} alt='girl icon' />
       </div>

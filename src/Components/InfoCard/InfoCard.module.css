@@ -16,10 +16,7 @@
 
 .nameAndPhone p {
   margin-bottom: 0px;
-  /* white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; */
-  word-break: break-all;
+  /* word-break: break-all; */
 }
 .status {
   display: flex;
@@ -34,6 +31,7 @@
   align-items: baseline;
   color: rgb(88, 228, 88);
   font-weight: 600;
+  
 }
 
 .Button {
