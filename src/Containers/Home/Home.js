@@ -1,11 +1,7 @@
 import { Button, Col, Row, Modal } from "antd";
 import React, { useState } from "react";
 import classes from "./Home.module.css";
-import help from "../../Assets/Svgs/help.svg";
-import heart from "../../Assets/Svgs/heart.svg";
-import medicine from "../../Assets/Svgs/Image7.png";
-import call from "../../Assets/Svgs/Icon material-call.svg";
-import artOfLiving from "../../Assets/Images/artOfLiving.jpg";
+import artOfLiving from "../../Assets/Images/artOfLiving.png";
 import Section0 from "./Section0";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
@@ -36,11 +32,20 @@ export default function Home(props) {
           <div
             style={{
               backgroundColor: "white",
+              paddingTop:"15px",
               display: "flex",
               justifyContent: "center",
             }}>
-            <img src={artOfLiving} width='100px' height='100px' />
+            <img src={artOfLiving} width='100px' height='42px' />   
           </div>
+          <h1 style={{
+            textAlign:"center", 
+            color:"grey", 
+            backgroundColor:"white", 
+            fontSize:"9px",
+            padding:" 5px 0"
+            }}>
+              Delhi Volunteers Initiative</h1>
         </Col>
       </Row>
       <Row justify='center' className={classes.bannerSectionRow}>
@@ -48,19 +53,19 @@ export default function Home(props) {
           <Section0 showModal={showModal} changeRoute={changeRoute} />
         </Col>
       </Row>
-
-      <Section1 {...props} />
-
       <br />
       <Section2 changeRoute={changeRoute} />
       <br />
+      <Section4 showModal={showModal} changeRoute={changeRoute} />
+      <br />
+      <Section1 {...props} />
+      <br/>
+      
       <Row justify='center'>
         <Col sm={16} xs={24}>
           <Section3 changeRoute={changeRoute} />
         </Col>
       </Row>
-      <br />
-      <Section4 showModal={showModal} changeRoute={changeRoute} />
       <br />
       <Row gutter={[, 24]} justify='center'>
         <Col md={8} sm={16} xs={24}>
@@ -84,10 +89,9 @@ export default function Home(props) {
 
             <br />
             <p style={{ textAlign: "left" }}>
-              Based on German Research, taking Kabasur, along with amruth and
-              tulsi which has efficiency of 85% to fight COVID
+            Based on German Research, taking Kabasur Kudineer, Shakti Drops, Turmeric Plus, Tulsi & Amruth along with amruth and tulsi which has an efficiency of 85% to fight COVID
             </p>
-            <a target='_blank' href='https://wa.me/919821287908'>
+            <a target='_blank' href='https://chat.whatsapp.com/G8ll70Iyfnf6MNkAvUkPAm'>
               <Button block className={classes.actionButton4}>
                 Chat Now to know more
               </Button>

@@ -51,7 +51,7 @@ export default function InfoCard({
           </a>
         ) : (
           <a href={`tel:${phone}`}>
-            <Button disabled={phone===""} className={classes.Button}>Call Now</Button>
+            <Button disabled={phone===""}    className={classes.Button}   style={phone===""?{opacity:"0.5"}:{}}>Call Now</Button>
           </a>
         )}
       </div>
