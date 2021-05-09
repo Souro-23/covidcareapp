@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import classes from "../RegistrationForm.module.css";
 import { Col, Row, Input, Radio, Button, Select } from "antd";
 import "firebase/firestore";
+import "firebase/analytics"
 import { message } from "antd";
 import firebase from "../../Firebase/FirebaseConfig";
 import FormHeader from "../../Components/FormHeader/FormHeader";
@@ -11,9 +12,14 @@ import FormHeader from "../../Components/FormHeader/FormHeader";
 var db = firebase.firestore();
 
 
+
+
 export default function PlasmaRecipientForm(props) {
     useEffect(() => {
         window.scrollTo(0, 0);
+        firebase.analytics().logEvent("Patient",{
+            Landed:"true"
+        })
     }, [])
     const [name, setName] = useState("");
     const [mobileNumber, setMobileNumber] = useState("");
@@ -50,6 +56,9 @@ export default function PlasmaRecipientForm(props) {
             .then((docRef) => {
                 setLoading(false)
                 props.history.push('/freeconsultation')
+                firebase.analytics.logEvent("Patient",{
+                    Registered:"true"
+                })
             })
             .catch((error) => {
                 setLoading(false)

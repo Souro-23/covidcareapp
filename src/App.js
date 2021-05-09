@@ -9,6 +9,9 @@ import "firebase/analytics";
 function App() {
   useEffect(() => {
     firebase.analytics();
+    firebase.analytics().logEvent("Home_Page_Landed",{
+      Landed:"true"
+  })
   }, []);
   return (
     <BrowserRouter>
