@@ -168,7 +168,7 @@
     border: 1px solid #2F61F5;
     border-radius: 4px;
     opacity: 1;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 }
 
 @media screen and   (max-width:992px) {
@@ -183,6 +183,9 @@
     margin: 0 auto;
     width:80vw;
     
+}
+.selected{
+  margin-bottom: 12px;
 }
 .Button{
     width: 60vw !important;
