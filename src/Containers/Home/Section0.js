@@ -14,7 +14,7 @@ export default function Section0({ changeRoute, showModal }) {
       <Carousel
         dotPosition={"bottom"}
         dots={classes.carouselDots}  
-        // autoplay={true}
+        autoplay={true}
         >
         <div className={classes.banner1}>
           <p className={classes.carouselText11}>DONATE</p>
