@@ -32,24 +32,24 @@ export default function Home(props) {
           <div
             style={{
               backgroundColor: "white",
-              paddingTop:"15px",
+              paddingTop: "15px",
               display: "flex",
               justifyContent: "center",
             }}>
-            <img src={artOfLiving} width='100px' height='42px' />   
+            <img src={artOfLiving} width='100px' height='42px' />
           </div>
           <h1 style={{
-            textAlign:"center", 
-            color:"grey", 
-            backgroundColor:"white", 
-            fontSize:"9px",
-            padding:" 5px 0"
-            }}>
-              Delhi Volunteers Initiative</h1>
+            textAlign: "center",
+            color: "grey",
+            backgroundColor: "white",
+            fontSize: "9px",
+            padding: " 5px 0"
+          }}>
+            Delhi Volunteers Initiative</h1>
         </Col>
       </Row>
       <Row justify='center' className={classes.bannerSectionRow}>
-        <Col sm={16} xs={24}>
+        <Col lg={10} md={14} sm={20} xs={24}>
           <Section0 showModal={showModal} changeRoute={changeRoute} />
         </Col>
       </Row>
@@ -59,16 +59,16 @@ export default function Home(props) {
       <Section4 showModal={showModal} changeRoute={changeRoute} />
       <br />
       <Section1 {...props} />
-      <br/>
-      
+      <br />
+
       <Row justify='center'>
-        <Col sm={16} xs={24}>
+        <Col lg={10} md={14} sm={20} xs={24}>
           <Section3 changeRoute={changeRoute} />
         </Col>
       </Row>
       <br />
-      <Row gutter={[, 24]} justify='center'>
-        <Col md={8} sm={16} xs={24}>
+      <Row  justify='center'>
+        <Col lg={10} md={14} sm={20} xs={24}>
           <div className={classes.actionCard}>
             <h1
               style={{
@@ -89,7 +89,7 @@ export default function Home(props) {
 
             <br />
             <p style={{ textAlign: "left" }}>
-            Based on German Research, taking Kabasur Kudineer, Shakti Drops, Turmeric Plus, Tulsi & Amruth along with amruth and tulsi which has an efficiency of 85% to fight COVID
+              Based on German Research, taking Kabasur Kudineer, Shakti Drops, Turmeric Plus, Tulsi & Amruth along with amruth and tulsi which has an efficiency of 85% to fight COVID
             </p>
             <a target='_blank' href='https://chat.whatsapp.com/G8ll70Iyfnf6MNkAvUkPAm'>
               <Button block className={classes.actionButton4}>
@@ -98,15 +98,18 @@ export default function Home(props) {
             </a>
           </div>
         </Col>
-        <Col md={8} sm={16} xs={24}>
+      </Row>
+      <br/>
+      <Row   justify='center'>
+        <Col lg={10} md={14} sm={20} xs={24}>
           <div className={classes.actionCard}>
-          <h1
+            <h1
               style={{
                 textAlign: "left",
                 marginBottom: "0px",
                 lineHeight: "25px",
               }}>
-              <span style={{ color: "orangered" }}>ANXIETY </span>HELPLINE NUMBER 
+              <span style={{ color: "orangered" }}>ANXIETY </span>HELPLINE NUMBER
             </h1>
             <br />
             <p style={{ textAlign: "left" }}>
