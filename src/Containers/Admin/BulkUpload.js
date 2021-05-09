@@ -66,6 +66,8 @@ export default function BulkUpload({ database }) {
       if (database === "LabTestCenters") {
         toString = {
           charges: doc.charges ? doc.charges.toString() : "",
+          waitTime: doc.waitTime ? doc.waitTime.toString() : "",
+          resultTime: doc.resultTime ? doc.resultTime.toString() : "",
         };
       }
       if (database === "BreathingSessions") {
