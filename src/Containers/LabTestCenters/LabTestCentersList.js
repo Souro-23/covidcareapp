@@ -33,8 +33,8 @@ export default function LabTestCentersList(props) {
           let ago = timeDifference(doc.data().timestamp);
           labArr.push({ ...doc.data(), ago: ago });
         });
-        setCompleteLabTestCentersList(checkVerified(labArr, "lab"));
-        setLabList(checkVerified(labArr, "lab"));
+        setCompleteLabTestCentersList(labArr);
+        setLabList(labArr);
         setLoadingData(false);
       })
       .catch((error) => {
@@ -87,6 +87,8 @@ export default function LabTestCentersList(props) {
               homeTest={lab.homeTest}
               ago={lab.ago}
               charges={lab.charges}
+              waitTime={lab.waitTime}
+              resultTime={lab.resultTime}
             />
           </Col>
         ))}

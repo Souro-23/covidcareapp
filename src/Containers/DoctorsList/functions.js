@@ -99,14 +99,21 @@ export const checkVerified = (arr, type) => {
     arr.forEach((a, index) => {
       if (a.verified === "no") sortedArray.push(a);
     });
-  } else if (type === "lab") {
     arr.forEach((a, index) => {
-      if (a.homeTest === "yes") sortedArray.push(a);
+      if (a.verified === "") sortedArray.push(a);
     });
-    arr.forEach((a, index) => {
-      if (a.homeTest === "no") sortedArray.push(a);
-    });
-  }
+  } 
+  // else if (type === "lab") {
+  //   arr.forEach((a, index) => {
+  //     if (a.homeTest === "yes") sortedArray.push(a);
+  //   });
+  //   arr.forEach((a, index) => {
+  //     if (a.homeTest === "no") sortedArray.push(a);
+  //   });
+  //   arr.forEach((a, index) => {
+  //     if (a.homeTest === "") sortedArray.push(a);
+  //   });
+  // }
   return sortedArray;
 };
 

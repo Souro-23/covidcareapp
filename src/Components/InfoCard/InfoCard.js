@@ -17,7 +17,10 @@ export default function InfoCard({
   isFree,
   charges,
   homeTest,
+  waitTime,
+  resultTime
 }) {
+
   return (
     <div className={classes.infoCard}>
       <div className={classes.details}>
@@ -25,9 +28,14 @@ export default function InfoCard({
           <p>{name}</p>
           <p style={{ color: "rgb(88,228,88)" }}>{phone}</p>
           {type === "lab" ? (
-            <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
-              Charge - &#x20B9;{charges}
-            </p>
+            <>
+              <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+                Charge - &#x20B9;{charges}
+              </p>
+              <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+                <b>Test Result: </b> {resultTime}
+              </p>
+            </>
           ) : (
             <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
               {isFree}
@@ -51,7 +59,7 @@ export default function InfoCard({
           </a>
         ) : (
           <a href={`tel:${phone}`}>
-            <Button disabled={phone===""}    className={classes.Button}   style={phone===""?{opacity:"0.5"}:{}}>Call Now</Button>
+            <Button disabled={phone === ""} className={classes.Button} style={phone === "" ? { opacity: "0.5" } : {}}>Call Now</Button>
           </a>
         )}
       </div>
@@ -68,8 +76,8 @@ export default function InfoCard({
           {(type === "food" || type === "ocl") && verified === "yes" ? (
             <Tag
               color='red-inverse'
-              style={{ 
-                marginRight:"0",
+              style={{
+                marginRight: "0",
                 borderRadius: "10px",
                 paddingBottom: "1px",
               }}
@@ -77,16 +85,37 @@ export default function InfoCard({
               Verified {ago}
             </Tag>
           ) : (
-            homeTest === "yes" && (
-              <Tag
-                color='rgb(88,228,88)'
-                style={{
-                  borderRadius: "10px",
-                  paddingBottom: "1px",
-                }}
-                icon={<CheckCircleOutlined />}>
-                Home Test - {homeTest}
-              </Tag>
+            (homeTest === "yes" || waitTime !== "") && (
+              <>
+                <div
+                  style={{
+                    borderRadius: "10px",
+                    backgroundColor: 'rgb(88,228,88)',
+                    width: "170px",
+                    padding: "5px  10px",
+                    display: "flex",
+                    alignItems:"center"
+                  }}>
+                  <CheckCircleOutlined style={{ color: "white", marginRight: "5px" }} /><p style={{ color: "white", marginBottom: "0px", fontSize: "12px" }}>Home Test - {homeTest ? homeTest : waitTime}</p>
+                </div>
+                {/* <Tag
+
+                  color='rgb(88,228,88)'
+
+                  style={{
+
+                    borderRadius: "10px",
+
+                    paddingBottom: "1px",
+
+                  }}
+
+                  icon={<CheckCircleOutlined />}>
+
+                  Home Test - {homeTest ? homeTest : waitTime}
+
+                </Tag> */}
+              </>
             )
           )}
         </div>

@@ -51,9 +51,7 @@ export default function PlasmaDonorForm(props) {
 
         if (validAge === false) return message.error("Valid Age Required");
 
-        if (covidPositive === false)
-            return message.error("CovidReport Status Required");
-
+         
         if (date === "") return message.error("Date Required");
 
         if (recovered == false) return message.error("You need to get Fully Recovered And Free Of Symptoms");
@@ -101,7 +99,6 @@ export default function PlasmaDonorForm(props) {
                         :
                         <AfterForm
                             onBloodChange={setBloodGroup}
-                            onCovidPositiveChange={setCovidPositive}
                             onDateChange={dateHandler}
                             onCheckedHandler={setChecked}
                             onSubmitHandler={submitHandler}

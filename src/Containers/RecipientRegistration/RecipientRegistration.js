@@ -15,7 +15,6 @@ export default function PlasmaRecipientForm(props) {
   const [mobileNumber, setMobileNumber] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
   const [location, setLocation] = useState("");
-  const [covidPositive, setCovidPositive] = useState(false);
   const [date, setDate] = useState("");
   const [checked, setChecked] = useState(false);
   const [step, setStep] = useState(0);
@@ -48,9 +47,7 @@ export default function PlasmaRecipientForm(props) {
   const submitHandler = () => {
     if (bloodGroup === "") return message.error("Blood Group Required");
 
-    if (covidPositive === false)
-      return message.error("Covid Positive Report Required");
-
+     
     if (date === "") return message.error("Date Required");
 
     if (checked === false) return message.error("Checkbox empty");
@@ -97,7 +94,6 @@ export default function PlasmaRecipientForm(props) {
             ) : (
               <AfterForm
                 onBloodChange={setBloodGroup}
-                onCovidPositiveChange={setCovidPositive}
                 onDateChange={dateHandler}
                 onCheckedHandler={setChecked}
                 onSubmitHandler={submitHandler}

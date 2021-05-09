@@ -1,4 +1,5 @@
 export const databaseVariableValidation = (database, inputCols) => {
+
   switch (database) {
     case "OxygenCylinders":
       return checkVariables(getDatabaseVariables(database), inputCols);
@@ -74,5 +75,6 @@ export const getDatabaseVariables = (database) => {
 };
 
 export const checkVariables = (dbCols, inputCols) => {
+  console.log(dbCols, inputCols)
   return JSON.stringify(dbCols.sort()) === JSON.stringify(inputCols.sort());
 };

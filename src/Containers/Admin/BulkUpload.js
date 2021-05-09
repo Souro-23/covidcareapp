@@ -24,6 +24,7 @@ export default function BulkUpload({ database }) {
       const bstr = e.target.result;
       const wb = XLSX.read(bstr, { type: rABS ? "binary" : "array" });
       /* Get first worksheet */
+      console.log(wb.SheetNames.length)
       const wsname = wb.SheetNames[0];
       const ws = wb.Sheets[wsname];
       /* Convert array of arrays */

@@ -12,10 +12,8 @@ const bloodGroup = ["A+", "B+", "O+", "A-", "B-", "O-", "AB+", "AB-"];
 
 export default function AfterForm({
     onBloodChange,
-    onCovidPositiveChange,
     onDateChange,
     onCheckedHandler,
-    onSubmitHandler,
     onSetvalidAge,
     onSetrecovered
 }) {
@@ -81,25 +79,6 @@ export default function AfterForm({
                             </Radio.Button>
                 </Radio.Group>
                 <br />
-                <br />
-                <p><b>
-                    Did you ever get Covid?
-                    </b></p>
-                <Radio.Group
-                    size='large'
-                    buttonStyle="solid"
-                    onChange={(e) => onCovidPositiveChange(e.target.value)}>
-                    <Radio.Button className={classes.radioButton} value={true}>
-                        Yes
-                            </Radio.Button>
-                    <Radio.Button className={classes.radioButton} value={false}>
-                        No
-                            </Radio.Button>
-                </Radio.Group>
-
-                <br />
-                <br />
-                
                 <p><b>
                     Have You Fully Recovered And Free Of Symptoms For 14 Days?
                     </b></p>

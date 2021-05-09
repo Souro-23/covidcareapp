@@ -69,7 +69,7 @@ export default function Section2({
                         <div className={classes.text}> Food Delivery </div>
                     </label>
                 </Col>
-                <Col onClick={() => redirect("https://linktr.ee/covid_vlabs")} justify="center" className={classes.selected}>
+                <Col onClick={() => changeRoute('/labtestcenters')} justify="center" className={classes.selected}>
                     <label style={{ textAlign: 'center' }} for="fever">
                         <img src={lab} />
                         <div className={classes.text}> Lab Tests </div>

@@ -10,7 +10,6 @@ const bloodGroup = ["A+", "B+", "O+", "A-", "B-", "O-", "AB+", "AB-"];
 
 export default function AfterForm({
   onBloodChange,
-  onCovidPositiveChange,
   onDateChange,
   onCheckedHandler,
   onSubmitHandler,
@@ -58,25 +57,6 @@ export default function AfterForm({
               );
           })}
         </div>
-        <br/>
-        <p><b>
-          Do you have a covid-19 positive report ( rapid antigen test or RT
-          PCR) within six months of day of donation ?
-              </b>
-        </p>
-        <Radio.Group
-          defaultValue='a'
-          size='large'
-          buttonStyle="solid"
-          onChange={(e) => onCovidPositiveChange(e.target.value)}>
-          <Radio.Button className={classes.radioButton} value={true}>
-            Yes
-              </Radio.Button>
-          <Radio.Button className={classes.radioButton} value={false}>
-            No
-              </Radio.Button>
-        </Radio.Group>
-        <br />
         <br />
         <p><b>Date of Screening</b></p>
         <DatePicker
