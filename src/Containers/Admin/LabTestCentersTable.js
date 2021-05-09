@@ -46,21 +46,14 @@ export class LabTestCentersTable extends Component {
         editable: true,
       },
       {
-        title: "home test",
-        dataIndex: "homeTest",
+        title: "Waiting Time",
+        dataIndex: "waitTime",
         editable: true,
-        filters: [
-          {
-            text: "yes",
-            value: "yes",
-          },
-          {
-            text: "no",
-            value: "no",
-          },
-        ],
-        filterMultiple: false,
-        onFilter: (value, record) => record.verified?.indexOf(value) === 0,
+      },
+      {
+        title: "Report Available",
+        dataIndex: "resultTime",
+        editable: true,
       },
       {
         title: "operation",
@@ -89,11 +82,12 @@ export class LabTestCentersTable extends Component {
           querySnapshot.forEach((doc) => {
             data.push({
               id: doc.id,
-              homeTest: doc.data().homeTest,
               name: doc.data().name,
-              charges: doc.data().charges,
-              location: doc.data().location,
               phone: doc.data().phone,
+              location: doc.data().location,
+              charges: doc.data().charges,
+              waitTime: doc.data().waitTime,
+              resultTime: doc.data().resultTime,
               key: doc.id,
             });
           });
@@ -231,9 +225,10 @@ export class LabTestCentersTable extends Component {
       key: count,
       name: "Enter Name Here",
       phone: "",
-      homeTest: "",
       location: "",
       charges: "",
+      waitTime: "",
+      resultTime: "",
       newItem: true,
     };
     this.setState({
@@ -248,7 +243,8 @@ export class LabTestCentersTable extends Component {
         location: row.location ? row.location : "",
         charges: row.charges ? row.charges : "",
         phone: row.phone ? row.phone : "",
-        homeTest: row.homeTest ? row.homeTest : "",
+        waitTime: row.waitTime ? row.waitTime : "",
+        resultTime: row.resultTime ? row.resultTime : "",
         timestamp: new Date(),
       });
     } else {
@@ -259,7 +255,8 @@ export class LabTestCentersTable extends Component {
           location: row.location ? row.location : "",
           charges: row.charges ? row.charges : "",
           phone: row.phone ? row.phone : "",
-          homeTest: row.homeTest ? row.homeTest : "",
+          waitTime: row.waitTime ? row.waitTime : "",
+          resultTime: row.resultTime ? row.resultTime : "",
           timestamp: new Date(),
         });
     }
