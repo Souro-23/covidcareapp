@@ -20,17 +20,7 @@ export default function Section0({ changeRoute, showModal }) {
           <p className={classes.carouselText11}>DONATE</p>
           <p className={classes.carouselText12}>USED O2 CYLINDERS</p>
           <p className={classes.carouselText13}>
-            Recovered Indiviuals & Acquaintance
-          </p>
-          <p className={classes.carouselText13}>
-            of unfortunately deceased individuals
-          </p>
-          <p className={classes.carouselText13}>
-            who have cylinders with them.
-          </p>
-          <p className={classes.carouselText13}>
-            {" "}
-            Help us in reaching out to them.
+          Reaching out to recovered patients <br/>and /or kin of deceased patients <br/>for recovery of used cylinders.
           </p>
           <Button
             onClick={() => changeRoute("/register/donate-o2-cylinders")}
@@ -44,7 +34,7 @@ export default function Section0({ changeRoute, showModal }) {
         <div className={classes.banner2}>
           <h1 className={classes.carouselText21}>DONATE</h1>
           <h2 className={classes.carouselText22}>BLOOD PLASMA</h2>
-          <p className={classes.carouselText23}>INSPIRE OTHERS</p>
+          <p className={classes.carouselText23}>INSPIRE OTHERS TO</p>
           <p className={classes.carouselText23}>BECOME A SUPER-HERO</p>
           <Button onClick={showModal} className={classes.carouselText24}>
             Donate Plasma

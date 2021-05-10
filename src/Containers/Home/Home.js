@@ -45,7 +45,7 @@ export default function Home(props) {
             fontSize: "9px",
             padding: " 5px 0"
           }}>
-            Delhi Volunteers Initiative</h1>
+            Delhi NCR Volunteers Initiative</h1>
         </Col>
       </Row>
       <Row justify='center' className={classes.bannerSectionRow}>
@@ -67,7 +67,7 @@ export default function Home(props) {
         </Col>
       </Row>
       <br />
-      <Row  justify='center'>
+      <Row justify='center'>
         <Col lg={10} md={14} sm={20} xs={24}>
           <div className={classes.actionCard}>
             <h1
@@ -89,7 +89,7 @@ export default function Home(props) {
 
             <br />
             <p style={{ textAlign: "left" }}>
-              Based on German Research, taking Kabasur Kudineer, Shakti Drops, Turmeric Plus, Tulsi & Amruth along with amruth and tulsi which has an efficiency of 85% to fight COVID
+              Based on German research, taking Kabasur Kudineer along with Shakti drops, Turmeric Plus, Tulsi & Amruth can empower the body with 85% efficiency in fighting COVID.
             </p>
             <a target='_blank' href='https://chat.whatsapp.com/G8ll70Iyfnf6MNkAvUkPAm'>
               <Button block className={classes.actionButton4}>
@@ -99,8 +99,8 @@ export default function Home(props) {
           </div>
         </Col>
       </Row>
-      <br/>
-      <Row   justify='center'>
+      <br />
+      <Row justify='center'>
         <Col lg={10} md={14} sm={20} xs={24}>
           <div className={classes.actionCard}>
             <h1
@@ -114,8 +114,8 @@ export default function Home(props) {
             <br />
             <p style={{ textAlign: "left" }}>
               Call on <b style={{ color: "black" }}>080-676-12338</b> where
-              teachers counsellors people undergoing stress and anxiety during
-              the lockdown
+              teachers counsel people undergoing stress and anxiety during
+              the lockdown period
             </p>
             <a href='tel:8067612338'>
               <Button block className={classes.actionButton4}>

@@ -41,7 +41,7 @@ export default function Section1(props) {
             Are you a <br />
             <span className={classes.spanText}>covid</span> patient?
           </h1>
-          <p className={classes.subText}>We have got your back in this</p>
+          <p className={classes.subText}>We have got your back on this !</p>
         </Col>
         <Row className={classes.symptomsBox}>
           <Col justify='center' className={classes.selectedcheckBox1}>
@@ -232,13 +232,13 @@ export default function Section1(props) {
           onClick={() => changeRoute("/register/patient")}
           block
           className={homeClasses.actionButton}>
-          Yes, I am eligible
+          Yes, I agree
         </Button>
         <Button
           onClick={handleCancel}   
           block
           className={homeClasses.actionButton2}>
-          I am not eligible
+          No, I disagree
         </Button>
       </Modal>
     </>

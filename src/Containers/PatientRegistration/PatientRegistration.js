@@ -55,8 +55,9 @@ export default function PlasmaRecipientForm(props) {
             })
             .then((docRef) => {
                 setLoading(false)
+                message.success("Successfully Registered")
                 props.history.push('/freeconsultation')
-                firebase.analytics.logEvent("Patient",{
+                firebase.analytics().logEvent("Patient",{
                     Registered:"true"
                 })
             })

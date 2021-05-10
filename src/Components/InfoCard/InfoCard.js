@@ -85,7 +85,7 @@ export default function InfoCard({
               Verified {ago}
             </Tag>
           ) : (
-            (homeTest === "yes" || waitTime !== "") && (
+            (homeTest === "yes" || waitTime !== null && type==="lab") && (
               <>
                 <div
                   style={{
@@ -98,23 +98,6 @@ export default function InfoCard({
                   }}>
                   <CheckCircleOutlined style={{ color: "white", marginRight: "5px" }} /><p style={{ color: "white", marginBottom: "0px", fontSize: "12px" }}>Home Test - {homeTest ? homeTest : waitTime}</p>
                 </div>
-                {/* <Tag
-
-                  color='rgb(88,228,88)'
-
-                  style={{
-
-                    borderRadius: "10px",
-
-                    paddingBottom: "1px",
-
-                  }}
-
-                  icon={<CheckCircleOutlined />}>
-
-                  Home Test - {homeTest ? homeTest : waitTime}
-
-                </Tag> */}
               </>
             )
           )}
@@ -122,4 +105,22 @@ export default function InfoCard({
       )}
     </div>
   );
+}
+
+
+
+InfoCard.defaultProps={
+  name:"",
+  phone:"",
+  type:"",
+  location:"",
+  verified:null,
+  available:null,
+  timeSlots:null,
+  ago:"",
+  isFree:null,
+  charges:"",
+  homeTest:null,
+  waitTime:null,
+  resultTime:null
 }

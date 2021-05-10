@@ -78,7 +78,7 @@ export default function Section2({
                 <Col onClick={() =>redirect("https://docs.google.com/forms/d/e/1FAIpQLScE3iEAxAUGqzsLDVEHlHM7nJvQvVAk7pW4Kks0B4yn5f4kZQ/viewform")} justify="center" className={classes.selected}>
                         <label style={{ textAlign: 'center' }} for="fever">
                             <img style={{margin:"auto"}} src={ayurveda} />
-                            <div className={classes.text}>Aurvedic Consultation</div>
+                            <div className={classes.text}>Ayurvedic Consultation</div>
                         </label>
                     
                 </Col>
@@ -196,13 +196,13 @@ export default function Section2({
           onClick={() => changeRoute("/register/patient")}
           block
           className={homeClasses.actionButton}>
-          Yes, I am eligible
+          Yes, I agree
         </Button>
         <Button
           onClick={handleCancel}   
           block
           className={homeClasses.actionButton2}>
-          I am not eligible
+          No, I disagree
         </Button>
       </Modal>
       </>
