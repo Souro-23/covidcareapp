@@ -113,7 +113,7 @@ export default function Home(props) {
             </h1>
             <br />
             <p style={{ textAlign: "left" }}>
-              Call on <b style={{ color: "black" }}>080-676-12338</b> where
+              Call on <b style={{ color: "black" }}>080-676-12338</b> where AOL
               teachers counsel people undergoing stress and anxiety during
               the lockdown period
             </p>
