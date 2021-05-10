@@ -45,7 +45,7 @@ export default function DoctorsList(props) {
               <InfoCard
                 name={doctor.name}
                 phone={doctor.whatsappNo}
-                type='doctors'
+                type='Doctors'
                 available={doctor.isAvailable}
                 timeSlots={doctor.timeSlots}
               />

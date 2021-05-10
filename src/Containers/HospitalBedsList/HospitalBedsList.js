@@ -6,7 +6,7 @@ import firebase from "../../Firebase/FirebaseConfig";
 import { locations } from "../../Constants/location";
 import { LoadingOutlined } from "@ant-design/icons";
 import "firebase/firestore";
-import { checkVerified, timeDifference } from "../DoctorsList/functions";
+import { timeDifference } from "../DoctorsList/functions";
 import FormHeader from "../../Components/FormHeader/FormHeader";
 
 var db = firebase.firestore();
@@ -15,28 +15,25 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const { Option } = Select;
 
-export default function LabTestCentersList(props) {
-  const [completeLabTestCentersList, setCompleteLabTestCentersList] = useState(
-    []
-  );
-  const [labList, setLabList] = useState([]);
+export default function HospitalBedsList(props) {
+  const [completeHospitalBedsList, setCompleteHospitalBedsList] = useState([]);
+  const [hospitalBedsList, setHospitalBedsList] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
   const [location, setLocation] = useState("");
   useEffect(() => {
-    window.scrollTo(0, 0);
-
-    var labArr = [];
-    db.collection("LabTestCenters")
+    var hospitalBedArr = [];
+    db.collection("HospitalBeds")
       .orderBy("timestamp", "desc")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           let ago = timeDifference(doc.data().timestamp);
-          labArr.push({ ...doc.data(), ago: ago });
+          hospitalBedArr.push({ ...doc.data(), ago: ago });
         });
-        setCompleteLabTestCentersList(labArr);
-        setLabList(labArr);
+        setCompleteHospitalBedsList(hospitalBedArr);
+        setHospitalBedsList(hospitalBedArr);
         setLoadingData(false);
+        window.scrollTo(0, 0);
       })
       .catch((error) => {
         console.log("Error getting documents: ", error);
@@ -45,14 +42,15 @@ export default function LabTestCentersList(props) {
 
   const onLocationChange = (value) => {
     if (value === "Entire Delhi/NCR" || value === "Entire Delhi") {
-      setLabList(completeLabTestCentersList);
+      setHospitalBedsList(completeHospitalBedsList);
       setLocation(value);
       return;
     }
-    var labArr = completeLabTestCentersList.filter(
-      (lab) => lab.location === value
+    var hospitalBedsArr = completeHospitalBedsList.filter(
+      (hospitalBed) =>
+        hospitalBed.location !== "" && hospitalBed.location === value
     );
-    setLabList(labArr);
+    setHospitalBedsList(hospitalBedsArr);
     setLocation(value);
   };
 
@@ -61,7 +59,7 @@ export default function LabTestCentersList(props) {
       <Row justify='center'>
         <Col lg={8} sm={16} xs={23}>
           <FormHeader
-            title='Lab Test Centers'
+            title='Hospital Beds'
             onBackPress={() => props.history.push("/")}
           />
         </Col>
@@ -78,23 +76,21 @@ export default function LabTestCentersList(props) {
         </Select>
       </div>
       <Row justify='center' gutter={[8, 8]}>
-        {labList.map((lab, index) => (
+        {hospitalBedsList.map((hospitalBed, index) => (
           <Col key={index} lg={7} md={8} sm={15} xs={24}>
             <InfoCard
-              name={lab.name}
-              phone={lab.phone}
-              type='Lab'
-              location={lab.location}
-              homeTest={lab.homeTest}
-              ago={lab.ago}
-              charges={lab.charges}
-              waitTime={lab.waitTime}
-              resultTime={lab.resultTime}
+              name={hospitalBed.name}
+              phone={hospitalBed.phone}
+              location={hospitalBed.location}
+              streetNumber={hospitalBed.streetNumber}
+              ago={hospitalBed.ago}
+              bedsInfo={hospitalBed.bedsInfo}
+              type='HospitalBeds'
             />
           </Col>
         ))}
-        {!labList.length && !loadingData && (
-          <p>Lab Test Centers Not Found for {location}</p>
+        {!hospitalBedsList.length && !loadingData && (
+          <p>Hospital Beds Not Found for {location}</p>
         )}
         {loadingData && <Spin indicator={antIcon} />}
       </Row>

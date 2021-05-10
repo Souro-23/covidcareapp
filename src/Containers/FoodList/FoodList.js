@@ -22,7 +22,8 @@ export default function FoodList(props) {
   const [location, setLocation] = useState("");
   useEffect(() => {
     var foodArr = [];
-    db.collection("Food").orderBy("timestamp", "desc")
+    db.collection("Food")
+      .orderBy("timestamp", "desc")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -77,7 +78,7 @@ export default function FoodList(props) {
             <InfoCard
               name={food.name}
               phone={food.phone}
-              type='food'
+              type='Food'
               location={food.location}
               verified={food.verified}
               ago={food.ago}

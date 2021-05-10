@@ -6,7 +6,7 @@ import firebase from "../../Firebase/FirebaseConfig";
 import { locations } from "../../Constants/location";
 import { LoadingOutlined } from "@ant-design/icons";
 import "firebase/firestore";
-import { checkVerified, timeDifference } from "../DoctorsList/functions";
+import { timeDifference } from "../DoctorsList/functions";
 import FormHeader from "../../Components/FormHeader/FormHeader";
 
 var db = firebase.firestore();
@@ -15,28 +15,27 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const { Option } = Select;
 
-export default function LabTestCentersList(props) {
-  const [completeLabTestCentersList, setCompleteLabTestCentersList] = useState(
+export default function MedicalStoresList(props) {
+  const [completeMedicalStoresList, setCompleteMedicalStoresList] = useState(
     []
   );
-  const [labList, setLabList] = useState([]);
+  const [medicalStoresList, setMedicalStoresList] = useState([]);
   const [loadingData, setLoadingData] = useState(true);
   const [location, setLocation] = useState("");
   useEffect(() => {
-    window.scrollTo(0, 0);
-
-    var labArr = [];
-    db.collection("LabTestCenters")
+    var medicalStoresArr = [];
+    db.collection("MedicalStores")
       .orderBy("timestamp", "desc")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           let ago = timeDifference(doc.data().timestamp);
-          labArr.push({ ...doc.data(), ago: ago });
+          medicalStoresArr.push({ ...doc.data(), ago: ago });
         });
-        setCompleteLabTestCentersList(labArr);
-        setLabList(labArr);
+        setCompleteMedicalStoresList(medicalStoresArr);
+        setMedicalStoresList(medicalStoresArr);
         setLoadingData(false);
+        window.scrollTo(0, 0);
       })
       .catch((error) => {
         console.log("Error getting documents: ", error);
@@ -45,14 +44,15 @@ export default function LabTestCentersList(props) {
 
   const onLocationChange = (value) => {
     if (value === "Entire Delhi/NCR" || value === "Entire Delhi") {
-      setLabList(completeLabTestCentersList);
+      setMedicalStoresList(completeMedicalStoresList);
       setLocation(value);
       return;
     }
-    var labArr = completeLabTestCentersList.filter(
-      (lab) => lab.location === value
+    var medicalStoresArr = completeMedicalStoresList.filter(
+      (medicalStore) =>
+        medicalStore.location !== "" && medicalStore.location === value
     );
-    setLabList(labArr);
+    setMedicalStoresList(medicalStoresArr);
     setLocation(value);
   };
 
@@ -61,7 +61,7 @@ export default function LabTestCentersList(props) {
       <Row justify='center'>
         <Col lg={8} sm={16} xs={23}>
           <FormHeader
-            title='Lab Test Centers'
+            title='Medical Stores'
             onBackPress={() => props.history.push("/")}
           />
         </Col>
@@ -78,23 +78,21 @@ export default function LabTestCentersList(props) {
         </Select>
       </div>
       <Row justify='center' gutter={[8, 8]}>
-        {labList.map((lab, index) => (
+        {medicalStoresList.map((medicalStore, index) => (
           <Col key={index} lg={7} md={8} sm={15} xs={24}>
             <InfoCard
-              name={lab.name}
-              phone={lab.phone}
-              type='Lab'
-              location={lab.location}
-              homeTest={lab.homeTest}
-              ago={lab.ago}
-              charges={lab.charges}
-              waitTime={lab.waitTime}
-              resultTime={lab.resultTime}
+              name={medicalStore.name}
+              phone={medicalStore.phone}
+              location={medicalStore.location}
+              streetNumber={medicalStore.streetNumber}
+              ago={medicalStore.ago}
+              medicines={medicalStore.medicines}
+              type='MedicalStores'
             />
           </Col>
         ))}
-        {!labList.length && !loadingData && (
-          <p>Lab Test Centers Not Found for {location}</p>
+        {!medicalStoresList.length && !loadingData && (
+          <p>Medical Stores Not Found for {location}</p>
         )}
         {loadingData && <Spin indicator={antIcon} />}
       </Row>

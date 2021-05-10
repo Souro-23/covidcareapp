@@ -1,5 +1,5 @@
+import React, { useEffect, useState } from "react";
 import { Button } from "antd";
-import React from "react";
 import classes from "./InfoCard.module.css";
 import WhatsApp from "../../Assets/Svgs/WhatsApp.png";
 import { ClockCircleOutlined, CheckCircleOutlined } from "@ant-design/icons";
@@ -18,31 +18,163 @@ export default function InfoCard({
   charges,
   homeTest,
   waitTime,
-  resultTime
+  resultTime,
+  streetNumber,
+  facility,
+  medicines,
+  bedsInfo,
 }) {
+  const [info, setInfo] = useState(null);
+  const [badge, setBadge] = useState(null);
+  useEffect(() => {
+    setInfo(categorizeDataInfo());
+    setBadge(categorizeDataBade());
+  }, []);
 
+  const categorizeDataInfo = () => {
+    if (type === "Doctors") {
+      return "";
+    }
+    if (type === "Food") {
+      return (
+        <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+          {isFree}
+        </p>
+      );
+    }
+    if (type === "Ocl") {
+      return "";
+    }
+    if (type === "Lab") {
+      return (
+        <>
+          <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+            Charge - &#x20B9;{charges}
+          </p>
+          <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+            <b>Test Result: </b> {resultTime}
+          </p>
+        </>
+      );
+    }
+    if (type === "HomeCare") {
+      return (
+        <>
+          <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+            {streetNumber}
+          </p>
+          <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+            <b>Facility: </b> {facility}
+          </p>
+        </>
+      );
+    }
+    if (type === "HospitalBeds") {
+      return (
+        <>
+          <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+            {streetNumber}
+          </p>
+          <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+            <b>Beds: </b> {bedsInfo}
+          </p>
+        </>
+      );
+    }
+    if (type === "MedicalStores") {
+      return (
+        <>
+          <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+            {streetNumber}
+          </p>
+          <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
+            <b>Medicines: </b> {medicines}
+          </p>
+        </>
+      );
+    }
+  };
+
+  const categorizeDataBade = () => {
+    if (type === "Food" && verified === "yes") {
+      return (
+        <Tag
+          color='red-inverse'
+          style={{
+            marginRight: "0",
+            borderRadius: "10px",
+            paddingBottom: "1px",
+          }}
+          icon={<ClockCircleOutlined />}>
+          Verified {ago}
+        </Tag>
+      );
+    }
+    if (type === "Ocl" && verified === "yes") {
+      return (
+        <Tag
+          color='red-inverse'
+          style={{
+            marginRight: "0",
+            borderRadius: "10px",
+            paddingBottom: "1px",
+          }}
+          icon={<ClockCircleOutlined />}>
+          Verified {ago}
+        </Tag>
+      );
+    }
+    if (type === "Lab" && waitTime !== "" && waitTime !== null) {
+      return (
+        <div
+          style={{
+            borderRadius: "10px",
+            backgroundColor: "rgb(88,228,88)",
+            width: "170px",
+            padding: "5px  10px",
+            display: "flex",
+            alignItems: "center",
+          }}>
+          <CheckCircleOutlined style={{ color: "white", marginRight: "5px" }} />
+          <p
+            style={{
+              color: "white",
+              marginBottom: "0px",
+              fontSize: "12px",
+            }}>
+            Home Test - {waitTime}
+          </p>
+        </div>
+      );
+    }
+    if (
+      type === "HospitalBeds" ||
+      type === "MedicalStores" ||
+      type === "HomeCare"
+    ) {
+      return (
+        <Tag
+          color='red-inverse'
+          style={{
+            marginRight: "0",
+            borderRadius: "10px",
+            paddingBottom: "1px",
+          }}
+          icon={<ClockCircleOutlined />}>
+          Verified {ago}
+        </Tag>
+      );
+    }
+  };
   return (
     <div className={classes.infoCard}>
       <div className={classes.details}>
         <div className={classes.nameAndPhone}>
           <p>{name}</p>
           <p style={{ color: "rgb(88,228,88)" }}>{phone}</p>
-          {type === "lab" ? (
-            <>
-              <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
-                Charge - &#x20B9;{charges}
-              </p>
-              <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
-                <b>Test Result: </b> {resultTime}
-              </p>
-            </>
-          ) : (
-            <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
-              {isFree}
-            </p>
-          )}
+          {info}
         </div>
-        {type === "doctors" ? (
+        {type === "Doctors" ? (
           <a target='blank' href={`https://wa.me/91${phone}`}>
             <Button
               className={classes.Button}
@@ -59,68 +191,53 @@ export default function InfoCard({
           </a>
         ) : (
           <a href={`tel:${phone}`}>
-            <Button disabled={phone === ""} className={classes.Button} style={phone === "" ? { opacity: "0.5" } : {}}>Call Now</Button>
+            <Button
+              disabled={phone === ""}
+              className={classes.Button}
+              style={phone === "" ? { opacity: "0.5" } : {}}>
+              Call Now
+            </Button>
           </a>
         )}
       </div>
-      {type === "doctors" ? (
+      {type === "Doctors" ? (
         <div className={classes.available}>
           {available && <div className={classes.status}>Available Now</div>}
         </div>
       ) : (
         <div className={classes.status}>
           <div className={classes.location}>
-            <p>{location}</p>
-            <ion-icon name='location-outline'></ion-icon>
-          </div>
-          {(type === "food" || type === "ocl") && verified === "yes" ? (
-            <Tag
-              color='red-inverse'
-              style={{
-                marginRight: "0",
-                borderRadius: "10px",
-                paddingBottom: "1px",
-              }}
-              icon={<ClockCircleOutlined />}>
-              Verified {ago}
-            </Tag>
-          ) : (
-            (homeTest === "yes" || waitTime !== null && type==="lab") && (
+            {location !== "" && location !== null ? (
               <>
-                <div
-                  style={{
-                    borderRadius: "10px",
-                    backgroundColor: 'rgb(88,228,88)',
-                    width: "170px",
-                    padding: "5px  10px",
-                    display: "flex",
-                    alignItems:"center"
-                  }}>
-                  <CheckCircleOutlined style={{ color: "white", marginRight: "5px" }} /><p style={{ color: "white", marginBottom: "0px", fontSize: "12px" }}>Home Test - {homeTest ? homeTest : waitTime}</p>
-                </div>
+                <p>{location}</p>
+                <ion-icon name='location-outline'></ion-icon>
               </>
-            )
-          )}
+            ) : (
+              ""
+            )}
+          </div>
+          {badge}
         </div>
       )}
     </div>
   );
 }
 
-
-
-InfoCard.defaultProps={
-  name:"",
-  phone:"",
-  type:"",
-  location:"",
-  verified:null,
-  available:null,
-  timeSlots:null,
-  ago:"",
-  isFree:null,
-  charges:"",
-  homeTest:null,
-  waitTime:null,
-  resultTime:null
-}
+InfoCard.defaultProps = {
+  name: "",
+  phone: "",
+  type: "",
+  location: "",
+  verified: null,
+  available: null,
+  timeSlots: null,
+  ago: "",
+  isFree: null,
+  charges: "",
+  homeTest: null,
+  waitTime: null,
+  resultTime: null,
+  medicines: "",
+  bedsInfo: "",
+  facility: "",
+};

@@ -22,10 +22,6 @@ import SubmitPageOxygen from "../Components/SubmitPage/SubmitPageOxygen";
 import SubmitPageDonateO2 from "../Components/SubmitPage/SubmitPageDonateO2";
 import SubmitPageBreathingSession from "../Components/SubmitPage/SubmitPageBreathingSession";
 
-
-
-
-
 import Login from "./Admin/Login";
 import { AuthProvider } from "../Contexts/AuthContext";
 import Admin from "./Admin/Admin";
@@ -34,7 +30,9 @@ import FreeO2CylinderRegistration from "./DonateO2Form/DonateO2form";
 import BreathingSessionRegistration from "./BreathingSessionRegistrations/BreathingSessionRegistration";
 import SaturationList from "./SaturationList/SaturationList";
 import LabTestCentersRegistration from "./LabTestCentersRegistration/LabTestCentersRegistration";
-
+import MedicalStoresList from "./MedicalStoresList/MedicalStoresList";
+import HospitalBedsList from "./HospitalBedsList/HospitalBedsList";
+import HomeCareList from "./HomeCareList/HomeCareList";
 
 export default function Root() {
   return (
@@ -74,11 +72,6 @@ export default function Root() {
           component={LabTestCentersRegistration}
         />
 
-
-
-
-
-
         <Route path='/donor-registered/:docId' component={SubmitPageDonor} />
         <Route
           path='/recipient-registered/:docId'
@@ -110,19 +103,20 @@ export default function Root() {
           component={SubmitPageBreathingSession}
         />
 
-        
-
         <Route exact path='/doctors' component={DoctorsList} />
         <Route exact path='/food' component={FoodList} />
         <Route exact path='/oxygenCylinders' component={OxygenCylinderList} />
         <Route exact path='/labtestcenters' component={LabTestCentersList} />
+        <Route exact path='/medicalStores' component={MedicalStoresList} />
+        <Route exact path='/hospitalBeds' component={HospitalBedsList} />
+        <Route exact path='/homeCare' component={HomeCareList} />
         <Route exact path='/freeconsultation' component={SaturationList} />
 
         <Route path='/login' component={Login} />
 
         <Route path='/admin' component={Admin} />
 
-        <Route path='/' component={Home}/>
+        <Route path='/' component={Home} />
       </Switch>
     </AuthProvider>
   );

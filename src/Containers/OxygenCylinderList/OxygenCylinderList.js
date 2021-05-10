@@ -11,10 +11,6 @@ import "firebase/firestore";
 // import "firebase/analytics";
 import { checkVerified, timeDifference } from "../DoctorsList/functions";
 
-
-
-
-
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 var db = firebase.firestore();
@@ -30,7 +26,8 @@ export default function OxygenCylinderList(props) {
     window.scrollTo(0, 0);
     // firebase.analytics().logEvent('goal_completion', { name: 'lever_puzzle'});
     var oclArr = [];
-    db.collection("OxygenCylinders").orderBy("timestamp", "desc")
+    db.collection("OxygenCylinders")
+      .orderBy("timestamp", "desc")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -83,7 +80,7 @@ export default function OxygenCylinderList(props) {
             <InfoCard
               name={ocl.name}
               phone={ocl.phone}
-              type='ocl'
+              type='Ocl'
               location={ocl.location}
               verified={ocl.verified}
               ago={ocl.ago}
