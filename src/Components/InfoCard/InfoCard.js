@@ -26,9 +26,12 @@ export default function InfoCard({
 }) {
   const [info, setInfo] = useState(null);
   const [badge, setBadge] = useState(null);
+  const [medicinesList, setMedicinesList] = useState(medicines.split(","));
   useEffect(() => {
     setInfo(categorizeDataInfo());
     setBadge(categorizeDataBade());
+    // console.log("Heello", medicines.split(","));
+    // setMedicinesList(medicines.split(","));
   }, []);
 
   const categorizeDataInfo = () => {
@@ -88,7 +91,10 @@ export default function InfoCard({
             {streetNumber}
           </p>
           <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
-            <b>Medicines: </b> {medicines}
+            <b>Medicines: </b>
+            {medicinesList.map((md, index) => (
+              <li key={index}>{md}</li>
+            ))}
           </p>
         </>
       );

@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
-import classes from "./section.module.css"
-import plasma from "../../Assets/Icons/Group 159525.svg"
-import oxygen from "../../Assets/Icons/oxygen-tank.svg"
-import food from "../../Assets/Icons/food.svg"
-import lab from "../../Assets/Icons/flask.svg"
-import stethoscope from '../../Assets/Icons/stethoscope (1).svg'
-import ayurveda from '../../Assets/Icons/ayurveda.svg'
+import React, { useState } from "react";
+import classes from "./section.module.css";
+import plasma from "../../Assets/Icons/Group 159525.svg";
+import oxygen from "../../Assets/Icons/oxygen-tank.svg";
+import food from "../../Assets/Icons/food.svg";
+import lab from "../../Assets/Icons/flask.svg";
+import stethoscope from "../../Assets/Icons/stethoscope (1).svg";
+import ayurveda from "../../Assets/Icons/ayurveda.svg";
 import homeClasses from "./Home.module.css";
 import sd from "../../Assets/Icons/stethoscope (1).svg";
 import thermometer from "../../Assets/Svgs/thermometer.svg";
@@ -13,17 +13,15 @@ import heartbeat from "../../Assets/Svgs/heartbeat.svg";
 import Group from "../../Assets/Svgs/Group 159507.svg";
 import medical from "../../Assets/Svgs/medical-report.svg";
 import application from "../../Assets/Svgs/application.svg";
-import { Col, Row , Modal , Button } from "antd";
+import hospitalBeds from "../../Assets/Svgs/hospitalBeds.svg";
+import pills from "../../Assets/Svgs/pills.svg";
+import { Col, Row, Modal, Button } from "antd";
 
-
-export default function Section2({
-    changeRoute
-}) {
-
-    const redirect =(link)=>{
-        window.location.href = link;
-    }
-    const [isModalVisible, setIsModalVisible] = useState(false);
+export default function Section2({ changeRoute }) {
+  const redirect = (link) => {
+    window.location.href = link;
+  };
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -36,56 +34,96 @@ export default function Section2({
   const handleCancel = () => {
     setIsModalVisible(false);
   };
-    return (
-        <>
-        <Row className={classes.formBox}>
-            <Col>
-                <h1 style={{ fontSize: '20px' }} className={classes.superText}>I  <span className={classes.spanText}>Need Help </span> With</h1>
-                <br />
-            </Col>
+  return (
+    <>
+      <Row className={classes.formBox}>
+        <Col>
+          <h1 style={{ fontSize: "20px" }} className={classes.superText}>
+            I <span className={classes.spanText}>Need Help </span> With
+          </h1>
+          <br />
+        </Col>
 
-            <Row className={classes.symptomsBox}>
-            <Col onClick={showModal} justify="center" className={classes.selected}>
-                    <label style={{ textAlign: 'center' }} for="fever">
-                        <img src={stethoscope} />
-                        <div className={classes.text}>Doctor Consultation</div>
-                    </label>
-                </Col>
-                <Col onClick={() => changeRoute("register/recipient")} justify="center" className={classes.selected}>
-                    <label style={{ textAlign: 'center' }} for="fever">
-                        <img src={plasma} />
-                        <div className={classes.text}> Plasma Donors </div>
-                    </label>
-                </Col>
-                <Col onClick={() => changeRoute('/oxygenCylinders')} justify="center" className={classes.selected}>
-                    <label style={{ textAlign: 'center' }} for="fever">
-                        <img src={oxygen} />
-                        <div className={classes.text}>Refill O2 Cylinder</div>
-                    </label>
-                </Col>
-                <Col onClick={() => changeRoute('/food')} justify="center" className={classes.selected}>
-                    <label style={{ textAlign: 'center' }} for="fever">
-                        <img src={food} />
-                        <div className={classes.text}> Food Delivery </div>
-                    </label>
-                </Col>
-                <Col onClick={() => changeRoute('/labtestcenters')} justify="center" className={classes.selected}>
-                    <label style={{ textAlign: 'center' }} for="fever">
-                        <img src={lab} />
-                        <div className={classes.text}> Lab Tests </div>
-                    </label>
-                </Col>
-                <Col onClick={() =>redirect("https://docs.google.com/forms/d/e/1FAIpQLScE3iEAxAUGqzsLDVEHlHM7nJvQvVAk7pW4Kks0B4yn5f4kZQ/viewform")} justify="center" className={classes.selected}>
-                        <label style={{ textAlign: 'center' }} for="fever">
-                            <img style={{margin:"auto"}} src={ayurveda} />
-                            <div className={classes.text}>Ayurvedic Consultation</div>
-                        </label>
-                    
-                </Col>
-
-            </Row>
+        <Row className={classes.symptomsBox}>
+          <Col
+            onClick={showModal}
+            justify='center'
+            className={classes.selected}>
+            <label style={{ textAlign: "center" }} for='fever'>
+              <img src={stethoscope} />
+              <div className={classes.text}>Doctor Consultation</div>
+            </label>
+          </Col>
+          <Col
+            onClick={() => changeRoute("register/recipient")}
+            justify='center'
+            className={classes.selected}>
+            <label style={{ textAlign: "center" }} for='fever'>
+              <img src={plasma} />
+              <div className={classes.text}> Plasma Donors </div>
+            </label>
+          </Col>
+          <Col
+            onClick={() => changeRoute("/oxygenCylinders")}
+            justify='center'
+            className={classes.selected}>
+            <label style={{ textAlign: "center" }} for='fever'>
+              <img src={oxygen} />
+              <div className={classes.text}>Refill O2 Cylinder</div>
+            </label>
+          </Col>
+          <Col
+            onClick={() => changeRoute("/food")}
+            justify='center'
+            className={classes.selected}>
+            <label style={{ textAlign: "center" }} for='fever'>
+              <img src={food} />
+              <div className={classes.text}> Food Delivery </div>
+            </label>
+          </Col>
+          <Col
+            onClick={() => changeRoute("/labtestcenters")}
+            justify='center'
+            className={classes.selected}>
+            <label style={{ textAlign: "center" }} for='fever'>
+              <img src={lab} />
+              <div className={classes.text}> Lab Tests </div>
+            </label>
+          </Col>
+          <Col
+            onClick={() =>
+              redirect(
+                "https://docs.google.com/forms/d/e/1FAIpQLScE3iEAxAUGqzsLDVEHlHM7nJvQvVAk7pW4Kks0B4yn5f4kZQ/viewform"
+              )
+            }
+            justify='center'
+            className={classes.selected}>
+            <label style={{ textAlign: "center" }} for='fever'>
+              <img style={{ margin: "auto" }} src={ayurveda} />
+              <div className={classes.text}>Ayurvedic Consultation</div>
+            </label>
+          </Col>
+          <Col
+            onClick={() => changeRoute("/hospitalBeds")}
+            justify='center'
+            className={classes.selected}>
+            <label style={{ textAlign: "center" }} for='fever'>
+              <img src={hospitalBeds} />
+              <div className={classes.text}> Hospital Beds </div>
+            </label>
+          </Col>
+          <Col
+            onClick={() => changeRoute("/medicalStores")}
+            justify='center'
+            className={classes.selected}>
+            <label style={{ textAlign: "center" }} for='fever'>
+              <img src={pills} />
+              <div className={classes.text}> Medical Stores </div>
+            </label>
+          </Col>
         </Row>
-        <Modal
+      </Row>
+      <Modal
         title={null}
         style={{ top: 20 }}
         className={homeClasses.modal}
@@ -199,12 +237,12 @@ export default function Section2({
           Yes, I agree
         </Button>
         <Button
-          onClick={handleCancel}   
+          onClick={handleCancel}
           block
           className={homeClasses.actionButton2}>
           No, I disagree
         </Button>
       </Modal>
-      </>
-    )
+    </>
+  );
 }
