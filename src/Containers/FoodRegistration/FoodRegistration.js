@@ -22,7 +22,6 @@ export default function FoodRegistration(props) {
   const [checked, setChecked] = useState(false);
   const [location, setLocation] = useState("");
   const [streetNumber, setStreetNumber] = useState("");
-  const [isVerified, setIsVerified] = useState("");
   const [isFree, setIsFree] = useState("");
   const [state, setSate] = useState("");
   const [loading, setLoading] = useState(false);
@@ -39,8 +38,6 @@ export default function FoodRegistration(props) {
       setLocation(e);
     } else if (type === "state") {
       setSate(e);
-    } else if (type === "isVerified") {
-      setIsVerified(e.target.value);
     } else if (type === "isFree") {
       setIsFree(e.target.value);
     }
@@ -53,7 +50,6 @@ export default function FoodRegistration(props) {
 
     if (location === "") return message.error("District Required");
     if (streetNumber === "") return message.error("Street Number Required");
-    if (isVerified === "") return message.error("Fill All Field");
     if (isFree === "") return message.error("Fill All Field");
     setLoading(true);
     db.collection("Food")
@@ -61,7 +57,7 @@ export default function FoodRegistration(props) {
         name: name,
         phone: mobileNumber,
         streetNumber: streetNumber,
-        verified: isVerified,
+        verified: "no",
         isFree: isFree,
         location: location,
         timestamp: new Date(),
@@ -166,24 +162,6 @@ export default function FoodRegistration(props) {
             </Radio.Button>
             <Radio.Button className={classes.radioButton} value='free'>
               Free
-            </Radio.Button>
-          </Radio.Group>
-        </Col>
-      </Row>
-      <br />
-      <Row justify='center'>
-        <Col className={classes.formBox} lg={8} sm={16} xs={23}>
-          <p>Is the above Information verified?</p>
-          <Radio.Group
-            size='large'
-            buttonStyle='solid'
-            onChange={(e) => onChangeHandler(e, "isVerified")}
-            className={classes.FoodradioGroup}>
-            <Radio.Button className={classes.radioButton} value='yes'>
-              Yes
-            </Radio.Button>
-            <Radio.Button className={classes.radioButton} value='no'>
-              No
             </Radio.Button>
           </Radio.Group>
         </Col>

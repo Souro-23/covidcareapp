@@ -13,6 +13,9 @@ import { NavLink } from "react-router-dom";
 import LabTestCentersTable from "./LabTestCentersTable";
 import OxygenCylinderContacts from "./OxygenCylinderContacts";
 import BreathingSessions from "./BreathingSessions";
+import HomeCare from "./HomeCareTable";
+import HospitalBeds from "./HospitalBedsTable";
+import MedicalStores from "./MedicalStoresTable";
 
 const { Header, Content, Footer } = Layout;
 
@@ -67,6 +70,15 @@ export default function Admin(props) {
           <Menu.Item key='9'>
             <NavLink to='/admin/BreathingSessions'>Breathing Sessions</NavLink>
           </Menu.Item>
+          <Menu.Item key='10'>
+            <NavLink to='/admin/HospitalBeds'>Hospital Beds</NavLink>
+          </Menu.Item>
+          <Menu.Item key='11'>
+            <NavLink to='/admin/MedicalStores'>Medical Stores</NavLink>
+          </Menu.Item>
+          <Menu.Item key='12'>
+            <NavLink to='/admin/HomeCare'>HomeCare</NavLink>
+          </Menu.Item>
         </Menu>
       </Header>
       <Content
@@ -79,9 +91,7 @@ export default function Admin(props) {
             logout
           </Button>
         </div>
-
         <Route path='/admin/food' component={FoodTable} />
-
         {/* SECTION Below admin section  */}
         <Route path='/admin/doctors' component={DoctorTable} />
         <Route path='/admin/patient' component={PatientTable} />
@@ -91,6 +101,9 @@ export default function Admin(props) {
         <Route path='/admin/labtestcenters' component={LabTestCentersTable} />
         <Route path='/admin/BreathingSessions' component={BreathingSessions} />
         <Route path='/admin/OxygenCylinderContacts' component={OxygenCylinderContacts} />
+        <Route path='/admin/HospitalBeds' component={HospitalBeds} />
+        <Route path='/admin/MedicalStores' component={MedicalStores} />
+        <Route path='/admin/HomeCare' component={HomeCare} />
       </Content>
     </Layout>
   );

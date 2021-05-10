@@ -21,7 +21,6 @@ export default function FoodRegistration(props) {
     const [checked, setChecked] = useState(false);
     const [location, setLocation] = useState("");
     const [streetNumber, setStreetNumber] = useState("");
-    const [isVerified, setIsVerified] = useState("");
     const [loading, setLoading] = useState(false)
 
 
@@ -39,10 +38,6 @@ export default function FoodRegistration(props) {
         }
         else if (type === "location") {
             setLocation(e);
-
-        }
-        else if (type === "isVerified") {
-            setIsVerified(e.target.value);
         }
 
     };
@@ -53,14 +48,13 @@ export default function FoodRegistration(props) {
         if (mobileNumber === "") return message.error("Valid Mobile Number Required");
         if (location === "") return message.error("Location Required");
         if (streetNumber === "") return message.error("Street Number Required");
-        if (isVerified === "") return message.error("Fill All Field");
         setLoading(true)
         db.collection("OxygenCylinders")
             .add({
                 name: name,
                 phone: mobileNumber,
                 streetNumber: streetNumber,
-                verified: isVerified,
+                verified: "no",
                 location: location,
                 timestamp: new Date()
             })
@@ -142,24 +136,6 @@ export default function FoodRegistration(props) {
                             })}
                         </Select>
                     </div>
-                </Col>
-            </Row>
-            <br />
-            <Row justify="center">
-                <Col className={classes.formBox} lg={8} sm={16} xs={23}>
-                    <p>Is the above Information verified?</p>
-                    <Radio.Group
-                        size='large'
-                        buttonStyle="solid"
-                        onChange={(e) => onChangeHandler(e, "isVerified")}
-                        className={classes.FoodradioGroup}>
-                        <Radio.Button className={classes.radioButton} value='yes'>
-                            Yes
-                        </Radio.Button>
-                        <Radio.Button className={classes.radioButton} value='no'>
-                            No
-                        </Radio.Button>
-                    </Radio.Group>
                 </Col>
             </Row>
             <br />
