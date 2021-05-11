@@ -15,6 +15,8 @@ import medical from "../../Assets/Svgs/medical-report.svg";
 import application from "../../Assets/Svgs/application.svg";
 import hospitalBeds from "../../Assets/Svgs/hospitalBeds.svg";
 import pills from "../../Assets/Svgs/pills.svg";
+import homeCare from "../../Assets/Icons/homeCare.svg";
+import dissociative from "../../Assets/Icons/dissociative.svg";
 import { Col, Row, Modal, Button } from "antd";
 
 export default function Section2({ changeRoute }) {
@@ -119,6 +121,24 @@ export default function Section2({ changeRoute }) {
             <label style={{ textAlign: "center" }} for='fever'>
               <img src={pills} />
               <div className={classes.text}> Medical Stores </div>
+            </label>
+          </Col>
+          <Col
+            onClick={() => changeRoute("/homeCare")}
+            justify='center'
+            className={classes.selected}>
+            <label style={{ textAlign: "center" }} for='fever'>
+              <img src={homeCare} />
+              <div className={classes.text}> Home Care </div>
+            </label>
+          </Col>
+          <Col
+            onClick={() => changeRoute("/register/breating-session")}
+            justify='center'
+            className={classes.selected}>
+            <label style={{ textAlign: "center" }} for='fever'>
+              <img src={dissociative} />
+              <div className={classes.text}> Fight Anxiety and Stress </div>
             </label>
           </Col>
         </Row>

@@ -51,9 +51,9 @@ export class HomeCareTable extends Component {
         onFilter: (value, record) => record.location?.indexOf(value) === 0,
       },
       {
-        title:"Last Updated",
-        dataIndex:"timestamp",
-        editable:false
+        title: "Last Updated",
+        dataIndex: "timestamp",
+        editable: false,
       },
       {
         title: "operation",
@@ -80,24 +80,25 @@ export class HomeCareTable extends Component {
         (querySnapshot) => {
           var data = [];
           querySnapshot.forEach((doc) => {
-            const timestamp = doc.data().timestamp.toDate()
-            const date = timestamp.getDate()
-            const month = timestamp.getMonth()
-            const year = timestamp.getFullYear()
-            const hours = timestamp.getHours()
-            const mins = timestamp.getMinutes() 
+            const timestamp = doc.data().timestamp.toDate();
+            const date = timestamp.getDate();
+            const month = timestamp.getMonth();
+            const year = timestamp.getFullYear();
+            const hours = timestamp.getHours();
+            const mins = timestamp.getMinutes();
 
-            const lastupdated = date+"/"+ month+"/"+ year + "  "+ hours+":"+ mins
-           
+            const lastupdated =
+              date + "/" + month + "/" + year + "  " + hours + ":" + mins;
+
             data.push({
               id: doc.id,
               name: doc.data().name,
               phone: doc.data().phone,
-              facility:doc.data().facility,
+              facility: doc.data().facility,
               streetNumber: doc.data().streetNumber,
               location: doc.data().location,
               key: doc.id,
-              timestamp:lastupdated
+              timestamp: lastupdated,
             });
           });
           this.setState({ dataSource: data, count: data.length });
@@ -233,7 +234,7 @@ export class HomeCareTable extends Component {
     const newData = {
       key: count,
       name: "Enter Name Here",
-      facility:"",
+      facility: "",
       phone: "",
       location: "",
       streetNumber: "",
@@ -255,7 +256,7 @@ export class HomeCareTable extends Component {
         timestamp: new Date(),
       });
     } else {
-      db.collection("MedicalStores")
+      db.collection("HomeCare")
         .doc(row.key)
         .set({
           name: row.name ? row.name : "",
@@ -318,7 +319,7 @@ export class HomeCareTable extends Component {
           locale={{ emptyText: this.state.emptyTableText }}
         />
         <br />
-        <BulkUpload database = "HomeCare" />
+        <BulkUpload database='HomeCare' />
         <br />
         <br />
       </div>
@@ -327,5 +328,3 @@ export class HomeCareTable extends Component {
 }
 
 export default HomeCareTable;
-
-
