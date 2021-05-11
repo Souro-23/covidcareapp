@@ -96,12 +96,12 @@ export const checkVerified = (arr, type) => {
     arr.forEach((a, index) => {
       if (a.verified === "yes") sortedArray.push(a);
     });
-    arr.forEach((a, index) => {
-      if (a.verified === "no") sortedArray.push(a);
-    });
-    arr.forEach((a, index) => {
-      if (a.verified === "") sortedArray.push(a);
-    });
+    // arr.forEach((a, index) => {
+    //   if (a.verified === "no") sortedArray.push(a);
+    // });
+    // arr.forEach((a, index) => {
+    //   if (a.verified === "") sortedArray.push(a);
+    // });
   }
   // else if (type === "lab") {
   //   arr.forEach((a, index) => {

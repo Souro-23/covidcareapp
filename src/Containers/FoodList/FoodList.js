@@ -17,7 +17,7 @@ export default function FoodList(props) {
         <Col lg={8} sm={16} xs={23}>
           <FormHeader
             title='Food Delivery'
-            onBackPress={() => this.props.history.push("/")}
+            onBackPress={() => props.history.push("/")}
           />
         </Col>
       </Row>
