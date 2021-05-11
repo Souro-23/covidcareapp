@@ -1,63 +1,18 @@
 import React, { useState, useEffect } from "react";
-import InfoCard from "../../Components/InfoCard/InfoCard";
 import classes from "../RegistrationForm.module.css";
-import { Col, Row, Select, Spin } from "antd";
-import firebase from "../../Firebase/FirebaseConfig";
-import { locations } from "../../Constants/location";
-import { LoadingOutlined } from "@ant-design/icons";
+import { Col, Row } from "antd";
 import "firebase/firestore";
-import { checkVerified, timeDifference } from "../DoctorsList/functions";
 import FormHeader from "../../Components/FormHeader/FormHeader";
-
-var db = firebase.firestore();
-
-const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-
-const { Option } = Select;
+import InfiniteScroll from "../../Components/InfiniteScroll/InfiniteScroll";
 
 export default function LabTestCentersList(props) {
-  const [completeLabTestCentersList, setCompleteLabTestCentersList] = useState(
-    []
-  );
-  const [labList, setLabList] = useState([]);
-  const [loadingData, setLoadingData] = useState(true);
-  const [location, setLocation] = useState("");
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    var labArr = [];
-    db.collection("LabTestCenters")
-      .orderBy("timestamp", "desc")
-      .get()
-      .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          let ago = timeDifference(doc.data().timestamp);
-          labArr.push({ ...doc.data(), ago: ago });
-        });
-        setCompleteLabTestCentersList(labArr);
-        setLabList(labArr);
-        setLoadingData(false);
-      })
-      .catch((error) => {
-        console.log("Error getting documents: ", error);
-      });
   }, []);
 
-  const onLocationChange = (value) => {
-    if (value === "Entire Delhi/NCR" || value === "Entire Delhi") {
-      setLabList(completeLabTestCentersList);
-      setLocation(value);
-      return;
-    }
-    var labArr = completeLabTestCentersList.filter(
-      (lab) => lab.location === value
-    );
-    setLabList(labArr);
-    setLocation(value);
-  };
-
+  const windowHeight = window.innerHeight + 500;
   return (
-    <div className={classes.body}>
+    <div className={classes.body} style={{ height: windowHeight }}>
       <Row justify='center'>
         <Col lg={8} sm={16} xs={23}>
           <FormHeader
@@ -66,38 +21,7 @@ export default function LabTestCentersList(props) {
           />
         </Col>
       </Row>
-      <div className={classes.select}>
-        <Select
-          placeholder='Select Location'
-          style={{ width: "100%" }}
-          listHeight={570}
-          onChange={onLocationChange}>
-          {locations.map((loc) => {
-            return <Option value={loc}>{loc}</Option>;
-          })}
-        </Select>
-      </div>
-      <Row justify='center' gutter={[8, 8]}>
-        {labList.map((lab, index) => (
-          <Col key={index} lg={7} md={8} sm={15} xs={24}>
-            <InfoCard
-              name={lab.name}
-              phone={lab.phone}
-              type='Lab'
-              location={lab.location}
-              homeTest={lab.homeTest}
-              ago={lab.ago}
-              charges={lab.charges}
-              waitTime={lab.waitTime}
-              resultTime={lab.resultTime}
-            />
-          </Col>
-        ))}
-        {!labList.length && !loadingData && (
-          <p>Lab Test Centers Not Found for {location}</p>
-        )}
-        {loadingData && <Spin indicator={antIcon} />}
-      </Row>
+      <InfiniteScroll database='LabTestCenters' />
     </div>
   );
 }
