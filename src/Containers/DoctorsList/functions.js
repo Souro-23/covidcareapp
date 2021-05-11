@@ -92,7 +92,7 @@ const convertTimeAvailable = (timeSlotArray) => {
 
 export const checkVerified = (arr, type) => {
   var sortedArray = [];
-  if (type === "food" || type === "ocl") {
+  if (type === "Food" || type === "OxygenCylinders") {
     arr.forEach((a, index) => {
       if (a.verified === "yes") sortedArray.push(a);
     });
@@ -102,7 +102,7 @@ export const checkVerified = (arr, type) => {
     arr.forEach((a, index) => {
       if (a.verified === "") sortedArray.push(a);
     });
-  } 
+  }
   // else if (type === "lab") {
   //   arr.forEach((a, index) => {
   //     if (a.homeTest === "yes") sortedArray.push(a);

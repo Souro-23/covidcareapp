@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import classes from "../RegistrationForm.module.css";
 import { Col, Row } from "antd";
-
 import "firebase/firestore";
 import FormHeader from "../../Components/FormHeader/FormHeader";
 import InfiniteScroll from "../../Components/InfiniteScroll/InfiniteScroll";
 
+export default function FoodList(props) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-
-export default class FoodList extends React.Component {
-  componentDidMount(){
-    window.scrollTo(0,0)
-  }
-  render(){
-  const windowHeight =window.innerHeight+500
-  console.log(windowHeight)
+  const windowHeight = window.innerHeight + 500;
   return (
-    <div className={classes.body} style={{height:windowHeight}}>
+    <div className={classes.body} style={{ height: windowHeight }}>
       <Row justify='center'>
         <Col lg={8} sm={16} xs={23}>
           <FormHeader
@@ -25,15 +21,7 @@ export default class FoodList extends React.Component {
           />
         </Col>
       </Row>
-      <InfiniteScroll database="Food"/>
+      <InfiniteScroll database='Food' />
     </div>
   );
-  }
 }
-
-
-
-
-
-
-

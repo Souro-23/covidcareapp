@@ -45,10 +45,10 @@ export default function InfoCard({
         </p>
       );
     }
-    if (type === "Ocl") {
+    if (type === "OxygenCylinders") {
       return "";
     }
-    if (type === "Lab") {
+    if (type === "LabTestCenters") {
       return (
         <>
           <p style={{ fontSize: "12px", color: "gray", marginTop: "10px" }}>
@@ -116,7 +116,7 @@ export default function InfoCard({
         </Tag>
       );
     }
-    if (type === "Ocl" && verified === "yes") {
+    if (type === "OxygenCylinders" && verified === "yes") {
       return (
         <Tag
           color='red-inverse'
@@ -130,7 +130,7 @@ export default function InfoCard({
         </Tag>
       );
     }
-    if (type === "Lab" && waitTime !== "" && waitTime !== null) {
+    if (type === "LabTestCenters" && waitTime !== "" && waitTime !== null) {
       return (
         <div
           style={{
