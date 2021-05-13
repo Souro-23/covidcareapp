@@ -138,7 +138,7 @@ export default function Section2({ changeRoute }) {
             className={classes.selected}>
             <label style={{ textAlign: "center" }} for='fever'>
               <img src={dissociative} />
-              <div className={classes.text}> Fight Anxiety and Stress </div>
+              <div className={classes.text}>Anxiety and Stress</div>
             </label>
           </Col>
         </Row>
