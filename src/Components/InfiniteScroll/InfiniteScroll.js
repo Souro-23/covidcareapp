@@ -44,8 +44,6 @@ export default function InfiniteScroll({ database }) {
   };
 
   const fetchDataByLocation = (location) => {
-    // console.log("searching");
-    // setNoData(true);
     setList([]);
     db.collection(database)
       .where("location", "==", location)
@@ -58,14 +56,12 @@ export default function InfiniteScroll({ database }) {
           setNoData(true);
         }
         querySnapshot.forEach((doc) => {
-          // let ago = timeDifference(doc.data().timestamp);
-          let ago = Math.ceil(Math.random() * (59 - 1) + 1) + " min ago";
+          let ago = timeDifference(doc.data().timestamp);
           newlist.push({ ...doc.data(), ago: ago });
         });
         setList(checkVerified(newlist, database));
         setList(newlist);
         var lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
-        // console.log(lastVisible);
         setLastDocRef(lastVisible);
       })
 
@@ -82,15 +78,13 @@ export default function InfiniteScroll({ database }) {
       .limit(LIMIT)
       .get()
       .then((querySnapshot) => {
-        // console.log("fetchMore", querySnapshot.docs.length, "data fetched");
         var newlist = [];
         if (querySnapshot.docs.length === 0) {
           setHasMore(false);
           return;
         }
         querySnapshot.forEach((doc) => {
-          // let ago = timeDifference(doc.data().timestamp);
-          let ago = Math.ceil(Math.random() * (59 - 1) + 1) + " min ago";
+          let ago = timeDifference(doc.data().timestamp);
           newlist.push({ ...doc.data(), ago: ago });
         });
         setList(checkVerified(newlist, database));
@@ -111,8 +105,7 @@ export default function InfiniteScroll({ database }) {
       .then((querySnapshot) => {
         var newlist = [];
         querySnapshot.forEach((doc) => {
-          // let ago = timeDifference(doc.data().timestamp);
-          let ago = Math.ceil(Math.random() * (59 - 1) + 1) + " min ago";
+          let ago = timeDifference(doc.data().timestamp);
           newlist.push({ ...doc.data(), ago: ago });
         });
         setList(checkVerified(newlist, database));
@@ -133,15 +126,13 @@ export default function InfiniteScroll({ database }) {
       .limit(LIMIT)
       .get()
       .then((querySnapshot) => {
-        // console.log("fetchMore", querySnapshot.docs.length, "data fetched");
         var newlist = [];
         if (querySnapshot.docs.length === 0) {
           setHasMore(false);
           return;
         }
         querySnapshot.forEach((doc) => {
-          // let ago = timeDifference(doc.data().timestamp);
-          let ago = Math.ceil(Math.random() * (59 - 1) + 1) + " min ago";
+          let ago = timeDifference(doc.data().timestamp);
           newlist.push({ ...doc.data(), ago: ago });
         });
         setList(checkVerified(newlist, database));

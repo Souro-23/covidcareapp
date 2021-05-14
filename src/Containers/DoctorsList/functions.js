@@ -118,21 +118,31 @@ export const checkVerified = (arr, type) => {
 };
 
 export const timeDifference = (timestamp) => {
-  var difference = new Date() - timestamp.toDate();
+  let docMinutes = timestamp.toDate().getMinutes();
+  let currMinutes = new Date().getMinutes();
+  let difference = currMinutes - docMinutes;
+  if (difference === 0) {
+    return "1 hr ago";
+  } else if (difference > 0) {
+    return Math.abs(difference) + " min ago";
+  }
+  return Math.abs(currMinutes) + " min ago";
 
-  var daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
-  difference -= daysDifference * 1000 * 60 * 60 * 24;
+  // var difference = new Date() - timestamp.toDate();
 
-  var hoursDifference = Math.floor(difference / 1000 / 60 / 60);
-  difference -= hoursDifference * 1000 * 60 * 60;
+  // var daysDifference = Math.floor(difference / 1000 / 60 / 60 / 24);
+  // difference -= daysDifference * 1000 * 60 * 60 * 24;
 
-  var minutesDifference = Math.floor(difference / 1000 / 60);
-  difference -= minutesDifference * 1000 * 60;
+  // var hoursDifference = Math.floor(difference / 1000 / 60 / 60);
+  // difference -= hoursDifference * 1000 * 60 * 60;
 
-  var secondsDifference = Math.floor(difference / 1000);
+  // var minutesDifference = Math.floor(difference / 1000 / 60);
+  // difference -= minutesDifference * 1000 * 60;
 
-  if (daysDifference) return daysDifference + "d ago";
-  if (hoursDifference) return hoursDifference + "h ago";
-  if (minutesDifference) return minutesDifference + "m ago";
-  if (secondsDifference) return "Just now";
+  // var secondsDifference = Math.floor(difference / 1000);
+
+  // if (daysDifference) return daysDifference + "d ago";
+  // if (hoursDifference) return hoursDifference + "h ago";
+  // if (minutesDifference) return minutesDifference + "m ago";
+  // if (secondsDifference) return "Just now";
 };
