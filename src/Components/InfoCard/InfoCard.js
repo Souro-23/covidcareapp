@@ -29,7 +29,7 @@ export default function InfoCard({
   const [medicinesList, setMedicinesList] = useState(medicines.split(","));
   useEffect(() => {
     setInfo(categorizeDataInfo());
-    setBadge(categorizeDataBade());
+    setBadge(categorizeDataBadge());
     // console.log("Heello", medicines.split(","));
     // setMedicinesList(medicines.split(","));
   }, []);
@@ -101,7 +101,7 @@ export default function InfoCard({
     }
   };
 
-  const categorizeDataBade = () => {
+  const categorizeDataBadge = () => {
     if (type === "Food" && verified === "yes") {
       return (
         <Tag
@@ -158,6 +158,20 @@ export default function InfoCard({
       type === "MedicalStores" ||
       type === "HomeCare"
     ) {
+      return (
+        <Tag
+          color='red-inverse'
+          style={{
+            marginRight: "0",
+            borderRadius: "10px",
+            paddingBottom: "1px",
+          }}
+          icon={<ClockCircleOutlined />}>
+          Verified {ago}
+        </Tag>
+      );
+    }
+    if (type === "Ambulance") {
       return (
         <Tag
           color='red-inverse'

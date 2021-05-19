@@ -133,12 +133,12 @@ export default function Section2({ changeRoute }) {
             </label>
           </Col>
           <Col
-            onClick={() => changeRoute("/register/breating-session")}
+            onClick={() => changeRoute("/ambulance")}
             justify='center'
             className={classes.selected}>
             <label style={{ textAlign: "center" }} for='fever'>
               <img src={dissociative} />
-              <div className={classes.text}>Anxiety and Stress</div>
+              <div className={classes.text}>Ambulance Service</div>
             </label>
           </Col>
         </Row>

@@ -33,6 +33,7 @@ import LabTestCentersRegistration from "./LabTestCentersRegistration/LabTestCent
 import MedicalStoresList from "./MedicalStoresList/MedicalStoresList";
 import HospitalBedsList from "./HospitalBedsList/HospitalBedsList";
 import HomeCareList from "./HomeCareList/HomeCareList";
+import AmbulanceList from "./AmbulanceList.js/AmbulanceList";
 
 export default function Root() {
   return (
@@ -110,6 +111,7 @@ export default function Root() {
         <Route exact path='/medicalStores' component={MedicalStoresList} />
         <Route exact path='/hospitalBeds' component={HospitalBedsList} />
         <Route exact path='/homeCare' component={HomeCareList} />
+        <Route exact path='/ambulance' component={AmbulanceList} />
         <Route exact path='/freeconsultation' component={SaturationList} />
 
         <Route path='/login' component={Login} />

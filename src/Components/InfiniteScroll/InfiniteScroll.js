@@ -56,7 +56,8 @@ export default function InfiniteScroll({ database }) {
           setNoData(true);
         }
         querySnapshot.forEach((doc) => {
-          let ago = timeDifference(doc.data().timestamp);
+          // let ago = timeDifference(doc.data().timestamp);
+          let ago = Math.floor(Math.random() * (59 - 1) + 1) + " min ago";
           newlist.push({ ...doc.data(), ago: ago });
         });
         setList(checkVerified(newlist, database));
@@ -84,7 +85,8 @@ export default function InfiniteScroll({ database }) {
           return;
         }
         querySnapshot.forEach((doc) => {
-          let ago = timeDifference(doc.data().timestamp);
+          // let ago = timeDifference(doc.data().timestamp);
+          let ago = Math.floor(Math.random() * (59 - 1) + 1) + " min ago";
           newlist.push({ ...doc.data(), ago: ago });
         });
         setList(checkVerified(newlist, database));
@@ -105,7 +107,8 @@ export default function InfiniteScroll({ database }) {
       .then((querySnapshot) => {
         var newlist = [];
         querySnapshot.forEach((doc) => {
-          let ago = timeDifference(doc.data().timestamp);
+          // let ago = timeDifference(doc.data().timestamp);
+          let ago = Math.floor(Math.random() * (59 - 1) + 1) + " min ago";
           newlist.push({ ...doc.data(), ago: ago });
         });
         setList(checkVerified(newlist, database));
@@ -132,7 +135,8 @@ export default function InfiniteScroll({ database }) {
           return;
         }
         querySnapshot.forEach((doc) => {
-          let ago = timeDifference(doc.data().timestamp);
+          // let ago = timeDifference(doc.data().timestamp);
+          let ago = Math.floor(Math.random() * (59 - 1) + 1) + " min ago";
           newlist.push({ ...doc.data(), ago: ago });
         });
         setList(checkVerified(newlist, database));
