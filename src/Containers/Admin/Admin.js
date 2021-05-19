@@ -7,7 +7,7 @@ import PatientTable from "./PatientTable";
 import DonorsTable from "./DonorsTable";
 import RecipientTable from "./RecipientTable";
 import OxygenCylinders from "./OxygenCylinders";
-import { Layout, Menu, Breadcrumb, Button } from "antd";
+import { Layout, Menu, Button } from "antd";
 import "./Admin.css";
 import { NavLink } from "react-router-dom";
 import LabTestCentersTable from "./LabTestCentersTable";
@@ -16,6 +16,7 @@ import BreathingSessions from "./BreathingSessions";
 import HomeCare from "./HomeCareTable";
 import HospitalBeds from "./HospitalBedsTable";
 import MedicalStores from "./MedicalStoresTable";
+import AmbulanceTable from "./AmbulanceTable";
 
 const { Header, Content, Footer } = Layout;
 
@@ -79,12 +80,14 @@ export default function Admin(props) {
           <Menu.Item key='12'>
             <NavLink to='/admin/HomeCare'>HomeCare</NavLink>
           </Menu.Item>
+          <Menu.Item key='13'>
+            <NavLink to='/admin/Ambulance'>Ambulance</NavLink>
+          </Menu.Item>
         </Menu>
       </Header>
       <Content
         className='site-layout'
         style={{ padding: "0 50px", marginTop: 64 }}>
-        {/* {currentUser?.uid} */}
         <br />
         <div style={{ display: "flex", justifyContent: "end" }}>
           <Button className='LogoutButton' onClick={onLogout}>
@@ -104,6 +107,8 @@ export default function Admin(props) {
         <Route path='/admin/HospitalBeds' component={HospitalBeds} />
         <Route path='/admin/MedicalStores' component={MedicalStores} />
         <Route path='/admin/HomeCare' component={HomeCare} />
+        <Route path='/admin/Ambulance' component={AmbulanceTable} />
+
       </Content>
     </Layout>
   );

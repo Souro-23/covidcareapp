@@ -27,6 +27,7 @@ export default function BulkUpload({ database }) {
       console.log(wb.SheetNames.length)
       const wsname = wb.SheetNames[0];
       const ws = wb.Sheets[wsname];
+
       /* Convert array of arrays */
       const data = XLSX.utils.sheet_to_json(ws, { header: 0 });
       const inputCols = XLSX.utils.sheet_to_json(ws, { header: 1 })[0];
@@ -35,7 +36,7 @@ export default function BulkUpload({ database }) {
         setData(data);
         setCols(make_cols(ws["!ref"]));
       } else {
-        message.error("Excel fields no matched with Database fields.");
+        message.error("Excel fields not matched with Database fields.");
         fileInput.current.value = "";
       }
     };

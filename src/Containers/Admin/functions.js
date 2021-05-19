@@ -15,6 +15,19 @@ export const databaseVariableValidation = (database, inputCols) => {
       return checkVariables(getDatabaseVariables(database), inputCols);
     case "LabTestCenters":
       return checkVariables(getDatabaseVariables(database), inputCols);
+    case "OxygenCylinderContacts":
+      return checkVariables(getDatabaseVariables(database), inputCols);
+    case "BreathingSessions":
+      return checkVariables(getDatabaseVariables(database), inputCols);
+    case "HospitalBeds":
+      return checkVariables(getDatabaseVariables(database), inputCols);
+    case "MedicalStores":
+      return checkVariables(getDatabaseVariables(database), inputCols);
+    case "HomeCare":
+      return checkVariables(getDatabaseVariables(database), inputCols);
+    case "Ambulance":
+      return checkVariables(getDatabaseVariables(database), inputCols);
+
     default:
       break;
   }
@@ -69,17 +82,19 @@ export const getDatabaseVariables = (database) => {
     case "BreathingSessions":
       return ["name", "phone", "location", "age", "stressed", "timeSlot"]
     case "HospitalBeds":
-      return ["name", "phone","bedsInfo", "streetNumber", "location"]
+      return ["name", "phone", "bedsInfo", "streetNumber", "location"]
     case "MedicalStores":
-      return ["name", "phone","medicines", "streetNumber", "location"]
+      return ["name", "phone", "medicines", "streetNumber", "location"]
     case "HomeCare":
-      return ["name", "phone","facility", "streetNumber", "location"]
+      return ["name", "phone", "facility", "streetNumber", "location"]
+    case "Ambulance":
+      return ["name", "phone", "services", "location", "charges"];
+
     default:
       break;
   }
 };
 
 export const checkVariables = (dbCols, inputCols) => {
-  console.log(dbCols, inputCols)
   return JSON.stringify(dbCols.sort()) === JSON.stringify(inputCols.sort());
 };
